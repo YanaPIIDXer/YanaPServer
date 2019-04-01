@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #include "WidnowsSocketBehaviour.h"
 
 namespace YanaPServer
@@ -55,3 +56,5 @@ void CWindowsSocketBehaviour::Release()
 }
 }
 }
+
+#endif		// #ifdef _WIN32
