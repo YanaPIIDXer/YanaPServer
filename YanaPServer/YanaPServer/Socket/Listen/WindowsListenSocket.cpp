@@ -1,5 +1,6 @@
 #include "WindowsListenSocket.h"
 #include "YanaPServer/Socket/WidnowsSocket.h"
+#include "YanaPServer/Socket/Windows/WinSockManager.h"
 #ifdef _WIN32
 
 namespace YanaPServer
@@ -34,7 +35,6 @@ void CWindowsListenSocket::Poll()
 	SOCKET AcceptSocket = accept(Socket, (sockaddr *)&Addr, &Len);
 	if (AcceptSocket == INVALID_SOCKET) { return; }
 
-	ioctlsocket(AcceptSocket, FIONBIO, &NonBlockingMode);
 	CWindowsSocket *pNewSocket = new CWindowsSocket(AcceptSocket);
 	OnAccept(pNewSocket);
 }
@@ -44,14 +44,11 @@ bool CWindowsListenSocket::Listen(unsigned int Port, const std::function<void(IS
 {
 	if (Socket != INVALID_SOCKET) { return true; }		// ‰Šú‰»Ï‚ÝB
 
-	WSADATA WsaData;
-	int Result = WSAStartup(MAKEWORD(2, 0), &WsaData);
-	if (Result != 0) { return false; }
+	if (!Socket::Windows::CWinSockManager::GetInstance().Initialize()) { return false; }
 
 	Socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (Socket == INVALID_SOCKET)
 	{
-		WSACleanup();
 		return false;
 	}
 
@@ -86,8 +83,6 @@ void CWindowsListenSocket::Release()
 	if (Socket == INVALID_SOCKET) { return; }
 
 	closesocket(Socket);
-	WSACleanup();
-
 	Socket = INVALID_SOCKET;
 }
 

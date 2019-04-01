@@ -5,6 +5,7 @@
 
 #include "Socket.h"
 #include <WinSock2.h>
+#include <string>
 
 namespace YanaPServer
 {
@@ -22,13 +23,34 @@ public:
 
 	/**
 	 * @brief コンストラクタ
+	 * @param[in] InSocket ソケット
 	 */
 	CWindowsSocket(const SOCKET &InSocket);
+
+	/**
+	 * @brief コンストラクタ
+	 * @param[in] Host ホスト
+	 * @param[in] Port ポート番号
+	 */
+	CWindowsSocket(const std::string &Host, unsigned int Port);
 
 	/**
 	 * @brief デストラクタ
 	 */
 	virtual ~CWindowsSocket();
+
+	/**
+	 * @fn virtual void Poll()
+	 * @brief 毎フレーム実行する処理
+	 */
+	virtual void Poll();
+
+	/**
+	 * @fn virtual bool IsValid() const
+	 * @brief 有効か？
+	 * @return 有効ならtrueを返す。
+	 */
+	virtual bool IsValid() const { return (Socket != INVALID_SOCKET); }
 
 	/**
 	 * @fn virtual void Release()
@@ -38,9 +60,28 @@ public:
 
 private:
 
+	// State
+	class EState
+	{
+	public:
+		enum
+		{
+			Connecting,
+			Connected,
+		};
+	};
+
 	// ソケット
 	SOCKET Socket;
 
+	// ノンブロッキングモード
+	u_long NonBlockingMode;
+
+	// ステート
+	unsigned char State;
+
+	// 接続先アドレス
+	sockaddr_in ConnectAddr;
 };
 
 }

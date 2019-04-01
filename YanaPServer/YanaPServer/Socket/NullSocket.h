@@ -29,6 +29,19 @@ public:
 	virtual ~CNullSocket() {}
 
 	/**
+	 * @fn virtual void Poll()
+	 * @brief 毎フレーム実行する処理
+	 */
+	virtual void Poll() {}
+
+	/**
+	 * @fn virtual bool IsValid() const
+	 * @brief 有効か？
+	 * @return 有効にはならないので常にfalseを返す。
+	 */
+	virtual bool IsValid() const { return false; }
+
+	/**
 	 * @fn virtual void Release()
 	 * @brief 解放
 	 */

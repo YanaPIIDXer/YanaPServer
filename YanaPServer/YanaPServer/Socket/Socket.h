@@ -21,6 +21,19 @@ public:
 	virtual ~ISocket() {}
 
 	/**
+	 * @fn virtual void Poll() = 0
+	 * @brief 毎フレーム実行する処理
+	 */
+	virtual void Poll() = 0;
+
+	/**
+	 * @fn virtual bool IsValid()
+	 * @brief 有効か？
+	 * @return 有効ならtrueを返す。
+	 */
+	virtual bool IsValid() const = 0;
+
+	/**
 	 * @fn virtual void Release() = 0
 	 * @brief 解放
 	 */
