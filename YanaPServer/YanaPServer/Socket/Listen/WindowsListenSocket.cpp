@@ -34,6 +34,7 @@ void CWindowsListenSocket::Poll()
 	SOCKET AcceptSocket = accept(Socket, (sockaddr *)&Addr, &Len);
 	if (AcceptSocket == INVALID_SOCKET) { return; }
 
+	ioctlsocket(AcceptSocket, FIONBIO, &NonBlockingMode);
 	CWindowsSocket *pNewSocket = new CWindowsSocket(AcceptSocket);
 	OnAccept(pNewSocket);
 }
