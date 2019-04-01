@@ -1,49 +1,34 @@
-#ifndef __SOCKET_H__
-#define __SOCKET_H__
+#ifndef __SOCKETBEHAVIOUR_H__
+#define __SOCKETBEHAVIOUR_H__
 
 namespace YanaPServer
 {
 namespace Socket
 {
-namespace Behaviour
-{
-class ISocketBehaviour;
-}
 
 /**
- * @class CSocket
- * @brief ソケットクラス
- */
-class CSocket
+* @class ISocket
+* @brief ソケットの挙動を実装するためのインタフェース
+*/
+class ISocket
 {
 
 public:
 
 	/**
-		* @brief コンストラクタ
-		*/
-	CSocket();
+	 * @brief デストラクタ
+	 */
+	virtual ~ISocket() {}
 
 	/**
-		* @brief デストラクタ
-		*/
-	~CSocket();
-
-private:
-
-	// 挙動インタフェース
-	Behaviour::ISocketBehaviour *pBehaviour;
-
-
-	// 挙動インタフェースの生成.
-	void CreateBehaviour();
-
-	// 挙動インタフェースの解放.
-	void ReleaseBehaviour();
+	 * @fn virtual void Release() = 0
+	 * @brief 解放
+	 */
+	virtual void Release() = 0;
 
 };
 
 }
 }
 
-#endif		// #ifndef __SOCKET_H__
+#endif		// #ifndef __SOCKETBEHAVIOUR_H__

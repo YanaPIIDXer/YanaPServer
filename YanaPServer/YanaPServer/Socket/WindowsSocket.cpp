@@ -1,27 +1,25 @@
 #ifdef _WIN32
-#include "WidnowsSocketBehaviour.h"
+#include "WidnowsSocket.h"
 
 namespace YanaPServer
 {
 namespace Socket
 {
-namespace Behaviour
-{
 
 // コンストラクタ
-CWindowsSocketBehaviour::CWindowsSocketBehaviour()
-	: Socket(INVALID_SOCKET)
+CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
+	: Socket(InSocket)
 {
 }
 
 // デストラクタ
-CWindowsSocketBehaviour::~CWindowsSocketBehaviour()
+CWindowsSocket::~CWindowsSocket()
 {
 	Release();
 }
 
 // 解放.
-void CWindowsSocketBehaviour::Release()
+void CWindowsSocket::Release()
 {
 	if (Socket == INVALID_SOCKET) { return; }
 
@@ -29,7 +27,6 @@ void CWindowsSocketBehaviour::Release()
 	Socket = INVALID_SOCKET;
 }
 
-}
 }
 }
 

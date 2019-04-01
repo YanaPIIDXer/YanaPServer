@@ -3,21 +3,19 @@
 
 #ifdef _WIN32
 
-#include "SocketBehaviour.h"
+#include "Socket.h"
 #include <WinSock2.h>
 
 namespace YanaPServer
 {
 namespace Socket
 {
-namespace Behaviour
-{
 
 /**
- * @class CWindowsSocketBehaviour
+ * @class CWindowsSocket
  * @brief Windowsでのソケットの挙動を実装するクラス
  */
-class CWindowsSocketBehaviour : public ISocketBehaviour
+class CWindowsSocket : public ISocket
 {
 
 public:
@@ -25,12 +23,12 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 */
-	CWindowsSocketBehaviour();
+	CWindowsSocket(const SOCKET &InSocket);
 
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CWindowsSocketBehaviour();
+	virtual ~CWindowsSocket();
 
 	/**
 	 * @fn virtual void Release()
@@ -45,7 +43,6 @@ private:
 
 };
 
-}
 }
 }
 

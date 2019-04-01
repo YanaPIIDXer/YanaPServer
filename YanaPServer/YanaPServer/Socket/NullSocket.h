@@ -1,21 +1,19 @@
 #ifndef __NULLSOCKETBEHAVIOUR_H__
 #define __NULLSOCKETBEHAVIOUR_H__
 
-#include "SocketBehaviour.h"
+#include "Socket.h"
 
 namespace YanaPServer
 {
 namespace Socket
 {
-namespace Behaviour
-{
 
 /**
- * @class CNullSocketBehaviour
- * @brief 何もしないSocketBehaviour
+ * @class CNullSocket
+ * @brief 何もしないSocket
  *		  未定義のプラットフォームで使用される。
  */
-class CNullSocketBehaviour : public ISocketBehaviour
+class CNullSocket : public ISocket
 {
 
 public:
@@ -23,12 +21,12 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 */
-	CNullSocketBehaviour() {}
+	CNullSocket() {}
 
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CNullSocketBehaviour() {}
+	virtual ~CNullSocket() {}
 
 	/**
 	 * @fn virtual void Release()
@@ -38,7 +36,6 @@ public:
 
 };
 
-}
 }
 }
 
