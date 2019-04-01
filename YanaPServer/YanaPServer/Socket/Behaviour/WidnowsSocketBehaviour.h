@@ -45,8 +45,8 @@ public:
 
 private:
 
-	// 初期化されているか？
-	bool bInitialized;
+	// ソケット
+	SOCKET Socket;
 
 };
 
