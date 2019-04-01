@@ -9,6 +9,8 @@ namespace YanaPServer
 {
 namespace Socket
 {
+class ISocket;
+
 namespace Listen
 {
 
@@ -28,17 +30,34 @@ public:
 	virtual ~CWindowsListenSocket();
 
 	/**
+	 * @fn virtual void Poll()
+	 * @brief 毎フレーム呼び出す処理
+	 */
+	virtual void Poll();
+
+	/**
 	 * @fn virtual bool Listen(unsigned int Port)
 	 * @brief Listen開始
 	 * @param[in] Port ポート番号
+	 * @param[in] AcceptCallback Acceptした時のコールバック関数
 	 * @return 正常に処理が終了したらtrueを返す。
 	 */
-	virtual bool Listen(unsigned int Port);
+	virtual bool Listen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
 
 private:
 
 	// ソケット
 	SOCKET Socket;
+
+	// ノンブロッキングモード
+	u_long NonBlockingMode;
+
+	// Accept時のコールバック
+	std::function<void(ISocket *)> OnAccept;
+
+
+	// 解放.
+	void Release();
 
 	// ======== Singleton =============
 public:

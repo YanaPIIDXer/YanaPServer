@@ -1,10 +1,14 @@
 #ifndef __LISTENSOCKET_H__
 #define __LISTENSOCKET_H__
 
+#include <functional>
+
 namespace YanaPServer
 {
 namespace Socket
 {
+class ISocket;
+
 namespace Listen
 {
 
@@ -23,12 +27,19 @@ public:
 	virtual ~IListenSocket() {}
 
 	/**
+	 * @fn virtual void Poll() = 0;
+	 * @brief 毎フレーム呼び出す処理
+	 */
+	virtual void Poll() = 0;
+
+	/**
 	 * @fn virtual bool Listen(unsigned int Port) = 0
 	 * @brief Listen開始
 	 * @param[in] Port ポート番号
+	 * @param[in] AcceptCallback Acceptした時のコールバック関数
 	 * @return 正常に処理が終了したらtrueを返す。
 	 */
-	virtual bool Listen(unsigned int Port) = 0;
+	virtual bool Listen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback) = 0;
 
 };
 
