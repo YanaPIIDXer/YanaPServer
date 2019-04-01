@@ -31,13 +31,6 @@ public:
 	virtual ~CNullSocketBehaviour() {}
 
 	/**
-	 * @fn virtual bool Initialize()
-	 * @brief ‰Šú‰»
-	 * @return ‰½‚à‚µ‚È‚¢‚Ì‚Åí‚Éfalse‚ğ•Ô‚·B
-	 */
-	virtual bool Initialize() { return false; }
-
-	/**
 	 * @fn virtual void Release()
 	 * @brief ‰ğ•ú
 	 */

@@ -34,6 +34,13 @@ private:
 	// 挙動インタフェース
 	Behaviour::ISocketBehaviour *pBehaviour;
 
+
+	// 挙動インタフェースの生成.
+	void CreateBehaviour();
+
+	// 挙動インタフェースの解放.
+	void ReleaseBehaviour();
+
 };
 
 }

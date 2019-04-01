@@ -33,13 +33,6 @@ public:
 	virtual ~CWindowsSocketBehaviour();
 
 	/**
-	 * @fn virtual bool Initialize()
-	 * @brief ‰Šú‰»
-	 * @return ¬Œ÷‚µ‚½‚çtrue‚ğ•Ô‚·B
-	 */
-	virtual bool Initialize();
-
-	/**
 	 * @fn virtual void Release()
 	 * @brief ‰ğ•úˆ—
 	 */

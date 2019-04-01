@@ -20,36 +20,12 @@ CWindowsSocketBehaviour::~CWindowsSocketBehaviour()
 	Release();
 }
 
-// ‰Šú‰».
-bool CWindowsSocketBehaviour::Initialize()
-{
-	if (Socket != INVALID_SOCKET)
-	{
-		// ˆê’U‰ğ•ú.
-		Release();
-	}
-
-	WSADATA WsaData;
-	int Result = WSAStartup(MAKEWORD(2, 0), &WsaData);
-	if (Result != 0) { return false; }
-
-	Socket = socket(AF_INET, SOCK_STREAM, 0);
-	if (Socket == INVALID_SOCKET)
-	{
-		WSACleanup();
-		return false;
-	}
-
-	return true;
-}
-
 // ‰ğ•ú.
 void CWindowsSocketBehaviour::Release()
 {
 	if (Socket == INVALID_SOCKET) { return; }
 
-	WSACleanup();
-
+	closesocket(Socket);
 	Socket = INVALID_SOCKET;
 }
 

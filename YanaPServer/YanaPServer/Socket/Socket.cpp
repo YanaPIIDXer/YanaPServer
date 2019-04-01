@@ -22,23 +22,16 @@ CSocket::~CSocket()
 	ReleaseBehaviour();
 }
 
-// 初期化.
-bool CSocket::Initialize()
+
+// 挙動インタフェースの生成.
+void CSocket::CreateBehaviour()
 {
 #ifdef _WIN32
 	pBehaviour = new CWindowsSocketBehaviour();
 #else
 	pBehaviour = new CNullSocketBehaviour();
 #endif
-	if (!pBehaviour->Initialize())
-	{
-		ReleaseBehaviour();
-		return false;
-	}
-
-	return true;
 }
-
 
 // 挙動インタフェースの解放.
 void CSocket::ReleaseBehaviour()

@@ -23,13 +23,6 @@ public:
 	virtual ~ISocketBehaviour() {}
 
 	/**
-	 * @fn virtual bool Initialize() = 0
-	 * @brief ‰Šú‰»
-	 * @return ¬Œ÷‚µ‚½‚çtrue‚ğ•Ô‚·B
-	 */
-	virtual bool Initialize() = 0;
-
-	/**
 	 * @fn virtual void Release() = 0
 	 * @brief ‰ğ•ú
 	 */
