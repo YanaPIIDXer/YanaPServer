@@ -22,6 +22,12 @@ CWindowsSocketBehaviour::~CWindowsSocketBehaviour()
 // ‰Šú‰».
 bool CWindowsSocketBehaviour::Initialize()
 {
+	if (bInitialized)
+	{
+		// ˆê’U‰ğ•ú.
+		Release();
+	}
+
 	WSADATA WsaData;
 	int Result = WSAStartup(MAKEWORD(2, 0), &WsaData);
 	if (Result != 0) { return false; }
