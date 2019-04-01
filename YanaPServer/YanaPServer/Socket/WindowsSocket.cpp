@@ -44,6 +44,8 @@ CWindowsSocket::~CWindowsSocket()
 // –ˆƒtƒŒ[ƒ€Às‚·‚éˆ—
 void CWindowsSocket::Poll()
 {
+	if (!IsValid()) { return; }
+
 	if (State == EState::Connecting)
 	{
 		if (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)))
