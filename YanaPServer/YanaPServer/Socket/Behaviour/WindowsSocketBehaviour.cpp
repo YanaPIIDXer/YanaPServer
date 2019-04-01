@@ -23,7 +23,8 @@ CWindowsSocketBehaviour::~CWindowsSocketBehaviour()
 bool CWindowsSocketBehaviour::Initialize()
 {
 	WSADATA WsaData;
-	WSAStartup(MAKEWORD(2, 0), &WsaData);
+	int Result = WSAStartup(MAKEWORD(2, 0), &WsaData);
+	if (Result != 0) { return false; }
 
 	bInitialized = true;
 	return true;
