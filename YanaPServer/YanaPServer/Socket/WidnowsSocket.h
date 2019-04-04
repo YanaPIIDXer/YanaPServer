@@ -6,6 +6,7 @@
 #include "Socket.h"
 #include <WinSock2.h>
 #include <string>
+#include <queue>
 
 namespace YanaPServer
 {
@@ -53,6 +54,15 @@ public:
 	virtual bool IsValid() const { return (Socket != INVALID_SOCKET); }
 
 	/**
+	 * @fn virtual bool Send(const char *pData, unsigned int Size)
+	 * @brief 送信
+	 * @param[in] pData データ
+	 * @param[in] Size 送信サイズ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Send(const char *pData, unsigned int Size);
+
+	/**
 	 * @fn virtual void Release()
 	 * @brief 解放処理
 	 */
@@ -82,6 +92,14 @@ private:
 
 	// 接続先アドレス
 	sockaddr_in ConnectAddr;
+
+	// データキュー
+	std::queue<char> DataQueue;
+
+
+	// 送信処理.
+	void SendProc();
+
 };
 
 }

@@ -7,9 +7,9 @@ namespace Socket
 {
 
 /**
-* @class ISocket
-* @brief ソケットの挙動を実装するためのインタフェース
-*/
+ * @class ISocket
+ * @brief ソケットの挙動を実装するためのインタフェース
+ */
 class ISocket
 {
 
@@ -32,6 +32,15 @@ public:
 	 * @return 有効ならtrueを返す。
 	 */
 	virtual bool IsValid() const = 0;
+
+	/**
+	 * @fn virtual bool Send(const char *pData, unsigned int Size) = 0
+	 * @brief 送信
+	 * @param[in] pData データ
+	 * @param[in] Size 送信サイズ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Send(const char *pData, unsigned int Size) = 0;
 
 	/**
 	 * @fn virtual void Release() = 0

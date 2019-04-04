@@ -42,6 +42,15 @@ public:
 	virtual bool IsValid() const { return false; }
 
 	/**
+	 * @fn virtual bool Send(const char *pData, unsigned int Size)
+	 * @brief 送信
+	 * @param[in] pData データ
+	 * @param[in] Size 送信サイズ
+	 * @return 何もしないので常にfalseを返す。
+	 */
+	virtual bool Send(const char *pData, unsigned int Size) { return false; }
+
+	/**
 	 * @fn virtual void Release()
 	 * @brief 解放
 	 */

@@ -46,13 +46,33 @@ void CWindowsSocket::Poll()
 {
 	if (!IsValid()) { return; }
 
-	if (State == EState::Connecting)
+	switch (State)
 	{
-		if (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)))
-		{
-			State = EState::Connected;
-		}
+		case EState::Connecting:
+
+			if (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)))
+			{
+				State = EState::Connected;
+			}
+			break;
+
+		case EState::Connected:
+
+			SendProc();
+			break;
 	}
+}
+
+// ëóêM.
+bool CWindowsSocket::Send(const char *pData, unsigned int Size)
+{
+	if (!IsValid()) { return false; }
+
+	for (unsigned int i = 0; i < Size; i++)
+	{
+		DataQueue.push(pData[i]);
+	}
+	return true;
 }
 
 // âï˙.
@@ -62,6 +82,21 @@ void CWindowsSocket::Release()
 
 	closesocket(Socket);
 	Socket = INVALID_SOCKET;
+}
+
+
+// ëóêMèàóù.
+void CWindowsSocket::SendProc()
+{
+	if (DataQueue.size() == 0) { return; }
+
+	int SendSize = send(Socket, &DataQueue.front(), DataQueue.size(), 0);
+	if (SendSize == SOCKET_ERROR) { return; }
+
+	for (int i = 0; i < SendSize; i++)
+	{
+		DataQueue.pop();
+	}
 }
 
 }
