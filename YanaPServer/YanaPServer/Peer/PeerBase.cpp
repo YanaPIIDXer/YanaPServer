@@ -17,6 +17,14 @@ CPeerBase::~CPeerBase()
 	ReleaseSocket();
 }
 
+// –ˆƒtƒŒ[ƒ€‚Ìˆ—.
+void CPeerBase::Poll()
+{
+	if (!IsValid()) { return; }
+
+	pSocket->Poll();
+}
+
 // ‘—M
 void CPeerBase::Send(const char *pData, unsigned int Size)
 {

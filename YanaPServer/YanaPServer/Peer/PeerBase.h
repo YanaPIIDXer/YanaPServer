@@ -30,6 +30,12 @@ public:
 	virtual ~CPeerBase();
 
 	/**
+	 * @fn void Poll()
+	 * @brief 毎フレームの処理
+	 */
+	void Poll();
+
+	/**
 	 * @fn bool IsValid() const
 	 * @brief 有効か？
 	 * @return 有効ならtrueを返す。

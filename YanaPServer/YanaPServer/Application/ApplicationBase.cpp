@@ -35,6 +35,7 @@ void CApplicationBase::Poll()
 		}
 		else
 		{
+			(*It)->Poll();
 			++It;
 		}
 	}
