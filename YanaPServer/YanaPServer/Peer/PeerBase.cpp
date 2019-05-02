@@ -6,20 +6,20 @@ namespace Peer
 {
 
 // コンストラクタ
-PeerBase::PeerBase(ISocket *pInSocket)
+CPeerBase::CPeerBase(ISocket *pInSocket)
 	: pSocket(pInSocket)
 {
 }
 
 // デストラクタ
-PeerBase::~PeerBase()
+CPeerBase::~CPeerBase()
 {
 	ReleaseSocket();
 }
 
 
 // ソケット解放.
-void PeerBase::ReleaseSocket()
+void CPeerBase::ReleaseSocket()
 {
 	if (pSocket == nullptr) { return; }
 

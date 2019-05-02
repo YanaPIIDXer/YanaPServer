@@ -10,10 +10,10 @@ namespace Peer
 {
 
 /**
- * @class PeerBase
+ * @class CPeerBase
  * @brief ピア基底クラス
  */
-class PeerBase
+class CPeerBase
 {
 
 public:
@@ -22,19 +22,19 @@ public:
 	 * @brief コンストラクタ
 	 * @param[in] pInSocket ソケット
 	 */
-	PeerBase(ISocket *pInSocket);
+	CPeerBase(ISocket *pInSocket);
 
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~PeerBase() = 0;
+	virtual ~CPeerBase() = 0;
 
 	/**
 	 * @fn bool IsValid() const
 	 * @brief 有効か？
 	 * @return 有効ならtrueを返す。
 	 */
-	bool IsValid() const { return (pSocket != nullptr); }
+	bool IsValid() const { return (pSocket != nullptr && pSocket->IsValid()); }
 
 private:
 
