@@ -12,6 +12,9 @@ namespace Peer
 /**
  * @class CPeerBase
  * @brief ピア基底クラス
+ * @detail 基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。
+ *		   切断時には勝手に消失する（親になるshared_ptrが消える）ので、
+ *		   コイツを使って何かやる時はNULLチェックしないと死なますよ。
  */
 class CPeerBase
 {
