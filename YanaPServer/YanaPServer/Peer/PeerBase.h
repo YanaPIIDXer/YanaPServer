@@ -27,7 +27,7 @@ public:
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~PeerBase();
+	virtual ~PeerBase() = 0;
 
 	/**
 	 * @fn bool IsValid() const
