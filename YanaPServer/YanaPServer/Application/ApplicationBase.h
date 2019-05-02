@@ -32,6 +32,7 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 * @param[in] ListenPort 待機ポート
+	 * @param[in] OnConnectFunction 接続時コールバック
 	 */
 	CApplicationBase(unsigned int ListenPort, const std::function<void(PeerPtr)> &OnConnectFunction);
 
