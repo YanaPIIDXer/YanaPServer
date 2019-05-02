@@ -38,7 +38,7 @@ public:
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CApplicationBase() = 0;
+	virtual ~CApplicationBase();
 
 	/**
 	 * @fn void Poll()
