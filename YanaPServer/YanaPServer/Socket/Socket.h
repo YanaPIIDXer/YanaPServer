@@ -1,42 +1,56 @@
-#ifndef __SOCKET_H__
-#define __SOCKET_H__
+#ifndef __SOCKETBEHAVIOUR_H__
+#define __SOCKETBEHAVIOUR_H__
 
 namespace YanaPServer
 {
 namespace Socket
 {
-namespace Behaviour
-{
-class ISocketBehaviour;
-}
 
 /**
- * @class CSocket
- * @brief ソケットクラス
+ * @class ISocket
+ * @brief ソケットの挙動を実装するためのインタフェース
  */
-class CSocket
+class ISocket
 {
 
 public:
 
 	/**
-		* @brief コンストラクタ
-		*/
-	CSocket();
+	 * @brief デストラクタ
+	 */
+	virtual ~ISocket() {}
 
 	/**
-		* @brief デストラクタ
-		*/
-	~CSocket();
+	 * @fn virtual void Poll() = 0
+	 * @brief 毎フレーム実行する処理
+	 */
+	virtual void Poll() = 0;
 
-private:
+	/**
+	 * @fn virtual bool IsValid()
+	 * @brief 有効か？
+	 * @return 有効ならtrueを返す。
+	 */
+	virtual bool IsValid() const = 0;
 
-	// 挙動インタフェース
-	Behaviour::ISocketBehaviour *pBehaviour;
+	/**
+	 * @fn virtual bool Send(const char *pData, unsigned int Size) = 0
+	 * @brief 送信
+	 * @param[in] pData データ
+	 * @param[in] Size 送信サイズ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Send(const char *pData, unsigned int Size) = 0;
+
+	/**
+	 * @fn virtual void Release() = 0
+	 * @brief 解放
+	 */
+	virtual void Release() = 0;
 
 };
 
 }
 }
 
-#endif		// #ifndef __SOCKET_H__
+#endif		// #ifndef __SOCKETBEHAVIOUR_H__
