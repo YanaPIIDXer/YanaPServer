@@ -27,7 +27,7 @@ public:
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CPeerBase() = 0;
+	virtual ~CPeerBase();
 
 	/**
 	 * @fn bool IsValid() const
@@ -35,6 +35,24 @@ public:
 	 * @return 有効ならtrueを返す。
 	 */
 	bool IsValid() const { return (pSocket != nullptr && pSocket->IsValid()); }
+
+	/**
+	 * @fn void Send(const char *pData, unsigned int Size)
+	 * @brief 送信
+	 * @param[in] pData データ
+	 * @param[in] Size データ長
+	 */
+	void Send(const char *pData, unsigned int Size);
+
+protected:
+
+	/**
+	 * @fn virtual void OnRecv(const char *pData, unsigned int Size) = 0
+	 * @brief 受信した時の処理
+	 * @param[in] pData データ
+	 * @param[in] Size データ長
+	 */
+	virtual void OnRecv(const char *pData, unsigned int Size) = 0;
 
 private:
 

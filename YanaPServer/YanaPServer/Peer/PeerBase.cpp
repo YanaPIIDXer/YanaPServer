@@ -17,6 +17,14 @@ CPeerBase::~CPeerBase()
 	ReleaseSocket();
 }
 
+// 送信
+void CPeerBase::Send(const char *pData, unsigned int Size)
+{
+	if (!IsValid()) { return; }
+
+	pSocket->Send(pData, Size);
+}
+
 
 // ソケット解放.
 void CPeerBase::ReleaseSocket()
