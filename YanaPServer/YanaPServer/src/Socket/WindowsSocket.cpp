@@ -59,6 +59,7 @@ void CWindowsSocket::Poll()
 		case EState::Connected:
 
 			SendProc();
+			RecvProc();
 			break;
 	}
 }
@@ -97,6 +98,22 @@ void CWindowsSocket::SendProc()
 	{
 		DataQueue.pop();
 	}
+}
+
+// 受信処理.
+void CWindowsSocket::RecvProc()
+{
+	// コールバックが設定されていない場合は何もしない。
+	if (!ReceiveCallback) { return; }
+
+	static const int BufferSize = 2048;
+	char Buffer[BufferSize];
+	memset(Buffer, 0, BufferSize);
+
+	int RecvSize = recv(Socket, Buffer, BufferSize, 0);
+	if (RecvSize == SOCKET_ERROR) { return; }
+
+	ReceiveCallback(Buffer, RecvSize);
 }
 
 }

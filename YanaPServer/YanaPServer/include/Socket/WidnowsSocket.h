@@ -41,32 +41,39 @@ public:
 	virtual ~CWindowsSocket();
 
 	/**
-	 * @fn virtual void Poll()
+	 * @fn virtual void Poll() override
 	 * @brief 毎フレーム実行する処理
 	 */
-	virtual void Poll();
+	virtual void Poll() override;
 
 	/**
-	 * @fn virtual bool IsValid() const
+	 * @fn virtual bool IsValid() const override
 	 * @brief 有効か？
 	 * @return 有効ならtrueを返す。
 	 */
-	virtual bool IsValid() const { return (Socket != INVALID_SOCKET); }
+	virtual bool IsValid() const override { return (Socket != INVALID_SOCKET); }
 
 	/**
-	 * @fn virtual bool Send(const char *pData, unsigned int Size)
+	 * @fn virtual bool Send(const char *pData, unsigned int Size) override
 	 * @brief 送信
 	 * @param[in] pData データ
 	 * @param[in] Size 送信サイズ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Send(const char *pData, unsigned int Size);
+	virtual bool Send(const char *pData, unsigned int Size) override;
 
 	/**
-	 * @fn virtual void Release()
+	 * @fn virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) override
+	 * @brief 受信コールバックを設定
+	 * @param[in] Callback コールバック関数
+	 */
+	virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) override { ReceiveCallback = Callback; }
+
+	/**
+	 * @fn virtual void Release() override
 	 * @brief 解放処理
 	 */
-	virtual void Release();
+	virtual void Release() override;
 
 private:
 
@@ -96,9 +103,15 @@ private:
 	// データキュー
 	std::queue<char> DataQueue;
 
+	// 受信コールバック
+	std::function<void(const char *, unsigned int)> ReceiveCallback;
+
 
 	// 送信処理.
 	void SendProc();
+
+	// 受信処理.
+	void RecvProc();
 
 };
 

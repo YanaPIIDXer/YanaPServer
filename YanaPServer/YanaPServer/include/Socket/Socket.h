@@ -1,6 +1,8 @@
 #ifndef __SOCKETBEHAVIOUR_H__
 #define __SOCKETBEHAVIOUR_H__
 
+#include <functional>
+
 namespace YanaPServer
 {
 namespace Socket
@@ -41,6 +43,13 @@ public:
 	 * @return 成功したらtrueを返す。
 	 */
 	virtual bool Send(const char *pData, unsigned int Size) = 0;
+
+	/**
+	 * @fn virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) = 0
+	 * @brief 受信コールバックを設定
+	 * @param[in] Callback コールバック関数
+	 */
+	virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) = 0;
 
 	/**
 	 * @fn virtual void Release() = 0
