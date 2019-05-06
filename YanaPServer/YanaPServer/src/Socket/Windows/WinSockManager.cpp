@@ -1,5 +1,5 @@
 #ifdef _WIN32
-#include "WinSockManager.h"
+#include "Socket/Windows/WinSockManager.h"
 #include <WinSock2.h>
 
 namespace YanaPServer

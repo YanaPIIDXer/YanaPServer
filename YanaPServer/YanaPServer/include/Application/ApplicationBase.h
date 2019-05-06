@@ -1,8 +1,8 @@
 #ifndef __APPLICATIONBASE_H__
 #define __APPLICATIONBASE_H__
-#include "YanaPServer/Socket/Socket.h"
+#include "Socket/Socket.h"
 using namespace YanaPServer::Socket;
-#include "YanaPServer/Peer/PeerBase.h"
+#include "Peer/PeerBase.h"
 using namespace YanaPServer::Peer;
 #include <vector>
 #include <memory>

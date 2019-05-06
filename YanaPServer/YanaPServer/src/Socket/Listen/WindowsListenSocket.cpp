@@ -1,6 +1,6 @@
-#include "WindowsListenSocket.h"
-#include "YanaPServer/Socket/WidnowsSocket.h"
-#include "YanaPServer/Socket/Windows/WinSockManager.h"
+#include "Socket/Listen/WindowsListenSocket.h"
+#include "Socket/WidnowsSocket.h"
+#include "Socket/Windows/WinSockManager.h"
 #ifdef _WIN32
 
 namespace YanaPServer

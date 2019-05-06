@@ -1,7 +1,7 @@
 #ifndef __PEERBASE_H__
 #define __PEERBASE_H__
 
-#include "YanaPServer/Socket/Socket.h"
+#include "Socket/Socket.h"
 using namespace YanaPServer::Socket;
 
 namespace YanaPServer
@@ -13,8 +13,8 @@ namespace Peer
  * @class CPeerBase
  * @brief ピア基底クラス
  * @detail 基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。
- *		   切断時には勝手に消失する（親になるshared_ptrが消える）ので、
- *		   コイツを使って何かやる時はNULLチェックしないと死なますよ。
+ *	       切断時には勝手に消失する（親になるshared_ptrが消える）ので、
+ *	       コイツを使って何かやる時はexpired()チェックしないと死なますよ。
  */
 class CPeerBase
 {

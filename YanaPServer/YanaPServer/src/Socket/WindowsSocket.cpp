@@ -1,7 +1,7 @@
 #ifdef _WIN32
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
-#include "WidnowsSocket.h"
-#include "YanaPServer/Socket/Windows/WinSockManager.h"
+#include "Socket/WidnowsSocket.h"
+#include "Socket/Windows/WinSockManager.h"
 
 namespace YanaPServer
 {
