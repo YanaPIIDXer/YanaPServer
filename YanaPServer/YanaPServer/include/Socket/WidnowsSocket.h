@@ -75,6 +75,13 @@ public:
 	 */
 	virtual void Release() override;
 
+	/**
+	 * @fn virtual void SetReleaseCallback(const std::function<void()> &Callback) override
+	 * @brief 解放コールバックを設定
+	 * @param[in] Callback 解放コールバック
+	 */
+	virtual void SetReleaseCallback(const std::function<void()> &Callback) override { ReleaseCallback = Callback; }
+
 private:
 
 	// State
@@ -105,6 +112,9 @@ private:
 
 	// 受信コールバック
 	std::function<void(const char *, unsigned int)> ReceiveCallback;
+
+	// 解放コールバック
+	std::function<void()> ReleaseCallback;
 
 
 	// 送信処理.

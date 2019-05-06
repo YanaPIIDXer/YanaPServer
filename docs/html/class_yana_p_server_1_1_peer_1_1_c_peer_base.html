@@ -102,6 +102,9 @@ $(function() {
 <tr class="memitem:a473ec116402ec742476e4d725b1aa116"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a473ec116402ec742476e4d725b1aa116">OnRecv</a> (const char *pData, unsigned int Size)=0</td></tr>
 <tr class="memdesc:a473ec116402ec742476e4d725b1aa116"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信した時の処理  <a href="#a473ec116402ec742476e4d725b1aa116">[詳解]</a><br /></td></tr>
 <tr class="separator:a473ec116402ec742476e4d725b1aa116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43028ccba172c633d87ef8d1282fd51"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ac43028ccba172c633d87ef8d1282fd51">OnClose</a> ()</td></tr>
+<tr class="memdesc:ac43028ccba172c633d87ef8d1282fd51"><td class="mdescLeft">&#160;</td><td class="mdescRight">切断時コールバック  <a href="#ac43028ccba172c633d87ef8d1282fd51">[詳解]</a><br /></td></tr>
+<tr class="separator:ac43028ccba172c633d87ef8d1282fd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失する（親になるshared_ptrが消える）ので、 コイツを使って何かやる時はexpired()チェックしないと死なますよ。 </p>
@@ -134,8 +137,10 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph" alt=""/></div>
 <map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph">
-<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ab964bae292b8a01265ed73f3c8aeba2c" title="受信コールバックを設定 " alt="" coords="216,5,413,47"/>
-<area shape="rect" id="node3" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a473ec116402ec742476e4d725b1aa116" title="受信した時の処理 " alt="" coords="244,71,385,112"/>
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ab964bae292b8a01265ed73f3c8aeba2c" title="受信コールバックを設定 " alt="" coords="217,5,414,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a473ec116402ec742476e4d725b1aa116" title="受信した時の処理 " alt="" coords="245,71,386,112"/>
+<area shape="rect" id="node4" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a806eca6a77df755ef487a902361c1f77" title="解放コールバックを設定 " alt="" coords="216,136,415,177"/>
+<area shape="rect" id="node5" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ac43028ccba172c633d87ef8d1282fd51" title="切断時コールバック " alt="" coords="242,201,389,243"/>
 </map>
 </div>
 
@@ -174,6 +179,41 @@ $(function() {
 <map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph">
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62" title="毎フレームの処理 " alt="" coords="193,5,333,47"/>
 <area shape="rect" id="node3" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1" title="送信 " alt="" coords="193,71,333,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac43028ccba172c633d87ef8d1282fd51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac43028ccba172c633d87ef8d1282fd51">&#9670;&nbsp;</a></span>OnClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Peer::CPeerBase::OnClose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>切断時コールバック </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ac43028ccba172c633d87ef8d1282fd51_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ac43028ccba172c633d87ef8d1282fd51_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ac43028ccba172c633d87ef8d1282fd51_icgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ac43028ccba172c633d87ef8d1282fd51_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ad759d3ffad96bd3acbf1d73b5044aa9b" title="コンストラクタ " alt="" coords="200,5,363,47"/>
 </map>
 </div>
 

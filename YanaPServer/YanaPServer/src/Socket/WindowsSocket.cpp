@@ -83,16 +83,27 @@ void CWindowsSocket::Release()
 
 	closesocket(Socket);
 	Socket = INVALID_SOCKET;
+
+	if (ReleaseCallback)
+	{
+		ReleaseCallback();
+	}
 }
 
 
 // 送信処理.
 void CWindowsSocket::SendProc()
 {
+	if (Socket == INVALID_SOCKET) { return; }
+
 	if (DataQueue.size() == 0) { return; }
 
 	int SendSize = send(Socket, &DataQueue.front(), DataQueue.size(), 0);
-	if (SendSize == SOCKET_ERROR) { return; }
+	if (SendSize == SOCKET_ERROR)
+	{
+		Release();
+		return;
+	}
 
 	for (int i = 0; i < SendSize; i++)
 	{
@@ -103,6 +114,8 @@ void CWindowsSocket::SendProc()
 // 受信処理.
 void CWindowsSocket::RecvProc()
 {
+	if (Socket == INVALID_SOCKET) { return; }
+
 	// コールバックが設定されていない場合は何もしない。
 	if (!ReceiveCallback) { return; }
 
@@ -111,7 +124,11 @@ void CWindowsSocket::RecvProc()
 	memset(Buffer, 0, BufferSize);
 
 	int RecvSize = recv(Socket, Buffer, BufferSize, 0);
-	if (RecvSize == SOCKET_ERROR) { return; }
+	if (RecvSize == SOCKET_ERROR)
+	{
+		Release();
+		return;
+	}
 
 	ReceiveCallback(Buffer, RecvSize);
 }

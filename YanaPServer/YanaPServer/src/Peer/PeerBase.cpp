@@ -10,6 +10,7 @@ CPeerBase::CPeerBase(ISocket *pInSocket)
 	: pSocket(pInSocket)
 {
 	pSocket->SetReceiveCallback(std::bind(&CPeerBase::OnRecv, this, std::placeholders::_1, std::placeholders::_2));
+	pSocket->SetReleaseCallback(std::bind(&CPeerBase::OnClose, this));
 }
 
 // デストラクタ

@@ -117,6 +117,9 @@ YanaPServer::Socket::CNullSocket 連携図</div>
 <tr class="memitem:ab762ae604557f11ee3b57186f796002c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#ab762ae604557f11ee3b57186f796002c">Release</a> () override</td></tr>
 <tr class="memdesc:ab762ae604557f11ee3b57186f796002c"><td class="mdescLeft">&#160;</td><td class="mdescRight">解放  <a href="#ab762ae604557f11ee3b57186f796002c">[詳解]</a><br /></td></tr>
 <tr class="separator:ab762ae604557f11ee3b57186f796002c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c213874ed83e5e62d0e1e3d17ec3fb3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a2c213874ed83e5e62d0e1e3d17ec3fb3">SetReleaseCallback</a> (const std::function&lt; void()&gt; &amp;Callback) override</td></tr>
+<tr class="memdesc:a2c213874ed83e5e62d0e1e3d17ec3fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">解放コールバックを設定  <a href="#a2c213874ed83e5e62d0e1e3d17ec3fb3">[詳解]</a><br /></td></tr>
+<tr class="separator:a2c213874ed83e5e62d0e1e3d17ec3fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> に属する継承公開メンバ関数</td></tr>
 <tr class="memitem:a495564ed1f3febdc0a670726985ce9ea inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea">‾ISocket</a> ()</td></tr>
 <tr class="memdesc:a495564ed1f3febdc0a670726985ce9ea inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea">[詳解]</a><br /></td></tr>
@@ -322,6 +325,42 @@ YanaPServer::Socket::CNullSocket 連携図</div>
 </dl>
 
 <p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ab964bae292b8a01265ed73f3c8aeba2c">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+
+</div>
+</div>
+<a id="a2c213874ed83e5e62d0e1e3d17ec3fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c213874ed83e5e62d0e1e3d17ec3fb3">&#9670;&nbsp;</a></span>SetReleaseCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Socket::CNullSocket::SetReleaseCallback </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; void()&gt; &amp;&#160;</td>
+          <td class="paramname"><em>Callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>解放コールバックを設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Callback</td><td>解放コールバック </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a806eca6a77df755ef487a902361c1f77">YanaPServer::Socket::ISocket</a>を実装しています。</p>
 
 </div>
 </div>

@@ -63,6 +63,12 @@ protected:
 	 */
 	virtual void OnRecv(const char *pData, unsigned int Size) = 0;
 
+	/**
+	 * @fn virtual void OnClose()
+	 * @brief 切断時コールバック
+	 */
+	virtual void OnClose() {}
+
 private:
 
 	// ソケット

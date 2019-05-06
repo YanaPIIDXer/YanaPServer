@@ -57,6 +57,13 @@ public:
 	 */
 	virtual void Release() = 0;
 
+	/**
+	 * @fn virtual void SetReleaseCallback(const std::function<void()> &Callback) = 0
+	 * @brief 解放コールバックを設定
+	 * @param[in] Callback 解放コールバック
+	 */
+	virtual void SetReleaseCallback(const std::function<void()> &Callback) = 0;
+
 };
 
 }
