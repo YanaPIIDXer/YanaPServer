@@ -15,3 +15,6 @@
 これら以外は基本的に自由（と言うか特に無い）。  
 尚、利用者側がこれを守る必要は無い。  
 あくまでもこのライブラリのコーディング規約。  
+
+# ソースコードドキュメント
+https://yanapiidxer.github.io/YanaPServer/html/index.html
