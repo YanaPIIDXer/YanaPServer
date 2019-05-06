@@ -22,7 +22,7 @@ CApplicationBase::~CApplicationBase()
 }
 
 // –ˆƒtƒŒ[ƒ€‚Ìˆ—.
-void CApplicationBase::Poll()
+bool CApplicationBase::Service()
 {
 	CListenSocket::Get().Poll();
 
@@ -39,6 +39,8 @@ void CApplicationBase::Poll()
 			++It;
 		}
 	}
+
+	return Update();
 }
 
 
