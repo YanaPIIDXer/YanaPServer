@@ -63,6 +63,13 @@ public:
 	 */
 	virtual void Release() override {}
 
+	/**
+	 * @fn virtual void SetReleaseCallback(const std::function<void()> &Callback) override
+	 * @brief 解放コールバックを設定
+	 * @param[in] Callback 解放コールバック
+	 */
+	virtual void SetReleaseCallback(const std::function<void()> &Callback) override {}
+
 };
 
 }

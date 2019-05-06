@@ -42,11 +42,12 @@ public:
 	virtual ~CApplicationBase();
 
 	/**
-	 * @fn void Poll()
+	 * @fn bool Service()
 	 * @brief 毎フレームの処理
 	 * @detail メインフレームで呼び出す事。
+	 * @return メインループを終了する時はfalseを返す。
 	 */
-	void Poll();
+	bool Service();
 
 protected:
 
@@ -57,6 +58,13 @@ protected:
 	 * @return CPeerBaseを派生したオブジェクトを生成して返す。
 	 */
 	virtual CPeerBase *CreatePeer(ISocket *pSocket) = 0;
+
+	/**
+	 * @fn virtual bool Update()
+	 * @brief 更新処理
+	 * @return 何らかの要因でメインループを抜ける場合はfalseを返す
+	 */
+	virtual bool Update() { return true; }
 
 private:
 

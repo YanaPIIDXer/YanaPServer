@@ -87,15 +87,18 @@ $(function() {
 <tr class="memitem:a380a8975b52549e8f7a234112d4a77dd"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a380a8975b52549e8f7a234112d4a77dd">‾CApplicationBase</a> ()</td></tr>
 <tr class="memdesc:a380a8975b52549e8f7a234112d4a77dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a380a8975b52549e8f7a234112d4a77dd">[詳解]</a><br /></td></tr>
 <tr class="separator:a380a8975b52549e8f7a234112d4a77dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c6b58a8ff02cfffe9d0543e51717a20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a0c6b58a8ff02cfffe9d0543e51717a20">Poll</a> ()</td></tr>
-<tr class="memdesc:a0c6b58a8ff02cfffe9d0543e51717a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレームの処理  メインフレームで呼び出す事。  <a href="#a0c6b58a8ff02cfffe9d0543e51717a20">[詳解]</a><br /></td></tr>
-<tr class="separator:a0c6b58a8ff02cfffe9d0543e51717a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e45fc7fdd46f12864735cebabbb3a38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a4e45fc7fdd46f12864735cebabbb3a38">Service</a> ()</td></tr>
+<tr class="memdesc:a4e45fc7fdd46f12864735cebabbb3a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレームの処理  メインフレームで呼び出す事。  <a href="#a4e45fc7fdd46f12864735cebabbb3a38">[詳解]</a><br /></td></tr>
+<tr class="separator:a4e45fc7fdd46f12864735cebabbb3a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 限定公開メンバ関数</h2></td></tr>
 <tr class="memitem:a613325e08f5949d82970f9f9d6480243"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html">CPeerBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a613325e08f5949d82970f9f9d6480243">CreatePeer</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">ISocket</a> *pSocket)=0</td></tr>
 <tr class="memdesc:a613325e08f5949d82970f9f9d6480243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peer生成  <a href="#a613325e08f5949d82970f9f9d6480243">[詳解]</a><br /></td></tr>
 <tr class="separator:a613325e08f5949d82970f9f9d6480243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9f585461ce5be2706183a51cacbbd6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a4b9f585461ce5be2706183a51cacbbd6">Update</a> ()</td></tr>
+<tr class="memdesc:a4b9f585461ce5be2706183a51cacbbd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新処理  <a href="#a4b9f585461ce5be2706183a51cacbbd6">[詳解]</a><br /></td></tr>
+<tr class="separator:a4b9f585461ce5be2706183a51cacbbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>アプリケーションメイン基底クラス </p>
@@ -173,14 +176,14 @@ $(function() {
 
 </div>
 </div>
-<a id="a0c6b58a8ff02cfffe9d0543e51717a20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c6b58a8ff02cfffe9d0543e51717a20">&#9670;&nbsp;</a></span>Poll()</h2>
+<a id="a4e45fc7fdd46f12864735cebabbb3a38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e45fc7fdd46f12864735cebabbb3a38">&#9670;&nbsp;</a></span>Service()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void YanaPServer::Application::CApplicationBase::Poll </td>
+          <td class="memname">bool YanaPServer::Application::CApplicationBase::Service </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -189,6 +192,51 @@ $(function() {
 </div><div class="memdoc">
 
 <p>毎フレームの処理  メインフレームで呼び出す事。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>メインループを終了する時はfalseを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_application_1_1_c_application_base_a4e45fc7fdd46f12864735cebabbb3a38_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_application_1_1_c_application_base_a4e45fc7fdd46f12864735cebabbb3a38_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_application_1_1_c_application_base_a4e45fc7fdd46f12864735cebabbb3a38_cgraph" id="class_yana_p_server_1_1_application_1_1_c_application_base_a4e45fc7fdd46f12864735cebabbb3a38_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a4b9f585461ce5be2706183a51cacbbd6" title="更新処理 " alt="" coords="236,5,419,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4b9f585461ce5be2706183a51cacbbd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9f585461ce5be2706183a51cacbbd6">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Application::CApplicationBase::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>更新処理 </p>
+<dl class="section return"><dt>戻り値</dt><dd>何らかの要因でメインループを抜ける場合はfalseを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_application_1_1_c_application_base_a4b9f585461ce5be2706183a51cacbbd6_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_application_1_1_c_application_base_a4b9f585461ce5be2706183a51cacbbd6_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_application_1_1_c_application_base_a4b9f585461ce5be2706183a51cacbbd6_icgraph" id="class_yana_p_server_1_1_application_1_1_c_application_base_a4b9f585461ce5be2706183a51cacbbd6_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a4e45fc7fdd46f12864735cebabbb3a38" title="毎フレームの処理 &#160;メインフレームで呼び出す事。 " alt="" coords="236,5,419,47"/>
+</map>
+</div>
 
 </div>
 </div>

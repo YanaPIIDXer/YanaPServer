@@ -39,6 +39,7 @@ var menudata={children:[
 {text:"p",url:"functions.html#index_p"},
 {text:"r",url:"functions.html#index_r"},
 {text:"s",url:"functions.html#index_s"},
+{text:"u",url:"functions.html#index_u"},
 {text:"‾",url:"functions.html#index_>"}]},
 {text:"関数",url:"functions_func.html",children:[
 {text:"c",url:"functions_func.html#index_c"},
@@ -49,6 +50,7 @@ var menudata={children:[
 {text:"p",url:"functions_func.html#index_p"},
 {text:"r",url:"functions_func.html#index_r"},
 {text:"s",url:"functions_func.html#index_s"},
+{text:"u",url:"functions_func.html#index_u"},
 {text:"‾",url:"functions_func.html#index_>"}]}]}]},
 {text:"ファイル",url:"files.html",children:[
 {text:"ファイル一覧",url:"files.html"},
