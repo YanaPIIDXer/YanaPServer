@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: YanaPServer::Peer::CPeerBase クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_yana_p_server.html">YanaPServer</a></li><li class="navelem"><a class="el" href="namespace_yana_p_server_1_1_peer.html">Peer</a></li><li class="navelem"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html">CPeerBase</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-methods">限定公開メンバ関数</a> &#124;
+<a href="class_yana_p_server_1_1_peer_1_1_c_peer_base-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">YanaPServer::Peer::CPeerBase クラス<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失する（親になるshared_ptrが消える）ので、 コイツを使って何かやる時はexpired()チェックしないと死なますよ。  
+ <a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_peer_base_8h_source.html">PeerBase.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ad759d3ffad96bd3acbf1d73b5044aa9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ad759d3ffad96bd3acbf1d73b5044aa9b">CPeerBase</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">ISocket</a> *pInSocket)</td></tr>
+<tr class="memdesc:ad759d3ffad96bd3acbf1d73b5044aa9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#ad759d3ffad96bd3acbf1d73b5044aa9b">[詳解]</a><br /></td></tr>
+<tr class="separator:ad759d3ffad96bd3acbf1d73b5044aa9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6269be07709f30e7186525735ef965fe"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a6269be07709f30e7186525735ef965fe">‾CPeerBase</a> ()</td></tr>
+<tr class="memdesc:a6269be07709f30e7186525735ef965fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a6269be07709f30e7186525735ef965fe">[詳解]</a><br /></td></tr>
+<tr class="separator:a6269be07709f30e7186525735ef965fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790b68680123317b5c9f041a9a09de62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62">Poll</a> ()</td></tr>
+<tr class="memdesc:a790b68680123317b5c9f041a9a09de62"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレームの処理  <a href="#a790b68680123317b5c9f041a9a09de62">[詳解]</a><br /></td></tr>
+<tr class="separator:a790b68680123317b5c9f041a9a09de62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75e8d60afaaaedc9882c56a7a6558b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6">IsValid</a> () const</td></tr>
+<tr class="memdesc:ab75e8d60afaaaedc9882c56a7a6558b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">有効か？  <a href="#ab75e8d60afaaaedc9882c56a7a6558b6">[詳解]</a><br /></td></tr>
+<tr class="separator:ab75e8d60afaaaedc9882c56a7a6558b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036c9c6218e6a833133a936348070bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1">Send</a> (const char *pData, unsigned int Size)</td></tr>
+<tr class="memdesc:a036c9c6218e6a833133a936348070bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信  <a href="#a036c9c6218e6a833133a936348070bd1">[詳解]</a><br /></td></tr>
+<tr class="separator:a036c9c6218e6a833133a936348070bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+限定公開メンバ関数</h2></td></tr>
+<tr class="memitem:a473ec116402ec742476e4d725b1aa116"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a473ec116402ec742476e4d725b1aa116">OnRecv</a> (const char *pData, unsigned int Size)=0</td></tr>
+<tr class="memdesc:a473ec116402ec742476e4d725b1aa116"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信した時の処理  <a href="#a473ec116402ec742476e4d725b1aa116">[詳解]</a><br /></td></tr>
+<tr class="separator:a473ec116402ec742476e4d725b1aa116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失する（親になるshared_ptrが消える）ので、 コイツを使って何かやる時はexpired()チェックしないと死なますよ。 </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="ad759d3ffad96bd3acbf1d73b5044aa9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad759d3ffad96bd3acbf1d73b5044aa9b">&#9670;&nbsp;</a></span>CPeerBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Peer::CPeerBase::CPeerBase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">ISocket</a> *&#160;</td>
+          <td class="paramname"><em>pInSocket</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pInSocket</td><td>ソケット </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ab964bae292b8a01265ed73f3c8aeba2c" title="受信コールバックを設定 " alt="" coords="216,5,413,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a473ec116402ec742476e4d725b1aa116" title="受信した時の処理 " alt="" coords="244,71,385,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ab75e8d60afaaaedc9882c56a7a6558b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab75e8d60afaaaedc9882c56a7a6558b6">&#9670;&nbsp;</a></span>IsValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Peer::CPeerBase::IsValid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>有効か？ </p>
+<dl class="section return"><dt>戻り値</dt><dd>有効ならtrueを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62" title="毎フレームの処理 " alt="" coords="193,5,333,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1" title="送信 " alt="" coords="193,71,333,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a473ec116402ec742476e4d725b1aa116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a473ec116402ec742476e4d725b1aa116">&#9670;&nbsp;</a></span>OnRecv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Peer::CPeerBase::OnRecv </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>受信した時の処理 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Size</td><td>データ長 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a473ec116402ec742476e4d725b1aa116_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a473ec116402ec742476e4d725b1aa116_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a473ec116402ec742476e4d725b1aa116_icgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a473ec116402ec742476e4d725b1aa116_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ad759d3ffad96bd3acbf1d73b5044aa9b" title="コンストラクタ " alt="" coords="195,5,357,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a790b68680123317b5c9f041a9a09de62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790b68680123317b5c9f041a9a09de62">&#9670;&nbsp;</a></span>Poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Peer::CPeerBase::Poll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>毎フレームの処理 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6" title="有効か？ " alt="" coords="197,5,337,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65" title="毎フレーム実行する処理 " alt="" coords="193,71,340,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a036c9c6218e6a833133a936348070bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036c9c6218e6a833133a936348070bd1">&#9670;&nbsp;</a></span>Send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Peer::CPeerBase::Send </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>送信 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Size</td><td>データ長 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6" title="有効か？ " alt="" coords="197,5,337,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46" title="送信 " alt="" coords="193,71,340,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6269be07709f30e7186525735ef965fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6269be07709f30e7186525735ef965fe">&#9670;&nbsp;</a></span>‾CPeerBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Peer::CPeerBase::‾CPeerBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>デストラクタ </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="_peer_base_8h_source.html">PeerBase.h</a></li>
+<li><a class="el" href="_peer_base_8cpp.html">PeerBase.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
