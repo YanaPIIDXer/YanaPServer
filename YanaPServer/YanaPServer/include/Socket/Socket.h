@@ -8,6 +8,8 @@ namespace YanaPServer
 namespace Socket
 {
 
+class ISocketEventListener;
+
 /**
  * @class ISocket
  * @brief ソケットの挙動を実装するためのインタフェース
@@ -21,6 +23,13 @@ public:
 	 * @brief デストラクタ
 	 */
 	virtual ~ISocket() {}
+
+	/**
+	 * @fn virtual void SetEventListener() = 0
+	 * @brief イベントリスナをセット
+	 * @param[in] pListener イベントリスナ
+	 */
+	virtual void SetEventListener(ISocketEventListener *pListener) = 0;
 
 	/**
 	 * @fn virtual void Poll() = 0
@@ -45,24 +54,10 @@ public:
 	virtual bool Send(const char *pData, unsigned int Size) = 0;
 
 	/**
-	 * @fn virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) = 0
-	 * @brief 受信コールバックを設定
-	 * @param[in] Callback コールバック関数
-	 */
-	virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) = 0;
-
-	/**
 	 * @fn virtual void Release() = 0
 	 * @brief 解放
 	 */
 	virtual void Release() = 0;
-
-	/**
-	 * @fn virtual void SetReleaseCallback(const std::function<void()> &Callback) = 0
-	 * @brief 解放コールバックを設定
-	 * @param[in] Callback 解放コールバック
-	 */
-	virtual void SetReleaseCallback(const std::function<void()> &Callback) = 0;
 
 };
 

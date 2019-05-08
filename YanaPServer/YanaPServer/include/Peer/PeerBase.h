@@ -2,6 +2,7 @@
 #define __PEERBASE_H__
 
 #include "Socket/Socket.h"
+#include "Socket/SocketEventListener.h"
 using namespace YanaPServer::Socket;
 
 namespace YanaPServer
@@ -16,7 +17,7 @@ namespace Peer
  *	       切断時には勝手に消失する（親になるshared_ptrが消える）ので、
  *	       コイツを使って何かやる時はexpired()チェックしないと死なますよ。
  */
-class CPeerBase
+class CPeerBase : public ISocketEventListener
 {
 
 public:
@@ -30,13 +31,27 @@ public:
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CPeerBase();
+	virtual ~CPeerBase() = 0;
 
 	/**
 	 * @fn void Poll()
 	 * @brief 毎フレームの処理
 	 */
 	void Poll();
+
+	/**
+	 * @fn void SetOverrideEventListener(ISocketEventListener *pListener)
+	 * @brief ソケットイベントをオーバーライドするイベントリスナをセット
+	 * @detail イベントリスナのメモリ管理（delete等）は行わないので注意。
+	 * @param[in] pListener イベントリスナ
+	 */
+	void SetOverrideEventListener(ISocketEventListener *pListener);
+
+	/**
+	 * @fn void RemoveOverrideEventListener()
+	 * @brief ソケットイベントをオーバーライドするイベントリスナを解除。
+	 */
+	void RemoveOverrideEventListener() { SetOverrideEventListener(this); }
 
 	/**
 	 * @fn bool IsValid() const
@@ -53,27 +68,17 @@ public:
 	 */
 	void Send(const char *pData, unsigned int Size);
 
-protected:
-
 	/**
-	 * @fn virtual void OnRecv(const char *pData, unsigned int Size) = 0
-	 * @brief 受信した時の処理
-	 * @param[in] pData データ
-	 * @param[in] Size データ長
+	 * @fn virtual void OnDisconnect() override
+	 * @brief 切断された
 	 */
-	virtual void OnRecv(const char *pData, unsigned int Size) = 0;
-
-	/**
-	 * @fn virtual void OnClose()
-	 * @brief 切断時コールバック
-	 */
-	virtual void OnClose() {}
+	virtual void OnDisconnect() override {}
 
 private:
 
 	// ソケット
 	ISocket *pSocket;
-	
+
 
 	// ソケット解放.
 	void ReleaseSocket();

@@ -47,6 +47,13 @@ public:
 	virtual void Poll() override;
 
 	/**
+	 * @fn virtual void SetEventListener() override
+	 * @brief イベントリスナをセット
+	 * @param[in] pListener イベントリスナ
+	 */
+	virtual void SetEventListener(ISocketEventListener *pListener) override { pEventListener = pListener; }
+
+	/**
 	 * @fn virtual bool IsValid() const override
 	 * @brief 有効か？
 	 * @return 有効ならtrueを返す。
@@ -63,24 +70,10 @@ public:
 	virtual bool Send(const char *pData, unsigned int Size) override;
 
 	/**
-	 * @fn virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) override
-	 * @brief 受信コールバックを設定
-	 * @param[in] Callback コールバック関数
-	 */
-	virtual void SetReceiveCallback(const std::function<void(const char *, unsigned int)> &Callback) override { ReceiveCallback = Callback; }
-
-	/**
 	 * @fn virtual void Release() override
 	 * @brief 解放処理
 	 */
 	virtual void Release() override;
-
-	/**
-	 * @fn virtual void SetReleaseCallback(const std::function<void()> &Callback) override
-	 * @brief 解放コールバックを設定
-	 * @param[in] Callback 解放コールバック
-	 */
-	virtual void SetReleaseCallback(const std::function<void()> &Callback) override { ReleaseCallback = Callback; }
 
 private:
 
@@ -110,11 +103,8 @@ private:
 	// データキュー
 	std::queue<char> DataQueue;
 
-	// 受信コールバック
-	std::function<void(const char *, unsigned int)> ReceiveCallback;
-
-	// 解放コールバック
-	std::function<void()> ReleaseCallback;
+	// イベントリスナ
+	ISocketEventListener *pEventListener;
 
 
 	// 送信処理.

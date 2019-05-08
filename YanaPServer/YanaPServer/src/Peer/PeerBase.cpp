@@ -9,8 +9,7 @@ namespace Peer
 CPeerBase::CPeerBase(ISocket *pInSocket)
 	: pSocket(pInSocket)
 {
-	pSocket->SetReceiveCallback(std::bind(&CPeerBase::OnRecv, this, std::placeholders::_1, std::placeholders::_2));
-	pSocket->SetReleaseCallback(std::bind(&CPeerBase::OnClose, this));
+	pSocket->SetEventListener(this);
 }
 
 // デストラクタ
@@ -25,6 +24,12 @@ void CPeerBase::Poll()
 	if (!IsValid()) { return; }
 
 	pSocket->Poll();
+}
+
+// ソケットイベントをオーバーライドするイベントリスナをセット
+void CPeerBase::SetOverrideEventListener(ISocketEventListener *pListener)
+{
+	pSocket->SetEventListener(pListener);
 }
 
 // 送信

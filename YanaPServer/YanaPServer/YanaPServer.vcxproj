@@ -129,6 +129,7 @@
     <ClInclude Include="include\Peer\PeerBase.h" />
     <ClInclude Include="include\Socket\NullSocket.h" />
     <ClInclude Include="include\Socket\Socket.h" />
+    <ClInclude Include="include\Socket\SocketEventListener.h" />
     <ClInclude Include="include\Socket\WidnowsSocket.h" />
     <ClInclude Include="include\Socket\Listen\ListenSocket.h" />
     <ClInclude Include="include\Socket\Listen\NullListenSocket.h" />

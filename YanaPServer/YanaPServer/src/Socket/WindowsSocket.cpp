@@ -2,6 +2,7 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include "Socket/WidnowsSocket.h"
 #include "Socket/Windows/WinSockManager.h"
+#include "Socket/SocketEventListener.h"
 
 namespace YanaPServer
 {
@@ -13,6 +14,7 @@ CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
 	: Socket(InSocket)
 	, NonBlockingMode(1)
 	, State(EState::Connected)
+	, pEventListener(nullptr)
 {
 	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
 }
@@ -22,6 +24,7 @@ CWindowsSocket::CWindowsSocket(const std::string &Host, unsigned int Port)
 	: Socket(INVALID_SOCKET)
 	, NonBlockingMode(1)
 	, State(EState::Connecting)
+	, pEventListener(nullptr)
 {
 	if (!Windows::CWinSockManager::GetInstance().Initialize()) { return; }
 
@@ -53,6 +56,10 @@ void CWindowsSocket::Poll()
 			if (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)))
 			{
 				State = EState::Connected;
+				if (pEventListener != nullptr)
+				{
+					pEventListener->OnConnect();
+				}
 			}
 			break;
 
@@ -84,9 +91,9 @@ void CWindowsSocket::Release()
 	closesocket(Socket);
 	Socket = INVALID_SOCKET;
 
-	if (ReleaseCallback)
+	if (pEventListener != nullptr)
 	{
-		ReleaseCallback();
+		pEventListener->OnDisconnect();
 	}
 }
 
@@ -116,8 +123,8 @@ void CWindowsSocket::RecvProc()
 {
 	if (Socket == INVALID_SOCKET) { return; }
 
-	// コールバックが設定されていない場合は何もしない。
-	if (!ReceiveCallback) { return; }
+	// イベントリスナが設定されていない場合は何もしない。
+	if (pEventListener == nullptr) { return; }
 
 	static const int BufferSize = 2048;
 	char Buffer[BufferSize];
@@ -130,7 +137,7 @@ void CWindowsSocket::RecvProc()
 		return;
 	}
 
-	ReceiveCallback(Buffer, RecvSize);
+	pEventListener->OnRecv(Buffer, RecvSize);
 }
 
 }
