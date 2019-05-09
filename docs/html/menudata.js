@@ -31,6 +31,7 @@ var menudata={children:[
 {text:"クラス階層",url:"inherits.html"},
 {text:"クラスメンバ",url:"functions.html",children:[
 {text:"全て",url:"functions.html",children:[
+{text:"b",url:"functions.html#index_b"},
 {text:"c",url:"functions.html#index_c"},
 {text:"g",url:"functions.html#index_g"},
 {text:"i",url:"functions.html#index_i"},
@@ -42,6 +43,7 @@ var menudata={children:[
 {text:"u",url:"functions.html#index_u"},
 {text:"‾",url:"functions.html#index_>"}]},
 {text:"関数",url:"functions_func.html",children:[
+{text:"b",url:"functions_func.html#index_b"},
 {text:"c",url:"functions_func.html#index_c"},
 {text:"g",url:"functions_func.html#index_g"},
 {text:"i",url:"functions_func.html#index_i"},

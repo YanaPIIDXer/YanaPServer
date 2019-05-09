@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['poll',['Poll',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62',1,'YanaPServer::Peer::CPeerBase::Poll()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#a94c2d1922f9d3d1f7b78390a59b036a6',1,'YanaPServer::Socket::Listen::IListenSocket::Poll()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#a2598c5559bcb6740bfd84f0423b6360e',1,'YanaPServer::Socket::Listen::CNullListenSocket::Poll()'],['../class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a21afe7152b3a9b2c7c9895539d9b160e',1,'YanaPServer::Socket::CNullSocket::Poll()'],['../class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65',1,'YanaPServer::Socket::ISocket::Poll()']]]
+  ['onconnect',['OnConnect',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403',1,'YanaPServer::Socket::ISocketEventListener']]],
+  ['ondisconnect',['OnDisconnect',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735',1,'YanaPServer::Peer::CPeerBase::OnDisconnect()'],['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a13865bd7f63c9c9aa3b6f1c7e12c380b',1,'YanaPServer::Socket::ISocketEventListener::OnDisconnect()']]],
+  ['onrecv',['OnRecv',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ac4dbcbd61efefdddee7736ec2a35efcf',1,'YanaPServer::Socket::ISocketEventListener']]]
 ];

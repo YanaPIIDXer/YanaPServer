@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['onconnect',['OnConnect',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403',1,'YanaPServer::Socket::ISocketEventListener']]],
-  ['ondisconnect',['OnDisconnect',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735',1,'YanaPServer::Peer::CPeerBase::OnDisconnect()'],['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a13865bd7f63c9c9aa3b6f1c7e12c380b',1,'YanaPServer::Socket::ISocketEventListener::OnDisconnect()']]],
-  ['onrecv',['OnRecv',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ac4dbcbd61efefdddee7736ec2a35efcf',1,'YanaPServer::Socket::ISocketEventListener']]]
+  ['listen',['Listen',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#a02ba356d7a685555faa69f7454e020f4',1,'YanaPServer::Socket::Listen::IListenSocket::Listen()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#aa1602b2149fda593b89e8724c560f6b2',1,'YanaPServer::Socket::Listen::CNullListenSocket::Listen()']]]
 ];
