@@ -36,13 +36,13 @@ public:
 	virtual void Poll();
 
 	/**
-	 * @fn virtual bool Listen(unsigned int Port)
+	 * @fn virtual bool StartListen(unsigned int Port)
 	 * @brief Listen開始
 	 * @param[in] Port ポート番号
 	 * @param[in] AcceptCallback Acceptした時のコールバック関数
 	 * @return 正常に処理が終了したらtrueを返す。
 	 */
-	virtual bool Listen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
+	virtual bool StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
 
 private:
 

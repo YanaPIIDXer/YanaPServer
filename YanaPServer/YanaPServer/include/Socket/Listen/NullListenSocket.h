@@ -41,7 +41,7 @@ public:
 	 * @param[in] AcceptCallback Acceptした時のコールバック関数
 	 * @return 何もしないので常にfalseを返す。
 	 */
-	virtual bool Listen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback) { return false; }
+	virtual bool StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback) { return false; }
 
 	// ============= Singleton ============
 public:

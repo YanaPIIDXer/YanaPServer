@@ -11,7 +11,7 @@ namespace Application
 CApplicationBase::CApplicationBase(unsigned int ListenPort, const std::function<void(PeerPtr)> &OnConnectFunction)
 	: OnConnect(OnConnectFunction)
 {
-	CListenSocket::Get().Listen(ListenPort,
+	CListenSocket::Get().StartListen(ListenPort,
 		std::bind(&CApplicationBase::OnListen, this, std::placeholders::_1));
 }
 

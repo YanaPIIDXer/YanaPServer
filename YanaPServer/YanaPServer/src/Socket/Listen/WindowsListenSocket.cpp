@@ -40,7 +40,7 @@ void CWindowsListenSocket::Poll()
 }
 
 // ListenŠJn.
-bool CWindowsListenSocket::Listen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback)
+bool CWindowsListenSocket::StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback)
 {
 	if (Socket != INVALID_SOCKET) { return true; }		// ‰Šú‰»Ï‚İB
 
