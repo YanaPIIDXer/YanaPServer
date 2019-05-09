@@ -56,8 +56,14 @@ private:
 	std::function<void(ISocket *)> OnAccept;
 
 
+	// ソケットの初期化.
+	bool Init();
+
 	// バインド
 	bool Bind(unsigned int Port);
+
+	// リッスン
+	bool Listen();
 
 	// 解放.
 	void Release();
