@@ -39,35 +39,15 @@ void CWindowsListenSocket::Poll()
 	OnAccept(pNewSocket);
 }
 
-// Listen開始.
-bool CWindowsListenSocket::StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback)
-{
-	if (Socket != INVALID_SOCKET) { return true; }		// 初期化済み。
-
-	if (!Init()) { return false; }
-
-	if (!Bind(Port))
-	{
-		Release();
-		return false;
-	}
-
-	if (!Listen())
-	{
-		Release();
-		return false;
-	}
-
-	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
-
-	OnAccept = AcceptCallback;
-	return true;
-}
-
-
 // ソケットの初期化
 bool CWindowsListenSocket::Init()
 {
+	// 既にSocketが生成されているなら一旦解体。
+	if (Socket != INVALID_SOCKET)
+	{
+		Release();
+	}
+
 	if (!Socket::Windows::CWinSockManager::GetInstance().Initialize()) { return false; }
 
 	Socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -95,6 +75,7 @@ bool CWindowsListenSocket::Listen()
 
 	return (listen(Socket, 1) != SOCKET_ERROR);
 }
+
 
 // 解放.
 void CWindowsListenSocket::Release()

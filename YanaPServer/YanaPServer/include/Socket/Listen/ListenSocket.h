@@ -33,13 +33,33 @@ public:
 	virtual void Poll() = 0;
 
 	/**
-	 * @fn virtual bool StartListen(unsigned int Port) = 0
-	 * @brief Listen開始
-	 * @param[in] Port ポート番号
-	 * @param[in] AcceptCallback Acceptした時のコールバック関数
-	 * @return 正常に処理が終了したらtrueを返す。
+	 * @fn virtual bool Init() = 0
+	 * @brief ソケットの初期化
+	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback) = 0;
+	virtual bool Init() = 0;
+
+	/**
+	 * @fn virtual bool Bind(unsigned int Port) = 0
+	 * @brief バインド
+	 * @param[in] Port ポート
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Bind(unsigned int Port) = 0;
+
+	/**
+	 * @fn virtual bool Listen() = 0
+	 * @brief リッスン開始
+	 * @return 正常に開始したらtrueを返す。
+	 */
+	virtual bool Listen() = 0;
+
+	/**
+	 * @fn virtual void SetAcceptCallback(const std::function<void(ISocket *)> &Callback) = 0
+	 * @brief Accept時のコールバックを設定
+	 * @param[in] Callback Accept時に呼び出されるコールバック
+	 */
+	virtual void SetAcceptCallback(const std::function<void(ISocket *)> &Callback) = 0;
 
 };
 
@@ -53,10 +73,23 @@ class CListenSocket
 public:
 
 	/**
-	 * @fn static IListenSocket &Get()
-	 * @brief Socket取得
-	 * @return IListenSocketオブジェクト
+	 * @fn static void Build(unsigned int Port, std::function<void(ISocket *)> &AcceptCallback)
+	 * @brief 構築
+	 * @param[in] Port ポート
+	 * @param[in] AcceptCallback Accept時のコールバック
+	 * @return 成功したらtrueを返す。
 	 */
+	static bool Build(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
+
+	/**
+	 * @fn virtual void Poll()
+	 * @brief 毎フレームの処理
+	 */
+	static void Poll() { Get().Poll(); }
+
+private:
+
+	// ListenSocketオブジェクトを取得。
 	static IListenSocket &Get();
 	
 };

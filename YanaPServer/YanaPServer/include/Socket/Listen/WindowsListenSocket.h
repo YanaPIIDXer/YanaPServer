@@ -35,14 +35,35 @@ public:
 	 */
 	virtual void Poll();
 
+
 	/**
-	 * @fn virtual bool StartListen(unsigned int Port)
-	 * @brief Listen開始
-	 * @param[in] Port ポート番号
-	 * @param[in] AcceptCallback Acceptした時のコールバック関数
-	 * @return 正常に処理が終了したらtrueを返す。
+	 * @fn virtual bool Init() override
+	 * @brief ソケットの初期化
+	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
+	virtual bool Init() override;
+
+	/**
+	 * @fn virtual bool Bind(unsigned int Port) override
+	 * @brief バインド
+	 * @param[in] Port ポート
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Bind(unsigned int Port) override;
+
+	/**
+	 * @fn virtual bool Listen() override
+	 * @brief リッスン開始
+	 * @return 正常に開始したらtrueを返す。
+	 */
+	virtual bool Listen() override;
+
+	/**
+	 * @fn virtual void SetAcceptCallback(std::function<void(ISocket *)> &Callback) override
+	 * @brief Accept時のコールバックを設定
+	 * @param[in] Callback Accept時に呼び出されるコールバック
+	 */
+	virtual void SetAcceptCallback(const std::function<void(ISocket *)> &Callback) override { OnAccept = Callback; }
 
 private:
 
@@ -55,15 +76,6 @@ private:
 	// Accept時のコールバック
 	std::function<void(ISocket *)> OnAccept;
 
-
-	// ソケットの初期化.
-	bool Init();
-
-	// バインド
-	bool Bind(unsigned int Port);
-
-	// リッスン
-	bool Listen();
 
 	// 解放.
 	void Release();

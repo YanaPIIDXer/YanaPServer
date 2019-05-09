@@ -29,19 +29,39 @@ public:
 	virtual ~CNullListenSocket() {}
 
 	/**
-	 * @fn virtual void Poll()
+	 * @fn virtual void Poll() override
 	 * @brief 毎フレーム呼び出す処理
 	 */
-	virtual void Poll() {}
+	virtual void Poll() override {}
 
 	/**
-	 * @fn virtual bool Listen(unsigned int Port)
-	 * @brief Listen開始
-	 * @param[in] Port ポート番号
-	 * @param[in] AcceptCallback Acceptした時のコールバック関数
+	 * @fn virtual bool Init() override
+	 * @brief ソケットの初期化
 	 * @return 何もしないので常にfalseを返す。
 	 */
-	virtual bool StartListen(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback) { return false; }
+	virtual bool Init() override { return false; }
+
+	/**
+	 * @fn virtual bool Bind(unsigned int Port) override
+	 * @brief バインド
+	 * @param[in] Port ポート
+	 * @return 何もしないので常にfalseを返す。
+	 */
+	virtual bool Bind(unsigned int Port) override { return false; }
+
+	/**
+	 * @fn virtual bool Listen() override
+	 * @brief リッスン開始
+	 * @return 何もしないので常にfalseを返す。
+	 */
+	virtual bool Listen() override { return false; }
+
+	/**
+	 * @fn virtual void SetAcceptCallback(std::function<void(ISocket *)> &Callback) override
+	 * @brief Accept時のコールバックを設定
+	 * @param[in] Callback Accept時に呼び出されるコールバック
+	 */
+	virtual void SetAcceptCallback(const std::function<void(ISocket *)> &Callback) override {}
 
 	// ============= Singleton ============
 public:

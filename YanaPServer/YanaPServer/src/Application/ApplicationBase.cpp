@@ -8,11 +8,9 @@ namespace Application
 {
 
 // コンストラクタ
-CApplicationBase::CApplicationBase(unsigned int ListenPort, const std::function<void(PeerPtr)> &OnConnectFunction)
+CApplicationBase::CApplicationBase(const std::function<void(PeerPtr)> &OnConnectFunction)
 	: OnConnect(OnConnectFunction)
 {
-	CListenSocket::Get().StartListen(ListenPort,
-		std::bind(&CApplicationBase::OnListen, this, std::placeholders::_1));
 }
 
 // デストラクタ
@@ -21,10 +19,17 @@ CApplicationBase::~CApplicationBase()
 	Peers.clear();
 }
 
+// Listen開始.
+bool CApplicationBase::StartListen(unsigned int Port)
+{
+	return CListenSocket::Build(Port,
+		std::bind(&CApplicationBase::OnListen, this, std::placeholders::_1));
+}
+
 // 毎フレームの処理.
 bool CApplicationBase::Service()
 {
-	CListenSocket::Get().Poll();
+	CListenSocket::Poll();
 
 	PeerList::iterator It = Peers.begin();
 	while (It != Peers.end())
