@@ -31,15 +31,22 @@ public:
 
 	/**
 	 * @brief コンストラクタ
-	 * @param[in] ListenPort 待機ポート
 	 * @param[in] OnConnectFunction 接続時コールバック
 	 */
-	CApplicationBase(unsigned int ListenPort, const std::function<void(PeerPtr)> &OnConnectFunction);
+	CApplicationBase(const std::function<void(PeerPtr)> &OnConnectFunction);
 
 	/**
 	 * @brief デストラクタ
 	 */
 	virtual ~CApplicationBase();
+
+	/**
+	 * @fn bool StartListen(unsigned int Port)
+	 * @brief Listen開始
+	 * @param[in] Port 待機ポート
+	 * @return 成功したらtrueを返す。
+	 */
+	bool StartListen(unsigned int Port);
 
 	/**
 	 * @fn bool Service()

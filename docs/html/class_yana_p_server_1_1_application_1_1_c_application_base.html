@@ -81,12 +81,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:ae81f6b22206e5c7c674a5a31b100a5ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#ae81f6b22206e5c7c674a5a31b100a5ac">CApplicationBase</a> (unsigned int ListenPort, const std::function&lt; void(<a class="el" href="_application_base_8h.html#a2ebabee2bb83204f04f878e936142f82">PeerPtr</a>)&gt; &amp;OnConnectFunction)</td></tr>
-<tr class="memdesc:ae81f6b22206e5c7c674a5a31b100a5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#ae81f6b22206e5c7c674a5a31b100a5ac">[詳解]</a><br /></td></tr>
-<tr class="separator:ae81f6b22206e5c7c674a5a31b100a5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059c385f87d08d404aeb4bb8a571ba51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a059c385f87d08d404aeb4bb8a571ba51">CApplicationBase</a> (const std::function&lt; void(<a class="el" href="_application_base_8h.html#a2ebabee2bb83204f04f878e936142f82">PeerPtr</a>)&gt; &amp;OnConnectFunction)</td></tr>
+<tr class="memdesc:a059c385f87d08d404aeb4bb8a571ba51"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a059c385f87d08d404aeb4bb8a571ba51">[詳解]</a><br /></td></tr>
+<tr class="separator:a059c385f87d08d404aeb4bb8a571ba51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a380a8975b52549e8f7a234112d4a77dd"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a380a8975b52549e8f7a234112d4a77dd">‾CApplicationBase</a> ()</td></tr>
 <tr class="memdesc:a380a8975b52549e8f7a234112d4a77dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a380a8975b52549e8f7a234112d4a77dd">[詳解]</a><br /></td></tr>
 <tr class="separator:a380a8975b52549e8f7a234112d4a77dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11680fa2e67a2d5102273d734fea682"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#ab11680fa2e67a2d5102273d734fea682">StartListen</a> (unsigned int Port)</td></tr>
+<tr class="memdesc:ab11680fa2e67a2d5102273d734fea682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listen開始  <a href="#ab11680fa2e67a2d5102273d734fea682">[詳解]</a><br /></td></tr>
+<tr class="separator:ab11680fa2e67a2d5102273d734fea682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e45fc7fdd46f12864735cebabbb3a38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a4e45fc7fdd46f12864735cebabbb3a38">Service</a> ()</td></tr>
 <tr class="memdesc:a4e45fc7fdd46f12864735cebabbb3a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレームの処理  メインフレームで呼び出す事。  <a href="#a4e45fc7fdd46f12864735cebabbb3a38">[詳解]</a><br /></td></tr>
 <tr class="separator:a4e45fc7fdd46f12864735cebabbb3a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,8 +106,8 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>アプリケーションメイン基底クラス </p>
 </div><h2 class="groupheader">構築子と解体子</h2>
-<a id="ae81f6b22206e5c7c674a5a31b100a5ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae81f6b22206e5c7c674a5a31b100a5ac">&#9670;&nbsp;</a></span>CApplicationBase()</h2>
+<a id="a059c385f87d08d404aeb4bb8a571ba51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a059c385f87d08d404aeb4bb8a571ba51">&#9670;&nbsp;</a></span>CApplicationBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,19 +115,9 @@ $(function() {
         <tr>
           <td class="memname">YanaPServer::Application::CApplicationBase::CApplicationBase </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>ListenPort</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::function&lt; void(<a class="el" href="_application_base_8h.html#a2ebabee2bb83204f04f878e936142f82">PeerPtr</a>)&gt; &amp;&#160;</td>
-          <td class="paramname"><em>OnConnectFunction</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>OnConnectFunction</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -132,7 +125,6 @@ $(function() {
 <p>コンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ListenPort</td><td>待機ポート </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">OnConnectFunction</td><td>接続時コールバック </td></tr>
   </table>
   </dd>
@@ -201,6 +193,33 @@ $(function() {
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a4b9f585461ce5be2706183a51cacbbd6" title="更新処理 " alt="" coords="236,5,419,47"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="ab11680fa2e67a2d5102273d734fea682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab11680fa2e67a2d5102273d734fea682">&#9670;&nbsp;</a></span>StartListen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Application::CApplicationBase::StartListen </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Listen開始 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Port</td><td>待機ポート </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功したらtrueを返す。 </dd></dl>
 
 </div>
 </div>
