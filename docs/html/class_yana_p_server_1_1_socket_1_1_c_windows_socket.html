@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: YanaPServer::Socket::CWindowsSocket クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_yana_p_server.html">YanaPServer</a></li><li class="navelem"><a class="el" href="namespace_yana_p_server_1_1_socket.html">Socket</a></li><li class="navelem"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html">CWindowsSocket</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="class_yana_p_server_1_1_socket_1_1_c_windows_socket-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">YanaPServer::Socket::CWindowsSocket クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Windowsでのソケットの挙動を実装するクラス  
+ <a href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_widnows_socket_8h_source.html">WidnowsSocket.h</a>&gt;</code></p>
+<div class="dynheader">
+YanaPServer::Socket::CWindowsSocket の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket__inherit__graph.png" border="0" usemap="#_yana_p_server_1_1_socket_1_1_c_windows_socket_inherit__map" alt="Inheritance graph"/></div>
+<map name="_yana_p_server_1_1_socket_1_1_c_windows_socket_inherit__map" id="_yana_p_server_1_1_socket_1_1_c_windows_socket_inherit__map">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html" title="ソケットの挙動を実装するためのインタフェース " alt="" coords="5,5,152,47"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+YanaPServer::Socket::CWindowsSocket 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket__coll__graph.png" border="0" usemap="#_yana_p_server_1_1_socket_1_1_c_windows_socket_coll__map" alt="Collaboration graph"/></div>
+<map name="_yana_p_server_1_1_socket_1_1_c_windows_socket_coll__map" id="_yana_p_server_1_1_socket_1_1_c_windows_socket_coll__map">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html" title="ソケットの挙動を実装するためのインタフェース " alt="" coords="5,5,152,47"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a9f16ac8bd2f3145eb4c4a34a76f4a43d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9f16ac8bd2f3145eb4c4a34a76f4a43d">CWindowsSocket</a> (const SOCKET &amp;InSocket)</td></tr>
+<tr class="memdesc:a9f16ac8bd2f3145eb4c4a34a76f4a43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a9f16ac8bd2f3145eb4c4a34a76f4a43d">[詳解]</a><br /></td></tr>
+<tr class="separator:a9f16ac8bd2f3145eb4c4a34a76f4a43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0679d43894fe751622cd44f356946e0f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a0679d43894fe751622cd44f356946e0f">CWindowsSocket</a> (const std::string &amp;Host, unsigned int Port)</td></tr>
+<tr class="memdesc:a0679d43894fe751622cd44f356946e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a0679d43894fe751622cd44f356946e0f">[詳解]</a><br /></td></tr>
+<tr class="separator:a0679d43894fe751622cd44f356946e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c1a9a960f4072a468726a5fa554bfb5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5">‾CWindowsSocket</a> ()</td></tr>
+<tr class="memdesc:a9c1a9a960f4072a468726a5fa554bfb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a9c1a9a960f4072a468726a5fa554bfb5">[詳解]</a><br /></td></tr>
+<tr class="separator:a9c1a9a960f4072a468726a5fa554bfb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6504e1a06c36228478b12f08935a1f38"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a6504e1a06c36228478b12f08935a1f38">Poll</a> () override</td></tr>
+<tr class="memdesc:a6504e1a06c36228478b12f08935a1f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレーム実行する処理  <a href="#a6504e1a06c36228478b12f08935a1f38">[詳解]</a><br /></td></tr>
+<tr class="separator:a6504e1a06c36228478b12f08935a1f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a6e115696cd51a36230ef6cb33fccc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a35a6e115696cd51a36230ef6cb33fccc">SetEventListener</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *pListener) override</td></tr>
+<tr class="memdesc:a35a6e115696cd51a36230ef6cb33fccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">イベントリスナをセット  <a href="#a35a6e115696cd51a36230ef6cb33fccc">[詳解]</a><br /></td></tr>
+<tr class="separator:a35a6e115696cd51a36230ef6cb33fccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae96498dafd69dcc53d09ca3801f150e4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ae96498dafd69dcc53d09ca3801f150e4">IsValid</a> () const override</td></tr>
+<tr class="memdesc:ae96498dafd69dcc53d09ca3801f150e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">有効か？  <a href="#ae96498dafd69dcc53d09ca3801f150e4">[詳解]</a><br /></td></tr>
+<tr class="separator:ae96498dafd69dcc53d09ca3801f150e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1502d14401cbb8bca097821f8c14db"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a3b1502d14401cbb8bca097821f8c14db">Send</a> (const char *pData, unsigned int Size) override</td></tr>
+<tr class="memdesc:a3b1502d14401cbb8bca097821f8c14db"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信  <a href="#a3b1502d14401cbb8bca097821f8c14db">[詳解]</a><br /></td></tr>
+<tr class="separator:a3b1502d14401cbb8bca097821f8c14db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff6b730b0183ad5203c16554128e9528"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#aff6b730b0183ad5203c16554128e9528">Release</a> () override</td></tr>
+<tr class="memdesc:aff6b730b0183ad5203c16554128e9528"><td class="mdescLeft">&#160;</td><td class="mdescRight">解放処理  <a href="#aff6b730b0183ad5203c16554128e9528">[詳解]</a><br /></td></tr>
+<tr class="separator:aff6b730b0183ad5203c16554128e9528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> に属する継承公開メンバ関数</td></tr>
+<tr class="memitem:a495564ed1f3febdc0a670726985ce9ea inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea">‾ISocket</a> ()</td></tr>
+<tr class="memdesc:a495564ed1f3febdc0a670726985ce9ea inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea">[詳解]</a><br /></td></tr>
+<tr class="separator:a495564ed1f3febdc0a670726985ce9ea inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>Windowsでのソケットの挙動を実装するクラス </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a9f16ac8bd2f3145eb4c4a34a76f4a43d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f16ac8bd2f3145eb4c4a34a76f4a43d">&#9670;&nbsp;</a></span>CWindowsSocket() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Socket::CWindowsSocket::CWindowsSocket </td>
+          <td>(</td>
+          <td class="paramtype">const SOCKET &amp;&#160;</td>
+          <td class="paramname"><em>InSocket</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">InSocket</td><td>ソケット </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0679d43894fe751622cd44f356946e0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0679d43894fe751622cd44f356946e0f">&#9670;&nbsp;</a></span>CWindowsSocket() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Socket::CWindowsSocket::CWindowsSocket </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>Host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Host</td><td>ホスト </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Port</td><td>ポート番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a0679d43894fe751622cd44f356946e0f_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_a0679d43894fe751622cd44f356946e0f_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a0679d43894fe751622cd44f356946e0f_cgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a0679d43894fe751622cd44f356946e0f_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#a31ece1d891e0e5bb8f7122e01a60f48f" title="シングルトンインスタンス取得 " alt="" coords="256,5,459,61"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae96498dafd69dcc53d09ca3801f150e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae96498dafd69dcc53d09ca3801f150e4">&#9670;&nbsp;</a></span>IsValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Socket::CWindowsSocket::IsValid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>有効か？ </p>
+<dl class="section return"><dt>戻り値</dt><dd>有効ならtrueを返す。 </dd></dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_ae96498dafd69dcc53d09ca3801f150e4_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_ae96498dafd69dcc53d09ca3801f150e4_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_ae96498dafd69dcc53d09ca3801f150e4_icgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_ae96498dafd69dcc53d09ca3801f150e4_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a6504e1a06c36228478b12f08935a1f38" title="毎フレーム実行する処理 " alt="" coords="237,5,400,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a3b1502d14401cbb8bca097821f8c14db" title="送信 " alt="" coords="233,71,404,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6504e1a06c36228478b12f08935a1f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6504e1a06c36228478b12f08935a1f38">&#9670;&nbsp;</a></span>Poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Socket::CWindowsSocket::Poll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>毎フレーム実行する処理 </p>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a6504e1a06c36228478b12f08935a1f38_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_a6504e1a06c36228478b12f08935a1f38_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a6504e1a06c36228478b12f08935a1f38_cgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a6504e1a06c36228478b12f08935a1f38_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ae96498dafd69dcc53d09ca3801f150e4" title="有効か？ " alt="" coords="216,5,396,47"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403" title="接続された " alt="" coords="230,71,382,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aff6b730b0183ad5203c16554128e9528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff6b730b0183ad5203c16554128e9528">&#9670;&nbsp;</a></span>Release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Socket::CWindowsSocket::Release </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>解放処理 </p>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#aa1b6d7c21c3179556e7b18bae9b89cce">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_cgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a13865bd7f63c9c9aa3b6f1c7e12c380b" title="切断された " alt="" coords="241,5,393,61"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_icgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_aff6b730b0183ad5203c16554128e9528_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5" title="デストラクタ " alt="" coords="241,5,448,61"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3b1502d14401cbb8bca097821f8c14db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b1502d14401cbb8bca097821f8c14db">&#9670;&nbsp;</a></span>Send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Socket::CWindowsSocket::Send </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>送信 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Size</td><td>送信サイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功したらtrueを返す。 </dd></dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a3b1502d14401cbb8bca097821f8c14db_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_a3b1502d14401cbb8bca097821f8c14db_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a3b1502d14401cbb8bca097821f8c14db_cgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a3b1502d14401cbb8bca097821f8c14db_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ae96498dafd69dcc53d09ca3801f150e4" title="有効か？ " alt="" coords="224,5,404,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a35a6e115696cd51a36230ef6cb33fccc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a6e115696cd51a36230ef6cb33fccc">&#9670;&nbsp;</a></span>SetEventListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Socket::CWindowsSocket::SetEventListener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *&#160;</td>
+          <td class="paramname"><em>pListener</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>イベントリスナをセット </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pListener</td><td>イベントリスナ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+
+</div>
+</div>
+<a id="a9c1a9a960f4072a468726a5fa554bfb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c1a9a960f4072a468726a5fa554bfb5">&#9670;&nbsp;</a></span>‾CWindowsSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Socket::CWindowsSocket::‾CWindowsSocket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>デストラクタ </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a9c1a9a960f4072a468726a5fa554bfb5_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_c_windows_socket_a9c1a9a960f4072a468726a5fa554bfb5_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a9c1a9a960f4072a468726a5fa554bfb5_cgraph" id="class_yana_p_server_1_1_socket_1_1_c_windows_socket_a9c1a9a960f4072a468726a5fa554bfb5_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#aff6b730b0183ad5203c16554128e9528" title="解放処理 " alt="" coords="260,13,448,54"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a13865bd7f63c9c9aa3b6f1c7e12c380b" title="切断された " alt="" coords="496,5,648,61"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="_widnows_socket_8h_source.html">WidnowsSocket.h</a></li>
+<li><a class="el" href="_windows_socket_8cpp.html">WindowsSocket.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

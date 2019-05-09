@@ -1,11 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "abcgilnoprsuwy‾",
+  0: "_abcgilnoprsuwy‾",
   1: "cin",
   2: "y",
   3: "alnpsw",
   4: "bcgiloprsu‾",
-  5: "p"
+  5: "p",
+  6: "_"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "typedefs"
+  5: "typedefs",
+  6: "defines"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "名前空間",
   3: "ファイル",
   4: "関数",
-  5: "型定義"
+  5: "型定義",
+  6: "マクロ定義"
 };
 

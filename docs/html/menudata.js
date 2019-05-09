@@ -58,4 +58,5 @@ var menudata={children:[
 {text:"ファイル一覧",url:"files.html"},
 {text:"ファイルメンバ",url:"globals.html",children:[
 {text:"全て",url:"globals.html"},
-{text:"型定義",url:"globals_type.html"}]}]}]}
+{text:"型定義",url:"globals_type.html"},
+{text:"マクロ定義",url:"globals_defs.html"}]}]}]}

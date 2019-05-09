@@ -66,6 +66,7 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>Bind()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#a4f8170cb82022e234c82bb98eb83f26a">YanaPServer::Socket::Listen::CNullListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a59abdfde9a38ba10122d38f69ac0ddf7">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#ae30a24ef6e9cc097917ff32e4a51b3d4">YanaPServer::Socket::Listen::IListenSocket</a>
 </li>
 <li>Build()
@@ -87,12 +88,17 @@ $(function() {
 <li>CreatePeer()
 : <a class="el" href="class_yana_p_server_1_1_application_1_1_c_application_base.html#a613325e08f5949d82970f9f9d6480243">YanaPServer::Application::CApplicationBase</a>
 </li>
+<li>CWindowsSocket()
+: <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9f16ac8bd2f3145eb4c4a34a76f4a43d">YanaPServer::Socket::CWindowsSocket</a>
+</li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>GetInstance()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#a16d1b59d6117fc890c25fd0eb89c4f11">YanaPServer::Socket::Listen::CNullListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a08af4dc6abbe5cd5df75ff8f346bd836">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#a31ece1d891e0e5bb8f7122e01a60f48f">YanaPServer::Socket::Windows::CWinSockManager</a>
 </li>
 </ul>
 
@@ -100,11 +106,16 @@ $(function() {
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>Init()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#af47674657c81db2b94091b2d92816565">YanaPServer::Socket::Listen::CNullListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a019d74978585eb4073fb631eba9409ca">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abc9a7546ba5e1a598272d66f140a0d0d">YanaPServer::Socket::Listen::IListenSocket</a>
+</li>
+<li>Initialize()
+: <a class="el" href="class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#aef49d125e89375a1931f8a2ea92fb296">YanaPServer::Socket::Windows::CWinSockManager</a>
 </li>
 <li>IsValid()
 : <a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6">YanaPServer::Peer::CPeerBase</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#ab0026293828419c77acbb5df3f95a317">YanaPServer::Socket::CNullSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ae96498dafd69dcc53d09ca3801f150e4">YanaPServer::Socket::CWindowsSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c">YanaPServer::Socket::ISocket</a>
 </li>
 </ul>
@@ -113,6 +124,7 @@ $(function() {
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>Listen()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#aa1602b2149fda593b89e8724c560f6b2">YanaPServer::Socket::Listen::CNullListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a7de007efbfba341782c345028c9554d5">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#a02ba356d7a685555faa69f7454e020f4">YanaPServer::Socket::Listen::IListenSocket</a>
 </li>
 </ul>
@@ -136,9 +148,11 @@ $(function() {
 <li>Poll()
 : <a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62">YanaPServer::Peer::CPeerBase</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a21afe7152b3a9b2c7c9895539d9b160e">YanaPServer::Socket::CNullSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a6504e1a06c36228478b12f08935a1f38">YanaPServer::Socket::CWindowsSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65">YanaPServer::Socket::ISocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_listen_socket.html#a23f712a53be9706bde435d9274caa04e">YanaPServer::Socket::Listen::CListenSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#ae7b88591ed0dc9bf498872b5be949dd3">YanaPServer::Socket::Listen::CNullListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#af4244fe58c56425ab4a78fadca5ab6d8">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#a94c2d1922f9d3d1f7b78390a59b036a6">YanaPServer::Socket::Listen::IListenSocket</a>
 </li>
 </ul>
@@ -147,6 +161,7 @@ $(function() {
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>Release()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#ab762ae604557f11ee3b57186f796002c">YanaPServer::Socket::CNullSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#aff6b730b0183ad5203c16554128e9528">YanaPServer::Socket::CWindowsSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#aa1b6d7c21c3179556e7b18bae9b89cce">YanaPServer::Socket::ISocket</a>
 </li>
 <li>RemoveOverrideEventListener()
@@ -159,6 +174,7 @@ $(function() {
 <li>Send()
 : <a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1">YanaPServer::Peer::CPeerBase</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a5a8801b67702f0c0c0855ee61b3f3652">YanaPServer::Socket::CNullSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a3b1502d14401cbb8bca097821f8c14db">YanaPServer::Socket::CWindowsSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46">YanaPServer::Socket::ISocket</a>
 </li>
 <li>Service()
@@ -166,10 +182,12 @@ $(function() {
 </li>
 <li>SetAcceptCallback()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#aa88f95f8189cf21a4ca37ce3f9f2f485">YanaPServer::Socket::Listen::CNullListenSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a7a3de2af19588599e34ae6da9311ea3e">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#a78c5f5b916fe56f161326d210962c01c">YanaPServer::Socket::Listen::IListenSocket</a>
 </li>
 <li>SetEventListener()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a2b6ca207839bf6926edd7d0285315306">YanaPServer::Socket::CNullSocket</a>
+, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a35a6e115696cd51a36230ef6cb33fccc">YanaPServer::Socket::CWindowsSocket</a>
 , <a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292">YanaPServer::Socket::ISocket</a>
 </li>
 <li>SetOverrideEventListener()
@@ -200,6 +218,15 @@ $(function() {
 </li>
 <li>‾CPeerBase()
 : <a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802">YanaPServer::Peer::CPeerBase</a>
+</li>
+<li>‾CWindowsListenSocket()
+: <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a717c3bd686b19c2c77582c2c0754000e">YanaPServer::Socket::Listen::CWindowsListenSocket</a>
+</li>
+<li>‾CWindowsSocket()
+: <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5">YanaPServer::Socket::CWindowsSocket</a>
+</li>
+<li>‾CWinSockManager()
+: <a class="el" href="class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#ac7cc785259a25d880413bd162dab2856">YanaPServer::Socket::Windows::CWinSockManager</a>
 </li>
 <li>‾IListenSocket()
 : <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abbcf4733e3638584a4a4158ecc93d062">YanaPServer::Socket::Listen::IListenSocket</a>

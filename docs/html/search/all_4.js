@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['ilistensocket',['IListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html',1,'YanaPServer::Socket::Listen']]],
-  ['init',['Init',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abc9a7546ba5e1a598272d66f140a0d0d',1,'YanaPServer::Socket::Listen::IListenSocket::Init()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#af47674657c81db2b94091b2d92816565',1,'YanaPServer::Socket::Listen::CNullListenSocket::Init()']]],
-  ['isocket',['ISocket',['../class_yana_p_server_1_1_socket_1_1_i_socket.html',1,'YanaPServer::Socket']]],
-  ['isocketeventlistener',['ISocketEventListener',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html',1,'YanaPServer::Socket']]],
-  ['isvalid',['IsValid',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6',1,'YanaPServer::Peer::CPeerBase::IsValid()'],['../class_yana_p_server_1_1_socket_1_1_c_null_socket.html#ab0026293828419c77acbb5df3f95a317',1,'YanaPServer::Socket::CNullSocket::IsValid()'],['../class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c',1,'YanaPServer::Socket::ISocket::IsValid()']]]
+  ['getinstance',['GetInstance',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#a16d1b59d6117fc890c25fd0eb89c4f11',1,'YanaPServer::Socket::Listen::CNullListenSocket::GetInstance()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a08af4dc6abbe5cd5df75ff8f346bd836',1,'YanaPServer::Socket::Listen::CWindowsListenSocket::GetInstance()'],['../class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#a31ece1d891e0e5bb8f7122e01a60f48f',1,'YanaPServer::Socket::Windows::CWinSockManager::GetInstance()']]]
 ];
