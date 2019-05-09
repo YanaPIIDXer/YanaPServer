@@ -56,6 +56,9 @@ private:
 	std::function<void(ISocket *)> OnAccept;
 
 
+	// ƒoƒCƒ“ƒh
+	bool Bind(unsigned int Port);
+
 	// ‰ð•ú.
 	void Release();
 

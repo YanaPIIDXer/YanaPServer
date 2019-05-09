@@ -47,18 +47,9 @@ bool CWindowsListenSocket::Listen(unsigned int Port, const std::function<void(IS
 	if (!Socket::Windows::CWinSockManager::GetInstance().Initialize()) { return false; }
 
 	Socket = socket(AF_INET, SOCK_STREAM, 0);
-	if (Socket == INVALID_SOCKET)
-	{
-		return false;
-	}
+	if (Socket == INVALID_SOCKET) { return false; }
 
-	sockaddr_in Addr;
-
-	Addr.sin_family = AF_INET;
-	Addr.sin_port = htons(Port);
-	Addr.sin_addr.S_un.S_addr = INADDR_ANY;
-
-	if (bind(Socket, (sockaddr *)(&Addr), sizeof(Addr)) == SOCKET_ERROR)
+	if (!Bind(Port))
 	{
 		Release();
 		return false;
@@ -76,6 +67,18 @@ bool CWindowsListenSocket::Listen(unsigned int Port, const std::function<void(IS
 	return true;
 }
 
+
+// ƒoƒCƒ“ƒh
+bool CWindowsListenSocket::Bind(unsigned int Port)
+{
+	sockaddr_in Addr;
+
+	Addr.sin_family = AF_INET;
+	Addr.sin_port = htons(Port);
+	Addr.sin_addr.S_un.S_addr = INADDR_ANY;
+
+	return (bind(Socket, (sockaddr *)(&Addr), sizeof(Addr)) != SOCKET_ERROR);
+}
 
 // ‰ð•ú.
 void CWindowsListenSocket::Release()
