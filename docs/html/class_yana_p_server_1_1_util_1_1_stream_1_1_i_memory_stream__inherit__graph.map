@@ -1,5 +1,0 @@
-<map id="YanaPServer::Util::Stream::IMemoryStream" name="YanaPServer::Util::Stream::IMemoryStream">
-<area shape="rect" id="node2" href="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_dynamic_memory_stream_writer.html" title="動的にメモリを確保しながら書き込むストリームクラス &#160;通常はSizeCaliculator → StreamWriterの流れで書き..." alt="" coords="217,5,439,61"/>
-<area shape="rect" id="node3" href="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html" title="サイズ計算ストリーム " alt="" coords="221,86,435,127"/>
-<area shape="rect" id="node4" href="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_writer.html" title="書き込み用ストリーム " alt="" coords="225,151,431,193"/>
-</map>

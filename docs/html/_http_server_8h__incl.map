@@ -1,8 +1,0 @@
-<map id="HttpServer.h" name="HttpServer.h">
-<area shape="rect" id="node2" href="$_application_base_8h.html" title="../Application/Application\lBase.h" alt="" coords="319,80,485,121"/>
-<area shape="rect" id="node5" href="$_peer_base_8h.html" title="../Peer/PeerBase.h" alt="" coords="89,169,222,196"/>
-<area shape="rect" id="node10" href="$_servlet_finder_8h.html" title="ServletFinder.h" alt="" coords="677,87,785,114"/>
-<area shape="rect" id="node3" href="$_socket_8h.html" title="../Socket/Socket.h" alt="" coords="239,244,370,271"/>
-<area shape="rect" id="node7" href="$_listen_socket_8h.html" title="../Socket/Listen/ListenSocket.h" alt="" coords="377,169,582,196"/>
-<area shape="rect" id="node6" href="$_socket_event_listener_8h.html" title="../Socket/SocketEventListener.h" alt="" coords="5,244,215,271"/>
-</map>
