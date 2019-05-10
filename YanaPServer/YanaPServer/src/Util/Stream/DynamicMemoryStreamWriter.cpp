@@ -13,7 +13,6 @@ namespace Stream
 // コンストラクタ
 CDynamicMemoryStreamWriter::CDynamicMemoryStreamWriter()
 	: pBuffer(nullptr)
-	, BufferSize(0)
 	, CurrentPosition(0)
 {
 }

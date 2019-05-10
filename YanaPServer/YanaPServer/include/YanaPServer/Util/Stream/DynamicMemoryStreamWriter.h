@@ -84,9 +84,6 @@ private:
 	// バッファ
 	char *pBuffer;
 
-	// バッファサイズ
-	unsigned int BufferSize;
-
 	// 現在の位置.
 	unsigned int CurrentPosition;
 
