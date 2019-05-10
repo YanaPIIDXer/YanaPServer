@@ -25,21 +25,21 @@ CDynamicMemoryStreamWriter::~CDynamicMemoryStreamWriter()
 }
 
 // intのシリアライズ
-bool CDynamicMemoryStreamWriter::Serialize(int *pData)
+bool CDynamicMemoryStreamWriter::Serialize(const int *pData)
 {
 	int Data = CEndianConverter::Convert(*pData);
 	return Write(&Data, sizeof(int));
 }
 
 // unsigned intのシリアライズ
-bool CDynamicMemoryStreamWriter::Serialize(unsigned int *pData)
+bool CDynamicMemoryStreamWriter::Serialize(const unsigned int *pData)
 {
 	unsigned int Data = CEndianConverter::Convert(*pData);
 	return Write(&Data, sizeof(unsigned int));
 }
 
 // 文字列のシリアライズ
-bool CDynamicMemoryStreamWriter::Serialize(char *pData)
+bool CDynamicMemoryStreamWriter::Serialize(const char *pData)
 {
 	// サイズ
 	size_t Size = strlen(pData);
@@ -51,9 +51,9 @@ bool CDynamicMemoryStreamWriter::Serialize(char *pData)
 
 
 // 書き込み
-bool CDynamicMemoryStreamWriter::Write(void *pData, unsigned int Size)
+bool CDynamicMemoryStreamWriter::Write(const void *pData, unsigned int Size)
 {
-	unsigned char *pTmp = new unsigned char[CurrentPosition + Size];
+	char *pTmp = new char[CurrentPosition + Size];
 	if (pBuffer != nullptr)
 	{
 		memcpy(pTmp, pBuffer, CurrentPosition);

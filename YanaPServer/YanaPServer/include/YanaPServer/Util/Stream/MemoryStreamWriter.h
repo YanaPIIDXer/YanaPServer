@@ -31,28 +31,28 @@ public:
 	virtual ~CMemoryStreamWriter();
 
 	/**
-	 * @fn virtual bool Serialize(int *pData) = 0
+	 * @fn virtual bool Serialize(const int *pData) = 0
 	 * @brief intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(int *pData) override;
+	virtual bool Serialize(const int *pData) override;
 
 	/**
-	 * @fn virtual bool Serialize(unsigned int *pData) override
+	 * @fn virtual bool Serialize(const unsigned int *pData) override
 	 * @brief unsigned intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(unsigned int *pData) override;
+	virtual bool Serialize(const unsigned int *pData) override;
 
 	/**
-	 * @fn virtual bool Serialize(chat *pData) override
+	 * @fn virtual bool Serialize(const chat *pData) override
 	 * @brief 文字列のシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(char *pData) override;
+	virtual bool Serialize(const char *pData) override;
 
 	/**
 	 * @fn virtual bool IsError() const override
@@ -62,12 +62,12 @@ public:
 	virtual bool IsError() const override { return bIsError; }
 
 	/**
-	 * @fn unsigned char *GetBuffer() const
+	 * @fn const char *GetBuffer() const
 	 * @brief バッファを取得。
 	 * @detail バッファの先頭位置を返す。
 	 * @return バッファ
 	 */
-	unsigned char *GetBuffer() const { return pBuffer; }
+	const char *GetBuffer() const { return pBuffer; }
 
 	/**
 	 * @fn unsigned int GetSize() const
@@ -79,7 +79,7 @@ public:
 private:
 
 	// バッファ
-	unsigned char *pBuffer;
+	char *pBuffer;
 
 	// バッファサイズ
 	unsigned int BufferSize;
@@ -92,7 +92,7 @@ private:
 
 
 	// 書き込み
-	bool Write(void *pData, unsigned int Size);
+	bool Write(const void *pData, unsigned int Size);
 
 };
 

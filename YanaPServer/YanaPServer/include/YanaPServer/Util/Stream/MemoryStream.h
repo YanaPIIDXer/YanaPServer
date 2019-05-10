@@ -23,28 +23,28 @@ public:
 	virtual ~IMemoryStream() {}
 
 	/**
-	 * @fn virtual bool Serialize(int *pData) = 0
+	 * @fn virtual bool Serialize(const int *pData) = 0
 	 * @brief intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(int *pData) = 0;
+	virtual bool Serialize(const int *pData) = 0;
 
 	/**
-	 * @fn virtual bool Serialize(unsigned int *pData) = 0
+	 * @fn virtual bool Serialize(const unsigned int *pData) = 0
 	 * @brief unsigned intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(unsigned int *pData) = 0;
+	virtual bool Serialize(const unsigned int *pData) = 0;
 
 	/**
-	 * @fn virtual bool Serialize(chat *pData) = 0
+	 * @fn virtual bool Serialize(const chat *pData) = 0
 	 * @brief 文字列のシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(char *pData) = 0;
+	virtual bool Serialize(const char *pData) = 0;
 
 	/**
 	 * @fn virtual bool IsError() const = 0

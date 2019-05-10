@@ -17,7 +17,7 @@ CMemoryStreamWriter::CMemoryStreamWriter(unsigned int InBufferSize)
 	, CurrentPosition(0)
 	, bIsError(false)
 {
-	pBuffer = new unsigned char[BufferSize];
+	pBuffer = new char[BufferSize];
 }
 
 // デストラクタ
@@ -27,21 +27,21 @@ CMemoryStreamWriter::~CMemoryStreamWriter()
 }
 
 // intのシリアライズ
-bool CMemoryStreamWriter::Serialize(int *pData)
+bool CMemoryStreamWriter::Serialize(const int *pData)
 {
 	int Data = CEndianConverter::Convert(*pData);
 	return Write(&Data, sizeof(int));
 }
 
 // unsigned intのシリアライズ
-bool CMemoryStreamWriter::Serialize(unsigned int *pData)
+bool CMemoryStreamWriter::Serialize(const unsigned int *pData)
 {
 	unsigned int Data = CEndianConverter::Convert(*pData);
 	return Write(&Data, sizeof(unsigned int));
 }
 
 // 文字列のシリアライズ
-bool CMemoryStreamWriter::Serialize(char *pData)
+bool CMemoryStreamWriter::Serialize(const char *pData)
 {
 	// サイズ
 	size_t Size = strlen(pData);
@@ -53,7 +53,7 @@ bool CMemoryStreamWriter::Serialize(char *pData)
 
 
 // 書き込み
-bool CMemoryStreamWriter::Write(void *pData, unsigned int Size)
+bool CMemoryStreamWriter::Write(const void *pData, unsigned int Size)
 {
 	if (CurrentPosition + Size > BufferSize)
 	{

@@ -30,28 +30,28 @@ public:
 	virtual ~CMemorySizeCaliculator() {}
 
 	/**
-	 * @fn virtual bool Serialize(int *pData) override
+	 * @fn virtual bool Serialize(const int *pData) override
 	 * @brief intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(int *pData) override;
+	virtual bool Serialize(const int *pData) override;
 
 	/**
-	 * @fn virtual bool Serialize(unsigned int *pData) override
+	 * @fn virtual bool Serialize(const unsigned int *pData) override
 	 * @brief unsigned intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(unsigned int *pData) override;
+	virtual bool Serialize(const unsigned int *pData) override;
 
 	/**
-	 * @fn virtual bool Serialize(chat *pData) override
+	 * @fn virtual bool Serialize(cconst chat *pData) override
 	 * @brief 文字列のシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
 	 */
-	virtual bool Serialize(char *pData) override;
+	virtual bool Serialize(const char *pData) override;
 
 	/**
 	 * @fn virtual bool IsError() const override
