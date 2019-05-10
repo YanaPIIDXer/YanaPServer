@@ -127,7 +127,6 @@
     <ClCompile Include="src\Peer\PeerBase.cpp" />
     <ClCompile Include="src\Socket\WindowsSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
-    <ClCompile Include="src\Socket\Listen\NullListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
   </ItemGroup>

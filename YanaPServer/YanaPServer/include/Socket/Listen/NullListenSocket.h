@@ -16,12 +16,16 @@ namespace Listen
  * @class CNullListenSocket
  * @brief 何もしないListenSocketクラス
  *		  未定義のプラットフォームで使用する。
- * @detail シングルトンクラス
  */
 class CNullListenSocket : public IListenSocket
 {
 
 public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CNullListenSocket() {}
 
 	/**
 	 * @brief デストラクタ
@@ -62,21 +66,6 @@ public:
 	 * @param[in] Callback Accept時に呼び出されるコールバック
 	 */
 	virtual void SetAcceptCallback(const std::function<void(ISocket *)> &Callback) override {}
-
-	// ============= Singleton ============
-public:
-
-	/**
-	 * @fn static CNullListenSocket &GetInstance()
-	 * @brief シングルトンインスタンス取得
-	 * @return シングルトンインスタンス
-	 */
-	static CNullListenSocket &GetInstance() { return Instance; }
-
-private:
-
-	CNullListenSocket() {}
-	static CNullListenSocket Instance;
 
 };
 

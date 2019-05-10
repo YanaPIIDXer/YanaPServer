@@ -10,27 +10,30 @@ namespace Listen
 {
 
 // 構築.
-bool CListenSocket::Build(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback)
+ListenSocketPtr CListenSocket::Build(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback)
 {
-	IListenSocket &ListenSocket = Get();
+	ListenSocketPtr pListenSocket = Create();
 
-	if (!ListenSocket.Init()) { return false; }
-	if (!ListenSocket.Bind(Port)) { return false; }
-	if (!ListenSocket.Listen()) { return false; }
+	if (!pListenSocket->Init()) { return ListenSocketPtr(); }
+	if (!pListenSocket->Bind(Port)) { return ListenSocketPtr(); }
+	if (!pListenSocket->Listen()) { return ListenSocketPtr(); }
 
-	ListenSocket.SetAcceptCallback(AcceptCallback);
-	return true;
+	pListenSocket->SetAcceptCallback(AcceptCallback);
+	return pListenSocket;
 }
 
 
 // ListenSocketオブジェクト取得.
-IListenSocket &CListenSocket::Get()
+ListenSocketPtr CListenSocket::Create()
 {
+	IListenSocket *pListenSocket = nullptr;
 #ifdef _WIN32
-	return CWindowsListenSocket::GetInstance();
+	pListenSocket = new CWindowsListenSocket();
 #else
-	return CNullListenSocket::GetInstance();
+	pListenSocket = new CNullListenSocket();
 #endif
+
+	return ListenSocketPtr(pListenSocket);
 }
 
 }

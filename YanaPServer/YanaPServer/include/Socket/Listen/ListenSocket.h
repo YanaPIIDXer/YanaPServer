@@ -2,6 +2,7 @@
 #define __LISTENSOCKET_H__
 
 #include <functional>
+#include <memory>
 
 namespace YanaPServer
 {
@@ -63,6 +64,8 @@ public:
 
 };
 
+typedef std::unique_ptr<IListenSocket> ListenSocketPtr;
+
 /**
  * @class CListenSocket
  * @brief Listen用Socketクラス
@@ -79,18 +82,12 @@ public:
 	 * @param[in] AcceptCallback Accept時のコールバック
 	 * @return 成功したらtrueを返す。
 	 */
-	static bool Build(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
-
-	/**
-	 * @fn virtual void Poll()
-	 * @brief 毎フレームの処理
-	 */
-	static void Poll() { Get().Poll(); }
+	static ListenSocketPtr Build(unsigned int Port, const std::function<void(ISocket *)> &AcceptCallback);
 
 private:
 
-	// ListenSocketオブジェクトを取得。
-	static IListenSocket &Get();
+	// ListenSocketオブジェクトを生成。
+	static ListenSocketPtr Create();
 	
 };
 

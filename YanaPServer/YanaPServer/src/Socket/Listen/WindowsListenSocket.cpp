@@ -10,8 +10,6 @@ namespace Socket
 namespace Listen
 {
 
-CWindowsListenSocket CWindowsListenSocket::Instance;
-
 // コンストラクタ
 CWindowsListenSocket::CWindowsListenSocket()
 	: Socket(INVALID_SOCKET)

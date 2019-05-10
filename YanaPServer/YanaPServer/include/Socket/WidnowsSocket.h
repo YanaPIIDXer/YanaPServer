@@ -24,16 +24,14 @@ public:
 
 	/**
 	 * @brief コンストラクタ
-	 * @param[in] InSocket ソケット
 	 */
-	CWindowsSocket(const SOCKET &InSocket);
+	CWindowsSocket();
 
 	/**
 	 * @brief コンストラクタ
-	 * @param[in] Host ホスト
-	 * @param[in] Port ポート番号
+	 * @param[in] InSocket ソケット
 	 */
-	CWindowsSocket(const std::string &Host, unsigned int Port);
+	CWindowsSocket(const SOCKET &InSocket);
 
 	/**
 	 * @brief デストラクタ
@@ -45,6 +43,15 @@ public:
 	 * @brief 毎フレーム実行する処理
 	 */
 	virtual void Poll() override;
+
+	/**
+	 * @fn virtual bool Connect(const char *pHost, unsigned int Port) override
+	 * @brief 接続
+	 * @param[in] pHost ホスト
+	 * @param[in] Port ポート
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Connect(const char *pHost, unsigned int Port) override;
 
 	/**
 	 * @fn virtual void SetEventListener() override
@@ -83,7 +90,13 @@ private:
 	public:
 		enum
 		{
+			// 何もしていない
+			None,
+
+			// 接続中.
 			Connecting,
+
+			// 接続した
 			Connected,
 		};
 	};
