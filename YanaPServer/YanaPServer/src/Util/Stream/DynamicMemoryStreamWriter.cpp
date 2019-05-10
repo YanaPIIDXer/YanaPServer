@@ -41,11 +41,7 @@ bool CDynamicMemoryStreamWriter::Serialize(const unsigned int *pData)
 // 文字列のシリアライズ
 bool CDynamicMemoryStreamWriter::Serialize(const char *pData)
 {
-	// サイズ
-	size_t Size = strlen(pData);
-	if (!Serialize(&Size)) { return false; }
-
-	// 実際の文字列.
+	size_t Size = strlen(pData) + 1;
 	return Write(pData, Size);
 }
 
@@ -57,8 +53,8 @@ bool CDynamicMemoryStreamWriter::Write(const void *pData, unsigned int Size)
 	if (pBuffer != nullptr)
 	{
 		memcpy(pTmp, pBuffer, CurrentPosition);
+		delete pBuffer;
 	}
-	delete pBuffer;
 	pBuffer = pTmp;
 
 	memcpy((pBuffer + CurrentPosition), pData, Size);
