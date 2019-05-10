@@ -1,4 +1,5 @@
 #include "Servlet/ServletPeer.h"
+#include "Servlet/ServletFinder.h"
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/DynamicMemoryStreamWriter.h"
 
@@ -10,9 +11,9 @@ namespace Servlet
 {
 
 // コンストラクタ
-CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, IServlet *pInServlet)
+CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder)
 	: CPeerBase(pSocket)
-	, pServlet(pInServlet)
+	, pFinder(pInFinder)
 {
 }
 
@@ -31,7 +32,19 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 
 	if (!Parser.Parse(pData, Request))
 	{
-		pServlet->OnError(Request, ResponseStream);
+		// @TODO:このエラーどうするべき・・・？
+		//		 とりあえず適当に返す。
+		ResponseStream.Serialize("Error.");
+		SendResponse(ResponseStream);
+		return;
+	}
+
+	IServlet *pServlet = pFinder->Find(Request.Path.c_str());
+	if (pServlet == nullptr)
+	{
+		// 404
+		// @TODO:仮。
+		ResponseStream.Serialize("404 Not Found.");
 		SendResponse(ResponseStream);
 		return;
 	}

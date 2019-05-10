@@ -10,9 +10,8 @@ using namespace YanaPServer::Peer;
 using namespace YanaPServer::Socket;
 
 // コンストラクタ
-CHttpServer::CHttpServer(IServlet *pInServlet)
+CHttpServer::CHttpServer()
 	: CApplicationBase([](PeerPtr pPeer) {})
-	, pServlet(pInServlet)
 {
 }
 
@@ -21,11 +20,17 @@ CHttpServer::~CHttpServer()
 {
 }
 
+// Servlet追加。
+void CHttpServer::AddServlet(IServlet *pServlet)
+{
+	ServletFinder.Add(pServlet);
+}
+
 
 // Peer生成.
 CPeerBase *CHttpServer::CreatePeer(ISocket *pSocket)
 {
-	CServletPeer *pPeer = new CServletPeer(pSocket, pServlet);
+	CServletPeer *pPeer = new CServletPeer(pSocket, &ServletFinder);
 	return pPeer;
 }
 

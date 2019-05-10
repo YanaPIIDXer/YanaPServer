@@ -5,13 +5,15 @@
 using namespace YanaPServer::Servlet;
 using namespace YanaPServer::Util::Stream;
 
-class TestServletEvent : public IServlet
+class TestServlet : public IServlet
 {
 
 public:
 
-	TestServletEvent() {}
-	virtual ~TestServletEvent() {}
+	TestServlet() {}
+	virtual ~TestServlet() {}
+
+	virtual const char *GetPath() const { return "/"; }
 
 	virtual void OnPost(const SHttpRequest &Request, CDynamicMemoryStreamWriter &ResponseStream) override
 	{
@@ -43,8 +45,10 @@ int main()
 {
 	std::cout << "Servlet Test" << std::endl;
 
-	TestServletEvent Event;
-	CHttpServer Server(&Event);
+	TestServlet Servlet;
+	CHttpServer Server;
+	Server.AddServlet(&Servlet);
+
 	Server.StartListen(4423);
 
 	while (Server.Service());

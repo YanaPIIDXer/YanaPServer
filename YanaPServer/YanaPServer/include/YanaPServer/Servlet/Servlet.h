@@ -25,6 +25,13 @@ public:
 	virtual ~IServlet() {}
 
 	/**
+	 * @fn virtual const char *GetPath() const = 0
+	 * @brief Servletのパスを取得
+	 * @return Servletのパス
+	 */
+	virtual const char *GetPath() const = 0;
+
+	/**
 	 * @fn virtual void OnPost() = 0
 	 * @brief POSTリクエストが投げられた時に実行されるイベント
 	 * @param[in] Request リクエスト

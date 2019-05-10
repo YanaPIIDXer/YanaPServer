@@ -3,6 +3,7 @@
 
 #include "../Application/ApplicationBase.h"
 #include "../Peer/PeerBase.h"
+#include "ServletFinder.h"
 
 namespace YanaPServer
 {
@@ -22,14 +23,20 @@ public:
 
 	/**
 	 * @brief コンストラクタ
-	 * @param[in] pInServlet Servletインタフェース
 	 */
-	CHttpServer(IServlet *pInServlet);
+	CHttpServer();
 
 	/**
 	 * @brief デストラクタ
 	 */
 	virtual ~CHttpServer();
+
+	/**
+	 * @fn void AddServlet(IServlet *pServlet)
+	 * @brief Servlet追加。
+	 * @param[in] pServlet Servlet
+	 */
+	void AddServlet(IServlet *pServlet);
 
 protected:
 
@@ -43,8 +50,8 @@ protected:
 
 private:
 
-	// Servletインタフェース
-	IServlet *pServlet;
+	// ServletFinder
+	CServletFinder ServletFinder;
 
 };
 

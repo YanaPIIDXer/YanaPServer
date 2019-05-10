@@ -10,6 +10,8 @@ namespace YanaPServer
 namespace Servlet
 {
 
+class CServletFinder;
+
 /**
  * @class CServletPeer
  * @brief HTTP接続を処理するクラス。
@@ -24,9 +26,9 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 * @param[in] pSocket ソケット
-	 * @param[in] pInServlet Servletインタフェース
+	 * @param[in] pInFinder ServletFinder
 	 */
-	CServletPeer(YanaPServer::Socket::ISocket *pSocket, IServlet *pInServlet);
+	CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder);
 
 	/**
 	 * @brief デストラクタ
@@ -43,8 +45,8 @@ public:
 
 private:
 
-	// Servletインタフェース
-	IServlet *pServlet;
+	// ServletFinder
+	CServletFinder *pFinder;
 
 
 	// レスポンス送信.
