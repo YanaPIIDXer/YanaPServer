@@ -67,14 +67,13 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">公開メンバ関数</a> &#124;
-<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
 <a href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket-members.html">全メンバ一覧</a>  </div>
   <div class="headertitle">
 <div class="title">YanaPServer::Socket::Listen::CWindowsListenSocket クラス</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>WindowsのListen用ソケットクラス  シングルトンクラス  
+<p>WindowsのListen用ソケットクラス  
  <a href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="_windows_listen_socket_8h_source.html">WindowsListenSocket.h</a>&gt;</code></p>
@@ -97,6 +96,9 @@ YanaPServer::Socket::Listen::CWindowsListenSocket 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
+<tr class="memitem:a9e385f3f3770c71fb501641eecccea92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a9e385f3f3770c71fb501641eecccea92">CWindowsListenSocket</a> ()</td></tr>
+<tr class="memdesc:a9e385f3f3770c71fb501641eecccea92"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a9e385f3f3770c71fb501641eecccea92">[詳解]</a><br /></td></tr>
+<tr class="separator:a9e385f3f3770c71fb501641eecccea92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a717c3bd686b19c2c77582c2c0754000e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a717c3bd686b19c2c77582c2c0754000e">‾CWindowsListenSocket</a> ()</td></tr>
 <tr class="memdesc:a717c3bd686b19c2c77582c2c0754000e"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a717c3bd686b19c2c77582c2c0754000e">[詳解]</a><br /></td></tr>
 <tr class="separator:a717c3bd686b19c2c77582c2c0754000e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,16 +121,30 @@ YanaPServer::Socket::Listen::CWindowsListenSocket 連携図</div>
 <tr class="memitem:abbcf4733e3638584a4a4158ecc93d062 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abbcf4733e3638584a4a4158ecc93d062">‾IListenSocket</a> ()</td></tr>
 <tr class="memdesc:abbcf4733e3638584a4a4158ecc93d062 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abbcf4733e3638584a4a4158ecc93d062">[詳解]</a><br /></td></tr>
 <tr class="separator:abbcf4733e3638584a4a4158ecc93d062 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-静的公開メンバ関数</h2></td></tr>
-<tr class="memitem:a08af4dc6abbe5cd5df75ff8f346bd836"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html">CWindowsListenSocket</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a08af4dc6abbe5cd5df75ff8f346bd836">GetInstance</a> ()</td></tr>
-<tr class="memdesc:a08af4dc6abbe5cd5df75ff8f346bd836"><td class="mdescLeft">&#160;</td><td class="mdescRight">シングルトンインスタンス取得  <a href="#a08af4dc6abbe5cd5df75ff8f346bd836">[詳解]</a><br /></td></tr>
-<tr class="separator:a08af4dc6abbe5cd5df75ff8f346bd836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><p>WindowsのListen用ソケットクラス  シングルトンクラス </p>
-</div><h2 class="groupheader">関数詳解</h2>
+<div class="textblock"><p>WindowsのListen用ソケットクラス </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a9e385f3f3770c71fb501641eecccea92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e385f3f3770c71fb501641eecccea92">&#9670;&nbsp;</a></span>CWindowsListenSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Socket::Listen::CWindowsListenSocket::CWindowsListenSocket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
 <a id="a59abdfde9a38ba10122d38f69ac0ddf7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a59abdfde9a38ba10122d38f69ac0ddf7">&#9670;&nbsp;</a></span>Bind()</h2>
 
@@ -163,34 +179,6 @@ YanaPServer::Socket::Listen::CWindowsListenSocket 連携図</div>
 <dl class="section return"><dt>戻り値</dt><dd>成功したらtrueを返す。 </dd></dl>
 
 <p><a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#ae30a24ef6e9cc097917ff32e4a51b3d4">YanaPServer::Socket::Listen::IListenSocket</a>を実装しています。</p>
-
-</div>
-</div>
-<a id="a08af4dc6abbe5cd5df75ff8f346bd836"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08af4dc6abbe5cd5df75ff8f346bd836">&#9670;&nbsp;</a></span>GetInstance()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html">CWindowsListenSocket</a> &amp; YanaPServer::Socket::Listen::CWindowsListenSocket::GetInstance </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>シングルトンインスタンス取得 </p>
-<dl class="section return"><dt>戻り値</dt><dd>シングルトンインスタンス </dd></dl>
 
 </div>
 </div>

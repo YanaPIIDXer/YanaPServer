@@ -105,6 +105,9 @@ YanaPServer::Socket::CNullSocket 連携図</div>
 <tr class="memitem:a21afe7152b3a9b2c7c9895539d9b160e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a21afe7152b3a9b2c7c9895539d9b160e">Poll</a> () override</td></tr>
 <tr class="memdesc:a21afe7152b3a9b2c7c9895539d9b160e"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレーム実行する処理  <a href="#a21afe7152b3a9b2c7c9895539d9b160e">[詳解]</a><br /></td></tr>
 <tr class="separator:a21afe7152b3a9b2c7c9895539d9b160e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58243f5bfa867f33b42385c70e679a0b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a58243f5bfa867f33b42385c70e679a0b">Connect</a> (const char *pHost, unsigned int Port) override</td></tr>
+<tr class="memdesc:a58243f5bfa867f33b42385c70e679a0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">接続  <a href="#a58243f5bfa867f33b42385c70e679a0b">[詳解]</a><br /></td></tr>
+<tr class="separator:a58243f5bfa867f33b42385c70e679a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b6ca207839bf6926edd7d0285315306"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a2b6ca207839bf6926edd7d0285315306">SetEventListener</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *pListener) override</td></tr>
 <tr class="memdesc:a2b6ca207839bf6926edd7d0285315306"><td class="mdescLeft">&#160;</td><td class="mdescRight">イベントリスナをセット  <a href="#a2b6ca207839bf6926edd7d0285315306">[詳解]</a><br /></td></tr>
 <tr class="separator:a2b6ca207839bf6926edd7d0285315306"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +156,54 @@ YanaPServer::Socket::CNullSocket 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
+<a id="a58243f5bfa867f33b42385c70e679a0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58243f5bfa867f33b42385c70e679a0b">&#9670;&nbsp;</a></span>Connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Socket::CNullSocket::Connect </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pHost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>接続 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pHost</td><td>ホスト </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Port</td><td>ポート </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>何もしないので常にfalseを返す。 </dd></dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ae5dceb6a08cf642fa2cf6d063d6e80c6">YanaPServer::Socket::ISocket</a>を実装しています。</p>
+
+</div>
+</div>
 <a id="ab0026293828419c77acbb5df3f95a317"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0026293828419c77acbb5df3f95a317">&#9670;&nbsp;</a></span>IsValid()</h2>
 
