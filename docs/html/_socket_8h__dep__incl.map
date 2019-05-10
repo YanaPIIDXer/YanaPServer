@@ -1,10 +1,14 @@
 <map id="Socket.h" name="Socket.h">
-<area shape="rect" id="node2" href="$_application_base_8h.html" title="ApplicationBase.h" alt="" coords="13,155,139,181"/>
-<area shape="rect" id="node4" href="$_peer_base_8h.html" title="PeerBase.h" alt="" coords="113,80,204,107"/>
-<area shape="rect" id="node6" href="$_null_socket_8h.html" title="NullSocket.h" alt="" coords="228,80,324,107"/>
-<area shape="rect" id="node7" href="$_widnows_socket_8h.html" title="WidnowsSocket.h" alt="" coords="349,80,475,107"/>
-<area shape="rect" id="node3" href="$_application_base_8cpp.html" title="ApplicationBase.cpp" alt="" coords="5,229,147,256"/>
-<area shape="rect" id="node5" href="$_peer_base_8cpp.html" title="PeerBase.cpp" alt="" coords="164,155,268,181"/>
-<area shape="rect" id="node8" href="$_windows_listen_socket_8cpp.html" title="WindowsListenSocket.cpp" alt="" coords="308,155,484,181"/>
-<area shape="rect" id="node9" href="$_windows_socket_8cpp.html" title="WindowsSocket.cpp" alt="" coords="508,155,649,181"/>
+<area shape="rect" id="node2" href="$_application_base_8h.html" title="ApplicationBase.h" alt="" coords="43,155,170,181"/>
+<area shape="rect" id="node6" href="$_peer_base_8h.html" title="PeerBase.h" alt="" coords="247,80,337,107"/>
+<area shape="rect" id="node7" href="$_servlet_peer_8h.html" title="ServletPeer.h" alt="" coords="373,155,472,181"/>
+<area shape="rect" id="node10" href="$_null_socket_8h.html" title="NullSocket.h" alt="" coords="412,80,508,107"/>
+<area shape="rect" id="node11" href="$_widnows_socket_8h.html" title="WidnowsSocket.h" alt="" coords="533,80,659,107"/>
+<area shape="rect" id="node3" href="$_http_server_8h.html" title="HttpServer.h" alt="" coords="171,229,264,256"/>
+<area shape="rect" id="node5" href="$_application_base_8cpp.html" title="ApplicationBase.cpp" alt="" coords="5,229,147,256"/>
+<area shape="rect" id="node4" href="$_http_server_8cpp.html" title="HttpServer.cpp" alt="" coords="215,304,321,331"/>
+<area shape="rect" id="node9" href="$_peer_base_8cpp.html" title="PeerBase.cpp" alt="" coords="245,155,349,181"/>
+<area shape="rect" id="node8" href="$_servlet_peer_8cpp.html" title="ServletPeer.cpp" alt="" coords="366,229,479,256"/>
+<area shape="rect" id="node12" href="$_windows_listen_socket_8cpp.html" title="WindowsListenSocket.cpp" alt="" coords="504,155,680,181"/>
+<area shape="rect" id="node13" href="$_windows_socket_8cpp.html" title="WindowsSocket.cpp" alt="" coords="704,155,845,181"/>
 </map>

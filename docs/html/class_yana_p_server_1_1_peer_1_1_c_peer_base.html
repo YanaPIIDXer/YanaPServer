@@ -82,6 +82,7 @@ YanaPServer::Peer::CPeerBase の継承関係図</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base__inherit__graph.png" border="0" usemap="#_yana_p_server_1_1_peer_1_1_c_peer_base_inherit__map" alt="Inheritance graph"/></div>
 <map name="_yana_p_server_1_1_peer_1_1_c_peer_base_inherit__map" id="_yana_p_server_1_1_peer_1_1_c_peer_base_inherit__map">
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html" title="HTTP接続を処理するクラス。 Java Servletみたいなモノ。 それを扱うPeer " alt="" coords="9,184,153,225"/>
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html" title="ソケットイベントリスナ " alt="" coords="5,5,157,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
@@ -96,16 +97,16 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:ad759d3ffad96bd3acbf1d73b5044aa9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ad759d3ffad96bd3acbf1d73b5044aa9b">CPeerBase</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">ISocket</a> *pInSocket)</td></tr>
-<tr class="memdesc:ad759d3ffad96bd3acbf1d73b5044aa9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#ad759d3ffad96bd3acbf1d73b5044aa9b">[詳解]</a><br /></td></tr>
-<tr class="separator:ad759d3ffad96bd3acbf1d73b5044aa9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa583bd89129d7392dbe738e3be9bff93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aa583bd89129d7392dbe738e3be9bff93">CPeerBase</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pInSocket)</td></tr>
+<tr class="memdesc:aa583bd89129d7392dbe738e3be9bff93"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#aa583bd89129d7392dbe738e3be9bff93">[詳解]</a><br /></td></tr>
+<tr class="separator:aa583bd89129d7392dbe738e3be9bff93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8deff34c46093a1f4badc602078ff802"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802">‾CPeerBase</a> ()=0</td></tr>
 <tr class="memdesc:a8deff34c46093a1f4badc602078ff802"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a8deff34c46093a1f4badc602078ff802">[詳解]</a><br /></td></tr>
 <tr class="separator:a8deff34c46093a1f4badc602078ff802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a790b68680123317b5c9f041a9a09de62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62">Poll</a> ()</td></tr>
 <tr class="memdesc:a790b68680123317b5c9f041a9a09de62"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレームの処理  <a href="#a790b68680123317b5c9f041a9a09de62">[詳解]</a><br /></td></tr>
 <tr class="separator:a790b68680123317b5c9f041a9a09de62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c3ad177699991a3d86fcd813f9639bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb">SetOverrideEventListener</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *pListener)</td></tr>
+<tr class="memitem:a1c3ad177699991a3d86fcd813f9639bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb">SetOverrideEventListener</a> (ISocketEventListener *pListener)</td></tr>
 <tr class="memdesc:a1c3ad177699991a3d86fcd813f9639bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ソケットイベントをオーバーライドするイベントリスナをセット  イベントリスナのメモリ管理（delete等）は行わないので注意。  <a href="#a1c3ad177699991a3d86fcd813f9639bb">[詳解]</a><br /></td></tr>
 <tr class="separator:a1c3ad177699991a3d86fcd813f9639bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaa7ad919a1dc7b51f8507ce57e805ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aaaa7ad919a1dc7b51f8507ce57e805ad">RemoveOverrideEventListener</a> ()</td></tr>
@@ -117,6 +118,9 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <tr class="memitem:a036c9c6218e6a833133a936348070bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1">Send</a> (const char *pData, unsigned int Size)</td></tr>
 <tr class="memdesc:a036c9c6218e6a833133a936348070bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信  <a href="#a036c9c6218e6a833133a936348070bd1">[詳解]</a><br /></td></tr>
 <tr class="separator:a036c9c6218e6a833133a936348070bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8883c025518aba9d94e810a72b6f74bd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8883c025518aba9d94e810a72b6f74bd">OnConnect</a> () override</td></tr>
+<tr class="memdesc:a8883c025518aba9d94e810a72b6f74bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">接続された  <a href="#a8883c025518aba9d94e810a72b6f74bd">[詳解]</a><br /></td></tr>
+<tr class="separator:a8883c025518aba9d94e810a72b6f74bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafc41242912b717228962f32293a4735"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735">OnDisconnect</a> () override</td></tr>
 <tr class="memdesc:aafc41242912b717228962f32293a4735"><td class="mdescLeft">&#160;</td><td class="mdescRight">切断された  <a href="#aafc41242912b717228962f32293a4735">[詳解]</a><br /></td></tr>
 <tr class="separator:aafc41242912b717228962f32293a4735"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,9 +128,6 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <tr class="memitem:adad71f519e57bcde19c08c10256e15c6 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#adad71f519e57bcde19c08c10256e15c6">‾ISocketEventListener</a> ()</td></tr>
 <tr class="memdesc:adad71f519e57bcde19c08c10256e15c6 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#adad71f519e57bcde19c08c10256e15c6">[詳解]</a><br /></td></tr>
 <tr class="separator:adad71f519e57bcde19c08c10256e15c6 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5403eb40fd5d2a3df6ce859b47e9b403 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403">OnConnect</a> ()=0</td></tr>
-<tr class="memdesc:a5403eb40fd5d2a3df6ce859b47e9b403 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">接続された  <a href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403">[詳解]</a><br /></td></tr>
-<tr class="separator:a5403eb40fd5d2a3df6ce859b47e9b403 inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4dbcbd61efefdddee7736ec2a35efcf inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ac4dbcbd61efefdddee7736ec2a35efcf">OnRecv</a> (const char *pData, unsigned int Size)=0</td></tr>
 <tr class="memdesc:ac4dbcbd61efefdddee7736ec2a35efcf inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信した  <a href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ac4dbcbd61efefdddee7736ec2a35efcf">[詳解]</a><br /></td></tr>
 <tr class="separator:ac4dbcbd61efefdddee7736ec2a35efcf inherit pub_methods_class_yana_p_server_1_1_socket_1_1_i_socket_event_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,8 +135,8 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失する（親になるshared_ptrが消える）ので、 コイツを使って何かやる時はexpired()チェックしないと死なますよ。 </p>
 </div><h2 class="groupheader">構築子と解体子</h2>
-<a id="ad759d3ffad96bd3acbf1d73b5044aa9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad759d3ffad96bd3acbf1d73b5044aa9b">&#9670;&nbsp;</a></span>CPeerBase()</h2>
+<a id="aa583bd89129d7392dbe738e3be9bff93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa583bd89129d7392dbe738e3be9bff93">&#9670;&nbsp;</a></span>CPeerBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,7 +144,7 @@ YanaPServer::Peer::CPeerBase 連携図</div>
         <tr>
           <td class="memname">YanaPServer::Peer::CPeerBase::CPeerBase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">ISocket</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *&#160;</td>
           <td class="paramname"><em>pInSocket</em></td><td>)</td>
           <td></td>
         </tr>
@@ -160,8 +161,8 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph" alt=""/></div>
-<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ad759d3ffad96bd3acbf1d73b5044aa9b_cgraph">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_aa583bd89129d7392dbe738e3be9bff93_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_aa583bd89129d7392dbe738e3be9bff93_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_aa583bd89129d7392dbe738e3be9bff93_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_aa583bd89129d7392dbe738e3be9bff93_cgraph">
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292" title="イベントリスナをセット " alt="" coords="216,5,396,47"/>
 </map>
 </div>
@@ -195,6 +196,14 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <p>有効か？ </p>
 <dl class="section return"><dt>戻り値</dt><dd>有効ならtrueを返す。 </dd></dl>
 <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c" title="有効か？ " alt="" coords="193,5,340,47"/>
+</map>
+</div>
+<div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ab75e8d60afaaaedc9882c56a7a6558b6_icgraph" alt=""/></div>
@@ -203,6 +212,35 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <area shape="rect" id="node3" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1" title="送信 " alt="" coords="193,71,333,112"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a8883c025518aba9d94e810a72b6f74bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8883c025518aba9d94e810a72b6f74bd">&#9670;&nbsp;</a></span>OnConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Peer::CPeerBase::OnConnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>接続された </p>
+
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403">YanaPServer::Socket::ISocketEventListener</a>を実装しています。</p>
 
 </div>
 </div>
@@ -257,7 +295,8 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph" alt=""/></div>
 <map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a790b68680123317b5c9f041a9a09de62_cgraph">
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6" title="有効か？ " alt="" coords="197,5,337,47"/>
-<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65" title="毎フレーム実行する処理 " alt="" coords="193,71,340,112"/>
+<area shape="rect" id="node4" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65" title="毎フレーム実行する処理 " alt="" coords="193,71,340,112"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c" title="有効か？ " alt="" coords="388,5,535,47"/>
 </map>
 </div>
 
@@ -287,6 +326,15 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 </div><div class="memdoc">
 
 <p>ソケットイベントをオーバーライドするイベントリスナを解除。 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_aaaa7ad919a1dc7b51f8507ce57e805ad_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_aaaa7ad919a1dc7b51f8507ce57e805ad_cgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_aaaa7ad919a1dc7b51f8507ce57e805ad_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_aaaa7ad919a1dc7b51f8507ce57e805ad_cgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb" title="ソケットイベントをオーバーライドするイベントリスナをセット &#160;イベントリスナのメモリ管理（delete等）は�..." alt="" coords="275,5,469,61"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292" title="イベントリスナをセット " alt="" coords="517,13,697,54"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -330,7 +378,8 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph" alt=""/></div>
 <map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph">
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6" title="有効か？ " alt="" coords="197,5,337,47"/>
-<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46" title="送信 " alt="" coords="193,71,340,112"/>
+<area shape="rect" id="node4" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46" title="送信 " alt="" coords="193,71,340,112"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c" title="有効か？ " alt="" coords="388,5,535,47"/>
 </map>
 </div>
 
@@ -345,7 +394,7 @@ YanaPServer::Peer::CPeerBase 連携図</div>
         <tr>
           <td class="memname">void YanaPServer::Peer::CPeerBase::SetOverrideEventListener </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *&#160;</td>
+          <td class="paramtype">ISocketEventListener *&#160;</td>
           <td class="paramname"><em>pListener</em></td><td>)</td>
           <td></td>
         </tr>
@@ -365,6 +414,14 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_cgraph" alt=""/></div>
 <map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_cgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_cgraph">
 <area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292" title="イベントリスナをセット " alt="" coords="248,13,428,54"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_icgraph" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aaaa7ad919a1dc7b51f8507ce57e805ad" title="ソケットイベントをオーバーライドするイベントリスナを解除。 " alt="" coords="248,5,469,61"/>
 </map>
 </div>
 
