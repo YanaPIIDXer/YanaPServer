@@ -134,7 +134,6 @@
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
-    <ClCompile Include="src\Util\Stream\DynamicMemoryStreamWriter.cpp" />
     <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
     <ClCompile Include="src\Util\Stream\StringStream.cpp" />
@@ -173,7 +172,6 @@
     <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
     <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\DynamicMemoryStreamWriter.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
