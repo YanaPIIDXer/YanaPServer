@@ -9,6 +9,8 @@ namespace YanaPServer
 namespace Servlet
 {
 
+class IServletEvent;
+
 /**
  * @class CHttpServer
  * @brief HTTPサーバ
@@ -20,8 +22,9 @@ public:
 
 	/**
 	 * @brief コンストラクタ
+	 * @param[in] pInServletEvent サーブレットイベントインタフェース
 	 */
-	CHttpServer();
+	CHttpServer(IServletEvent *pInServletEvent);
 
 	/**
 	 * @brief デストラクタ
@@ -31,7 +34,7 @@ public:
 protected:
 
 	/**
-	 * @fn virtual CPeerBase *CreatePeer(ISocket *pSocket) = 0
+	 * @fn virtual CPeerBase *CreatePeer(YanaPServer::Socket::ISocket *pSocket) override final
 	 * @brief Peer生成
 	 * @param[in] pSocket ソケット
 	 * @return CPeerBaseを派生したオブジェクトを生成して返す。
@@ -39,6 +42,9 @@ protected:
 	virtual YanaPServer::Peer::CPeerBase *CreatePeer(YanaPServer::Socket::ISocket *pSocket) override;
 
 private:
+
+	// サーブレットイベントインタフェース
+	IServletEvent *pServletEvent;
 
 };
 

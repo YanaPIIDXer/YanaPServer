@@ -8,8 +8,9 @@ namespace Servlet
 {
 
 // コンストラクタ
-CServlet::CServlet(YanaPServer::Socket::ISocket *pSocket)
+CServlet::CServlet(YanaPServer::Socket::ISocket *pSocket, IServletEvent *pInEvent)
 	: CPeerBase(pSocket)
+	, pEvent(pInEvent)
 {
 }
 

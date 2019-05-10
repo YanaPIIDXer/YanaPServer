@@ -134,5 +134,8 @@
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="include\YanaPServer\Servlet\ServletEvent.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

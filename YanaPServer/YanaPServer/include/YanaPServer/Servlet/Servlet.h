@@ -3,6 +3,7 @@
 
 #include "../Peer/PeerBase.h"
 #include "../Socket/Socket.h"
+#include "ServletEvent.h"
 
 namespace YanaPServer
 {
@@ -22,8 +23,9 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 * @param[in] pSocket ソケット
+	 * @param[in] IServletEvent イベントインタフェース
 	 */
-	CServlet(YanaPServer::Socket::ISocket *pSocket);
+	CServlet(YanaPServer::Socket::ISocket *pSocket, IServletEvent *pInEvent);
 
 	/**
 	 * @brief デストラクタ
@@ -39,6 +41,9 @@ public:
 	virtual void OnRecv(const char *pData, unsigned int Size) override;
 
 private:
+
+	// イベントインタフェース
+	IServletEvent *pEvent;
 
 };
 

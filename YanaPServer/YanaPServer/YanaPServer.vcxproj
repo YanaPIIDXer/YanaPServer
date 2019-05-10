@@ -154,6 +154,7 @@
     <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\ServletEvent.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\ListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\NullListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\WindowsListenSocket.h" />
