@@ -18,3 +18,12 @@
 
 # ソースコードドキュメント
 https://yanapiidxer.github.io/YanaPServer/html/index.html
+
+# MySQLライブラリについて
+本ライブラリにはMySQL-Connectorを使用したモジュールが含まれています。  
+その為、ライブラリを使用するにはMySQL-Connectorをインストールし、パスを通しておく必要があります。  
+以下の手順でインストールし、パスを通してください。  
+
+１：以下のURLから**32Bit版を**ダウンロードし、展開する。  
+http://download.nust.na/pub6/mysql/downloads/connector/c/index.html  
+２：追加のインクルードディレクトリに、展開したディレクトリ内に含まれる「include」ディレクトリを追加する。  
