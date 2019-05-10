@@ -1,8 +1,8 @@
 #ifndef __PEERBASE_H__
 #define __PEERBASE_H__
 
-#include "Socket/Socket.h"
-#include "Socket/SocketEventListener.h"
+#include "../Socket/Socket.h"
+#include "../Socket/SocketEventListener.h"
 
 namespace YanaPServer
 {
