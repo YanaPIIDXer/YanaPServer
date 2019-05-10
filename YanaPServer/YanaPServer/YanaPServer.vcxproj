@@ -126,6 +126,8 @@
     <ClCompile Include="src\MySQL\MySqlConnection.cpp" />
     <ClCompile Include="src\MySQL\MySqlQuery.cpp" />
     <ClCompile Include="src\Peer\PeerBase.cpp" />
+    <ClCompile Include="src\Servlet\HttpServer.cpp" />
+    <ClCompile Include="src\Servlet\Servlet.cpp" />
     <ClCompile Include="src\Socket\WindowsSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
@@ -150,6 +152,8 @@
     <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
     <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
     <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\ListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\NullListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\WindowsListenSocket.h" />
