@@ -1,8 +1,0 @@
-<map id="ListenSocket.h" name="ListenSocket.h">
-<area shape="rect" id="node2" href="$_application_base_8h.html" title="ApplicationBase.h" alt="" coords="13,80,139,107"/>
-<area shape="rect" id="node4" href="$_null_listen_socket_8h.html" title="NullListenSocket.h" alt="" coords="164,80,295,107"/>
-<area shape="rect" id="node5" href="$_listen_socket_8cpp.html" title="ListenSocket.cpp" alt="" coords="243,155,365,181"/>
-<area shape="rect" id="node6" href="$_windows_listen_socket_8h.html" title="WindowsListenSocket.h" alt="" coords="369,80,532,107"/>
-<area shape="rect" id="node3" href="$_application_base_8cpp.html" title="ApplicationBase.cpp" alt="" coords="5,155,147,181"/>
-<area shape="rect" id="node7" href="$_windows_listen_socket_8cpp.html" title="WindowsListenSocket.cpp" alt="" coords="389,155,565,181"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="YanaPServer::Socket::CWindowsSocket::Connect" name="YanaPServer::Socket::CWindowsSocket::Connect">
-<area shape="rect" id="node2" href="$class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#a31ece1d891e0e5bb8f7122e01a60f48f" title="シングルトンインスタンス取得 " alt="" coords="243,5,445,61"/>
-<area shape="rect" id="node3" href="$class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ae96498dafd69dcc53d09ca3801f150e4" title="有効か？ " alt="" coords="254,86,434,127"/>
-<area shape="rect" id="node4" href="$class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#aff6b730b0183ad5203c16554128e9528" title="解放処理 " alt="" coords="250,151,438,193"/>
-<area shape="rect" id="node5" href="$class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a13865bd7f63c9c9aa3b6f1c7e12c380b" title="切断された " alt="" coords="493,144,645,200"/>
-</map>
