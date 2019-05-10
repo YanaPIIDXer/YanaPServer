@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['‾capplicationbase',['‾CApplicationBase',['../class_yana_p_server_1_1_application_1_1_c_application_base.html#a380a8975b52549e8f7a234112d4a77dd',1,'YanaPServer::Application::CApplicationBase']]],
-  ['‾cnulllistensocket',['‾CNullListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#a5a4602065082d402d6ac8de90a3bfb54',1,'YanaPServer::Socket::Listen::CNullListenSocket']]],
-  ['‾cnullsocket',['‾CNullSocket',['../class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a797b4e7813fe6eb361040b1396e24f91',1,'YanaPServer::Socket::CNullSocket']]],
-  ['‾cpeerbase',['‾CPeerBase',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802',1,'YanaPServer::Peer::CPeerBase']]],
-  ['‾cwindowslistensocket',['‾CWindowsListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a717c3bd686b19c2c77582c2c0754000e',1,'YanaPServer::Socket::Listen::CWindowsListenSocket']]],
-  ['‾cwindowssocket',['‾CWindowsSocket',['../class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5',1,'YanaPServer::Socket::CWindowsSocket']]],
-  ['‾cwinsockmanager',['‾CWinSockManager',['../class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#ac7cc785259a25d880413bd162dab2856',1,'YanaPServer::Socket::Windows::CWinSockManager']]],
-  ['‾ilistensocket',['‾IListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abbcf4733e3638584a4a4158ecc93d062',1,'YanaPServer::Socket::Listen::IListenSocket']]],
-  ['‾isocket',['‾ISocket',['../class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea',1,'YanaPServer::Socket::ISocket']]],
-  ['‾isocketeventlistener',['‾ISocketEventListener',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#adad71f519e57bcde19c08c10256e15c6',1,'YanaPServer::Socket::ISocketEventListener']]]
+  ['send',['Send',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1',1,'YanaPServer::Peer::CPeerBase::Send()'],['../class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a5a8801b67702f0c0c0855ee61b3f3652',1,'YanaPServer::Socket::CNullSocket::Send()'],['../class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46',1,'YanaPServer::Socket::ISocket::Send()'],['../class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a3b1502d14401cbb8bca097821f8c14db',1,'YanaPServer::Socket::CWindowsSocket::Send()']]],
+  ['service',['Service',['../class_yana_p_server_1_1_application_1_1_c_application_base.html#a4e45fc7fdd46f12864735cebabbb3a38',1,'YanaPServer::Application::CApplicationBase']]],
+  ['setacceptcallback',['SetAcceptCallback',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#a78c5f5b916fe56f161326d210962c01c',1,'YanaPServer::Socket::Listen::IListenSocket::SetAcceptCallback()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html#aa88f95f8189cf21a4ca37ce3f9f2f485',1,'YanaPServer::Socket::Listen::CNullListenSocket::SetAcceptCallback()'],['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a7a3de2af19588599e34ae6da9311ea3e',1,'YanaPServer::Socket::Listen::CWindowsListenSocket::SetAcceptCallback()']]],
+  ['seteventlistener',['SetEventListener',['../class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a2b6ca207839bf6926edd7d0285315306',1,'YanaPServer::Socket::CNullSocket::SetEventListener()'],['../class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292',1,'YanaPServer::Socket::ISocket::SetEventListener()'],['../class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a35a6e115696cd51a36230ef6cb33fccc',1,'YanaPServer::Socket::CWindowsSocket::SetEventListener()']]],
+  ['setoverrideeventlistener',['SetOverrideEventListener',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb',1,'YanaPServer::Peer::CPeerBase']]],
+  ['simplequery',['SimpleQuery',['../class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#ac7db2fdc61bfcbb6821a7c6b200e4afb',1,'YanaPServer::MySQL::CMySqlConnection']]],
+  ['socket_2eh',['Socket.h',['../_socket_8h.html',1,'']]],
+  ['socketeventlistener_2eh',['SocketEventListener.h',['../_socket_event_listener_8h.html',1,'']]],
+  ['startlisten',['StartListen',['../class_yana_p_server_1_1_application_1_1_c_application_base.html#ab11680fa2e67a2d5102273d734fea682',1,'YanaPServer::Application::CApplicationBase']]]
 ];
