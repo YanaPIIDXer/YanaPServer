@@ -52,12 +52,13 @@ bool CDynamicMemoryStreamWriter::Write(const void *pData, unsigned int Size)
 	if (pBuffer != nullptr)
 	{
 		memcpy(pTmp, pBuffer, CurrentPosition);
-		delete pBuffer;
+		delete[] pBuffer;
 	}
 	pBuffer = pTmp;
 
 	memcpy((pBuffer + CurrentPosition), pData, Size);
 	CurrentPosition += Size;
+
 	return true;
 }
 
