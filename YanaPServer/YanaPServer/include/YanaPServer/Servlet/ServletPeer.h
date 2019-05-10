@@ -48,7 +48,7 @@ private:
 
 
 	// レスポンス送信.
-	void SendResponse(std::stringstream &Stream);
+	void SendResponse(const YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &Stream);
 
 };
 

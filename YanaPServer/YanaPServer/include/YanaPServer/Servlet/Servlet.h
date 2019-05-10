@@ -3,6 +3,7 @@
 
 #include "HttpRequest.h"
 #include <sstream>
+#include "../Util/Stream/DynamicMemoryStreamWriter.h"
 
 namespace YanaPServer
 {
@@ -29,7 +30,7 @@ public:
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnPost(const SHttpRequest &Request, std::stringstream &ResponseStream) = 0;
+	virtual void OnPost(const SHttpRequest &Request, YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &ResponseStream) = 0;
 
 	/**
 	 * @fn virtual void OnGet() = 0
@@ -37,7 +38,7 @@ public:
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnGet(const SHttpRequest &Request, std::stringstream &ResponseStream) = 0;
+	virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &ResponseStream) = 0;
 
 	/**
 	 * @fn virtual void OnError() = 0
@@ -45,7 +46,7 @@ public:
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnError(const SHttpRequest &Request, std::stringstream &ResponseStream) = 0;
+	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &ResponseStream) = 0;
 
 };
 

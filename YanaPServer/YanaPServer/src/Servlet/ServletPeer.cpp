@@ -1,5 +1,8 @@
 #include "Servlet/ServletPeer.h"
 #include "Servlet/HttpRequestParser.h"
+#include "Util/Stream/DynamicMemoryStreamWriter.h"
+
+using namespace YanaPServer::Util::Stream;
 
 namespace YanaPServer
 {
@@ -24,7 +27,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
 
-	std::stringstream ResponseStream;
+	CDynamicMemoryStreamWriter ResponseStream;
 
 	if (!Parser.Parse(pData, Request))
 	{
@@ -57,13 +60,11 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(std::stringstream &Stream)
+void CServletPeer::SendResponse(const CDynamicMemoryStreamWriter &Stream)
 {
 	// @TODO:実際にはレスポンスコードとかを付加する必要がある。
-	// @FIXME:出力される文字列がおかしい。
-	//		  多分自前のストリームクラスを定義しないと駄目っぽい。
-	const char *pData = Stream.str().data();
-	unsigned int Size = Stream.str().size();
+	const char *pData = Stream.GetBuffer();
+	unsigned int Size = Stream.GetSize();
 	Send(pData, Size);
 }
 
