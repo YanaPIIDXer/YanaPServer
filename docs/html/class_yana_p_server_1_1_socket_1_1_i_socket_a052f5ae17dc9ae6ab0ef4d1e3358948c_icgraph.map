@@ -1,0 +1,5 @@
+<map id="YanaPServer::Socket::ISocket::IsValid" name="YanaPServer::Socket::ISocket::IsValid">
+<area shape="rect" id="node2" href="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6" title="有効か？ " alt="" coords="200,39,340,80"/>
+<area shape="rect" id="node3" href="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62" title="毎フレームの処理 " alt="" coords="388,5,528,47"/>
+<area shape="rect" id="node4" href="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1" title="送信 " alt="" coords="388,71,528,112"/>
+</map>

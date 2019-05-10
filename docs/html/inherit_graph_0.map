@@ -1,0 +1,4 @@
+<map id="クラス階層図" name="クラス階層図">
+<area shape="rect" id="node1" href="$class_yana_p_server_1_1_application_1_1_c_application_base.html" title="アプリケーションメイン基底クラス " alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node2" href="$class_yana_p_server_1_1_servlet_1_1_c_http_server.html" title="HTTPサーバ " alt="" coords="223,5,367,47"/>
+</map>

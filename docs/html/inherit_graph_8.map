@@ -1,0 +1,5 @@
+<map id="クラス階層図" name="クラス階層図">
+<area shape="rect" id="node1" href="$class_yana_p_server_1_1_socket_1_1_i_socket.html" title="ソケットの挙動を実装するためのインタフェース " alt="" coords="5,39,152,80"/>
+<area shape="rect" id="node2" href="$class_yana_p_server_1_1_socket_1_1_c_null_socket.html" title="何もしないSocket 未定義のプラットフォームで使用される。 " alt="" coords="200,5,347,47"/>
+<area shape="rect" id="node3" href="$class_yana_p_server_1_1_socket_1_1_c_windows_socket.html" title="Windowsでのソケットの挙動を実装するクラス " alt="" coords="200,71,347,112"/>
+</map>
