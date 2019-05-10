@@ -13,7 +13,7 @@ namespace Socket
 CWindowsSocket::CWindowsSocket()
 	: Socket(INVALID_SOCKET)
 	, NonBlockingMode(1)
-	, State(EState::Connecting)
+	, State(EState::None)
 	, pEventListener(nullptr)
 {
 }
@@ -22,7 +22,7 @@ CWindowsSocket::CWindowsSocket()
 CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
 	: Socket(InSocket)
 	, NonBlockingMode(1)
-	, State(EState::None)
+	, State(EState::Connected)
 	, pEventListener(nullptr)
 {
 	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
