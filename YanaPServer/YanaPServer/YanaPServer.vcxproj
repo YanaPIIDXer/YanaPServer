@@ -76,8 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include\;$(MYSQL_C_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>libmysql.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MYSQL_C_LIB)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -117,6 +121,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application\ApplicationBase.cpp" />
+    <ClCompile Include="src\MySQL\MySqlBinds.cpp" />
+    <ClCompile Include="src\MySQL\MySqlConnection.cpp" />
+    <ClCompile Include="src\MySQL\MySqlQuery.cpp" />
     <ClCompile Include="src\Peer\PeerBase.cpp" />
     <ClCompile Include="src\Socket\WindowsSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
@@ -126,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application\ApplicationBase.h" />
+    <ClInclude Include="include\MySQL\MySqlBinds.h" />
+    <ClInclude Include="include\MySQL\MySqlConnection.h" />
+    <ClInclude Include="include\MySQL\MySqlQuery.h" />
     <ClInclude Include="include\Peer\PeerBase.h" />
     <ClInclude Include="include\Socket\NullSocket.h" />
     <ClInclude Include="include\Socket\Socket.h" />

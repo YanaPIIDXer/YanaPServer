@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: MySqlConnection.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2a67cf3891460988a2f6e9d0adb34c1b.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_bc240e9d17da8aeb8841cab7b609052b.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_1fb47a3b24f41454f77631ee11e2c6a9.html">include</a></li><li class="navelem"><a class="el" href="dir_579dd497c411f40bc9c0e14bb7b876b1.html">MySQL</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">MySqlConnection.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_my_sql_connection_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __MYSQLCONNECTION_H__</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __MYSQLCONNECTION_H__</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;mysql.h&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#else</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;mysql/mysql.h&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_my_sql_query_8h.html">MySqlQuery.h</a>&quot;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_yana_p_server.html">YanaPServer</a></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>MySQL</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html">CMySqlConnection</a></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#afd82f80ad57ef315a26198ef4e06d55a">CMySqlConnection</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#af36bf66b34727c1b11b64807e2a01ef6">‾CMySqlConnection</a>();</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#a069873b393715119fb69e52b850e86a0">Connect</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pHost, <span class="keyword">const</span> <span class="keywordtype">char</span> *pUserName, <span class="keyword">const</span> <span class="keywordtype">char</span> *pPassword, <span class="keyword">const</span> <span class="keywordtype">char</span> *pDBName);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#ac7db2fdc61bfcbb6821a7c6b200e4afb">SimpleQuery</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pQuery) <span class="keyword">const</span>;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_query.html">CMySqlQuery</a> <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#a0c9b60b21e04cc3ce4c69df1dc3148fd">CreateQuery</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pQuery) <span class="keyword">const</span>;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#a47d2afbed9a03b674688d9ccf8e0db6c">Disconnect</a>();</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// MySQLへの接続.</span></div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    MYSQL *pConnection;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif      // #ifndef __MYSQLCONNECTION_H__</span></div><div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html_a069873b393715119fb69e52b850e86a0"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#a069873b393715119fb69e52b850e86a0">YanaPServer::MySQL::CMySqlConnection::Connect</a></div><div class="ttdeci">bool Connect(const char *pHost, const char *pUserName, const char *pPassword, const char *pDBName)</div><div class="ttdoc">接続 </div><div class="ttdef"><b>Definition:</b> MySqlConnection.cpp:21</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html_ac7db2fdc61bfcbb6821a7c6b200e4afb"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#ac7db2fdc61bfcbb6821a7c6b200e4afb">YanaPServer::MySQL::CMySqlConnection::SimpleQuery</a></div><div class="ttdeci">bool SimpleQuery(const char *pQuery) const</div><div class="ttdoc">単純なクエリ実行 </div><div class="ttdef"><b>Definition:</b> MySqlConnection.cpp:39</div></div>
+<div class="ttc" id="_my_sql_query_8h_html"><div class="ttname"><a href="_my_sql_query_8h.html">MySqlQuery.h</a></div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html_a0c9b60b21e04cc3ce4c69df1dc3148fd"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#a0c9b60b21e04cc3ce4c69df1dc3148fd">YanaPServer::MySQL::CMySqlConnection::CreateQuery</a></div><div class="ttdeci">CMySqlQuery CreateQuery(const char *pQuery) const</div><div class="ttdoc">クエリ生成 </div><div class="ttdef"><b>Definition:</b> MySqlConnection.cpp:48</div></div>
+<div class="ttc" id="namespace_yana_p_server_html"><div class="ttname"><a href="namespace_yana_p_server.html">YanaPServer</a></div><div class="ttdef"><b>Definition:</b> ApplicationBase.h:13</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html_a47d2afbed9a03b674688d9ccf8e0db6c"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#a47d2afbed9a03b674688d9ccf8e0db6c">YanaPServer::MySQL::CMySqlConnection::Disconnect</a></div><div class="ttdeci">void Disconnect()</div><div class="ttdoc">切断 </div><div class="ttdef"><b>Definition:</b> MySqlConnection.cpp:55</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html_afd82f80ad57ef315a26198ef4e06d55a"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#afd82f80ad57ef315a26198ef4e06d55a">YanaPServer::MySQL::CMySqlConnection::CMySqlConnection</a></div><div class="ttdeci">CMySqlConnection()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> MySqlConnection.cpp:9</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html">YanaPServer::MySQL::CMySqlConnection</a></div><div class="ttdoc">MySQL接続クラス </div><div class="ttdef"><b>Definition:</b> MySqlConnection.h:22</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_query_html"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_query.html">YanaPServer::MySQL::CMySqlQuery</a></div><div class="ttdoc">MySQLクエリクラス  CMySqlConnectionクラスが生成する。 </div><div class="ttdef"><b>Definition:</b> MySqlQuery.h:23</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection_html_af36bf66b34727c1b11b64807e2a01ef6"><div class="ttname"><a href="class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#af36bf66b34727c1b11b64807e2a01ef6">YanaPServer::MySQL::CMySqlConnection::‾CMySqlConnection</a></div><div class="ttdeci">‾CMySqlConnection()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> MySqlConnection.cpp:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
