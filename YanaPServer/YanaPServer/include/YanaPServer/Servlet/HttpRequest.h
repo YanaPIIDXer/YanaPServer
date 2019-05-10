@@ -36,6 +36,7 @@ struct SHttpRequest
 	SHttpRequest()
 		: Method(EHttpMethod::Invalid)
 		, Path("")
+		, ProtocolVersion("")
 	{
 	}
 
@@ -44,6 +45,9 @@ struct SHttpRequest
 
 	//! パス
 	std::string Path;
+
+	//! プロトコルバージョン
+	std::string ProtocolVersion;
 
 };
 

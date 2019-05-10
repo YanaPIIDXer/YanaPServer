@@ -50,7 +50,7 @@ private:
 
 
 	// レスポンス送信.
-	void SendResponse(const YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &Stream);
+	void SendResponse(const YanaPServer::Util::Stream::CStringStream &Stream);
 
 };
 

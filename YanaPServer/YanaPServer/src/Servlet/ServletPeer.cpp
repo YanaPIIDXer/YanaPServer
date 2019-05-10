@@ -1,7 +1,7 @@
 #include "Servlet/ServletPeer.h"
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpRequestParser.h"
-#include "Util/Stream/DynamicMemoryStreamWriter.h"
+#include "Util/Stream/StringStream.h"
 
 using namespace YanaPServer::Util::Stream;
 
@@ -28,13 +28,13 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
 
-	CDynamicMemoryStreamWriter ResponseStream;
+	CStringStream ResponseStream;
 
 	if (!Parser.Parse(pData, Request))
 	{
 		// @TODO:このエラーどうするべき・・・？
 		//		 とりあえず適当に返す。
-		ResponseStream.Serialize("Error.");
+		ResponseStream.Append("Error.");
 		SendResponse(ResponseStream);
 		return;
 	}
@@ -44,7 +44,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	{
 		// 404
 		// @TODO:仮。
-		ResponseStream.Serialize("404 Not Found.");
+		ResponseStream.Append("404 Not Found.");
 		SendResponse(ResponseStream);
 		return;
 	}
@@ -73,11 +73,11 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const CDynamicMemoryStreamWriter &Stream)
+void CServletPeer::SendResponse(const CStringStream &Stream)
 {
 	// @TODO:実際にはレスポンスコードとかを付加する必要がある。
-	const char *pData = Stream.GetBuffer();
-	unsigned int Size = Stream.GetSize();
+	const char *pData = Stream.Get();
+	unsigned int Size = Stream.GetLength() + 1;
 	Send(pData, Size);
 }
 
