@@ -1,4 +1,4 @@
-#include "Servlet/Servlet.h"
+#include "Servlet/ServletPeer.h"
 #include "Servlet/HttpRequestParser.h"
 
 namespace YanaPServer
@@ -7,19 +7,19 @@ namespace Servlet
 {
 
 // コンストラクタ
-CServlet::CServlet(YanaPServer::Socket::ISocket *pSocket, IServletEvent *pInEvent)
+CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, IServlet *pInServlet)
 	: CPeerBase(pSocket)
-	, pEvent(pInEvent)
+	, pServlet(pInServlet)
 {
 }
 
 // デストラクタ
-CServlet::~CServlet()
+CServletPeer::~CServletPeer()
 {
 }
 
 // 受信した。
-void CServlet::OnRecv(const char *pData, unsigned int Size)
+void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
@@ -28,7 +28,7 @@ void CServlet::OnRecv(const char *pData, unsigned int Size)
 
 	if (!Parser.Parse(pData, Request))
 	{
-		pEvent->OnError(Request, ResponseStream);
+		pServlet->OnError(Request, ResponseStream);
 		SendResponse(ResponseStream);
 		return;
 	}
@@ -37,18 +37,18 @@ void CServlet::OnRecv(const char *pData, unsigned int Size)
 	{
 		case EHttpMethod::POST:
 
-			pEvent->OnPost(Request, ResponseStream);
+			pServlet->OnPost(Request, ResponseStream);
 			break;
 
 		case EHttpMethod::GET:
 
-			pEvent->OnGet(Request, ResponseStream);
+			pServlet->OnGet(Request, ResponseStream);
 			break;
 
 		default:
 
 			// とりあえずエラーにしておく。
-			pEvent->OnError(Request, ResponseStream);
+			pServlet->OnError(Request, ResponseStream);
 			break;
 	}
 
@@ -57,7 +57,7 @@ void CServlet::OnRecv(const char *pData, unsigned int Size)
 
 
 // レスポンス送信.
-void CServlet::SendResponse(std::stringstream &Stream)
+void CServletPeer::SendResponse(std::stringstream &Stream)
 {
 	// @TODO:実際にはレスポンスコードとかを付加する必要がある。
 	// @FIXME:出力される文字列がおかしい。

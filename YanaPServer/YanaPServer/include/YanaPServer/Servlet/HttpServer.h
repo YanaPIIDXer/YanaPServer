@@ -9,7 +9,7 @@ namespace YanaPServer
 namespace Servlet
 {
 
-class IServletEvent;
+class IServlet;
 
 /**
  * @class CHttpServer
@@ -22,9 +22,9 @@ public:
 
 	/**
 	 * @brief コンストラクタ
-	 * @param[in] pInServletEvent サーブレットイベントインタフェース
+	 * @param[in] pInServlet Servletインタフェース
 	 */
-	CHttpServer(IServletEvent *pInServletEvent);
+	CHttpServer(IServlet *pInServlet);
 
 	/**
 	 * @brief デストラクタ
@@ -43,8 +43,8 @@ protected:
 
 private:
 
-	// サーブレットイベントインタフェース
-	IServletEvent *pServletEvent;
+	// Servletインタフェース
+	IServlet *pServlet;
 
 };
 

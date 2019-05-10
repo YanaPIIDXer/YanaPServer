@@ -1,10 +1,10 @@
 #include <iostream>
 #include "YanaPServer/Servlet/HttpServer.h"
-#include "YanaPServer/Servlet/ServletEvent.h"
+#include "YanaPServer/Servlet/Servlet.h"
 
 using namespace YanaPServer::Servlet;
 
-class TestServletEvent : public IServletEvent
+class TestServletEvent : public IServlet
 {
 
 public:

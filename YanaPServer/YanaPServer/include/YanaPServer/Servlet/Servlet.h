@@ -1,9 +1,8 @@
-#ifndef __SERVLET_H__
-#define __SERVLET_H__
+#ifndef __SERVLETEVENT_H__
+#define __SERVLETEVENT_H__
 
-#include "../Peer/PeerBase.h"
-#include "../Socket/Socket.h"
-#include "ServletEvent.h"
+#include "HttpRequest.h"
+#include <sstream>
 
 namespace YanaPServer
 {
@@ -11,47 +10,46 @@ namespace Servlet
 {
 
 /**
- * @class CServlet
- * @brief HTTP接続を処理するクラス。
- *        Java Servletみたいなモノ。
+ * @class IServlet
+ * @brief Servletインタフェース
  */
-class CServlet : public YanaPServer::Peer::CPeerBase
+class IServlet
 {
 
 public:
 
 	/**
-	 * @brief コンストラクタ
-	 * @param[in] pSocket ソケット
-	 * @param[in] IServletEvent イベントインタフェース
-	 */
-	CServlet(YanaPServer::Socket::ISocket *pSocket, IServletEvent *pInEvent);
-
-	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CServlet();
+	virtual ~IServlet() {}
 
 	/**
-	 * @fn virtual void OnRecv(const char *pData, unsigned int Size) override
-	 * @brief 受信した
-	 * @param[in] pData データ
-	 * @param[in] Size データ長
+	 * @fn virtual void OnPost() = 0
+	 * @brief POSTリクエストが投げられた時に実行されるイベント
+	 * @param[in] Request リクエスト
+	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnRecv(const char *pData, unsigned int Size) override;
+	virtual void OnPost(const SHttpRequest &Request, std::stringstream &ResponseStream) = 0;
 
-private:
+	/**
+	 * @fn virtual void OnGet() = 0
+	 * @brief GETリクエストが投げられた時に実行されるイベント
+	 * @param[in] Request リクエスト
+	 * @param[in] ResponseStream レスポンスストリーム
+	 */
+	virtual void OnGet(const SHttpRequest &Request, std::stringstream &ResponseStream) = 0;
 
-	// イベントインタフェース
-	IServletEvent *pEvent;
-
-
-	// レスポンス送信.
-	void SendResponse(std::stringstream &Stream);
+	/**
+	 * @fn virtual void OnError() = 0
+	 * @brief エラー時のイベント
+	 * @param[in] Request リクエスト
+	 * @param[in] ResponseStream レスポンスストリーム
+	 */
+	virtual void OnError(const SHttpRequest &Request, std::stringstream &ResponseStream) = 0;
 
 };
 
 }
 }
 
-#endif		// #ifndef __SERVLET_H__
+#endif		// #ifndef __SERVLETEVENT_H__
