@@ -13,7 +13,7 @@ namespace Listen
 {
 
 /**
- * @class NullListenSocket
+ * @class CNullListenSocket
  * @brief 何もしないListenSocketクラス
  *		  未定義のプラットフォームで使用する。
  * @detail シングルトンクラス
