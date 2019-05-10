@@ -45,6 +45,10 @@ private:
 	// イベントインタフェース
 	IServletEvent *pEvent;
 
+
+	// レスポンス送信.
+	void SendResponse(std::stringstream &Stream);
+
 };
 
 }

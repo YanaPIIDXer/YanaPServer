@@ -12,22 +12,28 @@ public:
 	TestServletEvent() {}
 	virtual ~TestServletEvent() {}
 
-	virtual void OnPost(const SHttpRequest &Request) override
+	virtual void OnPost(const SHttpRequest &Request, std::stringstream &ResponseStream) override
 	{
 		std::cout << "POST" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
+
+		ResponseStream << "POST OK." << std::endl;
 	}
 
-	virtual void OnGet(const SHttpRequest &Request) override
+	virtual void OnGet(const SHttpRequest &Request, std::stringstream &ResponseStream) override
 	{
 		std::cout << "GET" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
+
+		ResponseStream << "GET OK." << std::endl;
 	}
 
-	virtual void OnError(const SHttpRequest &Request) override
+	virtual void OnError(const SHttpRequest &Request, std::stringstream &ResponseStream) override
 	{
 		std::cout << "ERROR" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
+
+		ResponseStream << "Error." << std::endl;
 	}
 
 };
