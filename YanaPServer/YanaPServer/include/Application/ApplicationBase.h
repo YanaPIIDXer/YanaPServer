@@ -4,6 +4,8 @@
 using namespace YanaPServer::Socket;
 #include "Peer/PeerBase.h"
 using namespace YanaPServer::Peer;
+#include "Socket/Listen/ListenSocket.h"
+using namespace YanaPServer::Socket::Listen;
 #include <vector>
 #include <memory>
 #include <functional>
@@ -80,6 +82,9 @@ private:
 
 	// 接続時コールバック
 	std::function<void(PeerPtr)> OnConnect;
+
+	// Listenソケット
+	ListenSocketPtr pListenSocket;
 
 
 	// Listenした。

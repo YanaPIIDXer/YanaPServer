@@ -1,6 +1,4 @@
 #include "Application/ApplicationBase.h"
-#include "Socket/Listen/ListenSocket.h"
-using namespace YanaPServer::Socket::Listen;
 
 namespace YanaPServer
 {
@@ -10,6 +8,7 @@ namespace Application
 // コンストラクタ
 CApplicationBase::CApplicationBase(const std::function<void(PeerPtr)> &OnConnectFunction)
 	: OnConnect(OnConnectFunction)
+	, pListenSocket()
 {
 }
 
@@ -22,14 +21,19 @@ CApplicationBase::~CApplicationBase()
 // Listen開始.
 bool CApplicationBase::StartListen(unsigned int Port)
 {
-	return CListenSocket::Build(Port,
+	pListenSocket = CListenSocket::Build(Port,
 		std::bind(&CApplicationBase::OnListen, this, std::placeholders::_1));
+
+	return (pListenSocket.get() != nullptr);
 }
 
 // 毎フレームの処理.
 bool CApplicationBase::Service()
 {
-	CListenSocket::Poll();
+	if (pListenSocket)
+	{
+		pListenSocket->Poll();
+	}
 
 	PeerList::iterator It = Peers.begin();
 	while (It != Peers.end())

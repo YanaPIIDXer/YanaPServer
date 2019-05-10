@@ -17,12 +17,16 @@ namespace Listen
 /**
  * @class CWindowsListenSocket
  * @brief WindowsのListen用ソケットクラス
- * @detail シングルトンクラス
  */
 class CWindowsListenSocket : public IListenSocket
 {
 
 public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CWindowsListenSocket();
 
 	/**
 	 * @brief デストラクタ
@@ -79,21 +83,6 @@ private:
 
 	// 解放.
 	void Release();
-
-	// ======== Singleton =============
-public:
-
-	/**
-		* @fn static CWindowsListenSocket &GetInstance()
-		* @brief シングルトンインスタンス取得
-		* @return シングルトンインスタンス
-		*/
-	static CWindowsListenSocket &GetInstance() { return Instance; }
-
-private:
-
-	CWindowsListenSocket();
-	static CWindowsListenSocket Instance;
 
 };
 

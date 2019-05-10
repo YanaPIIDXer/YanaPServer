@@ -18,9 +18,6 @@
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\Socket\Listen\NullListenSocket.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
