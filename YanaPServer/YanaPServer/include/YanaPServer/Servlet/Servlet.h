@@ -4,6 +4,11 @@
 #include "../Peer/PeerBase.h"
 #include "../Socket/Socket.h"
 
+namespace YanaPServer
+{
+namespace Servlet
+{
+
 /**
  * @class CServlet
  * @brief HTTP接続を処理するクラス。
@@ -25,8 +30,19 @@ public:
 	 */
 	virtual ~CServlet();
 
+	/**
+	 * @fn virtual void OnRecv(const char *pData, unsigned int Size) override
+	 * @brief 受信した
+	 * @param[in] pData データ
+	 * @param[in] Size データ長
+	 */
+	virtual void OnRecv(const char *pData, unsigned int Size) override;
+
 private:
 
 };
+
+}
+}
 
 #endif		// #ifndef __SERVLET_H__
