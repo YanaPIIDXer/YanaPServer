@@ -68,6 +68,12 @@ public:
 	void Send(const char *pData, unsigned int Size);
 
 	/**
+	 * @fn virtual void OnConnect() override
+	 * @brief Ú‘±‚³‚ê‚½
+	 */
+	virtual void OnConnect() override {}
+
+	/**
 	 * @fn virtual void OnDisconnect() override
 	 * @brief Ø’f‚³‚ê‚½
 	 */
