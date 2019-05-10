@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: PeerBase.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2a67cf3891460988a2f6e9d0adb34c1b.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_bc240e9d17da8aeb8841cab7b609052b.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_1fb47a3b24f41454f77631ee11e2c6a9.html">include</a></li><li class="navelem"><a class="el" href="dir_adcba9ecd3d105c1bce9644a17685bcb.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_070b57ceba67418d867ba332874964f9.html">Peer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PeerBase.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_peer_base_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __PEERBASE_H__</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __PEERBASE_H__</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../Socket/Socket.h&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../Socket/SocketEventListener.h&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_yana_p_server.html">YanaPServer</a></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespace_yana_p_server_1_1_peer.html">    9</a></span>&#160;<span class="keyword">namespace </span>Peer</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html">CPeerBase</a> : <span class="keyword">public</span> <a class="code" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">YanaPServer::Socket::ISocketEventListener</a></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aa583bd89129d7392dbe738e3be9bff93">CPeerBase</a>(<a class="code" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pInSocket);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802">‾CPeerBase</a>() = 0;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62">Poll</a>();</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb">SetOverrideEventListener</a>(ISocketEventListener *pListener);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aaaa7ad919a1dc7b51f8507ce57e805ad">   53</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aaaa7ad919a1dc7b51f8507ce57e805ad">RemoveOverrideEventListener</a>() { <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb">SetOverrideEventListener</a>(<span class="keyword">this</span>); }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6">   60</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6">IsValid</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (pSocket != <span class="keyword">nullptr</span> &amp;&amp; pSocket-&gt;<a class="code" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c">IsValid</a>()); }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1">Send</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pData, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Size);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8883c025518aba9d94e810a72b6f74bd">   74</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8883c025518aba9d94e810a72b6f74bd">OnConnect</a>()<span class="keyword"> override </span>{}</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735">   80</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735">OnDisconnect</a>()<span class="keyword"> override </span>{}</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// ソケット</span></div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pSocket;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// ソケット解放.</span></div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> ReleaseSocket();</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif      // #ifndef __PEERBASE_H__</span></div><div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_a8883c025518aba9d94e810a72b6f74bd"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8883c025518aba9d94e810a72b6f74bd">YanaPServer::Peer::CPeerBase::OnConnect</a></div><div class="ttdeci">virtual void OnConnect() override</div><div class="ttdoc">接続された </div><div class="ttdef"><b>Definition:</b> PeerBase.h:74</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_ab75e8d60afaaaedc9882c56a7a6558b6"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6">YanaPServer::Peer::CPeerBase::IsValid</a></div><div class="ttdeci">bool IsValid() const</div><div class="ttdoc">有効か？ </div><div class="ttdef"><b>Definition:</b> PeerBase.h:60</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_a1c3ad177699991a3d86fcd813f9639bb"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb">YanaPServer::Peer::CPeerBase::SetOverrideEventListener</a></div><div class="ttdeci">void SetOverrideEventListener(ISocketEventListener *pListener)</div><div class="ttdoc">ソケットイベントをオーバーライドするイベントリスナをセット  イベントリスナのメモリ管理（delete等）は�...</div><div class="ttdef"><b>Definition:</b> PeerBase.cpp:30</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_a036c9c6218e6a833133a936348070bd1"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1">YanaPServer::Peer::CPeerBase::Send</a></div><div class="ttdeci">void Send(const char *pData, unsigned int Size)</div><div class="ttdoc">送信 </div><div class="ttdef"><b>Definition:</b> PeerBase.cpp:36</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_aafc41242912b717228962f32293a4735"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735">YanaPServer::Peer::CPeerBase::OnDisconnect</a></div><div class="ttdeci">virtual void OnDisconnect() override</div><div class="ttdoc">切断された </div><div class="ttdef"><b>Definition:</b> PeerBase.h:80</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_a790b68680123317b5c9f041a9a09de62"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a790b68680123317b5c9f041a9a09de62">YanaPServer::Peer::CPeerBase::Poll</a></div><div class="ttdeci">void Poll()</div><div class="ttdoc">毎フレームの処理 </div><div class="ttdef"><b>Definition:</b> PeerBase.cpp:22</div></div>
+<div class="ttc" id="namespace_yana_p_server_html"><div class="ttname"><a href="namespace_yana_p_server.html">YanaPServer</a></div><div class="ttdef"><b>Definition:</b> ApplicationBase.h:12</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_html"><div class="ttname"><a href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">YanaPServer::Socket::ISocketEventListener</a></div><div class="ttdoc">ソケットイベントリスナ </div><div class="ttdef"><b>Definition:</b> SocketEventListener.h:13</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html">YanaPServer::Peer::CPeerBase</a></div><div class="ttdoc">ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失...</div><div class="ttdef"><b>Definition:</b> PeerBase.h:19</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_a8deff34c46093a1f4badc602078ff802"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802">YanaPServer::Peer::CPeerBase::‾CPeerBase</a></div><div class="ttdeci">virtual ‾CPeerBase()=0</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> PeerBase.cpp:16</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_aaaa7ad919a1dc7b51f8507ce57e805ad"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aaaa7ad919a1dc7b51f8507ce57e805ad">YanaPServer::Peer::CPeerBase::RemoveOverrideEventListener</a></div><div class="ttdeci">void RemoveOverrideEventListener()</div><div class="ttdoc">ソケットイベントをオーバーライドするイベントリスナを解除。 </div><div class="ttdef"><b>Definition:</b> PeerBase.h:53</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_socket_1_1_i_socket_html"><div class="ttname"><a href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a></div><div class="ttdoc">ソケットの挙動を実装するためのインタフェース </div><div class="ttdef"><b>Definition:</b> Socket.h:17</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_socket_1_1_i_socket_html_a052f5ae17dc9ae6ab0ef4d1e3358948c"><div class="ttname"><a href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c">YanaPServer::Socket::ISocket::IsValid</a></div><div class="ttdeci">virtual bool IsValid() const =0</div><div class="ttdoc">有効か？ </div></div>
+<div class="ttc" id="class_yana_p_server_1_1_peer_1_1_c_peer_base_html_aa583bd89129d7392dbe738e3be9bff93"><div class="ttname"><a href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aa583bd89129d7392dbe738e3be9bff93">YanaPServer::Peer::CPeerBase::CPeerBase</a></div><div class="ttdeci">CPeerBase(YanaPServer::Socket::ISocket *pInSocket)</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> PeerBase.cpp:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
