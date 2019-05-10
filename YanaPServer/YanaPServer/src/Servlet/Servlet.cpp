@@ -1,6 +1,5 @@
 #include "Servlet/Servlet.h"
-
-#include <iostream>
+#include "Servlet/HttpRequestParser.h"
 
 namespace YanaPServer
 {
@@ -22,10 +21,32 @@ CServlet::~CServlet()
 // 受信した。
 void CServlet::OnRecv(const char *pData, unsigned int Size)
 {
-	std::cout << pData << std::endl;
+	CHttpRequestParser Parser;
+	SHttpRequest Request;
+	if (!Parser.Parse(pData, Request))
+	{
+		pEvent->OnError(Request);
+		return;
+	}
 
-	char TestData[] = "Test";
-	Send(TestData, sizeof(TestData));
+	switch (Request.Method)
+	{
+		case EHttpMethod::POST:
+
+			pEvent->OnPost(Request);
+			break;
+
+		case EHttpMethod::GET:
+
+			pEvent->OnGet(Request);
+			break;
+
+		default:
+
+			// とりあえずエラーにしておく。
+			pEvent->OnError(Request);
+			break;
+	}
 }
 
 }
