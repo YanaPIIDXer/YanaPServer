@@ -1,16 +1,13 @@
 #ifndef __APPLICATIONBASE_H__
 #define __APPLICATIONBASE_H__
-#include "Socket/Socket.h"
-using namespace YanaPServer::Socket;
-#include "Peer/PeerBase.h"
-using namespace YanaPServer::Peer;
-#include "Socket/Listen/ListenSocket.h"
-using namespace YanaPServer::Socket::Listen;
+#include "../Socket/Socket.h"
+#include "../Peer/PeerBase.h"
+#include "../Socket/Listen/ListenSocket.h"
 #include <vector>
 #include <memory>
 #include <functional>
 
-typedef std::weak_ptr<CPeerBase> PeerPtr;
+typedef std::weak_ptr<YanaPServer::Peer::CPeerBase> PeerPtr;
 
 namespace YanaPServer
 {
@@ -26,7 +23,7 @@ class CApplicationBase
 
 private:		// 別名定義.
 
-	typedef std::shared_ptr<CPeerBase> PeerSharedPtr;
+	typedef std::shared_ptr<YanaPServer::Peer::CPeerBase> PeerSharedPtr;
 	typedef std::vector<PeerSharedPtr> PeerList;
 
 public:
@@ -66,7 +63,7 @@ protected:
 	 * @param[in] pSocket ソケット
 	 * @return CPeerBaseを派生したオブジェクトを生成して返す。
 	 */
-	virtual CPeerBase *CreatePeer(ISocket *pSocket) = 0;
+	virtual YanaPServer::Peer::CPeerBase *CreatePeer(YanaPServer::Socket::ISocket *pSocket) = 0;
 
 	/**
 	 * @fn virtual bool Update()
@@ -84,11 +81,11 @@ private:
 	std::function<void(PeerPtr)> OnConnect;
 
 	// Listenソケット
-	ListenSocketPtr pListenSocket;
+	YanaPServer::Socket::Listen::ListenSocketPtr pListenSocket;
 
 
 	// Listenした。
-	void OnListen(ISocket *pSocket);
+	void OnListen(YanaPServer::Socket::ISocket *pSocket);
 
 };
 

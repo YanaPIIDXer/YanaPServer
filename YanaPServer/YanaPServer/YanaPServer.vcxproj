@@ -76,11 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include\;$(MYSQL_C_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include\YanaPServer\;$(MYSQL_C_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalDependencies>libmysql.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(MYSQL_C_LIB)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,6 +145,19 @@
     <ClInclude Include="include\Socket\Listen\NullListenSocket.h" />
     <ClInclude Include="include\Socket\Listen\WindowsListenSocket.h" />
     <ClInclude Include="include\Socket\Windows\WinSockManager.h" />
+    <ClInclude Include="include\YanaPServer\Application\ApplicationBase.h" />
+    <ClInclude Include="include\YanaPServer\MySQL\MySqlBinds.h" />
+    <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
+    <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
+    <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\ListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\NullListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\WindowsListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\NullSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Socket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\SocketEventListener.h" />
+    <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,7 +6,7 @@ namespace Peer
 {
 
 // コンストラクタ
-CPeerBase::CPeerBase(ISocket *pInSocket)
+CPeerBase::CPeerBase(YanaPServer::Socket::ISocket *pInSocket)
 	: pSocket(pInSocket)
 {
 	pSocket->SetEventListener(this);

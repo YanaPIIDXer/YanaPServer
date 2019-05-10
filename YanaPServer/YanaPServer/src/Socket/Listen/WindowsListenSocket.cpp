@@ -49,7 +49,11 @@ bool CWindowsListenSocket::Init()
 	if (!Socket::Windows::CWinSockManager::GetInstance().Initialize()) { return false; }
 
 	Socket = socket(AF_INET, SOCK_STREAM, 0);
-	return (Socket != INVALID_SOCKET);
+	if (Socket == INVALID_SOCKET) { return false; }
+
+	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
+
+	return true;
 }
 
 // ƒoƒCƒ“ƒh

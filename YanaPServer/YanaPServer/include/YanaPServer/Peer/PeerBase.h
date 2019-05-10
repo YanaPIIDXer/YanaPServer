@@ -1,9 +1,8 @@
 #ifndef __PEERBASE_H__
 #define __PEERBASE_H__
 
-#include "Socket/Socket.h"
-#include "Socket/SocketEventListener.h"
-using namespace YanaPServer::Socket;
+#include "../Socket/Socket.h"
+#include "../Socket/SocketEventListener.h"
 
 namespace YanaPServer
 {
@@ -17,7 +16,7 @@ namespace Peer
  *	       切断時には勝手に消失する（親になるshared_ptrが消える）ので、
  *	       コイツを使って何かやる時はexpired()チェックしないと死なますよ。
  */
-class CPeerBase : public ISocketEventListener
+class CPeerBase : public YanaPServer::Socket::ISocketEventListener
 {
 
 public:
@@ -26,7 +25,7 @@ public:
 	 * @brief コンストラクタ
 	 * @param[in] pInSocket ソケット
 	 */
-	CPeerBase(ISocket *pInSocket);
+	CPeerBase(YanaPServer::Socket::ISocket *pInSocket);
 
 	/**
 	 * @brief デストラクタ
@@ -69,6 +68,12 @@ public:
 	void Send(const char *pData, unsigned int Size);
 
 	/**
+	 * @fn virtual void OnConnect() override
+	 * @brief 接続された
+	 */
+	virtual void OnConnect() override {}
+
+	/**
 	 * @fn virtual void OnDisconnect() override
 	 * @brief 切断された
 	 */
@@ -77,7 +82,7 @@ public:
 private:
 
 	// ソケット
-	ISocket *pSocket;
+	YanaPServer::Socket::ISocket *pSocket;
 
 
 	// ソケット解放.
