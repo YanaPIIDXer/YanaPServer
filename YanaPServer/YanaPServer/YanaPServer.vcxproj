@@ -133,6 +133,8 @@
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
+    <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
+    <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application\ApplicationBase.h" />
@@ -166,6 +168,10 @@
     <ClInclude Include="include\YanaPServer\Socket\SocketEventListener.h" />
     <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
+    <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
