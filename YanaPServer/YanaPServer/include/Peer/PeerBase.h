@@ -3,7 +3,6 @@
 
 #include "Socket/Socket.h"
 #include "Socket/SocketEventListener.h"
-using namespace YanaPServer::Socket;
 
 namespace YanaPServer
 {
@@ -17,7 +16,7 @@ namespace Peer
  *	       切断時には勝手に消失する（親になるshared_ptrが消える）ので、
  *	       コイツを使って何かやる時はexpired()チェックしないと死なますよ。
  */
-class CPeerBase : public ISocketEventListener
+class CPeerBase : public YanaPServer::Socket::ISocketEventListener
 {
 
 public:
@@ -26,7 +25,7 @@ public:
 	 * @brief コンストラクタ
 	 * @param[in] pInSocket ソケット
 	 */
-	CPeerBase(ISocket *pInSocket);
+	CPeerBase(YanaPServer::Socket::ISocket *pInSocket);
 
 	/**
 	 * @brief デストラクタ
@@ -77,7 +76,7 @@ public:
 private:
 
 	// ソケット
-	ISocket *pSocket;
+	YanaPServer::Socket::ISocket *pSocket;
 
 
 	// ソケット解放.

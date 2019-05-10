@@ -21,7 +21,7 @@ CApplicationBase::~CApplicationBase()
 // ListenäJén.
 bool CApplicationBase::StartListen(unsigned int Port)
 {
-	pListenSocket = CListenSocket::Build(Port,
+	pListenSocket = YanaPServer::Socket::Listen::CListenSocket::Build(Port,
 		std::bind(&CApplicationBase::OnListen, this, std::placeholders::_1));
 
 	return (pListenSocket.get() != nullptr);
@@ -54,9 +54,9 @@ bool CApplicationBase::Service()
 
 
 // ListenÇµÇΩÅB
-void CApplicationBase::OnListen(ISocket *pSocket)
+void CApplicationBase::OnListen(YanaPServer::Socket::ISocket *pSocket)
 {
-	CPeerBase *pPeer = CreatePeer(pSocket);
+	YanaPServer::Peer::CPeerBase *pPeer = CreatePeer(pSocket);
 	if (pPeer == nullptr) { return; }
 
 	PeerSharedPtr pSharedPeer = PeerSharedPtr(pPeer);
