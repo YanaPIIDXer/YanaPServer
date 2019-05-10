@@ -1,3 +1,3 @@
 <map id="クラス階層図" name="クラス階層図">
-<area shape="rect" id="node1" href="$class_yana_p_server_1_1_application_1_1_c_application_base.html" title="アプリケーションメイン基底クラス " alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node1" href="$class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_binds.html" title="バインド &#160;利用者がこのクラスを直接操作する事はない。 （CMySqlQueryクラスを使用する。） ..." alt="" coords="5,5,155,47"/>
 </map>
