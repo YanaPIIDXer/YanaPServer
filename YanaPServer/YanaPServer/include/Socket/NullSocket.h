@@ -35,6 +35,15 @@ public:
 	virtual void Poll() override {}
 
 	/**
+	 * @fn virtual bool Connect(const char *pHost, unsigned int Port) override
+	 * @brief 接続
+	 * @param[in] pHost ホスト
+	 * @param[in] Port ポート
+	 * @return 何もしないので常にfalseを返す。
+	 */
+	virtual bool Connect(const char *pHost, unsigned int Port) override { return false; }
+
+	/**
 	 * @fn virtual void SetEventListener() override
 	 * @brief イベントリスナをセット
 	 * @param[in] pListener イベントリスナ

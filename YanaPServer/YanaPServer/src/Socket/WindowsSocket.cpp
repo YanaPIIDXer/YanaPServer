@@ -10,31 +10,21 @@ namespace Socket
 {
 
 // コンストラクタ
-CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
-	: Socket(InSocket)
-	, NonBlockingMode(1)
-	, State(EState::Connected)
-	, pEventListener(nullptr)
-{
-	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
-}
-
-// コンストラクタ
-CWindowsSocket::CWindowsSocket(const std::string &Host, unsigned int Port)
+CWindowsSocket::CWindowsSocket()
 	: Socket(INVALID_SOCKET)
 	, NonBlockingMode(1)
 	, State(EState::Connecting)
 	, pEventListener(nullptr)
 {
-	if (!Windows::CWinSockManager::GetInstance().Initialize()) { return; }
+}
 
-	Socket = socket(AF_INET, SOCK_STREAM, 0);
-	if (Socket == INVALID_SOCKET) { return; }
-
-	ConnectAddr.sin_family = AF_INET;
-	ConnectAddr.sin_port = htons(Port);
-	ConnectAddr.sin_addr.S_un.S_addr = inet_addr(Host.c_str());
-
+// コンストラクタ
+CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
+	: Socket(InSocket)
+	, NonBlockingMode(1)
+	, State(EState::None)
+	, pEventListener(nullptr)
+{
 	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
 }
 
@@ -69,6 +59,31 @@ void CWindowsSocket::Poll()
 			RecvProc();
 			break;
 	}
+}
+
+// 接続.
+bool CWindowsSocket::Connect(const char *pHost, unsigned int Port)
+{
+	if (!Windows::CWinSockManager::GetInstance().Initialize()) { return false; }
+
+	// 接続中だった場合は切断。
+	if (IsValid())
+	{
+		Release();
+	}
+
+	Socket = socket(AF_INET, SOCK_STREAM, 0);
+	if (Socket == INVALID_SOCKET) { return false; }
+
+	ConnectAddr.sin_family = AF_INET;
+	ConnectAddr.sin_port = htons(Port);
+	ConnectAddr.sin_addr.S_un.S_addr = inet_addr(pHost);
+
+	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
+
+	State = EState::Connecting;
+
+	return true;
 }
 
 // 送信.

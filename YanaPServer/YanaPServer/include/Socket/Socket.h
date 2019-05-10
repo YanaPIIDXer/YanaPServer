@@ -38,6 +38,15 @@ public:
 	virtual void Poll() = 0;
 
 	/**
+	 * @fn virtual bool Connect(const char *pHost, unsigned int Port) = 0
+	 * @brief 接続
+	 * @param[in] pHost ホスト
+	 * @param[in] Port ポート
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Connect(const char *pHost, unsigned int Port) = 0;
+
+	/**
 	 * @fn virtual bool IsValid()
 	 * @brief 有効か？
 	 * @return 有効ならtrueを返す。
