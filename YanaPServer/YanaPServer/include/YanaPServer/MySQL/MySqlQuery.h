@@ -1,7 +1,7 @@
 #ifndef __MYSQLQUERY_H__
 #define __MYSQLQUERY_H__
 
-#ifdef USE_MYSQL
+#if USE_MYSQL
 
 #ifdef _WIN32
 #include <windows.h>
@@ -324,6 +324,6 @@ private:
 }
 }
 
-#endif		// #ifdef USE_MYSQL
+#endif		// #if USE_MYSQL
 
 #endif		// #ifndef __MYSQLQUERY_H__
