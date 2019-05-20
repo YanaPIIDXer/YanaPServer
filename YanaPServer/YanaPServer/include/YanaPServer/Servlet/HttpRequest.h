@@ -2,6 +2,7 @@
 #define __HTTPREQUEST_H__
 
 #include <string>
+#include "HttpParameter.h"
 
 namespace YanaPServer
 {
@@ -48,6 +49,9 @@ struct SHttpRequest
 
 	//! プロトコルバージョン
 	std::string ProtocolVersion;
+
+	//! パラメータ
+	CHttpParameter Parameter;
 
 };
 

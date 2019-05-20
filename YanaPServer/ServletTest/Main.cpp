@@ -18,29 +18,42 @@ public:
 
 	virtual void OnPost(const SHttpRequest &Request, CStringStream &ResponseStream) override
 	{
-		std::cout << "POST" << std::endl;
-		std::cout << "Path:" << Request.Path << std::endl;
-
-		ResponseStream.Append("POST OK.\n");
+		ResponseStream.AppendLine("<html>");
+		ResponseStream.AppendLine("<head>");
+		ResponseStream.AppendLine("<title>TestPage:POST</title>");
+		ResponseStream.AppendLine("</head>");
+		ResponseStream.AppendLine("<body>");
+		ResponseStream.Append("<h1>");
+		const char *pValue = Request.Parameter.Get("Test1");
+		if (pValue != nullptr)
+		{
+			ResponseStream.Append("Test1:");
+			ResponseStream.Append(pValue);
+		}
+		else
+		{
+			ResponseStream.Append("Fuck!!");
+		}
+		ResponseStream.AppendLine("</h1><br />");
+		ResponseStream.AppendLine("</form>");
+		ResponseStream.AppendLine("</body>");
+		ResponseStream.AppendLine("</html>");
 	}
 
 	virtual void OnGet(const SHttpRequest &Request, CStringStream &ResponseStream) override
 	{
-		std::cout << "GET" << std::endl;
-		std::cout << "Path:" << Request.Path << std::endl;
-
-		//ResponseStream.Append("GET OK.\n");
 		// POSTテスト用にHTMLを構築。
-		ResponseStream.Append("<html>\n");
-		ResponseStream.Append("<head>\n");
-		ResponseStream.Append("<title>TestPage</title>\n");
-		ResponseStream.Append("</head>\n");
-		ResponseStream.Append("<body>\n");
-		ResponseStream.Append("<form action=\"./\" method=\"POST\">\n");
-		ResponseStream.Append("	<input type=\"submit\" value=\"POST\">\n");
-		ResponseStream.Append("</form>\n");
-		ResponseStream.Append("</body>\n");
-		ResponseStream.Append("</html>\n");
+		ResponseStream.AppendLine("<html>");
+		ResponseStream.AppendLine("<head>");
+		ResponseStream.AppendLine("<title>TestPage:GET</title>");
+		ResponseStream.AppendLine("</head>");
+		ResponseStream.AppendLine("<body>");
+		ResponseStream.AppendLine("<form action=\"./\" method=\"POST\">");
+		ResponseStream.AppendLine("	<input type=\"text\" name=\"Test1\">");
+		ResponseStream.AppendLine("	<input type=\"submit\" value=\"POST\">");
+		ResponseStream.AppendLine("</form>");
+		ResponseStream.AppendLine("</body>");
+		ResponseStream.AppendLine("</html>");
 	}
 
 	virtual void OnError(const SHttpRequest &Request, CStringStream &ResponseStream) override

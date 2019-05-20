@@ -36,6 +36,13 @@ public:
 	void Append(const char *pStr);
 
 	/**
+	 * @fn void AppendLine(const char *pStr)
+	 * @brief 末尾に改行コードを付加して追加
+	 * @param[in] pStr 追加する文字列
+	 */
+	void AppendLine(const char *pStr);
+
+	/**
 	 * @fn const char *GetBuffer() const
 	 * @brief 文字列取得
 	 * @return 文字列
