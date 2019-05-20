@@ -18,7 +18,26 @@ public:
 
 	virtual void OnPost(const SHttpRequest &Request, CStringStream &ResponseStream) override
 	{
-		ResponseStream.AppendLine("POST OK.");
+		ResponseStream.AppendLine("<html>");
+		ResponseStream.AppendLine("<head>");
+		ResponseStream.AppendLine("<title>TestPage:POST</title>");
+		ResponseStream.AppendLine("</head>");
+		ResponseStream.AppendLine("<body>");
+		ResponseStream.Append("<h1>");
+		const char *pValue = Request.Parameter.Get("Test1");
+		if (pValue != nullptr)
+		{
+			ResponseStream.Append("Test1:");
+			ResponseStream.Append(pValue);
+		}
+		else
+		{
+			ResponseStream.Append("Fuck!!");
+		}
+		ResponseStream.AppendLine("</h1><br />");
+		ResponseStream.AppendLine("</form>");
+		ResponseStream.AppendLine("</body>");
+		ResponseStream.AppendLine("</html>");
 	}
 
 	virtual void OnGet(const SHttpRequest &Request, CStringStream &ResponseStream) override
@@ -26,7 +45,7 @@ public:
 		// POSTテスト用にHTMLを構築。
 		ResponseStream.AppendLine("<html>");
 		ResponseStream.AppendLine("<head>");
-		ResponseStream.AppendLine("<title>TestPage</title>");
+		ResponseStream.AppendLine("<title>TestPage:GET</title>");
 		ResponseStream.AppendLine("</head>");
 		ResponseStream.AppendLine("<body>");
 		ResponseStream.AppendLine("<form action=\"./\" method=\"POST\">");

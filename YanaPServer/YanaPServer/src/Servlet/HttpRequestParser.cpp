@@ -37,7 +37,7 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 	OutResult.Path = Datas[1];
 
 	// GETパラメータ
-	int ParamParser = OutResult.Path.find_first_of('?');
+	unsigned int ParamParser = OutResult.Path.find_first_of('?');
 	if (ParamParser != std::string::npos)
 	{
 		std::string ParamStr = OutResult.Path.substr(ParamParser + 1);
@@ -47,6 +47,29 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 
 	// その次にプロトコルバージョン
 	OutResult.ProtocolVersion = Datas[2];
+
+	// 空行（POSTパラメータの開始）まで読み飛ばす
+	for (ParamParser = 0; ParamParser < Lines.size(); ParamParser++)
+	{
+		if (Lines[ParamParser] == "\r")
+		{
+			ParamParser++;
+			break;
+		}
+	}
+
+	if (ParamParser < Lines.size())
+	{
+		// 一旦全部結合。
+		std::string ParamStr = "";
+		for (; ParamParser < Lines.size(); ParamParser++)
+		{
+			ParamStr += Lines[ParamParser];
+		}
+
+		// パラメータパース
+		ParseParam(OutResult.Parameter, ParamStr);
+	}
 
 	return true;
 }
