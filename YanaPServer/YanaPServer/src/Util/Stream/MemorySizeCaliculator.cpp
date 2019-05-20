@@ -15,24 +15,59 @@ CMemorySizeCaliculator::CMemorySizeCaliculator()
 }
 
 // intのシリアライズ
-bool CMemorySizeCaliculator::Serialize(const int *pData)
+bool CMemorySizeCaliculator::Serialize(int *pData)
 {
 	Size += sizeof(int);
 	return true;
 }
 
 // unsigned intのシリアライズ
-bool CMemorySizeCaliculator::Serialize(const unsigned int *pData)
+bool CMemorySizeCaliculator::Serialize(unsigned int *pData)
 {
 	Size += sizeof(unsigned int);
 	return true;
 }
 
-// 文字列のシリアライズ
-bool CMemorySizeCaliculator::Serialize(const char *pData)
+// shortのシリアライズ
+bool CMemorySizeCaliculator::Serialize(short *pData)
 {
-	Size += sizeof(size_t);		// 文字列長.
-	Size += strlen(pData);		// 文字数.
+	Size += sizeof(short);
+	return true;
+}
+
+// unsigned shortのシリアライズ
+bool CMemorySizeCaliculator::Serialize(unsigned short *pData)
+{
+	Size += sizeof(unsigned short);
+	return true;
+}
+
+// charのシリアライズ
+bool CMemorySizeCaliculator::Serialize(char *pData)
+{
+	Size += sizeof(char);
+	return true;
+}
+
+// unsigned charのシリアライズ
+bool CMemorySizeCaliculator::Serialize(unsigned char *pData)
+{
+	Size += sizeof(unsigned char);
+	return true;
+}
+
+// floatのシリアライズ
+bool CMemorySizeCaliculator::Serialize(float *pData)
+{
+	Size += sizeof(float);
+	return true;
+}
+
+// 文字列のシリアライズ
+bool CMemorySizeCaliculator::Serialize(std::string *pData)
+{
+	Size += sizeof(unsigned int);	// 文字列長.
+	Size += pData->length();		// 文字数.
 	return true;
 }
 

@@ -20,13 +20,13 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{A8CDCACF-A5BE-4B57-8773-9EF34DA94103}</ProjectGuid>
-    <RootNamespace>YanaPServer</RootNamespace>
+    <ProjectGuid>{044BEC71-7BC7-4A80-B5B8-84F3697048B4}</ProjectGuid>
+    <RootNamespace>UnitTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -76,14 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include\YanaPServer\;$(MYSQL_C_INCLUDE)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;USE_MYSQL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(YANAP_SERVER_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Lib>
-      <AdditionalDependencies>libmysql.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(MYSQL_C_LIB)</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-    </Lib>
+    <Link>
+      <AdditionalLibraryDirectories>$(YANAP_SERVER_LIB)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;YanaPServer.lib;ws2_32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -122,63 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application\ApplicationBase.cpp" />
-    <ClCompile Include="src\Peer\PeerBase.cpp" />
-    <ClCompile Include="src\Servlet\HttpParameter.cpp" />
-    <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
-    <ClCompile Include="src\Servlet\HttpServer.cpp" />
-    <ClCompile Include="src\Servlet\ServletFinder.cpp" />
-    <ClCompile Include="src\Servlet\ServletPeer.cpp" />
-    <ClCompile Include="src\Socket\WindowsSocket.cpp" />
-    <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
-    <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
-    <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
-    <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
-    <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
-    <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
-    <ClCompile Include="src\Util\Stream\StringStream.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\Application\ApplicationBase.h" />
-    <ClInclude Include="include\MySQL\MySqlBinds.h" />
-    <ClInclude Include="include\MySQL\MySqlConnection.h" />
-    <ClInclude Include="include\MySQL\MySqlQuery.h" />
-    <ClInclude Include="include\Peer\PeerBase.h" />
-    <ClInclude Include="include\Socket\NullSocket.h" />
-    <ClInclude Include="include\Socket\Socket.h" />
-    <ClInclude Include="include\Socket\SocketEventListener.h" />
-    <ClInclude Include="include\Socket\WidnowsSocket.h" />
-    <ClInclude Include="include\Socket\Listen\ListenSocket.h" />
-    <ClInclude Include="include\Socket\Listen\NullListenSocket.h" />
-    <ClInclude Include="include\Socket\Listen\WindowsListenSocket.h" />
-    <ClInclude Include="include\Socket\Windows\WinSockManager.h" />
-    <ClInclude Include="include\YanaPServer\Application\ApplicationBase.h" />
-    <ClInclude Include="include\YanaPServer\MySQL\MySqlBinds.h" />
-    <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
-    <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
-    <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\HttpParameter.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\HttpRequestParser.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
-    <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
-    <ClInclude Include="include\YanaPServer\Socket\Listen\ListenSocket.h" />
-    <ClInclude Include="include\YanaPServer\Socket\Listen\NullListenSocket.h" />
-    <ClInclude Include="include\YanaPServer\Socket\Listen\WindowsListenSocket.h" />
-    <ClInclude Include="include\YanaPServer\Socket\NullSocket.h" />
-    <ClInclude Include="include\YanaPServer\Socket\Socket.h" />
-    <ClInclude Include="include\YanaPServer\Socket\SocketEventListener.h" />
-    <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
-    <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
-    <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\StringStream.h" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

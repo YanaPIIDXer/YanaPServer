@@ -1,5 +1,5 @@
-#ifndef __MEMORYSIZECALICULATOR_H__
-#define __MEMORYSIZECALICULATOR_H__
+#ifndef __MEMORYSTREAMREADER_H__
+#define __MEMORYSTREAMREADER_H__
 
 #include "MemoryStream.h"
 
@@ -11,26 +11,28 @@ namespace Stream
 {
 
 /**
- * @class CMemorySizeCaliculator
- * @brief サイズ計算ストリーム
+ * @class CMemoryStreamReader
+ * @brief 読み込み用ストリーム
  */
-class CMemorySizeCaliculator : public IMemoryStream
+class CMemoryStreamReader : public IMemoryStream
 {
 
 public:
 
 	/**
-	 * @brief コンストラクタ
+ 	 * @brief コンストラクタ
+	 * @param[in] pInBuffer バッファ
+ 	 * @param[in] InBufferSize バッファサイズ
 	 */
-	CMemorySizeCaliculator();
+	CMemoryStreamReader(const char *pInBuffer, unsigned int InBufferSize);
 
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CMemorySizeCaliculator() {}
+	virtual ~CMemoryStreamReader();
 
 	/**
-	 * @fn virtual bool Serialize(int *pData) override
+	 * @fn virtual bool Serialize(int *pData) = 0
 	 * @brief intのシリアライズ
 	 * @param[in] pData データ
 	 * @return 成功したらtrueを返す。
@@ -96,21 +98,27 @@ public:
 	/**
 	 * @fn virtual bool IsError() const override
 	 * @brief エラーが発生しているか？
-	 * @return エラーなんて無いので常にfalseを返す。
+	 * @return エラーが発生していたらtrueを返す。
 	 */
-	virtual bool IsError() const override { return false; }
-
-	/**
-	 * @fn unsigned int GetSize() const
-	 * @brief サイズ取得
-	 * @return サイズ
-	 */
-	unsigned int GetSize() const { return Size; }
+	virtual bool IsError() const override { return bIsError; }
 
 private:
 
-	// サイズ
-	unsigned int Size;
+	// バッファ
+	char *pBuffer;
+
+	//バッファサイズ
+	const unsigned int BufferSize;
+
+	// 現在の位置.
+	unsigned int CurrentPosition;
+
+	// エラーが起きているか？
+	bool bIsError;
+
+
+	// 書き込み
+	bool Read(void *pData, unsigned int Size);
 
 };
 
@@ -118,4 +126,4 @@ private:
 }
 }
 
-#endif		// #ifndef __MEMORYSIZECALICULATOR_H__
+#endif		// #ifndef __MEMORYSTREAMREADER_H__
