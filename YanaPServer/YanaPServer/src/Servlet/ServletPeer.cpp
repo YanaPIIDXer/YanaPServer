@@ -2,6 +2,7 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/StringStream.h"
+#include <sstream>
 
 using namespace YanaPServer::Util::Stream;
 
@@ -90,7 +91,19 @@ void CServletPeer::OnSend(unsigned int Size)
 // レスポンス送信.
 void CServletPeer::SendResponse(const CStringStream &Stream)
 {
-	// @TODO:実際にはレスポンスコードとかを付加する必要がある。
+	// @TODO:仮のレスポンスヘッダ
+	CStringStream Header;
+	Header.Append("HTTP/1.1 200 OK\n");
+	Header.Append("Content-Type: text/html; charset=utf8\n");
+	std::ostringstream ContentLength;
+	ContentLength << "Content-Length: " << Stream.GetLength() << "\n";
+	Header.Append(ContentLength.str().c_str());
+	Header.Append("\n\n");
+	const char *pHeader = Header.Get();
+	unsigned int HeaderSize = Header.GetLength() + 1;
+	SendSize += HeaderSize;
+	Send(pHeader, HeaderSize);
+
 	const char *pData = Stream.Get();
 	unsigned int Size = Stream.GetLength() + 1;
 	SendSize += Size;
