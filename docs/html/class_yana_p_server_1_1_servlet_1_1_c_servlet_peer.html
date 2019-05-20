@@ -98,9 +98,9 @@ YanaPServer::Servlet::CServletPeer 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a146a266757fda5b487178c870abf2001"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#a146a266757fda5b487178c870abf2001">CServletPeer</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pSocket, <a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html">CServletFinder</a> *pInFinder)</td></tr>
-<tr class="memdesc:a146a266757fda5b487178c870abf2001"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a146a266757fda5b487178c870abf2001">[詳解]</a><br /></td></tr>
-<tr class="separator:a146a266757fda5b487178c870abf2001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac66582b9dd41a34f1515d008b1923c4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#ac66582b9dd41a34f1515d008b1923c4b">CServletPeer</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pSocket, <a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html">CServletFinder</a> *pInFinder, <a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html">IHttpServerEvent</a> *pInHttpServerEvent)</td></tr>
+<tr class="memdesc:ac66582b9dd41a34f1515d008b1923c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#ac66582b9dd41a34f1515d008b1923c4b">[詳解]</a><br /></td></tr>
+<tr class="separator:ac66582b9dd41a34f1515d008b1923c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c3ca8bb513481a5735fa2f84e2443bd"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#a7c3ca8bb513481a5735fa2f84e2443bd">‾CServletPeer</a> ()</td></tr>
 <tr class="memdesc:a7c3ca8bb513481a5735fa2f84e2443bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a7c3ca8bb513481a5735fa2f84e2443bd">[詳解]</a><br /></td></tr>
 <tr class="separator:a7c3ca8bb513481a5735fa2f84e2443bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,8 +149,8 @@ YanaPServer::Servlet::CServletPeer 連携図</div>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>HTTP接続を処理するクラス。 Java Servletみたいなモノ。 それを扱うPeer </p>
 </div><h2 class="groupheader">構築子と解体子</h2>
-<a id="a146a266757fda5b487178c870abf2001"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a146a266757fda5b487178c870abf2001">&#9670;&nbsp;</a></span>CServletPeer()</h2>
+<a id="ac66582b9dd41a34f1515d008b1923c4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac66582b9dd41a34f1515d008b1923c4b">&#9670;&nbsp;</a></span>CServletPeer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +165,13 @@ YanaPServer::Servlet::CServletPeer 連携図</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html">CServletFinder</a> *&#160;</td>
-          <td class="paramname"><em>pInFinder</em>&#160;</td>
+          <td class="paramname"><em>pInFinder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html">IHttpServerEvent</a> *&#160;</td>
+          <td class="paramname"><em>pInHttpServerEvent</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -180,6 +186,7 @@ YanaPServer::Servlet::CServletPeer 連携図</div>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">pSocket</td><td>ソケット </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pInFinder</td><td>ServletFinder </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pInHttpServerEvent</td><td>サーバイベント </td></tr>
   </table>
   </dd>
 </dl>
@@ -236,12 +243,13 @@ YanaPServer::Servlet::CServletPeer 連携図</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer_a6e36eac1cb2917b1437350a848b85136_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_servlet_1_1_c_servlet_peer_a6e36eac1cb2917b1437350a848b85136_cgraph" alt=""/></div>
 <map name="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer_a6e36eac1cb2917b1437350a848b85136_cgraph" id="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer_a6e36eac1cb2917b1437350a848b85136_cgraph">
-<area shape="rect" id="node2" href="class_yana_p_server_1_1_servlet_1_1_c_http_request_parser.html#ae2a34a3a230daad6261055889d8ed430" title="パース " alt="" coords="216,5,365,61"/>
-<area shape="rect" id="node3" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html#aaef06ae896f3eee924b795aaea7d9ff9" title="追加 " alt="" coords="212,85,369,141"/>
-<area shape="rect" id="node4" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a3889b91e8a8896243fafc4bbb5b7c280" title="検索 " alt="" coords="217,166,364,207"/>
-<area shape="rect" id="node5" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html#a4bf579f9e173ea1ba47df71cb48ce35f" title="POSTリクエストが投げられた時に実行されるイベント " alt="" coords="219,231,363,273"/>
-<area shape="rect" id="node6" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html#ab53dcf95ccc38fdaa275edf9ce52ae39" title="GETリクエストが投げられた時に実行されるイベント " alt="" coords="219,297,363,338"/>
-<area shape="rect" id="node7" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html#a27472242a99d02d151e66a84553c0088" title="エラー時のイベント " alt="" coords="219,362,363,403"/>
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_servlet_1_1_c_http_request_parser.html#ae2a34a3a230daad6261055889d8ed430" title="パース " alt="" coords="241,5,390,61"/>
+<area shape="rect" id="node3" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a18b68c8080358d11897764b330203c13" title="エラー発生 " alt="" coords="226,86,405,127"/>
+<area shape="rect" id="node4" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a3889b91e8a8896243fafc4bbb5b7c280" title="検索 " alt="" coords="242,151,389,193"/>
+<area shape="rect" id="node5" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a3f7dcaa4f90a3f8426eb542865d56984" title="対応Servletが見つからなかった " alt="" coords="212,217,419,258"/>
+<area shape="rect" id="node6" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html#a4bf579f9e173ea1ba47df71cb48ce35f" title="POSTリクエストが投げられた時に実行されるイベント " alt="" coords="243,282,387,323"/>
+<area shape="rect" id="node7" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html#ab53dcf95ccc38fdaa275edf9ce52ae39" title="GETリクエストが投げられた時に実行されるイベント " alt="" coords="243,347,387,389"/>
+<area shape="rect" id="node8" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html#a27472242a99d02d151e66a84553c0088" title="エラー時のイベント " alt="" coords="243,413,387,454"/>
 </map>
 </div>
 
