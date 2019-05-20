@@ -1,4 +1,0 @@
-<map id="YanaPServer::Servlet::CServletPeer" name="YanaPServer::Servlet::CServletPeer">
-<area shape="rect" id="node2" href="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html" title="ピア基底クラス &#160;基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失..." alt="" coords="11,95,151,136"/>
-<area shape="rect" id="node3" href="$class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html" title="ソケットイベントリスナ " alt="" coords="5,5,157,47"/>
-</map>

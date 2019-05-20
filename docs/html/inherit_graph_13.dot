@@ -1,0 +1,7 @@
+digraph "クラス階層図"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="YanaPServer::Socket\l::Listen::CListenSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_listen_socket.html",tooltip="Listen用Socketクラス "];
+}
