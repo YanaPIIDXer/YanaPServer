@@ -5,7 +5,5 @@ digraph "YanaPServer::Util::Stream::CStringStream::Append"
   rankdir="LR";
   Node3 [label="YanaPServer::Util::\lStream::CStringStream\l::Append",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="YanaPServer::Servlet\l::CHttpDefaultServetEvent\l::OnError",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_servlet_1_1_c_http_default_servet_event.html#a3cc5037e67e1a339fad9df93d0133460",tooltip="エラー発生 "];
-  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="YanaPServer::Servlet\l::CHttpDefaultServetEvent\l::OnNotFound",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_servlet_1_1_c_http_default_servet_event.html#a711ab344e904de1da1b6a2194177f05f",tooltip="対応Servletが見つからなかった "];
+  Node4 [label="YanaPServer::Servlet\l::CHttpDefaultServerEvent\l::OnNotFound",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_servlet_1_1_c_http_default_server_event.html#a3ef560a1a4af2d7ea26a7cfe0a265530",tooltip="対応Servletが見つからなかった "];
 }

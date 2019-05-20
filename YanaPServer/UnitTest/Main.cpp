@@ -21,7 +21,7 @@ bool TestMemoryStream()
 	int Test1 = 123;
 	short Test2 = 456;
 	std::string Test3 = "Hoge";
-		
+	
 	CMemorySizeCaliculator SizeCaliculator;
 	if (!Serialize(&SizeCaliculator, &Test1, &Test2, &Test3))
 	{
@@ -46,12 +46,13 @@ bool TestMemoryStream()
 		return false;
 	}
 
+	std::cout << "Test4:" << Test4 << std::endl;
+	std::cout << "Test5:" << Test5 << std::endl;
+	std::cout << "Test6:" << Test6 << std::endl;
+
 	if (Test4 != Test1 || Test5 != Test2 || Test6 != Test3)
 	{
 		std::cout << "Serialized Data Not Matched." << std::endl;
-		std::cout << "Test4:" << Test4 << std::endl;
-		std::cout << "Test5:" << Test5 << std::endl;
-		std::cout << "Test6:" << Test6 << std::endl;
 		return false;
 	}
 

@@ -2,9 +2,6 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include "Socket/WidnowsSocket.h"
 #include "Socket/Windows/WinSockManager.h"
-#include "Socket/SocketEventListener.h"
-
-#include <iostream>
 
 namespace YanaPServer
 {
@@ -15,8 +12,6 @@ namespace Socket
 CWindowsSocket::CWindowsSocket()
 	: Socket(INVALID_SOCKET)
 	, NonBlockingMode(1)
-	, State(EState::None)
-	, pEventListener(nullptr)
 {
 }
 
@@ -24,8 +19,6 @@ CWindowsSocket::CWindowsSocket()
 CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
 	: Socket(InSocket)
 	, NonBlockingMode(1)
-	, State(EState::Connected)
-	, pEventListener(nullptr)
 {
 	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
 }
@@ -33,46 +26,14 @@ CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
 // デストラクタ
 CWindowsSocket::~CWindowsSocket()
 {
-	Release(ESocketDisconnectReason::Destruct);
-}
-
-// 毎フレーム実行する処理
-void CWindowsSocket::Poll()
-{
-	if (!IsValid()) { return; }
-
-	switch (State)
-	{
-		case EState::Connecting:
-
-			if (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)))
-			{
-				State = EState::Connected;
-				if (pEventListener != nullptr)
-				{
-					pEventListener->OnConnect();
-				}
-			}
-			break;
-
-		case EState::Connected:
-
-			SendProc();
-			RecvProc();
-			break;
-	}
+	if (Socket == INVALID_SOCKET) { return; }
+	closesocket(Socket);
 }
 
 // 接続.
 bool CWindowsSocket::Connect(const char *pHost, unsigned int Port)
 {
 	if (!Windows::CWinSockManager::GetInstance().Initialize()) { return false; }
-
-	// 接続中だった場合は切断。
-	if (IsValid())
-	{
-		Release(ESocketDisconnectReason::Destruct);
-	}
 
 	Socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (Socket == INVALID_SOCKET) { return false; }
@@ -83,91 +44,37 @@ bool CWindowsSocket::Connect(const char *pHost, unsigned int Port)
 
 	ioctlsocket(Socket, FIONBIO, &NonBlockingMode);
 
-	State = EState::Connecting;
-
 	return true;
+}
+
+// 接続されるまで毎フレーム実行される処理.
+bool CWindowsSocket::PollConnect()
+{
+	return connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr));
 }
 
 // 送信.
-bool CWindowsSocket::Send(const char *pData, unsigned int Size)
+int CWindowsSocket::Send(const char *pData, unsigned int Size)
 {
-	if (!IsValid()) { return false; }
+	if (Socket == INVALID_SOCKET) { return false; }
 
-	for (unsigned int i = 0; i < Size; i++)
-	{
-		DataQueue.push_back(pData[i]);
-	}
-
-	return true;
+	int SendSize = send(Socket, pData, Size, 0);
+	if (SendSize == SOCKET_ERROR) { return -1; }
+	return SendSize;
 }
 
-// 解放.
-void CWindowsSocket::Release(ESocketDisconnectReason Reason)
+// 受信.
+int CWindowsSocket::Recv(char *pBuffer, unsigned int BufferSize)
 {
-	if (Socket == INVALID_SOCKET) { return; }
-
-	closesocket(Socket);
-	Socket = INVALID_SOCKET;
-
-	if (pEventListener != nullptr)
-	{
-		pEventListener->OnDisconnect(Reason);
-	}
-}
-
-
-// 送信処理.
-void CWindowsSocket::SendProc()
-{
-	if (Socket == INVALID_SOCKET) { return; }
-
-	if (DataQueue.size() == 0) { return; }
-
-	int SendSize = send(Socket, &DataQueue.front(), DataQueue.size(), 0);
-	if (SendSize == SOCKET_ERROR)
-	{
-		Release(ESocketDisconnectReason::SendError);
-		return;
-	}
-
-	for (int i = 0; i < SendSize; i++)
-	{
-		DataQueue.erase(DataQueue.begin());
-	}
-
-	if (SendSize > 0 && pEventListener != nullptr)
-	{
-		pEventListener->OnSend(SendSize);
-	}
-}
-
-// 受信処理.
-void CWindowsSocket::RecvProc()
-{
-	if (Socket == INVALID_SOCKET) { return; }
-
-	// イベントリスナが設定されていない場合は何もしない。
-	if (pEventListener == nullptr) { return; }
-
-	static const int BufferSize = 2048;
-	char Buffer[BufferSize];
-	memset(Buffer, 0, BufferSize);
-
-	int RecvSize = recv(Socket, Buffer, BufferSize, 0);
+	int RecvSize = recv(Socket, pBuffer, BufferSize, 0);
 	if (RecvSize == SOCKET_ERROR)
 	{
 		// ↓まだ受信していない場合は以下のエラーが吐き出される。
-		if (WSAGetLastError() != WSAEWOULDBLOCK)
-		{
-			Release(ESocketDisconnectReason::RecvError);
-		}
-		return;
+		if (WSAGetLastError() != WSAEWOULDBLOCK) { return -1; }
+		return 0;
 	}
 
-	if (RecvSize > 0)
-	{
-		pEventListener->OnRecv(Buffer, RecvSize);
-	}
+	return RecvSize;
 }
 
 }

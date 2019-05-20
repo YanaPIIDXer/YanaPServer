@@ -9,12 +9,12 @@ namespace Servlet
 using namespace YanaPServer::Peer;
 using namespace YanaPServer::Socket;
 
-CHttpDefaultServetEvent CHttpDefaultServetEvent::Instance;
+CHttpDefaultServerEvent CHttpDefaultServerEvent::Instance;
 
 // コンストラクタ
 CHttpServer::CHttpServer()
 	: CApplicationBase([](PeerPtr pPeer) {})
-	, pEvent(&CHttpDefaultServetEvent::GetInstance())
+	, pEvent(&CHttpDefaultServerEvent::GetInstance())
 {
 }
 
