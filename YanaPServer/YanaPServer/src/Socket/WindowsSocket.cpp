@@ -31,7 +31,7 @@ CWindowsSocket::CWindowsSocket(const SOCKET &InSocket)
 // デストラクタ
 CWindowsSocket::~CWindowsSocket()
 {
-	Release();
+	Release(ESocketDisconnectReason::Destruct);
 }
 
 // 毎フレーム実行する処理
@@ -69,7 +69,7 @@ bool CWindowsSocket::Connect(const char *pHost, unsigned int Port)
 	// 接続中だった場合は切断。
 	if (IsValid())
 	{
-		Release();
+		Release(ESocketDisconnectReason::Destruct);
 	}
 
 	Socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -99,7 +99,7 @@ bool CWindowsSocket::Send(const char *pData, unsigned int Size)
 }
 
 // 解放.
-void CWindowsSocket::Release()
+void CWindowsSocket::Release(ESocketDisconnectReason Reason)
 {
 	if (Socket == INVALID_SOCKET) { return; }
 
@@ -123,7 +123,7 @@ void CWindowsSocket::SendProc()
 	int SendSize = send(Socket, &DataQueue.front(), DataQueue.size(), 0);
 	if (SendSize == SOCKET_ERROR)
 	{
-		Release();
+		Release(ESocketDisconnectReason::SendError);
 		return;
 	}
 
@@ -148,7 +148,7 @@ void CWindowsSocket::RecvProc()
 	int RecvSize = recv(Socket, Buffer, BufferSize, 0);
 	if (RecvSize == SOCKET_ERROR)
 	{
-		Release();
+		Release(ESocketDisconnectReason::RecvError);
 		return;
 	}
 

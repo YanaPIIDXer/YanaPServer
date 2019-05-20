@@ -84,10 +84,6 @@ private:
 	// ソケット
 	YanaPServer::Socket::ISocket *pSocket;
 
-
-	// ソケット解放.
-	void ReleaseSocket();
-
 };
 
 }
