@@ -1,5 +1,6 @@
 #include "Servlet/ServletPeer.h"
 #include "Servlet/ServletFinder.h"
+#include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/StringStream.h"
 #include <sstream>
@@ -12,9 +13,10 @@ namespace Servlet
 {
 
 // コンストラクタ
-CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder)
+CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder, IHttpServerEvent *pInHttpServerEvent)
 	: CPeerBase(pSocket)
 	, pFinder(pInFinder)
+	, pHttpServerEvent(pInHttpServerEvent)
 	, SendSize(0)
 {
 }
@@ -34,10 +36,8 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 
 	if (!Parser.Parse(pData, Request))
 	{
-		// @TODO:このエラーどうするべき・・・？
-		//		 とりあえず適当に返す。
-		ResponseStream.Append("Error.");
-		SendResponse(ResponseStream);
+		pHttpServerEvent->OnError(Request, ResponseStream);
+		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, ResponseStream);
 		return;
 	}
 
@@ -45,12 +45,12 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (pServlet == nullptr)
 	{
 		// 404
-		// @TODO:仮。
-		ResponseStream.Append("404 Not Found.");
-		SendResponse(ResponseStream);
+		pHttpServerEvent->OnNotFound(Request, ResponseStream);
+		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, ResponseStream);
 		return;
 	}
 
+	EStatusCode StatusCode = EStatusCode::OK;
 	switch (Request.Method)
 	{
 		case EHttpMethod::POST:
@@ -66,11 +66,12 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 		default:
 
 			// とりあえずエラーにしておく。
+			StatusCode = EStatusCode::BadRequest;
 			pServlet->OnError(Request, ResponseStream);
 			break;
 	}
 
-	SendResponse(ResponseStream);
+	SendResponse(Request.ProtocolVersion, StatusCode, ResponseStream);
 }
 
 // 送信した
@@ -89,20 +90,40 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const CStringStream &Stream)
+void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const CStringStream &Stream)
 {
-	// @TODO:仮のレスポンスヘッダ
-	//		 引数とかで弄れるようにする必要がある。
 	CStringStream SendData;
-	SendData.Append("HTTP/1.1 200 OK\n");
+
+	// レスポンスヘッダ
+	SendData.Append(ProtocolVersion.c_str());
+	SendData.Append(" ");
+	switch (StatusCode)
+	{
+		case EStatusCode::OK:
+
+			SendData.Append("200 OK\n");
+			break;
+
+		case EStatusCode::NotFound:
+
+			SendData.Append("404 Not Found\n");
+			break;
+
+		case EStatusCode::BadRequest:
+
+			SendData.Append("400 Bad Request\n");
+			break;
+	}
 	SendData.Append("Content-Type: text/html\n");
 	std::ostringstream ContentLength;
 	ContentLength << "Content-Length: " << Stream.GetLength() << "\n";
 	SendData.Append(ContentLength.str().c_str());
 	SendData.Append("\r\n");
 	
+	// ボディをブチ込む。
 	SendData.Append(Stream.Get());
 
+	// ブン投げる。
 	const char *pData = SendData.Get();
 	unsigned int Size = SendData.GetLength() + 1;
 	SendSize += Size;

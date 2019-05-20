@@ -1,6 +1,7 @@
 #include <iostream>
 #include "YanaPServer/Servlet/HttpServer.h"
 #include "YanaPServer/Servlet/Servlet.h"
+#include "YanaPServer/Servlet/HttpServerEvent.h"
 
 using namespace YanaPServer::Servlet;
 using namespace YanaPServer::Util::Stream;
@@ -52,12 +53,39 @@ public:
 
 };
 
+// HTTPサーバイベント
+class TestHttpServerEvent : public IHttpServerEvent
+{
+
+public:
+
+	// コンストラクタ
+	TestHttpServerEvent() {}
+
+	// デストラクタ
+	virtual ~TestHttpServerEvent() {}
+
+	// エラー
+	virtual void OnError(const SHttpRequest & Request, YanaPServer::Util::Stream::CStringStream & ResponseStream) override
+	{
+		ResponseStream.Append("TestHttpServerEvent::OnError()");
+	}
+
+	// NotFound
+	virtual void OnNotFound(const SHttpRequest & Request, YanaPServer::Util::Stream::CStringStream & ResponseStream) override
+	{
+		ResponseStream.Append("TestHttpServerEvent::OnNotFound()");
+	}
+
+};
+
 int main()
 {
 	std::cout << "Servlet Test" << std::endl;
 
 	TestServlet Servlet;
-	CHttpServer Server;
+	TestHttpServerEvent ServerEvent;
+	CHttpServer Server(&ServerEvent);
 	Server.AddServlet(&Servlet);
 
 	Server.StartListen(4423);

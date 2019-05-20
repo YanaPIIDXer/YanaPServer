@@ -160,6 +160,7 @@
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequestParser.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
