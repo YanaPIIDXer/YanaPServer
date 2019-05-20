@@ -182,5 +182,8 @@
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="include\YanaPServer\Util\Serializable.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

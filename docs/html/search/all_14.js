@@ -23,6 +23,7 @@ var searchData=
   ['‾ihttpserverevent',['‾IHttpServerEvent',['../class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a9256df9cb556b07fcd6d10a2a3d1a946',1,'YanaPServer::Servlet::IHttpServerEvent']]],
   ['‾ilistensocket',['‾IListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html#abbcf4733e3638584a4a4158ecc93d062',1,'YanaPServer::Socket::Listen::IListenSocket']]],
   ['‾imemorystream',['‾IMemoryStream',['../class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html#a4b04f4300d072f0b2fa436b06707e417',1,'YanaPServer::Util::Stream::IMemoryStream']]],
+  ['‾iserializable',['‾ISerializable',['../class_yana_p_server_1_1_util_1_1_i_serializable.html#acd204b63219b4e35b6c3a9b4c6a5abaf',1,'YanaPServer::Util::ISerializable']]],
   ['‾iservlet',['‾IServlet',['../class_yana_p_server_1_1_servlet_1_1_i_servlet.html#a5f00e0e88bdd90080984270ad8a670a3',1,'YanaPServer::Servlet::IServlet']]],
   ['‾isocket',['‾ISocket',['../class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea',1,'YanaPServer::Socket::ISocket']]],
   ['‾isocketeventlistener',['‾ISocketEventListener',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#adad71f519e57bcde19c08c10256e15c6',1,'YanaPServer::Socket::ISocketEventListener']]]
