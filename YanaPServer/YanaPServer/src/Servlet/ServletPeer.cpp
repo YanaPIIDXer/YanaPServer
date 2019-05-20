@@ -1,5 +1,6 @@
 #include "Servlet/ServletPeer.h"
 #include "Servlet/ServletFinder.h"
+#include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/StringStream.h"
 #include <sstream>
@@ -12,9 +13,10 @@ namespace Servlet
 {
 
 // コンストラクタ
-CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder)
+CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder, IHttpServerEvent *pInHttpServerEvent)
 	: CPeerBase(pSocket)
 	, pFinder(pInFinder)
+	, pHttpServerEvent(pInHttpServerEvent)
 	, SendSize(0)
 {
 }
@@ -34,7 +36,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 
 	if (!Parser.Parse(pData, Request))
 	{
-		ResponseStream.Append("Error.");
+		pHttpServerEvent->OnError(Request, ResponseStream);
 		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, ResponseStream);
 		return;
 	}
@@ -43,8 +45,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (pServlet == nullptr)
 	{
 		// 404
-		// @TODO:仮。
-		ResponseStream.Append("404 Not Found.");
+		pHttpServerEvent->OnNotFound(Request, ResponseStream);
 		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, ResponseStream);
 		return;
 	}

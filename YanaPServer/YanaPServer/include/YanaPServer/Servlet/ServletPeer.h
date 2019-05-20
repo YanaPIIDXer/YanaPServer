@@ -11,6 +11,7 @@ namespace Servlet
 {
 
 class CServletFinder;
+class IHttpServerEvent;
 
 /**
  * @class CServletPeer
@@ -27,8 +28,9 @@ public:
 	 * @brief コンストラクタ
 	 * @param[in] pSocket ソケット
 	 * @param[in] pInFinder ServletFinder
+	 * @param[in] pInHttpServerEvent サーバイベント
 	 */
-	CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder);
+	CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder, IHttpServerEvent *pInHttpServerEvent);
 
 	/**
 	 * @brief デストラクタ
@@ -68,9 +70,13 @@ private:
 	// ServletFinder
 	CServletFinder *pFinder;
 
+
+
 	// 送信サイズ
 	unsigned int SendSize;
 
+	// HTTPサーバイベント
+	IHttpServerEvent *pHttpServerEvent;
 
 	// レスポンス送信.
 	void SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const YanaPServer::Util::Stream::CStringStream &Stream);

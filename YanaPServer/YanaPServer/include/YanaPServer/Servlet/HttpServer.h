@@ -4,6 +4,7 @@
 #include "../Application/ApplicationBase.h"
 #include "../Peer/PeerBase.h"
 #include "ServletFinder.h"
+#include "HttpServerEvent.h"
 
 namespace YanaPServer
 {
@@ -11,6 +12,63 @@ namespace Servlet
 {
 
 class IServlet;
+
+/**
+ * @class CHttpDefaultServerEvent
+ * @brief 標準のサーバイベント
+ *        オーバーライドするクラスを定義して設定しない場合はコイツが使用される。
+ * @detail シングルトンクラス
+ */
+class CHttpDefaultServetEvent : public IHttpServerEvent
+{
+
+public:
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CHttpDefaultServetEvent() {}
+
+	/**
+	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	 * @brief エラー発生
+	 * @param[in] Request HTTPリクエスト
+	 * @param[in] ResponseStream  文字列ストリーム
+	 */
+	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	{
+		ResponseStream.Append("Error.\n");
+	}
+
+	/**
+	 * @fn virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	 * @brief 対応Servletが見つからなかった
+	 * @param[in] Request HTTPリクエスト
+	 * @param[in] ResponseStream  文字列ストリーム
+	 */
+	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	{
+		ResponseStream.Append(Request.Path.c_str());
+		ResponseStream.Append(" 404 NotFound.\n");
+	}
+
+	// ========= Singleton =============
+
+public:
+
+	/**
+	 * @fn static CHttpDefaultServerEvent &GetInstance()
+	 * @brief Singletonインスタンス取得
+	 * @return Singletonインスタンス
+	 */
+	static CHttpDefaultServetEvent &GetInstance() { return Instance; }
+
+private:
+
+	CHttpDefaultServetEvent() {}
+	static CHttpDefaultServetEvent Instance;
+
+};
 
 /**
  * @class CHttpServer
@@ -25,6 +83,12 @@ public:
 	 * @brief コンストラクタ
 	 */
 	CHttpServer();
+
+	/**
+	 * @brief コンストラクタ
+	 * @param[in] pInEvent サーバイベント
+	 */
+	CHttpServer(IHttpServerEvent *pInEvent);
 
 	/**
 	 * @brief デストラクタ
@@ -52,6 +116,9 @@ private:
 
 	// ServletFinder
 	CServletFinder ServletFinder;
+
+	// サーバイベント
+	IHttpServerEvent *pEvent;
 
 };
 
