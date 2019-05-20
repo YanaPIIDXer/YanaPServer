@@ -38,6 +38,11 @@ public:
 		Send(pData, Size);
 	}
 
+	// ‘—M‚µ‚½
+	virtual void OnSend(unsigned int Size) override
+	{
+	}
+
 	// Ø’f‚³‚ê‚½B
 	virtual void OnDisconnect(ESocketDisconnectReason Reason) override
 	{

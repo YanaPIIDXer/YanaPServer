@@ -33,7 +33,8 @@ public:
 	virtual void OnRecv(const char * pData, unsigned int Size) override
 	{
 		std::cout << "RecvData Size:" << Size << std::endl;
-		std::cout << "Data:" << pData << std::endl;
+		std::cout << "===== Data =====" << std::endl;
+		std::cout << pData << std::endl;
 	}
 
 	// ‘—M‚µ‚½B
@@ -75,7 +76,7 @@ int main()
 	CWindowsSocket Socket;
 	SocketEvent Event;
 	Socket.SetEventListener(&Event);
-	if (!Socket.Connect("127.0.0.1", 4423))
+	if (!Socket.Connect("127.0.0.1", 4424))
 	{
 		std::cout << "Connect Failed." << std::endl;
 
@@ -90,7 +91,7 @@ int main()
 	Header.Append("HOST: localhost:4423\n");
 	Header.Append("\n\n");
 	Socket.Send(Header.Get(), Header.GetLength() + 1);
-	
+
 	while (Socket.IsValid())
 	{
 		Socket.Poll();

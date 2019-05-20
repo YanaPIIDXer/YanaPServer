@@ -4,6 +4,8 @@
 #include "Util/Stream/StringStream.h"
 #include <sstream>
 
+#include <iostream>
+
 using namespace YanaPServer::Util::Stream;
 
 namespace YanaPServer
@@ -27,6 +29,8 @@ CServletPeer::~CServletPeer()
 // óM‚µ‚½B
 void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
+	std::cout << pData << std::endl;
+
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
 
