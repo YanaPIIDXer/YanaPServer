@@ -1,5 +1,3 @@
 <map id="クラス階層図" name="クラス階層図">
-<area shape="rect" id="node1" href="$class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html" title="Listen用Socketインタフェース " alt="" coords="5,39,157,80"/>
-<area shape="rect" id="node2" href="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html" title="何もしないListenSocketクラス 未定義のプラットフォームで使用する。 " alt="" coords="221,5,401,47"/>
-<area shape="rect" id="node3" href="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html" title="WindowsのListen用ソケットクラス " alt="" coords="205,71,416,112"/>
+<area shape="rect" id="node1" href="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_listen_socket.html" title="Listen用Socketクラス " alt="" coords="5,5,164,47"/>
 </map>

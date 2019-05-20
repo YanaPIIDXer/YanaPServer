@@ -1,4 +1,5 @@
 <map id="HttpServerEvent.h" name="HttpServerEvent.h">
-<area shape="rect" id="node2" href="$_http_request_8h.html" title="HttpRequest.h" alt="" coords="5,80,111,107"/>
-<area shape="rect" id="node4" href="$_string_stream_8h.html" title="../Util/Stream/StringStream.h" alt="" coords="135,80,325,107"/>
+<area shape="rect" id="node2" href="$_http_request_8h.html" title="HttpRequest.h" alt="" coords="35,80,140,107"/>
+<area shape="rect" id="node7" href="$_string_stream_8h.html" title="../Util/Stream/StringStream.h" alt="" coords="164,80,355,107"/>
+<area shape="rect" id="node4" href="$_http_parameter_8h.html" title="HttpParameter.h" alt="" coords="85,155,202,181"/>
 </map>

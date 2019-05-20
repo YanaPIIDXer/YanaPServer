@@ -1,11 +1,12 @@
 <map id="HttpServer.h" name="HttpServer.h">
-<area shape="rect" id="node2" href="$_application_base_8h.html" title="../Application/Application\lBase.h" alt="" coords="464,80,631,121"/>
-<area shape="rect" id="node5" href="$_peer_base_8h.html" title="../Peer/PeerBase.h" alt="" coords="186,169,319,196"/>
-<area shape="rect" id="node10" href="$_servlet_finder_8h.html" title="ServletFinder.h" alt="" coords="775,87,883,114"/>
-<area shape="rect" id="node13" href="$_http_server_event_8h.html" title="HttpServerEvent.h" alt="" coords="918,87,1043,114"/>
+<area shape="rect" id="node2" href="$_application_base_8h.html" title="../Application/Application\lBase.h" alt="" coords="412,80,579,121"/>
+<area shape="rect" id="node5" href="$_peer_base_8h.html" title="../Peer/PeerBase.h" alt="" coords="134,169,267,196"/>
+<area shape="rect" id="node10" href="$_servlet_finder_8h.html" title="ServletFinder.h" alt="" coords="1068,169,1176,196"/>
+<area shape="rect" id="node13" href="$_http_server_event_8h.html" title="HttpServerEvent.h" alt="" coords="714,87,839,114"/>
 <area shape="rect" id="node3" href="$_socket_8h.html" title="../Socket/Socket.h" alt="" coords="239,244,370,271"/>
-<area shape="rect" id="node7" href="$_listen_socket_8h.html" title="../Socket/Listen/ListenSocket.h" alt="" coords="445,169,650,196"/>
+<area shape="rect" id="node7" href="$_listen_socket_8h.html" title="../Socket/Listen/ListenSocket.h" alt="" coords="393,169,598,196"/>
 <area shape="rect" id="node6" href="$_socket_event_listener_8h.html" title="../Socket/SocketEventListener.h" alt="" coords="5,244,215,271"/>
-<area shape="rect" id="node14" href="$_http_request_8h.html" title="HttpRequest.h" alt="" coords="928,169,1033,196"/>
-<area shape="rect" id="node15" href="$_string_stream_8h.html" title="../Util/Stream/StringStream.h" alt="" coords="1057,169,1248,196"/>
+<area shape="rect" id="node14" href="$_http_request_8h.html" title="HttpRequest.h" alt="" coords="724,169,829,196"/>
+<area shape="rect" id="node16" href="$_string_stream_8h.html" title="../Util/Stream/StringStream.h" alt="" coords="853,169,1044,196"/>
+<area shape="rect" id="node15" href="$_http_parameter_8h.html" title="HttpParameter.h" alt="" coords="723,244,841,271"/>
 </map>
