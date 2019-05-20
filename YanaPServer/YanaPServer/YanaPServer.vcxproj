@@ -122,9 +122,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application\ApplicationBase.cpp" />
-    <ClCompile Include="src\MySQL\MySqlBinds.cpp" />
-    <ClCompile Include="src\MySQL\MySqlConnection.cpp" />
-    <ClCompile Include="src\MySQL\MySqlQuery.cpp" />
     <ClCompile Include="src\Peer\PeerBase.cpp" />
     <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
