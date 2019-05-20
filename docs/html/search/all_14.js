@@ -1,7 +1,7 @@
 var searchData=
 [
   ['‾capplicationbase',['‾CApplicationBase',['../class_yana_p_server_1_1_application_1_1_c_application_base.html#a380a8975b52549e8f7a234112d4a77dd',1,'YanaPServer::Application::CApplicationBase']]],
-  ['‾chttpdefaultservetevent',['‾CHttpDefaultServetEvent',['../class_yana_p_server_1_1_servlet_1_1_c_http_default_servet_event.html#a202beb82b4ce2afe703f78706d1d0b53',1,'YanaPServer::Servlet::CHttpDefaultServetEvent']]],
+  ['‾chttpdefaultserverevent',['‾CHttpDefaultServerEvent',['../class_yana_p_server_1_1_servlet_1_1_c_http_default_server_event.html#a36750f7460b54892accc8cacfb2ebb46',1,'YanaPServer::Servlet::CHttpDefaultServerEvent']]],
   ['‾chttpparameter',['‾CHttpParameter',['../class_yana_p_server_1_1_servlet_1_1_c_http_parameter.html#a734a10f066af79e5adf7162ea0bc0346',1,'YanaPServer::Servlet::CHttpParameter']]],
   ['‾chttprequestparser',['‾CHttpRequestParser',['../class_yana_p_server_1_1_servlet_1_1_c_http_request_parser.html#ac514e03a571289ab8b5b55d895106b59',1,'YanaPServer::Servlet::CHttpRequestParser']]],
   ['‾chttpserver',['‾CHttpServer',['../class_yana_p_server_1_1_servlet_1_1_c_http_server.html#a541b394f60efeda00a0b44ad748a8064',1,'YanaPServer::Servlet::CHttpServer']]],
@@ -16,6 +16,7 @@ var searchData=
   ['‾cpeerbase',['‾CPeerBase',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802',1,'YanaPServer::Peer::CPeerBase']]],
   ['‾cservletfinder',['‾CServletFinder',['../class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2448061c11e2b44f1b8f84bba0cb7df6',1,'YanaPServer::Servlet::CServletFinder']]],
   ['‾cservletpeer',['‾CServletPeer',['../class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#a7c3ca8bb513481a5735fa2f84e2443bd',1,'YanaPServer::Servlet::CServletPeer']]],
+  ['‾csocket',['‾CSocket',['../class_yana_p_server_1_1_socket_1_1_c_socket.html#a02bad0dbc1940585ab3fcc7c654b73ea',1,'YanaPServer::Socket::CSocket']]],
   ['‾cstringstream',['‾CStringStream',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html#a8ac114f19c65fdec7c857239a73d168f',1,'YanaPServer::Util::Stream::CStringStream']]],
   ['‾cwindowslistensocket',['‾CWindowsListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a717c3bd686b19c2c77582c2c0754000e',1,'YanaPServer::Socket::Listen::CWindowsListenSocket']]],
   ['‾cwindowssocket',['‾CWindowsSocket',['../class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5',1,'YanaPServer::Socket::CWindowsSocket']]],

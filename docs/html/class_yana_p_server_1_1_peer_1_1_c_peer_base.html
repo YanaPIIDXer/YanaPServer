@@ -92,9 +92,9 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:aa583bd89129d7392dbe738e3be9bff93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aa583bd89129d7392dbe738e3be9bff93">CPeerBase</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pInSocket)</td></tr>
-<tr class="memdesc:aa583bd89129d7392dbe738e3be9bff93"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#aa583bd89129d7392dbe738e3be9bff93">[詳解]</a><br /></td></tr>
-<tr class="separator:aa583bd89129d7392dbe738e3be9bff93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7581235ee631faef23809c5f57f7a595"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a7581235ee631faef23809c5f57f7a595">CPeerBase</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *pSocket)</td></tr>
+<tr class="memdesc:a7581235ee631faef23809c5f57f7a595"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a7581235ee631faef23809c5f57f7a595">[詳解]</a><br /></td></tr>
+<tr class="separator:a7581235ee631faef23809c5f57f7a595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8deff34c46093a1f4badc602078ff802"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802">‾CPeerBase</a> ()=0</td></tr>
 <tr class="memdesc:a8deff34c46093a1f4badc602078ff802"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a8deff34c46093a1f4badc602078ff802">[詳解]</a><br /></td></tr>
 <tr class="separator:a8deff34c46093a1f4badc602078ff802"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,8 +136,8 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失する（親になるshared_ptrが消える）ので、 コイツを使って何かやる時はexpired()チェックしないと死なますよ。 </p>
 </div><h2 class="groupheader">構築子と解体子</h2>
-<a id="aa583bd89129d7392dbe738e3be9bff93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa583bd89129d7392dbe738e3be9bff93">&#9670;&nbsp;</a></span>CPeerBase()</h2>
+<a id="a7581235ee631faef23809c5f57f7a595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7581235ee631faef23809c5f57f7a595">&#9670;&nbsp;</a></span>CPeerBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +146,7 @@ YanaPServer::Peer::CPeerBase 連携図</div>
           <td class="memname">YanaPServer::Peer::CPeerBase::CPeerBase </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html">YanaPServer::Socket::ISocket</a> *&#160;</td>
-          <td class="paramname"><em>pInSocket</em></td><td>)</td>
+          <td class="paramname"><em>pSocket</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -155,14 +155,14 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <p>コンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pInSocket</td><td>ソケット </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pSocket</td><td>ソケット </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_aa583bd89129d7392dbe738e3be9bff93_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_aa583bd89129d7392dbe738e3be9bff93_cgraph" alt=""/></div>
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a7581235ee631faef23809c5f57f7a595_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a7581235ee631faef23809c5f57f7a595_cgraph" alt=""/></div>
 <!-- MAP 2 -->
 </div>
 

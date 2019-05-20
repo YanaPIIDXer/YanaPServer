@@ -89,24 +89,21 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 <tr class="memitem:a495564ed1f3febdc0a670726985ce9ea"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a495564ed1f3febdc0a670726985ce9ea">‾ISocket</a> ()</td></tr>
 <tr class="memdesc:a495564ed1f3febdc0a670726985ce9ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a495564ed1f3febdc0a670726985ce9ea">[詳解]</a><br /></td></tr>
 <tr class="separator:a495564ed1f3febdc0a670726985ce9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5ddffc5b4e0da27c309a3fdfaff7292"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ac5ddffc5b4e0da27c309a3fdfaff7292">SetEventListener</a> (<a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *pListener)=0</td></tr>
-<tr class="memdesc:ac5ddffc5b4e0da27c309a3fdfaff7292"><td class="mdescLeft">&#160;</td><td class="mdescRight">イベントリスナをセット  <a href="#ac5ddffc5b4e0da27c309a3fdfaff7292">[詳解]</a><br /></td></tr>
-<tr class="separator:ac5ddffc5b4e0da27c309a3fdfaff7292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08cddb81d3cc71dd4f3ad282af259d65"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a08cddb81d3cc71dd4f3ad282af259d65">Poll</a> ()=0</td></tr>
-<tr class="memdesc:a08cddb81d3cc71dd4f3ad282af259d65"><td class="mdescLeft">&#160;</td><td class="mdescRight">毎フレーム実行する処理  <a href="#a08cddb81d3cc71dd4f3ad282af259d65">[詳解]</a><br /></td></tr>
-<tr class="separator:a08cddb81d3cc71dd4f3ad282af259d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5dceb6a08cf642fa2cf6d063d6e80c6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ae5dceb6a08cf642fa2cf6d063d6e80c6">Connect</a> (const char *pHost, unsigned int Port)=0</td></tr>
 <tr class="memdesc:ae5dceb6a08cf642fa2cf6d063d6e80c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">接続  <a href="#ae5dceb6a08cf642fa2cf6d063d6e80c6">[詳解]</a><br /></td></tr>
 <tr class="separator:ae5dceb6a08cf642fa2cf6d063d6e80c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58e05676c80c5d1fad2c98a73bff56f4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a58e05676c80c5d1fad2c98a73bff56f4">PollConnect</a> ()=0</td></tr>
+<tr class="memdesc:a58e05676c80c5d1fad2c98a73bff56f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">接続されるまで毎フレーム実行される処理  <a href="#a58e05676c80c5d1fad2c98a73bff56f4">[詳解]</a><br /></td></tr>
+<tr class="separator:a58e05676c80c5d1fad2c98a73bff56f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a052f5ae17dc9ae6ab0ef4d1e3358948c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c">IsValid</a> () const =0</td></tr>
 <tr class="memdesc:a052f5ae17dc9ae6ab0ef4d1e3358948c"><td class="mdescLeft">&#160;</td><td class="mdescRight">有効か？  <a href="#a052f5ae17dc9ae6ab0ef4d1e3358948c">[詳解]</a><br /></td></tr>
 <tr class="separator:a052f5ae17dc9ae6ab0ef4d1e3358948c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70a119e2cc6be09345478b365b9a3f46"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46">Send</a> (const char *pData, unsigned int Size)=0</td></tr>
+<tr class="memitem:a70a119e2cc6be09345478b365b9a3f46"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46">Send</a> (const char *pData, unsigned int Size)=0</td></tr>
 <tr class="memdesc:a70a119e2cc6be09345478b365b9a3f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信  <a href="#a70a119e2cc6be09345478b365b9a3f46">[詳解]</a><br /></td></tr>
 <tr class="separator:a70a119e2cc6be09345478b365b9a3f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab501dd85926e7bcd041bc6465d0dc900"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ab501dd85926e7bcd041bc6465d0dc900">Release</a> (<a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a> Reason)=0</td></tr>
-<tr class="memdesc:ab501dd85926e7bcd041bc6465d0dc900"><td class="mdescLeft">&#160;</td><td class="mdescRight">解放  <a href="#ab501dd85926e7bcd041bc6465d0dc900">[詳解]</a><br /></td></tr>
-<tr class="separator:ab501dd85926e7bcd041bc6465d0dc900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09afe5bbf1f8d203bc3cadd33a164b8"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ad09afe5bbf1f8d203bc3cadd33a164b8">Recv</a> (char *pBuffer, unsigned int BufferSize)=0</td></tr>
+<tr class="memdesc:ad09afe5bbf1f8d203bc3cadd33a164b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信  <a href="#ad09afe5bbf1f8d203bc3cadd33a164b8">[詳解]</a><br /></td></tr>
+<tr class="separator:ad09afe5bbf1f8d203bc3cadd33a164b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ソケットの挙動を実装するためのインタフェース </p>
@@ -156,6 +153,12 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 <dl class="section return"><dt>戻り値</dt><dd>成功したらtrueを返す。 </dd></dl>
 
 <p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a2bcff0d00b240f839ab58cd6c11e3e84">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a58243f5bfa867f33b42385c70e679a0b">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_ae5dceb6a08cf642fa2cf6d063d6e80c6_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_ae5dceb6a08cf642fa2cf6d063d6e80c6_icgraph" alt=""/></div>
+<!-- MAP 1 -->
+</div>
 
 </div>
 </div>
@@ -190,13 +193,13 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_a052f5ae17dc9ae6ab0ef4d1e3358948c_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_a052f5ae17dc9ae6ab0ef4d1e3358948c_icgraph" alt=""/></div>
-<!-- MAP 1 -->
+<!-- MAP 2 -->
 </div>
 
 </div>
 </div>
-<a id="a08cddb81d3cc71dd4f3ad282af259d65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08cddb81d3cc71dd4f3ad282af259d65">&#9670;&nbsp;</a></span>Poll()</h2>
+<a id="a58e05676c80c5d1fad2c98a73bff56f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58e05676c80c5d1fad2c98a73bff56f4">&#9670;&nbsp;</a></span>PollConnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +208,7 @@ YanaPServer::Socket::ISocket の継承関係図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void YanaPServer::Socket::ISocket::Poll </td>
+          <td class="memname">boool YanaPServer::Socket::ISocket::PollConnect </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -218,20 +221,21 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 </table>
 </div><div class="memdoc">
 
-<p>毎フレーム実行する処理 </p>
+<p>接続されるまで毎フレーム実行される処理 </p>
+<dl class="section return"><dt>戻り値</dt><dd>接続に成功したらtrueを返す。 </dd></dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a6504e1a06c36228478b12f08935a1f38">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a21afe7152b3a9b2c7c9895539d9b160e">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a71f1d810393467320cbf36dbc9921745">YanaPServer::Socket::CWindowsSocket</a>で実装されています。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_a08cddb81d3cc71dd4f3ad282af259d65_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_a08cddb81d3cc71dd4f3ad282af259d65_icgraph" alt=""/></div>
-<!-- MAP 2 -->
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_a58e05676c80c5d1fad2c98a73bff56f4_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_a58e05676c80c5d1fad2c98a73bff56f4_icgraph" alt=""/></div>
+<!-- MAP 3 -->
 </div>
 
 </div>
 </div>
-<a id="ab501dd85926e7bcd041bc6465d0dc900"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab501dd85926e7bcd041bc6465d0dc900">&#9670;&nbsp;</a></span>Release()</h2>
+<a id="ad09afe5bbf1f8d203bc3cadd33a164b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09afe5bbf1f8d203bc3cadd33a164b8">&#9670;&nbsp;</a></span>Recv()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,11 +244,21 @@ YanaPServer::Socket::ISocket の継承関係図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void YanaPServer::Socket::ISocket::Release </td>
+          <td class="memname">int YanaPServer::Socket::ISocket::Recv </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a>&#160;</td>
-          <td class="paramname"><em>Reason</em></td><td>)</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>BufferSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -254,15 +268,17 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 </table>
 </div><div class="memdoc">
 
-<p>解放 </p>
+<p>受信 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Reason</td><td>切断理由 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pBuffer</td><td>バッファ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">BufferSize</td><td>バッファサイズ </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>戻り値</dt><dd>受信バイト数を返す。失敗時は-1を返す。 </dd></dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ad844fa062091729450ef23fbbff78724">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#aab4f6ba0b0444f08b5c750d657c4d126">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#acaafa8caacd5f71e2bfdabec9f17c66a">YanaPServer::Socket::CWindowsSocket</a>で実装されています。</p>
 
 </div>
 </div>
@@ -308,57 +324,9 @@ YanaPServer::Socket::ISocket の継承関係図</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>戻り値</dt><dd>成功したらtrueを返す。 </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>送信バイト数を返す。失敗時は-1を返す。 </dd></dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a3b1502d14401cbb8bca097821f8c14db">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a5a8801b67702f0c0c0855ee61b3f3652">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_a70a119e2cc6be09345478b365b9a3f46_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_a70a119e2cc6be09345478b365b9a3f46_icgraph" alt=""/></div>
-<!-- MAP 3 -->
-</div>
-
-</div>
-</div>
-<a id="ac5ddffc5b4e0da27c309a3fdfaff7292"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5ddffc5b4e0da27c309a3fdfaff7292">&#9670;&nbsp;</a></span>SetEventListener()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void YanaPServer::Socket::ISocket::SetEventListener </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html">ISocketEventListener</a> *&#160;</td>
-          <td class="paramname"><em>pListener</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>イベントリスナをセット </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pListener</td><td>イベントリスナ </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a35a6e115696cd51a36230ef6cb33fccc">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a2b6ca207839bf6926edd7d0285315306">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_ac5ddffc5b4e0da27c309a3fdfaff7292_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_ac5ddffc5b4e0da27c309a3fdfaff7292_icgraph" alt=""/></div>
-<!-- MAP 4 -->
-</div>
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ac657c4012ae89eae8e9444a7483374a4">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#a5a8801b67702f0c0c0855ee61b3f3652">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
 
 </div>
 </div>
