@@ -131,6 +131,11 @@ void CWindowsSocket::SendProc()
 	{
 		DataQueue.pop();
 	}
+
+	if (pEventListener != nullptr)
+	{
+		pEventListener->OnSend(SendSize);
+	}
 }
 
 // óMˆ—.

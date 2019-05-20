@@ -10,6 +10,7 @@ using namespace YanaPServer::Socket;
 // コンストラクタ
 CPeerBase::CPeerBase(YanaPServer::Socket::ISocket *pInSocket)
 	: pSocket(pInSocket)
+	, bDisconnect(false)
 {
 	pSocket->SetEventListener(this);
 }
@@ -26,6 +27,11 @@ void CPeerBase::Poll()
 	if (!IsValid()) { return; }
 
 	pSocket->Poll();
+
+	if (bDisconnect)
+	{
+		ReleaseSocket();
+	}
 }
 
 // ソケットイベントをオーバーライドするイベントリスナをセット
@@ -45,9 +51,10 @@ void CPeerBase::Send(const char *pData, unsigned int Size)
 // 切断.
 void CPeerBase::Disconnect()
 {
-	if (!IsValid()) { return; }
-
-	ReleaseSocket();
+	// SocketのPoll処理中に切断される可能性があるので、
+	// 即解体はせずにフラグだけ立てておく。
+	// Poll処理後、切断フラグが立っていれば解体。
+	bDisconnect = true;
 }
 
 

@@ -91,6 +91,9 @@ private:
 	// ソケット
 	YanaPServer::Socket::ISocket *pSocket;
 
+	// 切断フラグ
+	bool bDisconnect;
+
 
 	// ソケット解放.
 	void ReleaseSocket();

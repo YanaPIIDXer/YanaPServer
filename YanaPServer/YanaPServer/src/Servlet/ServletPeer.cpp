@@ -14,6 +14,7 @@ namespace Servlet
 CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder)
 	: CPeerBase(pSocket)
 	, pFinder(pInFinder)
+	, SendSize(0)
 {
 }
 
@@ -71,6 +72,20 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	SendResponse(ResponseStream);
 }
 
+// 送信した
+void CServletPeer::OnSend(unsigned int Size)
+{
+	if (SendSize > Size)
+	{
+		SendSize -= Size;
+		return;
+	}
+
+	// 送信し終えたら切断する。
+	SendSize = 0;
+	Disconnect();
+}
+
 
 // レスポンス送信.
 void CServletPeer::SendResponse(const CStringStream &Stream)
@@ -78,6 +93,7 @@ void CServletPeer::SendResponse(const CStringStream &Stream)
 	// @TODO:実際にはレスポンスコードとかを付加する必要がある。
 	const char *pData = Stream.Get();
 	unsigned int Size = Stream.GetLength() + 1;
+	SendSize += Size;
 	Send(pData, Size);
 }
 

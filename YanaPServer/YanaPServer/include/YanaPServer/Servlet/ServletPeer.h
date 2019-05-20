@@ -43,10 +43,20 @@ public:
 	 */
 	virtual void OnRecv(const char *pData, unsigned int Size) override;
 
+	/** 
+	 * @fn virtual void OnSend(unsigned int Size) override
+	 * @brief 送信した
+	 * @param[in] Size 送信したデータ長
+	 */
+	virtual void OnSend(unsigned int Size) override;
+
 private:
 
 	// ServletFinder
 	CServletFinder *pFinder;
+
+	// 送信サイズ
+	unsigned int SendSize;
 
 
 	// レスポンス送信.

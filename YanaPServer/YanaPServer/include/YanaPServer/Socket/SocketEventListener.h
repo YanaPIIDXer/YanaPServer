@@ -34,6 +34,13 @@ public:
 	virtual void OnRecv(const char *pData, unsigned int Size) = 0;
 
 	/**
+	 * @fn virtual void OnSend(unsigned int Size) = 0
+	 * @brief 送信した
+	 * @param[in] Size 送信したデータ長
+	 */
+	virtual void OnSend(unsigned int Size) = 0;
+
+	/**
 	 * @fn virtual void OnDisconnect(ESocketDisconnectReason Reason) = 0
 	 * @brief 切断された
 	 * @param[in] Reason 切断理由
