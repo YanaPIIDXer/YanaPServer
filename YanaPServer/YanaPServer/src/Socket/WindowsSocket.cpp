@@ -108,7 +108,7 @@ void CWindowsSocket::Release(ESocketDisconnectReason Reason)
 
 	if (pEventListener != nullptr)
 	{
-		pEventListener->OnDisconnect();
+		pEventListener->OnDisconnect(Reason);
 	}
 }
 

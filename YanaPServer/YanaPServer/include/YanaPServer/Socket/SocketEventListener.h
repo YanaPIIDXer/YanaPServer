@@ -34,10 +34,11 @@ public:
 	virtual void OnRecv(const char *pData, unsigned int Size) = 0;
 
 	/**
-	 * @fn virtual void OnDisconnect() = 0
+	 * @fn virtual void OnDisconnect(ESocketDisconnectReason Reason) = 0
 	 * @brief Ø’f‚³‚ê‚½
+	 * @param[in] Reason Ø’f——R
 	 */
-	virtual void OnDisconnect() = 0;
+	virtual void OnDisconnect(ESocketDisconnectReason Reason) = 0;
 
 };
 

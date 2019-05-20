@@ -39,9 +39,28 @@ public:
 	}
 
 	// Ø’f‚³‚ê‚½B
-	virtual void OnDisconnect() override
+	virtual void OnDisconnect(ESocketDisconnectReason Reason) override
 	{
 		std::cout << "Peer Disconnected." << std::endl;
+		std::cout << "Reason:";
+		switch (Reason)
+		{
+			case ESocketDisconnectReason::Destruct:
+
+				std::cout << "Destruct" << std::endl;
+				break;
+
+			case ESocketDisconnectReason::SendError:
+
+				std::cout << "SendError" << std::endl;
+				break;
+
+			case ESocketDisconnectReason::RecvError:
+
+				std::cout << "RecvError" << std::endl;
+				break;
+
+		}
 	}
 
 private:

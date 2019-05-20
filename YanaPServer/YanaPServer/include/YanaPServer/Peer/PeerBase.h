@@ -74,10 +74,11 @@ public:
 	virtual void OnConnect() override {}
 
 	/**
-	 * @fn virtual void OnDisconnect() override
+	 * @fn virtual void OnDisconnect(YanaPServer::Socket::ESocketDisconnectReason Reason) override
 	 * @brief Ø’f‚³‚ê‚½
+	 * @paran[in] Reason Ø’f——R
 	 */
-	virtual void OnDisconnect() override {}
+	virtual void OnDisconnect(YanaPServer::Socket::ESocketDisconnectReason Reason) override {}
 
 private:
 
