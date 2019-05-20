@@ -47,6 +47,30 @@ public:
 	virtual bool Serialize(const unsigned int *pData) override;
 
 	/**
+	 * @fn virtual bool Serialize(const short *pData) override
+	 * @brief shortのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(const short *pData) override;
+
+	/**
+	 * @fn virtual bool Serialize(const unsigned short *pData) override
+	 * @brief unsigned shortのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(const unsigned short *pData) override;
+
+	/**
+	 * @fn virtual bool Serialize(const float *pData) override
+	 * @brief floatのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(const float *pData) override;
+
+	/**
 	 * @fn virtual bool Serialize(const chat *pData) override
 	 * @brief 文字列のシリアライズ
 	 * @param[in] pData データ

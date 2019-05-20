@@ -28,6 +28,27 @@ bool CMemorySizeCaliculator::Serialize(const unsigned int *pData)
 	return true;
 }
 
+// shortのシリアライズ
+bool CMemorySizeCaliculator::Serialize(const short *pData)
+{
+	Size += sizeof(short);
+	return true;
+}
+
+// unsigned shortのシリアライズ
+bool CMemorySizeCaliculator::Serialize(const unsigned short *pData)
+{
+	Size += sizeof(unsigned short);
+	return true;
+}
+
+// floatのシリアライズ
+bool CMemorySizeCaliculator::Serialize(const float *pData)
+{
+	Size += sizeof(float);
+	return true;
+}
+
 // 文字列のシリアライズ
 bool CMemorySizeCaliculator::Serialize(const char *pData)
 {

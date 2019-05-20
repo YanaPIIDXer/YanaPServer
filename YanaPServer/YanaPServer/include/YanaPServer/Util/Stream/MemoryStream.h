@@ -39,6 +39,30 @@ public:
 	virtual bool Serialize(const unsigned int *pData) = 0;
 
 	/**
+	 * @fn virtual bool Serialize(const short *pData) = 0
+	 * @brief shortのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(const short *pData) = 0;
+
+	/**
+	 * @fn virtual bool Serialize(const unsigned short *pData) = 0
+	 * @brief unsigned shortのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(const unsigned short *pData) = 0;
+
+	/**
+	 * @fn virtual bool Serialize(const float *pData) = 0
+	 * @brief floatのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(const float *pData) = 0;
+
+	/**
 	 * @fn virtual bool Serialize(const chat *pData) = 0
 	 * @brief 文字列のシリアライズ
 	 * @param[in] pData データ

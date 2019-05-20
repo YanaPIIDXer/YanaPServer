@@ -40,6 +40,27 @@ bool CMemoryStreamWriter::Serialize(const unsigned int *pData)
 	return Write(&Data, sizeof(unsigned int));
 }
 
+// shortのシリアライズ
+bool CMemoryStreamWriter::Serialize(const short *pData)
+{
+	short Data = CEndianConverter::Convert(*pData);
+	return Write(&Data, sizeof(short));
+}
+
+// unsigned shortのシリアライズ
+bool CMemoryStreamWriter::Serialize(const unsigned short *pData)
+{
+	unsigned short Data = CEndianConverter::Convert(*pData);
+	return Write(&Data, sizeof(unsigned short));
+}
+
+// floatのシリアライズ
+bool CMemoryStreamWriter::Serialize(const float *pData)
+{
+	float Data = CEndianConverter::Convert(*pData);
+	return Write(&Data, sizeof(float));
+}
+
 // 文字列のシリアライズ
 bool CMemoryStreamWriter::Serialize(const char *pData)
 {
