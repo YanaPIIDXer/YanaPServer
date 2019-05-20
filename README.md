@@ -22,8 +22,11 @@ https://yanapiidxer.github.io/YanaPServer/html/index.html
 # MySQLライブラリについて
 本ライブラリにはMySQL-Connectorを使用したモジュールが含まれています。  
 その為、ライブラリを使用するにはMySQL-Connectorをインストールし、パスを通しておく必要があります。  
+また、使用する場合はdefineマクロ「**USE_MYSQL**」を有効にする必要があります。
 以下の手順でインストールし、パスを通してください。  
+※使用しない場合はスルーしてもＯＫです。  
 
 １：以下のURLから**32Bit版を**ダウンロードし、展開する。  
 http://download.nust.na/pub6/mysql/downloads/connector/c/index.html  
 ２：追加のインクルードディレクトリに、展開したディレクトリ内に含まれる「include」ディレクトリを追加する。  
+３：「プリプロセッサの定義」に、「USE_MYSQL」を追加する。  
