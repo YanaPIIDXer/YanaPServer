@@ -49,7 +49,15 @@ int main()
 	CWindowsSocket Socket;
 	SocketEvent Event;
 	Socket.SetEventListener(&Event);
-	if (!Socket.Connect("127.0.0.1", 4424)) { return 1; }
+	if (!Socket.Connect("127.0.0.1", 4424))
+	{
+		std::cout << "Connect Failed." << std::endl;
+
+		std::string Dummy;
+		std::cin >> Dummy;
+
+		return 1;
+	}
 
 	while (true)
 	{
