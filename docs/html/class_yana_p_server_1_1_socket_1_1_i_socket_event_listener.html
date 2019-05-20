@@ -98,6 +98,9 @@ YanaPServer::Socket::ISocketEventListener の継承関係図</div>
 <tr class="memitem:ac4dbcbd61efefdddee7736ec2a35efcf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ac4dbcbd61efefdddee7736ec2a35efcf">OnRecv</a> (const char *pData, unsigned int Size)=0</td></tr>
 <tr class="memdesc:ac4dbcbd61efefdddee7736ec2a35efcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信した  <a href="#ac4dbcbd61efefdddee7736ec2a35efcf">[詳解]</a><br /></td></tr>
 <tr class="separator:ac4dbcbd61efefdddee7736ec2a35efcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a021b55c409e3630209d6b3bc2bac2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ae7a021b55c409e3630209d6b3bc2bac2">OnSend</a> (unsigned int Size)=0</td></tr>
+<tr class="memdesc:ae7a021b55c409e3630209d6b3bc2bac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信した  <a href="#ae7a021b55c409e3630209d6b3bc2bac2">[詳解]</a><br /></td></tr>
+<tr class="separator:ae7a021b55c409e3630209d6b3bc2bac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8df68419b9450624045a4073f593d56d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a8df68419b9450624045a4073f593d56d">OnDisconnect</a> (<a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a> Reason)=0</td></tr>
 <tr class="memdesc:a8df68419b9450624045a4073f593d56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">切断された  <a href="#a8df68419b9450624045a4073f593d56d">[詳解]</a><br /></td></tr>
 <tr class="separator:a8df68419b9450624045a4073f593d56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,6 +235,42 @@ YanaPServer::Socket::ISocketEventListener の継承関係図</div>
 </dl>
 
 <p><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#a6e36eac1cb2917b1437350a848b85136">YanaPServer::Servlet::CServletPeer</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ae7a021b55c409e3630209d6b3bc2bac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a021b55c409e3630209d6b3bc2bac2">&#9670;&nbsp;</a></span>OnSend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Socket::ISocketEventListener::OnSend </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>送信した </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Size</td><td>送信したデータ長 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#a6d2ed62d81197a7f5d9137e40c913508">YanaPServer::Servlet::CServletPeer</a>で実装されています。</p>
 
 </div>
 </div>
