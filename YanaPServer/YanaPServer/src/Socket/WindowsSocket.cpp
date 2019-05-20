@@ -4,6 +4,8 @@
 #include "Socket/Windows/WinSockManager.h"
 #include "Socket/SocketEventListener.h"
 
+#include <iostream>
+
 namespace YanaPServer
 {
 namespace Socket
@@ -93,8 +95,9 @@ bool CWindowsSocket::Send(const char *pData, unsigned int Size)
 
 	for (unsigned int i = 0; i < Size; i++)
 	{
-		DataQueue.push(pData[i]);
+		DataQueue.push_back(pData[i]);
 	}
+
 	return true;
 }
 
@@ -129,7 +132,12 @@ void CWindowsSocket::SendProc()
 
 	for (int i = 0; i < SendSize; i++)
 	{
-		DataQueue.pop();
+		DataQueue.erase(DataQueue.begin());
+	}
+
+	if (SendSize > 0 && pEventListener != nullptr)
+	{
+		pEventListener->OnSend(SendSize);
 	}
 }
 
@@ -156,7 +164,10 @@ void CWindowsSocket::RecvProc()
 		return;
 	}
 
-	pEventListener->OnRecv(Buffer, RecvSize);
+	if (RecvSize > 0)
+	{
+		pEventListener->OnRecv(Buffer, RecvSize);
+	}
 }
 
 }

@@ -6,7 +6,7 @@
 #include "Socket.h"
 #include <WinSock2.h>
 #include <string>
-#include <queue>
+#include <vector>
 
 namespace YanaPServer
 {
@@ -115,7 +115,7 @@ private:
 	sockaddr_in ConnectAddr;
 
 	// データキュー
-	std::queue<char> DataQueue;
+	std::vector<char> DataQueue;
 
 	// イベントリスナ
 	ISocketEventListener *pEventListener;

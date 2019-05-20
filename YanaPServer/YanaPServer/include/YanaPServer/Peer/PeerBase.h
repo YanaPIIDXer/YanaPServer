@@ -68,6 +68,12 @@ public:
 	void Send(const char *pData, unsigned int Size);
 
 	/**
+	 * @fn void Disconnect()
+	 * @brief 切断
+	 */
+	void Disconnect();
+
+	/**
 	 * @fn virtual void OnConnect() override
 	 * @brief 接続された
 	 */
@@ -84,6 +90,13 @@ private:
 
 	// ソケット
 	YanaPServer::Socket::ISocket *pSocket;
+
+	// 切断フラグ
+	bool bDisconnect;
+
+
+	// ソケット解放.
+	void ReleaseSocket();
 
 };
 

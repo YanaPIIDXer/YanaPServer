@@ -2,6 +2,7 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/StringStream.h"
+#include <sstream>
 
 using namespace YanaPServer::Util::Stream;
 
@@ -14,6 +15,7 @@ namespace Servlet
 CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder)
 	: CPeerBase(pSocket)
 	, pFinder(pInFinder)
+	, SendSize(0)
 {
 }
 
@@ -71,13 +73,39 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	SendResponse(ResponseStream);
 }
 
+// 送信した
+void CServletPeer::OnSend(unsigned int Size)
+{
+	if (SendSize > Size)
+	{
+		SendSize -= Size;
+		return;
+	}
+
+	// 送信し終えたら切断する。
+	SendSize = 0;
+	Disconnect();
+}
+
 
 // レスポンス送信.
 void CServletPeer::SendResponse(const CStringStream &Stream)
 {
-	// @TODO:実際にはレスポンスコードとかを付加する必要がある。
-	const char *pData = Stream.Get();
-	unsigned int Size = Stream.GetLength() + 1;
+	// @TODO:仮のレスポンスヘッダ
+	//		 引数とかで弄れるようにする必要がある。
+	CStringStream SendData;
+	SendData.Append("HTTP/1.1 200 OK\n");
+	SendData.Append("Content-Type: text/html\n");
+	std::ostringstream ContentLength;
+	ContentLength << "Content-Length: " << Stream.GetLength() << "\n";
+	SendData.Append(ContentLength.str().c_str());
+	SendData.Append("\r\n");
+	
+	SendData.Append(Stream.Get());
+
+	const char *pData = SendData.Get();
+	unsigned int Size = SendData.GetLength() + 1;
+	SendSize += Size;
 	Send(pData, Size);
 }
 
