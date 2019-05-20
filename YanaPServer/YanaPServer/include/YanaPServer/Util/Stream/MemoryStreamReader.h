@@ -2,6 +2,7 @@
 #define __MEMORYSTREAMREADER_H__
 
 #include "MemoryStream.h"
+#include "../Serializable.h"
 
 namespace YanaPServer
 {
@@ -94,6 +95,14 @@ public:
 	 * @return 成功したらtrueを返す。
 	 */
 	virtual bool Serialize(std::string *pData) override;
+
+	/**
+	 * @fn virtual bool Serialize(ISerializable *pData) override
+	 * @brief シリアライズ可能なオブジェクトのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(ISerializable *pData) override { return pData->Serialize(this); }
 
 	/**
 	 * @fn virtual bool IsError() const override

@@ -7,6 +7,9 @@ namespace YanaPServer
 {
 namespace Util
 {
+
+class ISerializable;
+
 namespace Stream
 {
 
@@ -87,6 +90,14 @@ public:
 	 * @return 成功したらtrueを返す。
 	 */
 	virtual bool Serialize(std::string *pData) = 0;
+
+	/**
+	 * @fn virtual bool Serialize(ISerializable *pData) = 0
+	 * @brief シリアライズ可能なオブジェクトのシリアライズ
+	 * @param[in] pData データ
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(ISerializable *pData) = 0;
 
 	/**
 	 * @fn virtual bool IsError() const = 0

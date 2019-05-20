@@ -174,6 +174,7 @@
     <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
     <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
+    <ClInclude Include="include\YanaPServer\Util\Serializable.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h" />
