@@ -33,15 +33,6 @@
     <ClCompile Include="src\Application\ApplicationBase.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\MySQL\MySqlBinds.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MySQL\MySqlConnection.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MySQL\MySqlQuery.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\Servlet\HttpServer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
