@@ -101,23 +101,23 @@ void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode 
 	{
 		case EStatusCode::OK:
 
-			SendData.Append("200 OK\n");
+			SendData.AppendLine("200 OK");
 			break;
 
 		case EStatusCode::NotFound:
 
-			SendData.Append("404 Not Found\n");
+			SendData.AppendLine("404 Not Found");
 			break;
 
 		case EStatusCode::BadRequest:
 
-			SendData.Append("400 Bad Request\n");
+			SendData.AppendLine("400 Bad Request");
 			break;
 	}
-	SendData.Append("Content-Type: text/html\n");
+	SendData.AppendLine("Content-Type: text/html");
 	std::ostringstream ContentLength;
-	ContentLength << "Content-Length: " << Stream.GetLength() << "\n";
-	SendData.Append(ContentLength.str().c_str());
+	ContentLength << "Content-Length: " << Stream.GetLength();
+	SendData.AppendLine(ContentLength.str().c_str());
 	SendData.Append("\r\n");
 	
 	// ボディをブチ込む。
