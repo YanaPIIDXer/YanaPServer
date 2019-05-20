@@ -1,4 +1,0 @@
-<map id="YanaPServer::Socket::ISocket" name="YanaPServer::Socket::ISocket">
-<area shape="rect" id="node2" href="$class_yana_p_server_1_1_socket_1_1_c_null_socket.html" title="何もしないSocket 未定義のプラットフォームで使用される。 " alt="" coords="5,95,152,136"/>
-<area shape="rect" id="node3" href="$class_yana_p_server_1_1_socket_1_1_c_windows_socket.html" title="Windowsでのソケットの挙動を実装するクラス " alt="" coords="176,95,323,136"/>
-</map>
