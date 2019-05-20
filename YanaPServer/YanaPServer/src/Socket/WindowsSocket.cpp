@@ -148,7 +148,11 @@ void CWindowsSocket::RecvProc()
 	int RecvSize = recv(Socket, Buffer, BufferSize, 0);
 	if (RecvSize == SOCKET_ERROR)
 	{
-		Release(ESocketDisconnectReason::RecvError);
+		// ↓まだ受信していない場合は以下のエラーが吐き出される。
+		if (WSAGetLastError() != WSAEWOULDBLOCK)
+		{
+			Release(ESocketDisconnectReason::RecvError);
+		}
 		return;
 	}
 
