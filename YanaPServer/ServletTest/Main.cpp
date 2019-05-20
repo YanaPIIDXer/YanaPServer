@@ -27,10 +27,9 @@ public:
 	{
 		std::cout << "GET" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
-	
-		ResponseStream.Append("GET OK.\n");
+
+		//ResponseStream.Append("GET OK.\n");
 		// POSTテスト用にHTMLを構築。
-		/*
 		ResponseStream.Append("<html>\n");
 		ResponseStream.Append("<head>\n");
 		ResponseStream.Append("<title>TestPage</title>\n");
@@ -41,7 +40,6 @@ public:
 		ResponseStream.Append("</form>\n");
 		ResponseStream.Append("</body>\n");
 		ResponseStream.Append("</html>\n");
-		*/
 	}
 
 	virtual void OnError(const SHttpRequest &Request, CStringStream &ResponseStream) override
