@@ -87,7 +87,11 @@ void CHttpRequestParser::ParseParam(CHttpParameter &OutParams, const std::string
 	{
 		std::vector<std::string> ParamSet;
 		Split(Param.c_str(), "=", ParamSet);
-		if (ParamSet.size() <= 1) { continue; }		// 「ParamName=Value」の形になっていない場合は無視。
+		if (ParamSet.size() <= 1)
+		{
+			// 「ParamName=Value」の形になっていない場合はとりあえず空文字を突っ込んでおく。
+			ParamSet.push_back("");
+		}
 		OutParams.Add(ParamSet[0].c_str(), ParamSet[1].c_str());
 	}
 }

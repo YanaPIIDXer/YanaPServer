@@ -49,7 +49,7 @@ public:
 		ResponseStream.AppendLine("</head>");
 		ResponseStream.AppendLine("<body>");
 		ResponseStream.AppendLine("<form action=\"./\" method=\"POST\">");
-		ResponseStream.AppendLine("	<input type=\"hidden\" name=\"Test1\" Value=\"Test\">");
+		ResponseStream.AppendLine("	<input type=\"text\" name=\"Test1\">");
 		ResponseStream.AppendLine("	<input type=\"submit\" value=\"POST\">");
 		ResponseStream.AppendLine("</form>");
 		ResponseStream.AppendLine("</body>");
