@@ -1,7 +1,5 @@
 #include "Servlet/HttpRequestParser.h"
 
-#include <iostream>
-
 namespace YanaPServer
 {
 namespace Servlet
@@ -38,12 +36,38 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 	// 次にパスが来る。
 	OutResult.Path = Datas[1];
 
+	// GETパラメータ
+	int ParamParser = OutResult.Path.find_first_of('?');
+	if (ParamParser != std::string::npos)
+	{
+		std::string ParamStr = OutResult.Path.substr(ParamParser + 1);
+		OutResult.Path = OutResult.Path.substr(0, ParamParser);
+		ParseParam(OutResult.Parameter, ParamStr);
+	}
+
 	// その次にプロトコルバージョン
 	OutResult.ProtocolVersion = Datas[2];
 
 	return true;
 }
 
+
+// パラメータのパース
+void CHttpRequestParser::ParseParam(CHttpParameter &OutParams, const std::string &ParamStr)
+{
+	if (ParamStr == "") { return; }
+
+	std::vector<std::string> Params;
+	Split(ParamStr.c_str(), "&", Params);
+
+	for (const auto &Param : Params)
+	{
+		std::vector<std::string> ParamSet;
+		Split(Param.c_str(), "=", ParamSet);
+		if (ParamSet.size() <= 1) { continue; }		// 「ParamName=Value」の形になっていない場合は無視。
+		OutParams.Add(ParamSet[0].c_str(), ParamSet[1].c_str());
+	}
+}
 
 // Split
 void CHttpRequestParser::Split(const char *pData, const std::string &Delimiter, std::vector<std::string> &OutResult)
@@ -53,6 +77,13 @@ void CHttpRequestParser::Split(const char *pData, const std::string &Delimiter, 
 	std::string Str = pData;
 	unsigned int First = 0;
 	unsigned int Last = Str.find_first_of(Delimiter);
+	if (Last == std::string::npos)
+	{
+		// 区切り文字が見つからなかった場合はそのまま文字列をブチ込んで終了。
+		OutResult.push_back(Str);
+		return;
+	}
+
 	while (First < Str.size())
 	{
 		std::string SubStr(Str, First, Last - First);

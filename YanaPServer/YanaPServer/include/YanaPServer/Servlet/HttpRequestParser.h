@@ -40,6 +40,8 @@ public:
 
 private:
 
+	// パラメータのパース
+	void ParseParam(CHttpParameter &OutParams, const std::string &ParamStr);
 
 	// Split
 	static void Split(const char *pData, const std::string &Delimiter, std::vector<std::string> &OutResult);

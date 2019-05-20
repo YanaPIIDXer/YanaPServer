@@ -126,6 +126,7 @@
     <ClCompile Include="src\MySQL\MySqlConnection.cpp" />
     <ClCompile Include="src\MySQL\MySqlQuery.cpp" />
     <ClCompile Include="src\Peer\PeerBase.cpp" />
+    <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
     <ClCompile Include="src\Servlet\HttpServer.cpp" />
     <ClCompile Include="src\Servlet\ServletFinder.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
     <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
     <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpParameter.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequestParser.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
