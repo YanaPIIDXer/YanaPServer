@@ -1,0 +1,11 @@
+digraph "YanaPServer::Socket::CWindowsSocket::Release"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node21 [label="YanaPServer::Socket\l::CWindowsSocket::Release",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node21 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="YanaPServer::Socket\l::CWindowsSocket::‾CWindows\lSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5",tooltip="デストラクタ "];
+  Node21 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="YanaPServer::Socket\l::CWindowsSocket::Connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a2bcff0d00b240f839ab58cd6c11e3e84",tooltip="接続 "];
+}

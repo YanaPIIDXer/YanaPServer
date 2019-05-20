@@ -1,0 +1,17 @@
+digraph "Socket" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_13eb2c4ac490c23cbbda1abe0900c21b {
+    graph [ bgcolor="#ddddee", pencolor="black", label="src" fontname="Helvetica", fontsize="10", URL="dir_13eb2c4ac490c23cbbda1abe0900c21b.html"]
+  subgraph clusterdir_cd36f64cafbd7f26f119ad5ad665024a {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_cd36f64cafbd7f26f119ad5ad665024a.html"];
+    dir_cd36f64cafbd7f26f119ad5ad665024a [shape=plaintext label="Socket"];
+    dir_bce18c846ceb118e0ed1783fc5b9e2dc [shape=box label="Listen" color="black" fillcolor="white" style="filled" URL="dir_bce18c846ceb118e0ed1783fc5b9e2dc.html"];
+    dir_57a22456075c61fcfb3b5c35fb5adc57 [shape=box label="Windows" color="black" fillcolor="white" style="filled" URL="dir_57a22456075c61fcfb3b5c35fb5adc57.html"];
+  }
+  }
+  dir_1fb47a3b24f41454f77631ee11e2c6a9 [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_1fb47a3b24f41454f77631ee11e2c6a9.html"];
+  dir_57a22456075c61fcfb3b5c35fb5adc57->dir_1fb47a3b24f41454f77631ee11e2c6a9 [headlabel="1", labeldistance=1.5 headhref="dir_000020_000004.html"];
+  dir_bce18c846ceb118e0ed1783fc5b9e2dc->dir_1fb47a3b24f41454f77631ee11e2c6a9 [headlabel="6", labeldistance=1.5 headhref="dir_000011_000004.html"];
+}
