@@ -74,19 +74,16 @@ public:
 	virtual void OnConnect() override {}
 
 	/**
-	 * @fn virtual void OnDisconnect() override
+	 * @fn virtual void OnDisconnect(YanaPServer::Socket::ESocketDisconnectReason Reason) override
 	 * @brief 切断された
+	 * @paran[in] Reason 切断理由
 	 */
-	virtual void OnDisconnect() override {}
+	virtual void OnDisconnect(YanaPServer::Socket::ESocketDisconnectReason Reason) override {}
 
 private:
 
 	// ソケット
 	YanaPServer::Socket::ISocket *pSocket;
-
-
-	// ソケット解放.
-	void ReleaseSocket();
 
 };
 

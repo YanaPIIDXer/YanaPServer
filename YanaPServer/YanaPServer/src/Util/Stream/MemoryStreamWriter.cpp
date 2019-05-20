@@ -43,11 +43,7 @@ bool CMemoryStreamWriter::Serialize(const unsigned int *pData)
 // 文字列のシリアライズ
 bool CMemoryStreamWriter::Serialize(const char *pData)
 {
-	// サイズ
-	size_t Size = strlen(pData);
-	if (!Serialize(&Size)) { return false; }
-
-	// 実際の文字列.
+	size_t Size = strlen(pData) + 1;
 	return Write(pData, Size);
 }
 

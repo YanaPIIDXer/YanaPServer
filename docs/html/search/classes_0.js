@@ -1,7 +1,6 @@
 var searchData=
 [
   ['capplicationbase',['CApplicationBase',['../class_yana_p_server_1_1_application_1_1_c_application_base.html',1,'YanaPServer::Application']]],
-  ['cdynamicmemorystreamwriter',['CDynamicMemoryStreamWriter',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_dynamic_memory_stream_writer.html',1,'YanaPServer::Util::Stream']]],
   ['cendianconverter',['CEndianConverter',['../class_yana_p_server_1_1_util_1_1_c_endian_converter.html',1,'YanaPServer::Util']]],
   ['chttprequestparser',['CHttpRequestParser',['../class_yana_p_server_1_1_servlet_1_1_c_http_request_parser.html',1,'YanaPServer::Servlet']]],
   ['chttpserver',['CHttpServer',['../class_yana_p_server_1_1_servlet_1_1_c_http_server.html',1,'YanaPServer::Servlet']]],
@@ -16,6 +15,7 @@ var searchData=
   ['cpeerbase',['CPeerBase',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html',1,'YanaPServer::Peer']]],
   ['cservletfinder',['CServletFinder',['../class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html',1,'YanaPServer::Servlet']]],
   ['cservletpeer',['CServletPeer',['../class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html',1,'YanaPServer::Servlet']]],
+  ['cstringstream',['CStringStream',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html',1,'YanaPServer::Util::Stream']]],
   ['cwindowslistensocket',['CWindowsListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html',1,'YanaPServer::Socket::Listen']]],
   ['cwindowssocket',['CWindowsSocket',['../class_yana_p_server_1_1_socket_1_1_c_windows_socket.html',1,'YanaPServer::Socket']]],
   ['cwinsockmanager',['CWinSockManager',['../class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html',1,'YanaPServer::Socket::Windows']]]

@@ -38,6 +38,9 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 	// 次にパスが来る。
 	OutResult.Path = Datas[1];
 
+	// その次にプロトコルバージョン
+	OutResult.ProtocolVersion = Datas[2];
+
 	return true;
 }
 

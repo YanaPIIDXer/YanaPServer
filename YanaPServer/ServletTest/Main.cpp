@@ -15,28 +15,39 @@ public:
 
 	virtual const char *GetPath() const { return "/"; }
 
-	virtual void OnPost(const SHttpRequest &Request, CDynamicMemoryStreamWriter &ResponseStream) override
+	virtual void OnPost(const SHttpRequest &Request, CStringStream &ResponseStream) override
 	{
 		std::cout << "POST" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
 
-		ResponseStream.Serialize("POST OK.\n");
+		ResponseStream.Append("POST OK.\n");
 	}
 
-	virtual void OnGet(const SHttpRequest &Request, CDynamicMemoryStreamWriter &ResponseStream) override
+	virtual void OnGet(const SHttpRequest &Request, CStringStream &ResponseStream) override
 	{
 		std::cout << "GET" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
 
-		ResponseStream.Serialize("GET OK.\n");
+		//ResponseStream.Append("GET OK.\n");
+		// POSTテスト用にHTMLを構築。
+		ResponseStream.Append("<html>\n");
+		ResponseStream.Append("<head>\n");
+		ResponseStream.Append("<title>TestPage</title>\n");
+		ResponseStream.Append("</head>\n");
+		ResponseStream.Append("<body>\n");
+		ResponseStream.Append("<form action=\"./\" method=\"POST\">\n");
+		ResponseStream.Append("	<input type=\"submit\" value=\"POST\">\n");
+		ResponseStream.Append("</form>\n");
+		ResponseStream.Append("</body>\n");
+		ResponseStream.Append("</html>\n");
 	}
 
-	virtual void OnError(const SHttpRequest &Request, CDynamicMemoryStreamWriter &ResponseStream) override
+	virtual void OnError(const SHttpRequest &Request, CStringStream &ResponseStream) override
 	{
 		std::cout << "ERROR" << std::endl;
 		std::cout << "Path:" << Request.Path << std::endl;
 
-		ResponseStream.Serialize("Error.\n");
+		ResponseStream.Append("Error.\n");
 	}
 
 };

@@ -9,6 +9,7 @@ var searchData=
   ['addstring',['AddString',['../class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_binds.html#a22965155c2f6372524a0e6991210f7ae',1,'YanaPServer::MySQL::CMySqlBinds']]],
   ['addtime',['AddTime',['../class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_binds.html#a8fc96ccdc8ae950e7dd516427606b791',1,'YanaPServer::MySQL::CMySqlBinds']]],
   ['addwstring',['AddWString',['../class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_binds.html#a70f2373bc88d40d9cbfde5daf1a0c5ce',1,'YanaPServer::MySQL::CMySqlBinds']]],
+  ['append',['Append',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html#aaef06ae896f3eee924b795aaea7d9ff9',1,'YanaPServer::Util::Stream::CStringStream']]],
   ['applicationbase_2ecpp',['ApplicationBase.cpp',['../_application_base_8cpp.html',1,'']]],
   ['applicationbase_2eh',['ApplicationBase.h',['../_application_base_8h.html',1,'']]]
 ];

@@ -11,6 +11,22 @@ namespace Socket
 class ISocketEventListener;
 
 /**
+ * @enum ESocketDisconnectReason
+ * @brief ソケット切断理由
+ */
+enum class ESocketDisconnectReason
+{
+	//! デストラクタ等
+	Destruct,
+
+	//! 送信エラー
+	SendError,
+
+	//! 受信エラー
+	RecvError,
+};
+
+/**
  * @class ISocket
  * @brief ソケットの挙動を実装するためのインタフェース
  */
@@ -63,10 +79,11 @@ public:
 	virtual bool Send(const char *pData, unsigned int Size) = 0;
 
 	/**
-	 * @fn virtual void Release() = 0
+	 * @fn virtual void Release(ESocketDisconnectReason Reason) = 0
 	 * @brief 解放
+	 * @param[in] Reason 切断理由
 	 */
-	virtual void Release() = 0;
+	virtual void Release(ESocketDisconnectReason Reason) = 0;
 
 };
 

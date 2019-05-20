@@ -98,9 +98,9 @@ YanaPServer::Socket::ISocketEventListener の継承関係図</div>
 <tr class="memitem:ac4dbcbd61efefdddee7736ec2a35efcf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#ac4dbcbd61efefdddee7736ec2a35efcf">OnRecv</a> (const char *pData, unsigned int Size)=0</td></tr>
 <tr class="memdesc:ac4dbcbd61efefdddee7736ec2a35efcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信した  <a href="#ac4dbcbd61efefdddee7736ec2a35efcf">[詳解]</a><br /></td></tr>
 <tr class="separator:ac4dbcbd61efefdddee7736ec2a35efcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13865bd7f63c9c9aa3b6f1c7e12c380b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a13865bd7f63c9c9aa3b6f1c7e12c380b">OnDisconnect</a> ()=0</td></tr>
-<tr class="memdesc:a13865bd7f63c9c9aa3b6f1c7e12c380b"><td class="mdescLeft">&#160;</td><td class="mdescRight">切断された  <a href="#a13865bd7f63c9c9aa3b6f1c7e12c380b">[詳解]</a><br /></td></tr>
-<tr class="separator:a13865bd7f63c9c9aa3b6f1c7e12c380b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8df68419b9450624045a4073f593d56d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a8df68419b9450624045a4073f593d56d">OnDisconnect</a> (<a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a> Reason)=0</td></tr>
+<tr class="memdesc:a8df68419b9450624045a4073f593d56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">切断された  <a href="#a8df68419b9450624045a4073f593d56d">[詳解]</a><br /></td></tr>
+<tr class="separator:a8df68419b9450624045a4073f593d56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ソケットイベントリスナ </p>
@@ -142,8 +142,8 @@ YanaPServer::Socket::ISocketEventListener の継承関係図</div>
 
 </div>
 </div>
-<a id="a13865bd7f63c9c9aa3b6f1c7e12c380b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13865bd7f63c9c9aa3b6f1c7e12c380b">&#9670;&nbsp;</a></span>OnDisconnect()</h2>
+<a id="a8df68419b9450624045a4073f593d56d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8df68419b9450624045a4073f593d56d">&#9670;&nbsp;</a></span>OnDisconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +154,8 @@ YanaPServer::Socket::ISocketEventListener の継承関係図</div>
         <tr>
           <td class="memname">void YanaPServer::Socket::ISocketEventListener::OnDisconnect </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a>&#160;</td>
+          <td class="paramname"><em>Reason</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -166,14 +167,20 @@ YanaPServer::Socket::ISocketEventListener の継承関係図</div>
 </div><div class="memdoc">
 
 <p>切断された </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Reason</td><td>切断理由 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#aafc41242912b717228962f32293a4735">YanaPServer::Peer::CPeerBase</a>で実装されています。</p>
+<p><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab99cd5d09835dc6907c51a5886f09a0a">YanaPServer::Peer::CPeerBase</a>で実装されています。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a13865bd7f63c9c9aa3b6f1c7e12c380b_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a13865bd7f63c9c9aa3b6f1c7e12c380b_icgraph" alt=""/></div>
-<map name="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a13865bd7f63c9c9aa3b6f1c7e12c380b_icgraph" id="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a13865bd7f63c9c9aa3b6f1c7e12c380b_icgraph">
-<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#aff6b730b0183ad5203c16554128e9528" title="解放処理 " alt="" coords="205,50,393,91"/>
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a8df68419b9450624045a4073f593d56d_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a8df68419b9450624045a4073f593d56d_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a8df68419b9450624045a4073f593d56d_icgraph" id="class_yana_p_server_1_1_socket_1_1_i_socket_event_listener_a8df68419b9450624045a4073f593d56d_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ad844fa062091729450ef23fbbff78724" title="解放処理 " alt="" coords="205,50,393,91"/>
 <area shape="rect" id="node3" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5" title="デストラクタ " alt="" coords="441,5,648,61"/>
 <area shape="rect" id="node4" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a2bcff0d00b240f839ab58cd6c11e3e84" title="接続 " alt="" coords="450,86,639,127"/>
 </map>

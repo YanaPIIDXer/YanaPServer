@@ -1,7 +1,6 @@
 var searchData=
 [
   ['‾capplicationbase',['‾CApplicationBase',['../class_yana_p_server_1_1_application_1_1_c_application_base.html#a380a8975b52549e8f7a234112d4a77dd',1,'YanaPServer::Application::CApplicationBase']]],
-  ['‾cdynamicmemorystreamwriter',['‾CDynamicMemoryStreamWriter',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_dynamic_memory_stream_writer.html#a96a22f6686567d01e9665a7626f7b65d',1,'YanaPServer::Util::Stream::CDynamicMemoryStreamWriter']]],
   ['‾chttprequestparser',['‾CHttpRequestParser',['../class_yana_p_server_1_1_servlet_1_1_c_http_request_parser.html#ac514e03a571289ab8b5b55d895106b59',1,'YanaPServer::Servlet::CHttpRequestParser']]],
   ['‾chttpserver',['‾CHttpServer',['../class_yana_p_server_1_1_servlet_1_1_c_http_server.html#a541b394f60efeda00a0b44ad748a8064',1,'YanaPServer::Servlet::CHttpServer']]],
   ['‾cmemorysizecaliculator',['‾CMemorySizeCaliculator',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#abe7709a917d1fdf6d11bcbb5f3c09f19',1,'YanaPServer::Util::Stream::CMemorySizeCaliculator']]],
@@ -14,6 +13,7 @@ var searchData=
   ['‾cpeerbase',['‾CPeerBase',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802',1,'YanaPServer::Peer::CPeerBase']]],
   ['‾cservletfinder',['‾CServletFinder',['../class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2448061c11e2b44f1b8f84bba0cb7df6',1,'YanaPServer::Servlet::CServletFinder']]],
   ['‾cservletpeer',['‾CServletPeer',['../class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html#a7c3ca8bb513481a5735fa2f84e2443bd',1,'YanaPServer::Servlet::CServletPeer']]],
+  ['‾cstringstream',['‾CStringStream',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html#a8ac114f19c65fdec7c857239a73d168f',1,'YanaPServer::Util::Stream::CStringStream']]],
   ['‾cwindowslistensocket',['‾CWindowsListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html#a717c3bd686b19c2c77582c2c0754000e',1,'YanaPServer::Socket::Listen::CWindowsListenSocket']]],
   ['‾cwindowssocket',['‾CWindowsSocket',['../class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#a9c1a9a960f4072a468726a5fa554bfb5',1,'YanaPServer::Socket::CWindowsSocket']]],
   ['‾cwinsockmanager',['‾CWinSockManager',['../class_yana_p_server_1_1_socket_1_1_windows_1_1_c_win_sock_manager.html#ac7cc785259a25d880413bd162dab2856',1,'YanaPServer::Socket::Windows::CWinSockManager']]],

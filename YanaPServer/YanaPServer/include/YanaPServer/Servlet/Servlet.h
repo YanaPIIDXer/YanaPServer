@@ -3,7 +3,7 @@
 
 #include "HttpRequest.h"
 #include <sstream>
-#include "../Util/Stream/DynamicMemoryStreamWriter.h"
+#include "../Util/Stream/StringStream.h"
 
 namespace YanaPServer
 {
@@ -32,28 +32,28 @@ public:
 	virtual const char *GetPath() const = 0;
 
 	/**
-	 * @fn virtual void OnPost() = 0
+	 * @fn virtual void OnPost(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
 	 * @brief POSTリクエストが投げられた時に実行されるイベント
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnPost(const SHttpRequest &Request, YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &ResponseStream) = 0;
+	virtual void OnPost(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
 
 	/**
-	 * @fn virtual void OnGet() = 0
+	 * @fn virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
 	 * @brief GETリクエストが投げられた時に実行されるイベント
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &ResponseStream) = 0;
+	virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
 
 	/**
-	 * @fn virtual void OnError() = 0
+	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
 	 * @brief エラー時のイベント
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CDynamicMemoryStreamWriter &ResponseStream) = 0;
+	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
 
 };
 

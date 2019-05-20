@@ -57,10 +57,10 @@
     <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\Util\Stream\DynamicMemoryStreamWriter.cpp">
+    <ClCompile Include="src\Servlet\ServletFinder.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\Servlet\ServletFinder.cpp">
+    <ClCompile Include="src\Util\Stream\StringStream.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,10 +170,10 @@
     <ClInclude Include="include\YanaPServer\Util\EndianConverter.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="include\YanaPServer\Util\Stream\DynamicMemoryStreamWriter.h">
+    <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h">
+    <ClInclude Include="include\YanaPServer\Util\Stream\StringStream.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -77,10 +77,11 @@ public:
 	virtual bool Send(const char *pData, unsigned int Size) override;
 
 	/**
-	 * @fn virtual void Release() override
+	 * @fn virtual void Release(ESocketDisconnectReason Reason) override
 	 * @brief ‰ğ•úˆ—
+	 * @param[in] Reason Ø’f——R
 	 */
-	virtual void Release() override;
+	virtual void Release(ESocketDisconnectReason Reason) override;
 
 private:
 

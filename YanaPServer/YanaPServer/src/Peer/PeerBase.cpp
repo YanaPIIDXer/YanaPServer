@@ -5,6 +5,8 @@ namespace YanaPServer
 namespace Peer
 {
 
+using namespace YanaPServer::Socket;
+
 // コンストラクタ
 CPeerBase::CPeerBase(YanaPServer::Socket::ISocket *pInSocket)
 	: pSocket(pInSocket)
@@ -15,7 +17,11 @@ CPeerBase::CPeerBase(YanaPServer::Socket::ISocket *pInSocket)
 // デストラクタ
 CPeerBase::~CPeerBase()
 {
-	ReleaseSocket();
+	if (pSocket == nullptr) { return; }
+
+	pSocket->Release(ESocketDisconnectReason::Destruct);
+	delete pSocket;
+	pSocket = nullptr;
 }
 
 // 毎フレームの処理.
@@ -38,17 +44,6 @@ void CPeerBase::Send(const char *pData, unsigned int Size)
 	if (!IsValid()) { return; }
 
 	pSocket->Send(pData, Size);
-}
-
-
-// ソケット解放.
-void CPeerBase::ReleaseSocket()
-{
-	if (pSocket == nullptr) { return; }
-
-	pSocket->Release();
-	delete pSocket;
-	pSocket = nullptr;
 }
 
 }
