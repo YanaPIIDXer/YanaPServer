@@ -107,9 +107,9 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 <tr class="memitem:a70a119e2cc6be09345478b365b9a3f46"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#a70a119e2cc6be09345478b365b9a3f46">Send</a> (const char *pData, unsigned int Size)=0</td></tr>
 <tr class="memdesc:a70a119e2cc6be09345478b365b9a3f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信  <a href="#a70a119e2cc6be09345478b365b9a3f46">[詳解]</a><br /></td></tr>
 <tr class="separator:a70a119e2cc6be09345478b365b9a3f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1b6d7c21c3179556e7b18bae9b89cce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#aa1b6d7c21c3179556e7b18bae9b89cce">Release</a> ()=0</td></tr>
-<tr class="memdesc:aa1b6d7c21c3179556e7b18bae9b89cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">解放  <a href="#aa1b6d7c21c3179556e7b18bae9b89cce">[詳解]</a><br /></td></tr>
-<tr class="separator:aa1b6d7c21c3179556e7b18bae9b89cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab501dd85926e7bcd041bc6465d0dc900"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_socket_1_1_i_socket.html#ab501dd85926e7bcd041bc6465d0dc900">Release</a> (<a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a> Reason)=0</td></tr>
+<tr class="memdesc:ab501dd85926e7bcd041bc6465d0dc900"><td class="mdescLeft">&#160;</td><td class="mdescRight">解放  <a href="#ab501dd85926e7bcd041bc6465d0dc900">[詳解]</a><br /></td></tr>
+<tr class="separator:ab501dd85926e7bcd041bc6465d0dc900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ソケットの挙動を実装するためのインタフェース </p>
@@ -239,8 +239,8 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 
 </div>
 </div>
-<a id="aa1b6d7c21c3179556e7b18bae9b89cce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1b6d7c21c3179556e7b18bae9b89cce">&#9670;&nbsp;</a></span>Release()</h2>
+<a id="ab501dd85926e7bcd041bc6465d0dc900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab501dd85926e7bcd041bc6465d0dc900">&#9670;&nbsp;</a></span>Release()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,7 +251,8 @@ YanaPServer::Socket::ISocket の継承関係図</div>
         <tr>
           <td class="memname">void YanaPServer::Socket::ISocket::Release </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836">ESocketDisconnectReason</a>&#160;</td>
+          <td class="paramname"><em>Reason</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -263,8 +264,22 @@ YanaPServer::Socket::ISocket の継承関係図</div>
 </div><div class="memdoc">
 
 <p>解放 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Reason</td><td>切断理由 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#aff6b730b0183ad5203c16554128e9528">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#ab762ae604557f11ee3b57186f796002c">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
+<p><a class="el" href="class_yana_p_server_1_1_socket_1_1_c_windows_socket.html#ad844fa062091729450ef23fbbff78724">YanaPServer::Socket::CWindowsSocket</a>, <a class="el" href="class_yana_p_server_1_1_socket_1_1_c_null_socket.html#aab4f6ba0b0444f08b5c750d657c4d126">YanaPServer::Socket::CNullSocket</a>で実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_socket_1_1_i_socket_ab501dd85926e7bcd041bc6465d0dc900_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_socket_1_1_i_socket_ab501dd85926e7bcd041bc6465d0dc900_icgraph" alt=""/></div>
+<map name="class_yana_p_server_1_1_socket_1_1_i_socket_ab501dd85926e7bcd041bc6465d0dc900_icgraph" id="class_yana_p_server_1_1_socket_1_1_i_socket_ab501dd85926e7bcd041bc6465d0dc900_icgraph">
+<area shape="rect" id="node2" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8deff34c46093a1f4badc602078ff802" title="デストラクタ " alt="" coords="200,5,367,47"/>
+</map>
+</div>
 
 </div>
 </div>
