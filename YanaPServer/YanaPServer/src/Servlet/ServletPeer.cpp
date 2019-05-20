@@ -92,20 +92,19 @@ void CServletPeer::OnSend(unsigned int Size)
 void CServletPeer::SendResponse(const CStringStream &Stream)
 {
 	// @TODO:仮のレスポンスヘッダ
-	CStringStream Header;
-	Header.Append("HTTP/1.1 200 OK\n");
-	Header.Append("Content-Type: text/html; charset=utf8\n");
+	//		 引数とかで弄れるようにする必要がある。
+	CStringStream SendData;
+	SendData.Append("HTTP/1.1 200 OK\n");
+	SendData.Append("Content-Type: text/html\n");
 	std::ostringstream ContentLength;
 	ContentLength << "Content-Length: " << Stream.GetLength() << "\n";
-	Header.Append(ContentLength.str().c_str());
-	Header.Append("\n\n");
-	const char *pHeader = Header.Get();
-	unsigned int HeaderSize = Header.GetLength() + 1;
-	SendSize += HeaderSize;
-	Send(pHeader, HeaderSize);
+	SendData.Append(ContentLength.str().c_str());
+	SendData.Append("\r\n");
+	
+	SendData.Append(Stream.Get());
 
-	const char *pData = Stream.Get();
-	unsigned int Size = Stream.GetLength() + 1;
+	const char *pData = SendData.Get();
+	unsigned int Size = SendData.GetLength() + 1;
 	SendSize += Size;
 	Send(pData, Size);
 }

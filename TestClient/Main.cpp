@@ -2,8 +2,10 @@
 #include <string>
 #include "YanaPServer/Socket/WidnowsSocket.h"
 #include "YanaPServer/Socket/SocketEventListener.h"
+#include "YanaPServer/Util/Stream/StringStream.h"
 
 using namespace YanaPServer::Socket;
+using namespace YanaPServer::Util::Stream;
 
 // ソケットイベント
 class SocketEvent : public ISocketEventListener
@@ -32,6 +34,11 @@ public:
 	{
 		std::cout << "RecvData Size:" << Size << std::endl;
 		std::cout << "Data:" << pData << std::endl;
+	}
+
+	// 送信した。
+	virtual void OnSend(unsigned int Size)
+	{
 	}
 
 	// 切断された。
@@ -68,7 +75,7 @@ int main()
 	CWindowsSocket Socket;
 	SocketEvent Event;
 	Socket.SetEventListener(&Event);
-	if (!Socket.Connect("127.0.0.1", 4424))
+	if (!Socket.Connect("127.0.0.1", 4423))
 	{
 		std::cout << "Connect Failed." << std::endl;
 
@@ -78,21 +85,15 @@ int main()
 		return 1;
 	}
 
-	while (true)
+	CStringStream Header;
+	Header.Append("GET / HTTP/1.1\n");
+	Header.Append("HOST: localhost:4423\n");
+	Header.Append("\n\n");
+	Socket.Send(Header.Get(), Header.GetLength() + 1);
+	
+	while (Socket.IsValid())
 	{
 		Socket.Poll();
-		std::string SendData;
-		std::cout << "送信データ：";
-		std::cin >> SendData;
-		if (Socket.Send(SendData.c_str(), SendData.size() + 1))
-		{
-			std::cout << "Send Success." << std::endl;
-		}
-		else
-		{
-			std::cout << "Send Failed." << std::endl;
-			break;
-		}
 	}
 
 	std::string Dummy;

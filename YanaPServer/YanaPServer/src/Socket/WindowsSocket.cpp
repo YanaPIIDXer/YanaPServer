@@ -132,7 +132,7 @@ void CWindowsSocket::SendProc()
 		DataQueue.pop();
 	}
 
-	if (pEventListener != nullptr)
+	if (SendSize > 0 && pEventListener != nullptr)
 	{
 		pEventListener->OnSend(SendSize);
 	}
@@ -161,7 +161,10 @@ void CWindowsSocket::RecvProc()
 		return;
 	}
 
-	pEventListener->OnRecv(Buffer, RecvSize);
+	if (RecvSize > 0)
+	{
+		pEventListener->OnRecv(Buffer, RecvSize);
+	}
 }
 
 }
