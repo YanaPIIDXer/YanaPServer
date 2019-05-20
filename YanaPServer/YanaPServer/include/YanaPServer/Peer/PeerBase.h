@@ -23,9 +23,9 @@ public:
 	
 	/**
 	 * @brief コンストラクタ
-	 * @param[in] pInSocket ソケット
+	 * @param[in] pSocket ソケット
 	 */
-	CPeerBase(YanaPServer::Socket::ISocket *pInSocket);
+	CPeerBase(YanaPServer::Socket::ISocket *pSocket);
 
 	/**
 	 * @brief デストラクタ
@@ -57,7 +57,7 @@ public:
 	 * @brief 有効か？
 	 * @return 有効ならtrueを返す。
 	 */
-	bool IsValid() const { return (pSocket != nullptr && pSocket->IsValid()); }
+	bool IsValid() const { return (Socket.IsValid()); }
 
 	/**
 	 * @fn void Send(const char *pData, unsigned int Size)
@@ -89,7 +89,7 @@ public:
 private:
 
 	// ソケット
-	YanaPServer::Socket::ISocket *pSocket;
+	YanaPServer::Socket::CSocket Socket;
 
 	// 切断フラグ
 	bool bDisconnect;

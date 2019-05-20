@@ -73,7 +73,7 @@ int main()
 {
 	std::cout << "Test Client" << std::endl;
 
-	CWindowsSocket Socket;
+	CSocket Socket;
 	SocketEvent Event;
 	Socket.SetEventListener(&Event);
 	if (!Socket.Connect("127.0.0.1", 4424))

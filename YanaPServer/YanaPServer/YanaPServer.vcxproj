@@ -129,6 +129,7 @@
     <ClCompile Include="src\Servlet\HttpServer.cpp" />
     <ClCompile Include="src\Servlet\ServletFinder.cpp" />
     <ClCompile Include="src\Servlet\ServletPeer.cpp" />
+    <ClCompile Include="src\Socket\Socket.cpp" />
     <ClCompile Include="src\Socket\WindowsSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />

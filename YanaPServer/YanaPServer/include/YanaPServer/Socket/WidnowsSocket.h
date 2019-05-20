@@ -5,8 +5,6 @@
 
 #include "Socket.h"
 #include <WinSock2.h>
-#include <string>
-#include <vector>
 
 namespace YanaPServer
 {
@@ -39,12 +37,6 @@ public:
 	virtual ~CWindowsSocket();
 
 	/**
-	 * @fn virtual void Poll() override
-	 * @brief 毎フレーム実行する処理
-	 */
-	virtual void Poll() override;
-
-	/**
 	 * @fn virtual bool Connect(const char *pHost, unsigned int Port) override
 	 * @brief 接続
 	 * @param[in] pHost ホスト
@@ -54,11 +46,11 @@ public:
 	virtual bool Connect(const char *pHost, unsigned int Port) override;
 
 	/**
-	 * @fn virtual void SetEventListener() override
-	 * @brief イベントリスナをセット
-	 * @param[in] pListener イベントリスナ
+	 * @fn virtual bool PollConnect() override
+	 * @brief 接続されるまで毎フレーム実行される処理
+	 * @return 接続に成功したらtrueを返す。
 	 */
-	virtual void SetEventListener(ISocketEventListener *pListener) override { pEventListener = pListener; }
+	virtual bool PollConnect() override;
 
 	/**
 	 * @fn virtual bool IsValid() const override
@@ -72,35 +64,20 @@ public:
 	 * @brief 送信
 	 * @param[in] pData データ
 	 * @param[in] Size 送信サイズ
-	 * @return 成功したらtrueを返す。
+	 * @return 送信バイト数を返す。失敗時は-1を返す。
 	 */
-	virtual bool Send(const char *pData, unsigned int Size) override;
+	virtual int Send(const char *pData, unsigned int Size) override;
 
 	/**
-	 * @fn virtual void Release(ESocketDisconnectReason Reason) override
-	 * @brief 解放処理
-	 * @param[in] Reason 切断理由
+	 * @fn virtual int Recv(char *pBuffer, unsigned int BufferSize) override
+	 * @brief 受信
+	 * @param[in] pBuffer バッファ
+	 * @param[in] BufferSize バッファサイズ
+	 * @return 受信バイト数を返す。失敗時は-1を返す。
 	 */
-	virtual void Release(ESocketDisconnectReason Reason) override;
+	virtual int Recv(char *pBuffer, unsigned int BufferSize) override;
 
 private:
-
-	// State
-	class EState
-	{
-	public:
-		enum
-		{
-			// 何もしていない
-			None,
-
-			// 接続中.
-			Connecting,
-
-			// 接続した
-			Connected,
-		};
-	};
 
 	// ソケット
 	SOCKET Socket;
@@ -108,24 +85,8 @@ private:
 	// ノンブロッキングモード
 	u_long NonBlockingMode;
 
-	// ステート
-	unsigned char State;
-
 	// 接続先アドレス
 	sockaddr_in ConnectAddr;
-
-	// データキュー
-	std::vector<char> DataQueue;
-
-	// イベントリスナ
-	ISocketEventListener *pEventListener;
-
-
-	// 送信処理.
-	void SendProc();
-
-	// 受信処理.
-	void RecvProc();
 
 };
 

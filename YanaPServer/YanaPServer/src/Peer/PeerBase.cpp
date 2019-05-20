@@ -8,11 +8,11 @@ namespace Peer
 using namespace YanaPServer::Socket;
 
 // コンストラクタ
-CPeerBase::CPeerBase(YanaPServer::Socket::ISocket *pInSocket)
-	: pSocket(pInSocket)
+CPeerBase::CPeerBase(YanaPServer::Socket::ISocket *pSocket)
+	: Socket(pSocket)
 	, bDisconnect(false)
 {
-	pSocket->SetEventListener(this);
+	Socket.SetEventListener(this);
 }
 
 // デストラクタ
@@ -26,7 +26,7 @@ void CPeerBase::Poll()
 {
 	if (!IsValid()) { return; }
 
-	pSocket->Poll();
+	Socket.Poll();
 
 	if (bDisconnect)
 	{
@@ -37,7 +37,7 @@ void CPeerBase::Poll()
 // ソケットイベントをオーバーライドするイベントリスナをセット
 void CPeerBase::SetOverrideEventListener(ISocketEventListener *pListener)
 {
-	pSocket->SetEventListener(pListener);
+	Socket.SetEventListener(pListener);
 }
 
 // 送信.
@@ -45,7 +45,7 @@ void CPeerBase::Send(const char *pData, unsigned int Size)
 {
 	if (!IsValid()) { return; }
 
-	pSocket->Send(pData, Size);
+	Socket.Send(pData, Size);
 }
 
 // 切断.
@@ -61,11 +61,7 @@ void CPeerBase::Disconnect()
 // ソケット解放.
 void CPeerBase::ReleaseSocket()
 {
-	if (pSocket == nullptr) { return; }
-
-	pSocket->Release(ESocketDisconnectReason::Destruct);
-	delete pSocket;
-	pSocket = nullptr;
+	Socket.Release(ESocketDisconnectReason::Destruct);
 }
 
 }
