@@ -52,6 +52,19 @@ public:
 
 private:
 
+	// ステータスコード
+	enum class EStatusCode
+	{
+		// 200 OK
+		OK,
+
+		// 404 Not Found
+		NotFound,
+
+		// 400 Bad Request
+		BadRequest,
+	};
+
 	// ServletFinder
 	CServletFinder *pFinder;
 
@@ -60,7 +73,7 @@ private:
 
 
 	// レスポンス送信.
-	void SendResponse(const YanaPServer::Util::Stream::CStringStream &Stream);
+	void SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const YanaPServer::Util::Stream::CStringStream &Stream);
 
 };
 
