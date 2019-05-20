@@ -29,10 +29,11 @@ public:
 	virtual ~CNullSocket() {}
 
 	/**
-	 * @fn virtual void Poll() override
-	 * @brief 毎フレーム実行する処理
+	 * @fn virtual boool PollConnect() override
+	 * @brief 接続されるまで毎フレーム実行される処理
+	 * @return 何もしないので常にfalseを返す。
 	 */
-	virtual void Poll() override {}
+	virtual bool PollConnect() override { return false; }
 
 	/**
 	 * @fn virtual bool Connect(const char *pHost, unsigned int Port) override
@@ -42,13 +43,6 @@ public:
 	 * @return 何もしないので常にfalseを返す。
 	 */
 	virtual bool Connect(const char *pHost, unsigned int Port) override { return false; }
-
-	/**
-	 * @fn virtual void SetEventListener() override
-	 * @brief イベントリスナをセット
-	 * @param[in] pListener イベントリスナ
-	 */
-	virtual void SetEventListener(ISocketEventListener *pListener) override {}
 
 	/**
 	 * @fn virtual bool IsValid() const override
@@ -62,16 +56,18 @@ public:
 	 * @brief 送信
 	 * @param[in] pData データ
 	 * @param[in] Size 送信サイズ
-	 * @return 何もしないので常にfalseを返す。
+	 * @return 何もしないので常に-1を返す。
 	 */
-	virtual bool Send(const char *pData, unsigned int Size) override { return false; }
+	virtual int Send(const char *pData, unsigned int Size) override { return false; }
 
 	/**
-	 * @fn virtual void Release(ESocketDisconnectReason Reason) override
-	 * @brief 解放
-	 * @param[in] Reason 切断理由
+	 * @fn virtual int Recv(char *pBuffer, unsigned int BufferSize) override
+	 * @brief 受信
+	 * @param[in] pBuffer バッファ
+	 * @param[in] BufferSize バッファサイズ
+	 * @return 何もしないので常に-1を返す。
 	 */
-	virtual void Release(ESocketDisconnectReason Reason) override {}
+	virtual int Recv(char * pBuffer, unsigned int BufferSize) override { return -1; }
 
 };
 

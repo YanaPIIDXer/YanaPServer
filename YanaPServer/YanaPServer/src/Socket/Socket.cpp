@@ -1,6 +1,7 @@
 #include "Socket/Socket.h"
 #include "Socket/SocketEventListener.h"
 #include "Socket/WidnowsSocket.h"
+#include "Socket/NullSocket.h"
 
 namespace YanaPServer
 {
@@ -68,7 +69,7 @@ bool CSocket::Connect(const char *pHost, unsigned int Port)
 #ifdef _WIN32
 	pSocket = new CWindowsSocket();
 #else
-
+	pSocket = new CNullSocket();
 #endif
 	
 	if (!pSocket->Connect(pHost, Port)) { return false; }
