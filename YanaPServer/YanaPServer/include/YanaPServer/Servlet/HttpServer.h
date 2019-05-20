@@ -19,7 +19,7 @@ class IServlet;
  *        オーバーライドするクラスを定義して設定しない場合はコイツが使用される。
  * @detail シングルトンクラス
  */
-class CHttpDefaultServetEvent : public IHttpServerEvent
+class CHttpDefaultServerEvent : public IHttpServerEvent
 {
 
 public:
@@ -27,7 +27,7 @@ public:
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CHttpDefaultServetEvent() {}
+	virtual ~CHttpDefaultServerEvent() {}
 
 	/**
 	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
@@ -37,7 +37,7 @@ public:
 	 */
 	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
 	{
-		ResponseStream.Append("Error.\n");
+		ResponseStream.AppendLine("Error.");
 	}
 
 	/**
@@ -49,7 +49,7 @@ public:
 	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
 	{
 		ResponseStream.Append(Request.Path.c_str());
-		ResponseStream.Append(" 404 NotFound.\n");
+		ResponseStream.AppendLine(" 404 NotFound.");
 	}
 
 	// ========= Singleton =============
@@ -61,12 +61,12 @@ public:
 	 * @brief Singletonインスタンス取得
 	 * @return Singletonインスタンス
 	 */
-	static CHttpDefaultServetEvent &GetInstance() { return Instance; }
+	static CHttpDefaultServerEvent &GetInstance() { return Instance; }
 
 private:
 
-	CHttpDefaultServetEvent() {}
-	static CHttpDefaultServetEvent Instance;
+	CHttpDefaultServerEvent() {}
+	static CHttpDefaultServerEvent Instance;
 
 };
 
