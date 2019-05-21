@@ -50,7 +50,7 @@ bool CWindowsSocket::Connect(const char *pHost, unsigned int Port)
 // 接続されるまで毎フレーム実行される処理.
 bool CWindowsSocket::PollConnect()
 {
-	return connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr));
+	return (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)) != 0);
 }
 
 // 送信.

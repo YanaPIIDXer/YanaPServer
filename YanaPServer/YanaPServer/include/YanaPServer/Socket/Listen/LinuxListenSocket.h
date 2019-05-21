@@ -1,24 +1,22 @@
-#ifndef __WINDOWSLISTENSOCKET_H__
-#define __WINDOWSLISTENSOCKET_H__
+#ifndef __LINUXLISTENSOCKET_H__
+#define __LINUXLISTENSOCKET_H__
 
-#ifdef _WIN32
-#include <WinSock2.h>
+#if _LINUX
+
 #include "ListenSocket.h"
 
 namespace YanaPServer
 {
 namespace Socket
 {
-class ISocket;
-
 namespace Listen
 {
 
 /**
- * @class CWindowsListenSocket
- * @brief WindowsのListen用ソケットクラス
+ * @class CLinuxListenSocket
+ * @brief Linux用Listenソケット
  */
-class CWindowsListenSocket : public IListenSocket
+class CLinuxListenSocket : public IListenSocket
 {
 
 public:
@@ -26,12 +24,12 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 */
-	CWindowsListenSocket();
+	CLinuxListenSocket();
 
 	/**
 	 * @brief デストラクタ
 	 */
-	virtual ~CWindowsListenSocket();
+	virtual ~CLinuxListenSocket();
 
 	/**
 	 * @fn virtual void Poll() override
@@ -71,7 +69,7 @@ public:
 private:
 
 	// ソケット
-	SOCKET Socket;
+	int Socket;
 
 	// ノンブロッキングモード
 	u_long NonBlockingMode;
@@ -84,12 +82,10 @@ private:
 	void Release();
 
 };
-
 }
 }
 }
 
-#endif		// #ifdef _WIN32
+#endif		// #if _LINUX
 
-
-#endif			// #ifndef __WINDOWSLISTENSOCKET_H__
+#endif		// #ifndef __LINUXLISTENSOCKET_H__
