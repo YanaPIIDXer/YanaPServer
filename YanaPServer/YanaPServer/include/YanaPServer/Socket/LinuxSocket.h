@@ -82,7 +82,7 @@ public:
 private:
 
 	// ソケット
-	SOCKET Socket;
+	int Socket;
 
 	// ノンブロッキングモード
 	u_long NonBlockingMode;
