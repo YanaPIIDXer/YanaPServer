@@ -10,8 +10,6 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#include <iostream>
-
 namespace YanaPServer
 {
 namespace Socket
@@ -27,7 +25,6 @@ CLinuxListenSocket::CLinuxListenSocket()
 	: Socket(INVALID_SOCKET)
 	, NonBlockingMode(1)
 {
-	std::cout << "CLinuxListenSocket::CLinuxListenSocket()" << std::endl;
 }
 
 // デストラクタ

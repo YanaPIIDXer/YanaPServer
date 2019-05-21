@@ -3,6 +3,8 @@
 #include "Socket/Listen/LinuxListenSocket.h"
 #include "Socket/Listen/NullListenSocket.h"
 
+#include <iostream>
+
 namespace YanaPServer
 {
 namespace Socket
@@ -15,9 +17,16 @@ ListenSocketPtr CListenSocket::Build(unsigned int Port, const std::function<void
 {
 	ListenSocketPtr pListenSocket = Create();
 
+	std::cout << "Init" << std::endl;
 	if (!pListenSocket->Init()) { return ListenSocketPtr(); }
+
+	std::cout << "Bind" << std::endl;
 	if (!pListenSocket->Bind(Port)) { return ListenSocketPtr(); }
+
+	std::cout << "Listen" << std::endl;
 	if (!pListenSocket->Listen()) { return ListenSocketPtr(); }
+
+	std::cout << "OK" << std::endl;
 
 	pListenSocket->SetAcceptCallback(AcceptCallback);
 	return pListenSocket;
