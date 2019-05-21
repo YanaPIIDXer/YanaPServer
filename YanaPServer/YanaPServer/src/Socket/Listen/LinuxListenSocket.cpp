@@ -83,7 +83,7 @@ bool CLinuxListenSocket::Listen()
 {
 	if (Socket == INVALID_SOCKET) { return false; }
 
-	return (listen(Socket, 1) != SOCKET_ERROR);
+	return (listen(Socket, 5) != SOCKET_ERROR);
 }
 
 // ‰ð•ú.
