@@ -2,7 +2,10 @@
 
 #if _LINUX
 
+#include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
 #include <unistd.h>
 #include <errno.h>
 
@@ -76,6 +79,9 @@ int CLinuxSocket::Recv(char *pBuffer, unsigned int BufferSize)
 	}
 
 	return RecvSize;
+}
+
+}
 }
 
 #endif		// #if _LINUX
