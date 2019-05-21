@@ -31,7 +31,7 @@ DEPENDS   = $(OBJECTS:.o=.d)
 
 # 依存ファイルを静的ライブラリを作る
 $(TARGETS): $(OBJECTS)
-	ar $(TARGETS) $(OBJECTS)
+	ar rv $(TARGETS) $(OBJECTS)
 	@rm -f $(OBJECTS)
 
 # 中間バイナリのディレクトリを掘りながら.cppを中間ファイル.oに
