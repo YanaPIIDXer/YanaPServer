@@ -1,7 +1,7 @@
 #include "Socket/Listen/WindowsListenSocket.h"
 #include "Socket/WidnowsSocket.h"
 #include "Socket/Windows/WinSockManager.h"
-#ifdef _WIN32
+#if _WIN32
 
 namespace YanaPServer
 {
@@ -92,4 +92,4 @@ void CWindowsListenSocket::Release()
 }
 }
 
-#endif		// #ifdef _WIN32
+#endif		// #if _WIN32

@@ -1,7 +1,7 @@
 #ifndef __WINDOWSLISTENSOCKET_H__
 #define __WINDOWSLISTENSOCKET_H__
 
-#ifdef _WIN32
+#if _WIN32
 #include <WinSock2.h>
 #include "ListenSocket.h"
 
@@ -89,7 +89,7 @@ private:
 }
 }
 
-#endif		// #ifdef _WIN32
+#endif		// #if _WIN32
 
 
 #endif			// #ifndef __WINDOWSLISTENSOCKET_H__
