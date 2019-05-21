@@ -9,6 +9,13 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+namespace YanaPServer
+{
+namespace Socket
+{
+namespace Listen
+{
+
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1
 
@@ -85,6 +92,10 @@ void CLinuxListenSocket::Release()
 
 	close(Socket);
 	Socket = INVALID_SOCKET;
+}
+
+}
+}
 }
 
 #endif		// #if _LINUX
