@@ -1,7 +1,7 @@
 #ifndef __LINUXSOCKET_H__
 #define __LINUXSOCKET_H__
 
-#if _LINUX
+#ifdef _LINUX
 
 #include "Socket.h"
 #include <netinet/in.h>
@@ -95,6 +95,6 @@ private:
 }
 }
 
-#endif		// #if _LINUX
+#endif		// #ifdef _LINUX
 
 #endif		// #ifndef __LINUXSOCKET_H__

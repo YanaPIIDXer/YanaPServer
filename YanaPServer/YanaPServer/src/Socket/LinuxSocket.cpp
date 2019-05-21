@@ -1,6 +1,6 @@
 #include "Socket/LinuxSocket.h"
 
-#if _LINUX
+#ifdef _LINUX
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -85,4 +85,4 @@ int CLinuxSocket::Recv(char *pBuffer, unsigned int BufferSize)
 }
 }
 
-#endif		// #if _LINUX
+#endif		// #ifdef _LINUX

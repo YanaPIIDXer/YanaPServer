@@ -28,9 +28,9 @@ ListenSocketPtr CListenSocket::Build(unsigned int Port, const std::function<void
 ListenSocketPtr CListenSocket::Create()
 {
 	IListenSocket *pListenSocket = nullptr;
-#if _WIN32
+#ifdef _WIN32
 	pListenSocket = new CWindowsListenSocket();
-#elif _LINUX
+#elif defined _LINUX
 	pListenSocket = new CLinuxListenSocket();
 #else
 	pListenSocket = new CNullListenSocket();

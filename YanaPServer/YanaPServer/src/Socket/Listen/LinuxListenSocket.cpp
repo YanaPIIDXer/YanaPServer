@@ -1,6 +1,6 @@
 #include "Socket/Listen/LinuxListenSocket.h"
 
-#if _LINUX
+#ifdef _LINUX
 
 #include "Socket/LinuxSocket.h"
 #include <sys/types.h>
@@ -99,4 +99,4 @@ void CLinuxListenSocket::Release()
 }
 }
 
-#endif		// #if _LINUX
+#endif		// #ifdef _LINUX

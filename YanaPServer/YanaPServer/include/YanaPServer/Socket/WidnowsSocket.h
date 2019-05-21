@@ -1,7 +1,7 @@
 #ifndef __WINDOWSSOCKETBEHAVIOUR_H__
 #define __WINDOWSSOCKETBEHAVIOUR_H__
 
-#if _WIN32
+#ifdef _WIN32
 
 #include "Socket.h"
 #include <WinSock2.h>
@@ -93,6 +93,6 @@ private:
 }
 }
 
-#endif		// #if _WIN32
+#endif		// #ifdef _WIN32
 
 #endif		// #ifndef __WINDOWSSOCKETBEHAVIOUR_H__

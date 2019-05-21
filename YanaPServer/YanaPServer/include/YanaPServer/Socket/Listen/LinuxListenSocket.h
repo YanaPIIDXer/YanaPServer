@@ -1,7 +1,7 @@
 #ifndef __LINUXLISTENSOCKET_H__
 #define __LINUXLISTENSOCKET_H__
 
-#if _LINUX
+#ifdef _LINUX
 
 #include "ListenSocket.h"
 
@@ -86,6 +86,6 @@ private:
 }
 }
 
-#endif		// #if _LINUX
+#endif		// #ifdef _LINUX
 
 #endif		// #ifndef __LINUXLISTENSOCKET_H__

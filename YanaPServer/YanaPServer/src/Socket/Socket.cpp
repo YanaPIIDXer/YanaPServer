@@ -73,9 +73,9 @@ bool CSocket::Connect(const char *pHost, unsigned int Port)
 		Release(ESocketDisconnectReason::Destruct);
 	}
 
-#if _WIN32
+#ifdef _WIN32
 	pSocket = new CWindowsSocket();
-#elif _LINUX
+#elif defined _LINUX
 	pSocket = new CLinuxSocket();
 #else
 	pSocket = new CNullSocket();

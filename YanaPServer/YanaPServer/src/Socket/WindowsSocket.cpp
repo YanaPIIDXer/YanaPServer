@@ -1,4 +1,4 @@
-#if _WIN32
+#ifdef _WIN32
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include "Socket/WidnowsSocket.h"
 #include "Socket/Windows/WinSockManager.h"
@@ -80,4 +80,4 @@ int CWindowsSocket::Recv(char *pBuffer, unsigned int BufferSize)
 }
 }
 
-#endif		// #if _WIN32
+#endif		// #ifdef _WIN32
