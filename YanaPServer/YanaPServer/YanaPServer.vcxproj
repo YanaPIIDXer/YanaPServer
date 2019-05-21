@@ -129,6 +129,8 @@
     <ClCompile Include="src\Servlet\HttpServer.cpp" />
     <ClCompile Include="src\Servlet\ServletFinder.cpp" />
     <ClCompile Include="src\Servlet\ServletPeer.cpp" />
+    <ClCompile Include="src\Socket\LinuxSocket.cpp" />
+    <ClCompile Include="src\Socket\Listen\LinuxListenSocket.cpp" />
     <ClCompile Include="src\Socket\Socket.cpp" />
     <ClCompile Include="src\Socket\WindowsSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
@@ -166,6 +168,8 @@
     <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
+    <ClInclude Include="include\YanaPServer\Socket\LinuxSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\LinuxListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\ListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\NullListenSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Listen\WindowsListenSocket.h" />
@@ -181,6 +185,9 @@
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\StringStream.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -34,11 +34,10 @@ public:
 	virtual ~CWindowsListenSocket();
 
 	/**
-	 * @fn virtual void Poll()
+	 * @fn virtual void Poll() override
 	 * @brief –ˆƒtƒŒ[ƒ€ŒÄ‚Ño‚·ˆ—
 	 */
-	virtual void Poll();
-
+	virtual void Poll() override;
 
 	/**
 	 * @fn virtual bool Init() override

@@ -1,5 +1,6 @@
 #include "Socket/Listen/ListenSocket.h"
 #include "Socket/Listen/WindowsListenSocket.h"
+#include "Socket/Listen/LinuxListenSocket.h"
 #include "Socket/Listen/NullListenSocket.h"
 
 namespace YanaPServer
@@ -29,6 +30,8 @@ ListenSocketPtr CListenSocket::Create()
 	IListenSocket *pListenSocket = nullptr;
 #ifdef _WIN32
 	pListenSocket = new CWindowsListenSocket();
+#elif defined _LINUX
+	pListenSocket = new CLinuxListenSocket();
 #else
 	pListenSocket = new CNullListenSocket();
 #endif

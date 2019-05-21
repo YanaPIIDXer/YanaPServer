@@ -1,7 +1,7 @@
 #ifndef __WINSOCKMANAGER_H__
 #define __WINSOCKMANAGER_H__
 
-#ifdef _WIN32
+#if _WIN32
 
 namespace YanaPServer
 {
@@ -58,6 +58,6 @@ private:
 }
 }
 
-#endif			// #ifdef _WIN32
+#endif			// #if _WIN32
 
 #endif			// #ifndef __WINSOCKMANAGER_H__

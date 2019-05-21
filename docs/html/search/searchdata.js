@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "lp",
   7: "e",
   8: "dgiprs",
-  9: "_s"
+  9: "_is"
 };
 
 var indexSectionNames =

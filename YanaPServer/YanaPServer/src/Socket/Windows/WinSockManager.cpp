@@ -1,4 +1,4 @@
-#ifdef _WIN32
+#if _WIN32
 #include "Socket/Windows/WinSockManager.h"
 #include <WinSock2.h>
 
@@ -43,4 +43,4 @@ bool CWinSockManager::Initialize()
 }
 }
 
-#endif		// #ifdef _WIN32
+#endif		// #if _WIN32

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['string_5fbuffer_5flength',['STRING_BUFFER_LENGTH',['../_my_sql_binds_8h.html#adfd4d6129d983b4e02faacbf3ee5aed6',1,'MySqlBinds.h']]]
+  ['invalid_5fsocket',['INVALID_SOCKET',['../_linux_socket_8h.html#a26769957ec1a2beaf223f33b66ee64ab',1,'INVALID_SOCKET():&#160;LinuxSocket.h'],['../_linux_listen_socket_8cpp.html#a26769957ec1a2beaf223f33b66ee64ab',1,'INVALID_SOCKET():&#160;LinuxListenSocket.cpp']]]
 ];

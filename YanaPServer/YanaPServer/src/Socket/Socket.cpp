@@ -1,7 +1,9 @@
 #include "Socket/Socket.h"
 #include "Socket/SocketEventListener.h"
 #include "Socket/WidnowsSocket.h"
+#include "Socket/LinuxSocket.h"
 #include "Socket/NullSocket.h"
+#include <memory.h>
 
 namespace YanaPServer
 {
@@ -37,23 +39,28 @@ void CSocket::Poll()
 
 	switch (State)
 	{
-	case EState::Connecting:
+		case EState::Connecting:
 
-		if (pSocket->PollConnect())
-		{
-			State = EState::Connected;
-			if (pEventListener != nullptr)
+			if (pSocket->PollConnect())
 			{
-				pEventListener->OnConnect();
+				State = EState::Connected;
+				if (pEventListener != nullptr)
+				{
+					pEventListener->OnConnect();
+				}
 			}
-		}
-		break;
+			break;
 
-	case EState::Connected:
+		case EState::Connected:
 
-		SendProc();
-		RecvProc();
-		break;
+			SendProc();
+			RecvProc();
+			break;
+
+		case EState::None:
+
+			// 不要だけど、コイツが無いとLinuxでエラー（Warning）になる。
+			break;
 	}
 }
 
@@ -68,6 +75,8 @@ bool CSocket::Connect(const char *pHost, unsigned int Port)
 
 #ifdef _WIN32
 	pSocket = new CWindowsSocket();
+#elif defined _LINUX
+	pSocket = new CLinuxSocket();
 #else
 	pSocket = new CNullSocket();
 #endif
