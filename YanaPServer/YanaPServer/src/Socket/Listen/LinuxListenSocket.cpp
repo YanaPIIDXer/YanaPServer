@@ -3,9 +3,11 @@
 #if _LINUX
 
 #include "Socket/LinuxSocket.h"
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1
