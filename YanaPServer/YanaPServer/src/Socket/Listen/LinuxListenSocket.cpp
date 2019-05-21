@@ -38,7 +38,7 @@ void CLinuxListenSocket::Poll()
 	if (Socket == INVALID_SOCKET) { return; }
 
 	sockaddr_in Addr;
-	int Len = sizeof(Addr);
+	socklen_t Len = sizeof(Addr);
 	int AcceptSocket = accept(Socket, (sockaddr *)&Addr, &Len);
 	if (AcceptSocket == INVALID_SOCKET) { return; }
 
