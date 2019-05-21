@@ -34,7 +34,7 @@ DEPENDS   = $(OBJECTS:.o=.d)
 
 # 依存ファイルを元に実行ファイルを作る
 $(TARGETS): $(OBJECTS) $(LIBS)
-	$(COMPILER) -o $(TARGETDIR)/$@ $^ $(LDFLAGS) -g -lyanapserver
+	$(COMPILER) -o $(TARGETDIR)/$@ $^ $(LDFLAGS) -g -lyanapserver -lstdc++
 
 # 中間バイナリのディレクトリを掘りながら.cppを中間ファイル.oに
 $(OBJROOT)/%.o: $(SRCROOT)/%.cpp
