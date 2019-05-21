@@ -12,7 +12,7 @@ else
 endif
 LIBS      =
 # インクルードパスの指定。これをちゃんとしておかないとDEPENDS(依存)ファイルがうまく作れない
-INCLUDE   = -I../include -I/usr/local/include -I./ -I$(SERVEROOT)/include
+INCLUDE   = -I../include -I/usr/local/include -I./ -I$(SERVERROOT)/include
 # 生成される実行ファイル
 TARGETS   = ServletTest.out
 # 生成されるバイナリファイルの出力ディレクトリ
