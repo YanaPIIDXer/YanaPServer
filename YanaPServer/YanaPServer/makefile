@@ -11,7 +11,7 @@ endif
 # インクルードパスの指定。これをちゃんとしておかないとDEPENDS(依存)ファイルがうまく作れない
 INCLUDE   = -I../include -I/usr/local/include -I./include/YanaPServer
 # 生成される静的ライブラリ
-TARGETS   = libyanapserver.a
+TARGETS   = bin/libyanapserver.a
 # 生成されるバイナリファイルの出力ディレクトリ
 TARGETDIR = ./
 # ソースコードの位置
