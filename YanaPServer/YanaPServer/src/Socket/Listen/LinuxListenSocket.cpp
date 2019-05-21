@@ -8,6 +8,7 @@
 #include <sys/ioctl.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 namespace YanaPServer
 {
@@ -90,7 +91,7 @@ void CLinuxListenSocket::Release()
 {
 	if (Socket == INVALID_SOCKET) { return; }
 
-	close(Socket);
+	cloclse(Socket);
 	Socket = INVALID_SOCKET;
 }
 
