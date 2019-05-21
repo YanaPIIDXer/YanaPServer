@@ -1,7 +1,7 @@
 # コンパイラ
 COMPILER  = gcc
 # お好きなフラグを
-CXXFLAGS    = -g -Wall -Werror -std=c++11 
+CXXFLAGS    = -g -Wall -Werror -std=c++11 -D_LINUX 
 # サーバライブラリのパス
 SERVERROOT = ../YanaPServer/YanaPServer
 # ライブラリ関係の指定
