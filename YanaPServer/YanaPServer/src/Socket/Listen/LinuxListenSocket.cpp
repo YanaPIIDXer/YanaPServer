@@ -63,7 +63,7 @@ bool CLinuxListenSocket::Bind(unsigned int Port)
 
 	Addr.sin_family = AF_INET;
 	Addr.sin_port = htons(Port);
-	Addr.sin_addr.S_un.S_addr = INADDR_ANY;
+	Addr.sin_addr.s_addr = INADDR_ANY;
 
 	return (bind(Socket, (sockaddr *)&Addr, sizeof(Addr)) != SOCKET_ERROR);
 }

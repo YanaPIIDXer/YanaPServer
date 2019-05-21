@@ -28,7 +28,7 @@ CLinuxSocket::CLinuxSocket(int InSocket)
 	: Socket(InSocket)
 	, NonBlockingMode(1)
 {
-	ioctl(Socket, FIONBIO, &NOnBlockingMode);
+	ioctl(Socket, FIONBIO, &NonBlockingMode);
 }
 
 // デストラクタ
@@ -46,7 +46,7 @@ bool CLinuxSocket::Connect(const char *pHost, unsigned int Port)
 
 	ConnectAddr.sin_family = AF_INET;
 	ConnectAddr.sin_port = htons(Port);
-	ConnectAddr.sin_addr.S_un.S_addr = inet_addr(pHost);
+	ConnectAddr.sin_addr.s_addr = inet_addr(pHost);
 
 	ioctl(Socket, FIONBIO, &NonBlockingMode);
 
