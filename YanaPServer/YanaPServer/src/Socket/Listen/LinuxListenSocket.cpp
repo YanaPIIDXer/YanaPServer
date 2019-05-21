@@ -10,9 +10,6 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#include <errno.h>
-#include <iostream>
-
 namespace YanaPServer
 {
 namespace Socket
@@ -84,15 +81,9 @@ bool CLinuxListenSocket::Bind(unsigned int Port)
 // ƒŠƒbƒXƒ“
 bool CLinuxListenSocket::Listen()
 {
-	if (Socket == INVALID_SOCKET) { std::cout << "Invalid Socket" << std::endl; return false; }
+	if (Socket == INVALID_SOCKET) { return false; }
 
-	//return (listen(Socket, 5) != SOCKET_ERROR);
-	if (listen(Socket, 1) == SOCKET_ERROR)
-	{
-		std::cout << "errno:" << errno << std::endl;
-		return false;
-	}
-	return true;
+	return (listen(Socket, 1) != SOCKET_ERROR);
 }
 
 // ‰ð•ú.
