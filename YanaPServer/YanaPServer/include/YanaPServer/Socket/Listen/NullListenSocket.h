@@ -3,8 +3,6 @@
 
 #include "ListenSocket.h"
 
-#include <iostream>
-
 namespace YanaPServer
 {
 namespace Socket
@@ -27,7 +25,7 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 */
-	CNullListenSocket() { std::cout << "CNullListenSocket::CNullListenSocket()" << std::endl; }
+	CNullListenSocket() {}
 
 	/**
 	 * @brief デストラクタ

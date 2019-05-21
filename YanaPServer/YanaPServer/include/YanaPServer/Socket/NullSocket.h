@@ -2,7 +2,6 @@
 #define __NULLSOCKETBEHAVIOUR_H__
 
 #include "Socket.h"
-#include <iostream>
 
 namespace YanaPServer
 {
@@ -22,7 +21,7 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 */
-	CNullSocket() { std::cout << "CNullSocket::CNullSocket()" << std::endl; }
+	CNullSocket() {}
 
 	/**
 	 * @brief デストラクタ

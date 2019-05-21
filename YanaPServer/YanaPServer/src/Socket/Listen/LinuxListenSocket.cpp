@@ -20,11 +20,14 @@ namespace Listen
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1
 
+#include <iostream>
+
 // コンストラクタ
 CLinuxListenSocket::CLinuxListenSocket()
 	: Socket(INVALID_SOCKET)
 	, NonBlockingMode(1)
 {
+	std::cout << "CLinuxListenSocket::CLinuxListenSocket()" << std::endl;
 }
 
 // デストラクタ
