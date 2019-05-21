@@ -10,6 +10,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#include <iostream>
+
 namespace YanaPServer
 {
 namespace Socket
@@ -19,8 +21,6 @@ namespace Listen
 
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1
-
-#include <iostream>
 
 // コンストラクタ
 CLinuxListenSocket::CLinuxListenSocket()
