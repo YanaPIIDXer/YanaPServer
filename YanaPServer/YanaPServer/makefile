@@ -31,6 +31,7 @@ DEPENDS   = $(OBJECTS:.o=.d)
 
 # 依存ファイルを静的ライブラリを作る
 $(TARGETS): $(OBJECTS)
+	@if [ ! -e `dirname $@` ]; then mkdir -p `dirname $@`; fi
 	ar rv $(TARGETS) $(OBJECTS)
 	@rm -f $(OBJECTS)
 
