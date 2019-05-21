@@ -16,8 +16,8 @@ namespace Servlet
 CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder *pInFinder, IHttpServerEvent *pInHttpServerEvent)
 	: CPeerBase(pSocket)
 	, pFinder(pInFinder)
-	, pHttpServerEvent(pInHttpServerEvent)
 	, SendSize(0)
+	, pHttpServerEvent(pInHttpServerEvent)
 {
 }
 

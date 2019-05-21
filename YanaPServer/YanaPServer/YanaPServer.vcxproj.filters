@@ -201,4 +201,7 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
+  </ItemGroup>
 </Project>
