@@ -59,7 +59,7 @@ bool CLinuxListenSocket::Init()
 		Release();
 	}
 
-	Socket = socket(AF_INET, SOCK_DGRAM, 0);
+	Socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (Socket == INVALID_SOCKET) { return false; }
 
 	ioctl(Socket, FIONBIO, &NonBlockingMode);
