@@ -91,7 +91,7 @@ void CLinuxListenSocket::Release()
 {
 	if (Socket == INVALID_SOCKET) { return; }
 
-	cloclse(Socket);
+	close(Socket);
 	Socket = INVALID_SOCKET;
 }
 
