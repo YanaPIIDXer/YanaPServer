@@ -6,9 +6,9 @@ CXXFLAGS    = -g -Wall -Werror -std=c++11
 SERVERROOT = ../YanaPServer/YanaPServer
 # ライブラリ関係の指定
 ifeq "$(shell getconf LONG_BIT)" "64"
-  LDFLAGS = -L/usr/local/lib -L/usr/lib -L$(SERVERROOT)/bin
+  LDFLAGS = -L/usr/local/lib -L/usr/lib -L$(SERVERROOT)/bin 
 else
-  LDFLAGS = -L/usr/local/lib -L/usr/lib
+  LDFLAGS = -L/usr/local/lib -L/usr/lib -L$(SERVERROOT)/bin 
 endif
 LIBS      =
 # インクルードパスの指定。これをちゃんとしておかないとDEPENDS(依存)ファイルがうまく作れない
