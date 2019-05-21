@@ -57,7 +57,7 @@ bool CLinuxSocket::Connect(const char *pHost, unsigned int Port)
 // 接続されるまで毎フレーム実行される処理
 bool CLinuxSocket::PollConnect()
 {
-	return (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)) != 0);
+	return (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)) == 0);
 }
 
 // 送信.
