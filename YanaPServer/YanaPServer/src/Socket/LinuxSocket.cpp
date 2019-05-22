@@ -10,8 +10,6 @@
 #include <unistd.h>
 #include <errno.h>
 
-#include <iostream>
-
 #define SOCKET_ERROR -1
 
 namespace YanaPServer
@@ -31,7 +29,6 @@ CLinuxSocket::CLinuxSocket(int InSocket)
 	: Socket(InSocket)
 	, NonBlockingMode(1)
 {
-	std::cout << "CLinuxSocket::CLinuxSocket()" << std::endl;
 	ioctl(Socket, FIONBIO, &NonBlockingMode);
 }
 
@@ -60,13 +57,12 @@ bool CLinuxSocket::Connect(const char *pHost, unsigned int Port)
 // 接続されるまで毎フレーム実行される処理
 bool CLinuxSocket::PollConnect()
 {
-	return (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)) == 0);
+	return (connect(Socket, (sockaddr *)&ConnectAddr, sizeof(ConnectAddr)) != 0);
 }
 
 // 送信.
 int CLinuxSocket::Send(const char *pData, unsigned int Size)
 {
-	std::cout << "CLinuxSocket::Send()" << std::endl;
 	int SendSize = write(Socket, pData, Size);
 	if (SendSize == SOCKET_ERROR) { return -1; }
 	return SendSize;
@@ -75,7 +71,6 @@ int CLinuxSocket::Send(const char *pData, unsigned int Size)
 // 受信.
 int CLinuxSocket::Recv(char *pBuffer, unsigned int BufferSize)
 {
-	std::cout << "CLinuxSocket::Recv()" << std::endl;
 	int RecvSize = read(Socket, pBuffer, BufferSize);
 	if (RecvSize == SOCKET_ERROR)
 	{

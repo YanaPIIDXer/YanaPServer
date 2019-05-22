@@ -102,26 +102,25 @@ void CHttpRequestParser::Split(const char *pData, const std::string &Delimiter, 
 	OutResult.clear();
 
 	std::string Str = pData;
-	unsigned int First = 0;
-	unsigned int Last = Str.find_first_of(Delimiter);
-	if (Last == std::string::npos)
+	if (Str.find_first_of(Delimiter) == std::string::npos)
 	{
 		// 区切り文字が見つからなかった場合はそのまま文字列をブチ込んで終了。
 		OutResult.push_back(Str);
 		return;
 	}
 
-	while (First < Str.size())
+	auto Offset = std::string::size_type(0);
+	while (true)
 	{
-		std::string SubStr(Str, First, Last - First);
-		OutResult.push_back(SubStr);
-
-		First = Last + 1;
-		Last = Str.find_first_of(Delimiter, First);
-		if (Last == std::string::npos)
+		auto Pos = Str.find(Delimiter, Offset);
+		if (Pos == std::string::npos)
 		{
-			Last = Str.size();
+			OutResult.push_back(Str.substr(Offset));
+			break;
 		}
+
+		OutResult.push_back(Str.substr(Offset, Pos - Offset));
+		Offset = Pos + Delimiter.length();
 	}
 }
 
