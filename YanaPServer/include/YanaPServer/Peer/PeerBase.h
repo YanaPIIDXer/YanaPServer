@@ -80,6 +80,13 @@ public:
 	virtual void OnConnect() override {}
 
 	/**
+	 * @fn virtual void OnSend(unsigned int Size) override
+	 * @brief 送信した
+	 * @param[in] Size 送信したデータ長
+	 */
+	virtual void OnSend(unsigned int Size) override {}
+
+	/**
 	 * @fn virtual void OnDisconnect(YanaPServer::Socket::ESocketDisconnectReason Reason) override
 	 * @brief 切断された
 	 * @paran[in] Reason 切断理由
