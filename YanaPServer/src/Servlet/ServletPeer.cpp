@@ -125,12 +125,8 @@ void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse
 	SendData.AppendStringLine(ContentLength.str().c_str());
 	
 	// Set-Cookie
-	if (Response.CookieInfo.bIsEnable && Response.CookieInfo.Name != "")
+	if (!Response.CookieMap.empty())
 	{
-		std::ostringstream SetCookie;
-		SetCookie << "Set-Cookie: ";
-		SetCookie << Response.CookieInfo.Name + "=" + Response.CookieInfo.Value + "; ";
-
 		time_t Time = time(nullptr);
 		tm CurrentTime;
 		localtime_s(&CurrentTime, &Time);
@@ -139,16 +135,23 @@ void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse
 		time_t ExpiresTime = mktime(&Expires);
 		localtime_s(&Expires, &ExpiresTime);
 
-		static const int BufferSize = 512;
-		char Buffer[BufferSize];
-		strftime(Buffer, BufferSize, "expires=%a, %d-%b-%Y %T GMT; ", &Expires);
+		static const int TimeBufferSize = 512;
+		char TimeBuffer[TimeBufferSize];
+		strftime(TimeBuffer, TimeBufferSize, "expires=%a, %d-%b-%Y %T GMT; ", &Expires);
 
-		SetCookie << Buffer;
+		for (const auto &It : Response.CookieMap)
+		{
+			std::ostringstream SetCookie;
+			SetCookie << "Set-Cookie: ";
+			SetCookie << It.first + "=" + It.second + "; ";
 
-		SetCookie << "path=" + Request.Path + "; ";
-		SetCookie << "domain=" + Request.Domain;
+			SetCookie << TimeBuffer;
 
-		SendData.AppendStringLine(SetCookie.str().c_str());
+			SetCookie << "path=" + Request.Path + "; ";
+			SetCookie << "domain=" + Request.Domain;
+
+			SendData.AppendStringLine(SetCookie.str().c_str());
+		}
 	}
 	
 	SendData.AppendString("\r\n");

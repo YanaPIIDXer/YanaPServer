@@ -1,0 +1,738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: YanaPServer::Util::HTML::CHTMLForm クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_yana_p_server.html">YanaPServer</a></li><li class="navelem"><a class="el" href="namespace_yana_p_server_1_1_util.html">Util</a></li><li class="navelem"><a class="el" href="namespace_yana_p_server_1_1_util_1_1_h_t_m_l.html">HTML</a></li><li class="navelem"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html">CHTMLForm</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">YanaPServer::Util::HTML::CHTMLForm クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>HTMLフォーム  
+ <a href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_h_t_m_l_object_8h_source.html">HTMLObject.h</a>&gt;</code></p>
+<div class="dynheader">
+YanaPServer::Util::HTML::CHTMLForm の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form__inherit__graph.png" border="0" usemap="#_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_inherit__map" alt="Inheritance graph"/></div>
+<!-- MAP 0 -->
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+YanaPServer::Util::HTML::CHTMLForm 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form__coll__graph.png" border="0" usemap="#_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_coll__map" alt="Collaboration graph"/></div>
+<!-- MAP 1 -->
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:ac72a57cb4de65e1e1096e6fdb91b2fd6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6">EMethod</a> { <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6aa02439ec229d8be0e74b0c1602392310">EMethod::POST</a>, 
+<a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6a7528035a93ee69cedb1dbddb2f0bfcc8">EMethod::GET</a>
+ }</td></tr>
+<tr class="memdesc:ac72a57cb4de65e1e1096e6fdb91b2fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTMLメソッド  <a href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6">[詳解]</a><br /></td></tr>
+<tr class="separator:ac72a57cb4de65e1e1096e6fdb91b2fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0390a80c1f561de59b25b12716eb7650"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a0390a80c1f561de59b25b12716eb7650">CHTMLForm</a> (<a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6">EMethod</a> InMethod, const char *pInActionTarget)</td></tr>
+<tr class="memdesc:a0390a80c1f561de59b25b12716eb7650"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a0390a80c1f561de59b25b12716eb7650">[詳解]</a><br /></td></tr>
+<tr class="separator:a0390a80c1f561de59b25b12716eb7650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cd77ff73b8020a68e1f2172bbdde1eb"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a7cd77ff73b8020a68e1f2172bbdde1eb">‾CHTMLForm</a> ()</td></tr>
+<tr class="memdesc:a7cd77ff73b8020a68e1f2172bbdde1eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a7cd77ff73b8020a68e1f2172bbdde1eb">[詳解]</a><br /></td></tr>
+<tr class="separator:a7cd77ff73b8020a68e1f2172bbdde1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb1a5f9f4ad8b33210bc446337e356b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a0bb1a5f9f4ad8b33210bc446337e356b">AddObject</a> (<a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html">IHTMLObject</a> *pObject)</td></tr>
+<tr class="memdesc:a0bb1a5f9f4ad8b33210bc446337e356b"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクト追加  <a href="#a0bb1a5f9f4ad8b33210bc446337e356b">[詳解]</a><br /></td></tr>
+<tr class="separator:a0bb1a5f9f4ad8b33210bc446337e356b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a951b41a6b9f4bbfd58b634df4637db6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a951b41a6b9f4bbfd58b634df4637db6b">AddText</a> (const char *pText, bool bAppendNewLine=false)</td></tr>
+<tr class="memdesc:a951b41a6b9f4bbfd58b634df4637db6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">単純なテキストを追加  <a href="#a951b41a6b9f4bbfd58b634df4637db6b">[詳解]</a><br /></td></tr>
+<tr class="separator:a951b41a6b9f4bbfd58b634df4637db6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a990c3ade56382c6a5eb670d06e77732d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a990c3ade56382c6a5eb670d06e77732d">AddTextBox</a> (const char *pName, const char *pDefaultValue=&quot;&quot;, bool bAppendNewLine=true)</td></tr>
+<tr class="memdesc:a990c3ade56382c6a5eb670d06e77732d"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキストボックスを追加  <a href="#a990c3ade56382c6a5eb670d06e77732d">[詳解]</a><br /></td></tr>
+<tr class="separator:a990c3ade56382c6a5eb670d06e77732d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab23b1a645630e0d1ebac2780fa24d8e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ab23b1a645630e0d1ebac2780fa24d8e7">AddCheckBox</a> (const char *pName, bool bDefaultValue=false, bool bAppendNewLine=true)</td></tr>
+<tr class="memdesc:ab23b1a645630e0d1ebac2780fa24d8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">チェックボックスを追加  <a href="#ab23b1a645630e0d1ebac2780fa24d8e7">[詳解]</a><br /></td></tr>
+<tr class="separator:ab23b1a645630e0d1ebac2780fa24d8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab33ea79634fa900fce8429e488556438"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ab33ea79634fa900fce8429e488556438">AddSubmitButton</a> (const char *pName, const char *pValue, bool bAppendNewLine=true)</td></tr>
+<tr class="memdesc:ab33ea79634fa900fce8429e488556438"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信ボタンを追加  <a href="#ab33ea79634fa900fce8429e488556438">[詳解]</a><br /></td></tr>
+<tr class="separator:ab33ea79634fa900fce8429e488556438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46a3c680fd0afb9409407fbd6d44e49f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a46a3c680fd0afb9409407fbd6d44e49f">Generate</a> (std::string &amp;OutCode) const override</td></tr>
+<tr class="memdesc:a46a3c680fd0afb9409407fbd6d44e49f"><td class="mdescLeft">&#160;</td><td class="mdescRight">構築  <a href="#a46a3c680fd0afb9409407fbd6d44e49f">[詳解]</a><br /></td></tr>
+<tr class="separator:a46a3c680fd0afb9409407fbd6d44e49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html">YanaPServer::Util::HTML::IHTMLObject</a> に属する継承公開メンバ関数</td></tr>
+<tr class="memitem:ac5a34ce85fcaf79f0a558fb1b0c630f3 inherit pub_methods_class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html#ac5a34ce85fcaf79f0a558fb1b0c630f3">‾IHTMLObject</a> ()</td></tr>
+<tr class="memdesc:ac5a34ce85fcaf79f0a558fb1b0c630f3 inherit pub_methods_class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html#ac5a34ce85fcaf79f0a558fb1b0c630f3">[詳解]</a><br /></td></tr>
+<tr class="separator:ac5a34ce85fcaf79f0a558fb1b0c630f3 inherit pub_methods_class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:ab68b70853b2253d350e138c5027cea8f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_text.html">CHTMLText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ab68b70853b2253d350e138c5027cea8f">MakeTextBox</a> (const char *pName, const char *pDefaultValue=&quot;&quot;, bool bAppendNewLine=true)</td></tr>
+<tr class="memdesc:ab68b70853b2253d350e138c5027cea8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキストボックスを生成  <a href="#ab68b70853b2253d350e138c5027cea8f">[詳解]</a><br /></td></tr>
+<tr class="separator:ab68b70853b2253d350e138c5027cea8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ce3ce3534396dee88420d62c4a436e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_text.html">CHTMLText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#a19ce3ce3534396dee88420d62c4a436e">MakeCheckBox</a> (const char *pName, bool bDefaltValue=false, bool bAppendNewLine=true)</td></tr>
+<tr class="memdesc:a19ce3ce3534396dee88420d62c4a436e"><td class="mdescLeft">&#160;</td><td class="mdescRight">チェックボックスを生成  <a href="#a19ce3ce3534396dee88420d62c4a436e">[詳解]</a><br /></td></tr>
+<tr class="separator:a19ce3ce3534396dee88420d62c4a436e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12bddb0a9fa11f45dab4742df7b6fc0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_text.html">CHTMLText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ab12bddb0a9fa11f45dab4742df7b6fc0">MakeSubmitButton</a> (const char *pName, const char *pValue, bool bAppendNewLine=true)</td></tr>
+<tr class="separator:ab12bddb0a9fa11f45dab4742df7b6fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>HTMLフォーム </p>
+</div><h2 class="groupheader">列挙型メンバ詳解</h2>
+<a id="ac72a57cb4de65e1e1096e6fdb91b2fd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac72a57cb4de65e1e1096e6fdb91b2fd6">&#9670;&nbsp;</a></span>EMethod</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6">YanaPServer::Util::HTML::CHTMLForm::EMethod</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HTMLメソッド </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac72a57cb4de65e1e1096e6fdb91b2fd6aa02439ec229d8be0e74b0c1602392310"></a>POST&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac72a57cb4de65e1e1096e6fdb91b2fd6a7528035a93ee69cedb1dbddb2f0bfcc8"></a>GET&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a0390a80c1f561de59b25b12716eb7650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0390a80c1f561de59b25b12716eb7650">&#9670;&nbsp;</a></span>CHTMLForm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">YanaPServer::Util::HTML::CHTMLForm::CHTMLForm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form.html#ac72a57cb4de65e1e1096e6fdb91b2fd6">EMethod</a>&#160;</td>
+          <td class="paramname"><em>InMethod</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pInActionTarget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">InMethod</td><td>HTMLメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pInActionTarget</td><td>アクションターゲット </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ab23b1a645630e0d1ebac2780fa24d8e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab23b1a645630e0d1ebac2780fa24d8e7">&#9670;&nbsp;</a></span>AddCheckBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Util::HTML::CHTMLForm::AddCheckBox </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bDefaultValue</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>チェックボックスを追加 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pName</td><td>チェックボックスに付ける名前 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bDefaultValue</td><td>デフォルト値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab23b1a645630e0d1ebac2780fa24d8e7_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab23b1a645630e0d1ebac2780fa24d8e7_cgraph" alt=""/></div>
+<!-- MAP 2 -->
+</div>
+
+</div>
+</div>
+<a id="a0bb1a5f9f4ad8b33210bc446337e356b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb1a5f9f4ad8b33210bc446337e356b">&#9670;&nbsp;</a></span>AddObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Util::HTML::CHTMLForm::AddObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html">IHTMLObject</a> *&#160;</td>
+          <td class="paramname"><em>pObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>オブジェクト追加 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pObject</td><td>HTMLオブジェクト </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a0bb1a5f9f4ad8b33210bc446337e356b_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a0bb1a5f9f4ad8b33210bc446337e356b_icgraph" alt=""/></div>
+<!-- MAP 3 -->
+</div>
+
+</div>
+</div>
+<a id="ab33ea79634fa900fce8429e488556438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab33ea79634fa900fce8429e488556438">&#9670;&nbsp;</a></span>AddSubmitButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Util::HTML::CHTMLForm::AddSubmitButton </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>送信ボタンを追加 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pName</td><td>送信ボタンに付ける名前 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pValue</td><td>デフォルト値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab33ea79634fa900fce8429e488556438_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab33ea79634fa900fce8429e488556438_cgraph" alt=""/></div>
+<!-- MAP 4 -->
+</div>
+
+</div>
+</div>
+<a id="a951b41a6b9f4bbfd58b634df4637db6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a951b41a6b9f4bbfd58b634df4637db6b">&#9670;&nbsp;</a></span>AddText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Util::HTML::CHTMLForm::AddText </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pText</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>単純なテキストを追加 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pText</td><td>テキスト </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a951b41a6b9f4bbfd58b634df4637db6b_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a951b41a6b9f4bbfd58b634df4637db6b_cgraph" alt=""/></div>
+<!-- MAP 5 -->
+</div>
+
+</div>
+</div>
+<a id="a990c3ade56382c6a5eb670d06e77732d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a990c3ade56382c6a5eb670d06e77732d">&#9670;&nbsp;</a></span>AddTextBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Util::HTML::CHTMLForm::AddTextBox </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pDefaultValue</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>テキストボックスを追加 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pName</td><td>テキストボックスに付ける名前 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pDefaultValue</td><td>デフォルト値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a990c3ade56382c6a5eb670d06e77732d_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a990c3ade56382c6a5eb670d06e77732d_cgraph" alt=""/></div>
+<!-- MAP 6 -->
+</div>
+
+</div>
+</div>
+<a id="a46a3c680fd0afb9409407fbd6d44e49f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46a3c680fd0afb9409407fbd6d44e49f">&#9670;&nbsp;</a></span>Generate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Util::HTML::CHTMLForm::Generate </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>OutCode</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>構築 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">OutCode</td><td>構築されたHTMLコード </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html#a3758c55100381837bc9b03e62a6e2864">YanaPServer::Util::HTML::IHTMLObject</a>を実装しています。</p>
+
+</div>
+</div>
+<a id="a19ce3ce3534396dee88420d62c4a436e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19ce3ce3534396dee88420d62c4a436e">&#9670;&nbsp;</a></span>MakeCheckBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_text.html">CHTMLText</a> * YanaPServer::Util::HTML::CHTMLForm::MakeCheckBox </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bDefaultValue</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>チェックボックスを生成 </p>
+<p>送信ボタンを生成</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pName</td><td>チェックボックスに付ける名前 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bDefaultValue</td><td>デフォルト値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>CHTMLTextオブジェクト</dd></dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pName</td><td>送信ボタンに付ける名前 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bValue</td><td>表示文字列 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>CHTMLTextオブジェクト </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a19ce3ce3534396dee88420d62c4a436e_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_a19ce3ce3534396dee88420d62c4a436e_icgraph" alt=""/></div>
+<!-- MAP 7 -->
+</div>
+
+</div>
+</div>
+<a id="ab12bddb0a9fa11f45dab4742df7b6fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab12bddb0a9fa11f45dab4742df7b6fc0">&#9670;&nbsp;</a></span>MakeSubmitButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_text.html">CHTMLText</a>* YanaPServer::Util::HTML::CHTMLForm::MakeSubmitButton </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab12bddb0a9fa11f45dab4742df7b6fc0_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab12bddb0a9fa11f45dab4742df7b6fc0_icgraph" alt=""/></div>
+<!-- MAP 8 -->
+</div>
+
+</div>
+</div>
+<a id="ab68b70853b2253d350e138c5027cea8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab68b70853b2253d350e138c5027cea8f">&#9670;&nbsp;</a></span>MakeTextBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_text.html">CHTMLText</a> * YanaPServer::Util::HTML::CHTMLForm::MakeTextBox </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pDefaultValue</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bAppendNewLine</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>テキストボックスを生成 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pName</td><td>テキストボックスに付ける名前 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pDefaultValue</td><td>デフォルト値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bAppendNewLine</td><td>改行するか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>CHTMLTextオブジェクト </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab68b70853b2253d350e138c5027cea8f_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_form_ab68b70853b2253d350e138c5027cea8f_icgraph" alt=""/></div>
+<!-- MAP 9 -->
+</div>
+
+</div>
+</div>
+<a id="a7cd77ff73b8020a68e1f2172bbdde1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cd77ff73b8020a68e1f2172bbdde1eb">&#9670;&nbsp;</a></span>‾CHTMLForm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual YanaPServer::Util::HTML::CHTMLForm::‾CHTMLForm </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>デストラクタ </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="_h_t_m_l_object_8h_source.html">HTMLObject.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
