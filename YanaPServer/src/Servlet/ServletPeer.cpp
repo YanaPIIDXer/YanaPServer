@@ -4,6 +4,7 @@
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/SimpleStream.h"
 #include <sstream>
+#include <time.h>
 
 using namespace YanaPServer::Util::Stream;
 
@@ -31,13 +32,13 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
-
-	CSimpleStream ResponseStream;
+	SHttpResponse Response;
 
 	if (!Parser.Parse(pData, Request))
 	{
-		pHttpServerEvent->OnError(Request, ResponseStream);
-		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, ResponseStream);
+		Response.StatusCode = EHttpStatusCode::BadRequest;
+		pHttpServerEvent->OnError(Request, Response);
+		SendResponse(Request, Response);
 		return;
 	}
 
@@ -45,33 +46,34 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (pServlet == nullptr)
 	{
 		// 404
-		pHttpServerEvent->OnNotFound(Request, ResponseStream);
-		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, ResponseStream);
+		Response.StatusCode = EHttpStatusCode::NotFound;
+		pHttpServerEvent->OnNotFound(Request, Response);
+		SendResponse(Request, Response);
 		return;
 	}
 
-	EStatusCode StatusCode = EStatusCode::OK;
+	Response.StatusCode = EHttpStatusCode::OK;
 	switch (Request.Method)
 	{
 		case EHttpMethod::POST:
 
-			pServlet->OnPost(Request, ResponseStream);
+			pServlet->OnPost(Request, Response);
 			break;
 
 		case EHttpMethod::GET:
 
-			pServlet->OnGet(Request, ResponseStream);
+			pServlet->OnGet(Request, Response);
 			break;
 
 		default:
 
 			// とりあえずエラーにしておく。
-			StatusCode = EStatusCode::BadRequest;
-			pServlet->OnError(Request, ResponseStream);
+			Response.StatusCode = EHttpStatusCode::BadRequest;
+			pServlet->OnError(Request, Response);
 			break;
 	}
 
-	SendResponse(Request.ProtocolVersion, StatusCode, ResponseStream);
+	SendResponse(Request, Response);
 }
 
 // 送信した
@@ -90,38 +92,69 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const CSimpleStream &Stream)
+void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse &Response)
 {
 	CSimpleStream SendData;
 
 	// レスポンスヘッダ
-	SendData.AppendString(ProtocolVersion.c_str());
+	SendData.AppendString(Request.ProtocolVersion.c_str());
 	SendData.AppendString(" ");
-	switch (StatusCode)
+	switch (Response.StatusCode)
 	{
-		case EStatusCode::OK:
+		case EHttpStatusCode::OK:
 
 			SendData.AppendStringLine("200 OK");
 			break;
 
-		case EStatusCode::NotFound:
+		case EHttpStatusCode::NotFound:
 
 			SendData.AppendStringLine("404 Not Found");
 			break;
 
-		case EStatusCode::BadRequest:
+		case EHttpStatusCode::BadRequest:
 
 			SendData.AppendStringLine("400 Bad Request");
 			break;
 	}
+
 	SendData.AppendStringLine("Content-Type: text/html");
+
+	// Content-Length
 	std::ostringstream ContentLength;
-	ContentLength << "Content-Length: " << Stream.GetLength();
+	ContentLength << "Content-Length: " << Response.ContentStream.GetLength();
 	SendData.AppendStringLine(ContentLength.str().c_str());
-	SendData.AppendString("\r\n");
 	
+	// Set-Cookie
+	if (Response.CookieInfo.bIsEnable && Response.CookieInfo.Name != "")
+	{
+		std::ostringstream SetCookie;
+		SetCookie << "Set-Cookie: ";
+		SetCookie << Response.CookieInfo.Name + "=" + Response.CookieInfo.Value + "; ";
+
+		time_t Time = time(nullptr);
+		tm CurrentTime;
+		localtime_s(&CurrentTime, &Time);
+
+		tm Expires = { CurrentTime.tm_sec, CurrentTime.tm_min, CurrentTime.tm_hour, CurrentTime.tm_mday + 1, CurrentTime.tm_mon, CurrentTime.tm_year };
+		time_t ExpiresTime = mktime(&Expires);
+		localtime_s(&Expires, &ExpiresTime);
+
+		static const int BufferSize = 512;
+		char Buffer[BufferSize];
+		strftime(Buffer, BufferSize, "expires=%a, %d-%b-%Y %T GMT; ", &Expires);
+
+		SetCookie << Buffer;
+
+		SetCookie << "path=" + Request.Path + "; ";
+		SetCookie << "domain=" + Request.Domain;
+
+		SendData.AppendStringLine(SetCookie.str().c_str());
+	}
+	
+	SendData.AppendString("\r\n");
+
 	// ボディをブチ込む。
-	SendData.AppendBinary(Stream.Get(), Stream.GetLength());
+	SendData.AppendBinary(Response.ContentStream.Get(), Response.ContentStream.GetLength());
 
 	// ブン投げる。
 	const char *pData = SendData.Get();

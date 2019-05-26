@@ -163,9 +163,11 @@
     <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
     <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
     <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpCookieInfo.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpParameter.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequestParser.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
