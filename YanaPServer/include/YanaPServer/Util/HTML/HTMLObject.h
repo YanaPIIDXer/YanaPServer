@@ -282,14 +282,15 @@ public:
 
 		OutCode += " action=\"";
 		OutCode += pActionTarget;
-		OutCode += "\">";
+		OutCode += "\">\n";
 
 		for (const auto &pObject : Objects)
 		{
+			OutCode += "\t";
 			pObject->Generate(OutCode);
 		}
 
-		OutCode += "</form>";
+		OutCode += "</form>\n";
 	}
 
 private:

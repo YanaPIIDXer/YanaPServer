@@ -7,10 +7,12 @@ namespace Util
 namespace HTML
 {
 
+// =============== CHTMLForm =====================
+
 // テキストボックスを生成.
 CHTMLText *CHTMLForm::MakeTextBox(const char *pName, const char *pDefaultValue, bool bAppendNewLine)
 {
-	std::string Code = "<input type=\text\" name=\"";
+	std::string Code = "<input type=\"text\" name=\"";
 	Code += pName;
 	Code += "\" value=\"";
 	Code += pDefaultValue;
