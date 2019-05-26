@@ -130,7 +130,18 @@ void CHTMLTable::Generate(std::string &OutCode) const
 		for (const auto *pColumn : Columns)
 		{
 			OutCode += "\t\t<td>";
-			OutCode += pColumn->GetCode(i);
+			std::string ColumnCode = pColumn->GetCode(i);
+
+			// 整形.
+			// 挿入されるソースコード上の改行を全て撤去。
+			auto Pos = ColumnCode.find("\n");
+			while (Pos != std::string::npos)
+			{
+				ColumnCode.replace(Pos, 1, "");
+				Pos = ColumnCode.find("\n", Pos);
+			}
+			
+			OutCode += ColumnCode;
 			OutCode += "</td>\n";
 		}
 		OutCode += "\t</tr>\n";
