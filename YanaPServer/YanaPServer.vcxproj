@@ -140,7 +140,7 @@
     <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
-    <ClCompile Include="src\Util\Stream\StringStream.cpp" />
+    <ClCompile Include="src\Util\Stream\SimpleStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application\ApplicationBase.h" />
@@ -185,7 +185,7 @@
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\StringStream.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\SimpleStream.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />

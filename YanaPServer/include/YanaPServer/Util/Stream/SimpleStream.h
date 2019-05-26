@@ -1,5 +1,5 @@
-#ifndef __STRINGSTREAM_H__
-#define __STRINGSTREAM_H__
+#ifndef __SIMPLESTREAM_H__
+#define __SIMPLESTREAM_H__
 
 namespace YanaPServer
 {
@@ -9,11 +9,11 @@ namespace Stream
 {
 
 /**
- * @class CStringStream
- * @brief 文字列ストリーム
+ * @class CSimpleStream
+ * @brief 単純なストリーム
  * @detail Appendするたびに内部でnewとdeleteが走るので注意。
  */
-class CStringStream
+class CSimpleStream
 {
 
 public:
@@ -21,26 +21,34 @@ public:
 	/**
 	 * @brief コンストラクタ
 	 */
-	CStringStream();
+	CSimpleStream();
 
 	/**
 	 * @brief デストラクタ
 	 */
-	~CStringStream();
+	~CSimpleStream();
 
 	/**
-	 * @fn void Append(const char *pStr)
-	 * @brief 追加
+	 * @fn void AppendString(const char *pStr)
+	 * @brief 文字列追加
 	 * @param[in] pStr 追加する文字列
 	 */
-	void Append(const char *pStr);
+	void AppendString(const char *pStr);
 
 	/**
 	 * @fn void AppendLine(const char *pStr)
-	 * @brief 末尾に改行コードを付加して追加
+	 * @brief 末尾に改行コードを付加して文字列追加
 	 * @param[in] pStr 追加する文字列
 	 */
-	void AppendLine(const char *pStr);
+	void AppendStringLine(const char *pStr);
+
+	/**
+	 * @fn void AppendBinary(const char *pData, unsigned int Size)
+	 * @brief バイナリ追加
+	 * @param[in] pData データ
+	 * @param[in] Size データ長
+	 */
+	void AppendBinary(const char *pData, unsigned int Size);
 
 	/**
 	 * @fn const char *GetBuffer() const
@@ -70,4 +78,4 @@ private:
 }
 }
 
-#endif		// #ifndef __STRINGSTREAM_H__
+#endif		// #ifndef __SIMPLESTREAM_H__

@@ -2,7 +2,7 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
-#include "Util/Stream/StringStream.h"
+#include "Util/Stream/SimpleStream.h"
 #include <sstream>
 
 using namespace YanaPServer::Util::Stream;
@@ -32,7 +32,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
 
-	CStringStream ResponseStream;
+	CSimpleStream ResponseStream;
 
 	if (!Parser.Parse(pData, Request))
 	{
@@ -90,38 +90,38 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const CStringStream &Stream)
+void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const CSimpleStream &Stream)
 {
-	CStringStream SendData;
+	CSimpleStream SendData;
 
 	// レスポンスヘッダ
-	SendData.Append(ProtocolVersion.c_str());
-	SendData.Append(" ");
+	SendData.AppendString(ProtocolVersion.c_str());
+	SendData.AppendString(" ");
 	switch (StatusCode)
 	{
 		case EStatusCode::OK:
 
-			SendData.AppendLine("200 OK");
+			SendData.AppendStringLine("200 OK");
 			break;
 
 		case EStatusCode::NotFound:
 
-			SendData.AppendLine("404 Not Found");
+			SendData.AppendStringLine("404 Not Found");
 			break;
 
 		case EStatusCode::BadRequest:
 
-			SendData.AppendLine("400 Bad Request");
+			SendData.AppendStringLine("400 Bad Request");
 			break;
 	}
-	SendData.AppendLine("Content-Type: text/html");
+	SendData.AppendStringLine("Content-Type: text/html");
 	std::ostringstream ContentLength;
 	ContentLength << "Content-Length: " << Stream.GetLength();
-	SendData.AppendLine(ContentLength.str().c_str());
-	SendData.Append("\r\n");
+	SendData.AppendStringLine(ContentLength.str().c_str());
+	SendData.AppendString("\r\n");
 	
 	// ボディをブチ込む。
-	SendData.Append(Stream.Get());
+	SendData.AppendBinary(Stream.Get(), Stream.GetLength());
 
 	// ブン投げる。
 	const char *pData = SendData.Get();

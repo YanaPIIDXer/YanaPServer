@@ -1,4 +1,4 @@
-#include "Util/Stream/StringStream.h"
+#include "Util/Stream/SimpleStream.h"
 #include <string.h>
 #include <memory.h>
 
@@ -10,7 +10,7 @@ namespace Stream
 {
 
 // コンストラクタ
-CStringStream::CStringStream()
+CSimpleStream::CSimpleStream()
 	: pBuffer(nullptr)
 	, Length(0)
 {
@@ -19,13 +19,13 @@ CStringStream::CStringStream()
 }
 
 // デストラクタ
-CStringStream::~CStringStream()
+CSimpleStream::~CSimpleStream()
 {
 	delete[] pBuffer;
 }
 
-// 追加.
-void CStringStream::Append(const char *pStr)
+// 文字列追加.
+void CSimpleStream::AppendString(const char *pStr)
 {
 	size_t StrLength = strlen(pStr);
 	int NewBufferSize = Length + StrLength + 1;
@@ -41,7 +41,7 @@ void CStringStream::Append(const char *pStr)
 }
 
 // 末尾に改行を付加して追加.
-void CStringStream::AppendLine(const char *pStr)
+void CSimpleStream::AppendStringLine(const char *pStr)
 {
 	size_t StrLength = strlen(pStr);
 	int NewBufferSize = Length + StrLength + 2;
@@ -55,6 +55,21 @@ void CStringStream::AppendLine(const char *pStr)
 	memcpy((pBuffer + Length), pStr, StrLength);
 	(*(pBuffer + Length + StrLength)) = '\n';
 	Length += StrLength + 1;
+}
+
+// 末尾に改行を付加して追加.
+void CSimpleStream::AppendBinary(const char *pData, unsigned int Size)
+{
+	int NewBufferSize = Length + Size;
+	char *pTmp = new char[NewBufferSize];
+	memset(pTmp, 0, NewBufferSize);
+	memcpy(pTmp, pBuffer, Length);
+
+	delete[] pBuffer;
+	pBuffer = pTmp;
+
+	memcpy((pBuffer + Length), pData, Size);
+	Length += Size;
 }
 
 }

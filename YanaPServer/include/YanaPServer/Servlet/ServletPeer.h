@@ -79,7 +79,7 @@ private:
 	IHttpServerEvent *pHttpServerEvent;
 
 	// レスポンス送信.
-	void SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const YanaPServer::Util::Stream::CStringStream &Stream);
+	void SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const YanaPServer::Util::Stream::CSimpleStream &Stream);
 
 };
 

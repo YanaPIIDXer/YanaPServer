@@ -35,9 +35,9 @@ public:
 	 * @param[in] Request HTTPリクエスト
 	 * @param[in] ResponseStream  文字列ストリーム
 	 */
-	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) override
 	{
-		ResponseStream.AppendLine("Error.");
+		ResponseStream.AppendStringLine("Error.");
 	}
 
 	/**
@@ -46,10 +46,10 @@ public:
 	 * @param[in] Request HTTPリクエスト
 	 * @param[in] ResponseStream  文字列ストリーム
 	 */
-	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) override
 	{
-		ResponseStream.Append(Request.Path.c_str());
-		ResponseStream.AppendLine(" 404 NotFound.");
+		ResponseStream.AppendString(Request.Path.c_str());
+		ResponseStream.AppendStringLine(" 404 NotFound.");
 	}
 
 	// ========= Singleton =============

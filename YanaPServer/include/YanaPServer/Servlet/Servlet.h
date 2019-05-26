@@ -3,7 +3,7 @@
 
 #include "HttpRequest.h"
 #include <sstream>
-#include "../Util/Stream/StringStream.h"
+#include "../Util/Stream/SimpleStream.h"
 
 namespace YanaPServer
 {
@@ -37,7 +37,7 @@ public:
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnPost(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
+	virtual void OnPost(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0;
 
 	/**
 	 * @fn virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
@@ -45,7 +45,7 @@ public:
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
+	virtual void OnGet(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0;
 
 	/**
 	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
@@ -53,7 +53,7 @@ public:
 	 * @param[in] Request リクエスト
 	 * @param[in] ResponseStream レスポンスストリーム
 	 */
-	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
+	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0;
 
 };
 

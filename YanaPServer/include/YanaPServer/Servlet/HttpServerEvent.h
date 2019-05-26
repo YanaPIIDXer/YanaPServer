@@ -2,7 +2,7 @@
 #define __HTTPSERVEREVENT_H__
 
 #include "HttpRequest.h"
-#include "../Util/Stream/StringStream.h"
+#include "../Util/Stream/SimpleStream.h"
 
 namespace YanaPServer
 {
@@ -24,20 +24,20 @@ public:
 	virtual ~IHttpServerEvent() {}
 
 	/**
-	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
+	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0
 	 * @brief エラー発生
 	 * @param[in] Request HTTPリクエスト
 	 * @param[in] ResponseStream  文字列ストリーム
 	 */
-	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
+	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0;
 
 	/**
-	 * @fn virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0
+	 * @fn virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0
 	 * @brief 対応Servletが見つからなかった
 	 * @param[in] Request HTTPリクエスト
 	 * @param[in] ResponseStream  文字列ストリーム
 	 */
-	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) = 0;
+	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) = 0;
 
 };
 
