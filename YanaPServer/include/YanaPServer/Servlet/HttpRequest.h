@@ -3,6 +3,7 @@
 
 #include <string>
 #include "HttpParameter.h"
+#include <map>
 
 namespace YanaPServer
 {
@@ -53,6 +54,9 @@ struct SHttpRequest
 
 	//! ドメイン
 	std::string Domain;
+
+	//! クッキー情報
+	std::map<std::string, std::string> CookieInfo;
 
 	//! パラメータ
 	CHttpParameter Parameter;

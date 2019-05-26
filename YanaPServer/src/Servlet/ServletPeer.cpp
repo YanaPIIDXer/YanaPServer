@@ -4,6 +4,7 @@
 #include "Servlet/HttpRequestParser.h"
 #include "Util/Stream/SimpleStream.h"
 #include <sstream>
+#include <time.h>
 
 using namespace YanaPServer::Util::Stream;
 
@@ -36,7 +37,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (!Parser.Parse(pData, Request))
 	{
 		pHttpServerEvent->OnError(Request, Response);
-		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, Response);
+		SendResponse(Request, EStatusCode::BadRequest, Response);
 		return;
 	}
 
@@ -45,7 +46,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	{
 		// 404
 		pHttpServerEvent->OnNotFound(Request, Response);
-		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, Response);
+		SendResponse(Request, EStatusCode::NotFound, Response);
 		return;
 	}
 
@@ -70,7 +71,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 			break;
 	}
 
-	SendResponse(Request.ProtocolVersion, StatusCode, Response);
+	SendResponse(Request, StatusCode, Response);
 }
 
 // 送信した
@@ -89,12 +90,12 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const SHttpResponse &Response)
+void CServletPeer::SendResponse(const SHttpRequest &Request, EStatusCode StatusCode, const SHttpResponse &Response)
 {
 	CSimpleStream SendData;
 
 	// レスポンスヘッダ
-	SendData.AppendString(ProtocolVersion.c_str());
+	SendData.AppendString(Request.ProtocolVersion.c_str());
 	SendData.AppendString(" ");
 	switch (StatusCode)
 	{
@@ -113,12 +114,43 @@ void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode 
 			SendData.AppendStringLine("400 Bad Request");
 			break;
 	}
+
 	SendData.AppendStringLine("Content-Type: text/html");
+
+	// Content-Length
 	std::ostringstream ContentLength;
 	ContentLength << "Content-Length: " << Response.ContentStream.GetLength();
 	SendData.AppendStringLine(ContentLength.str().c_str());
-	SendData.AppendString("\r\n");
 	
+	// Set-Cookie
+	if (Response.CookieInfo.bIsEnable && Response.CookieInfo.Name != "")
+	{
+		std::ostringstream SetCookie;
+		SetCookie << "Set-Cookie: ";
+		SetCookie << Response.CookieInfo.Name + "=" + Response.CookieInfo.Value + "; ";
+
+		time_t Time = time(nullptr);
+		tm CurrentTime;
+		localtime_s(&CurrentTime, &Time);
+
+		tm Expires = { CurrentTime.tm_sec, CurrentTime.tm_min, CurrentTime.tm_hour, CurrentTime.tm_mday + 1, CurrentTime.tm_mon, CurrentTime.tm_year };
+		time_t ExpiresTime = mktime(&Expires);
+		localtime_s(&Expires, &ExpiresTime);
+
+		static const int BufferSize = 512;
+		char Buffer[BufferSize];
+		strftime(Buffer, BufferSize, "expires=%a, %d-%b-%Y %T GMT; ", &Expires);
+
+		SetCookie << Buffer;
+
+		SetCookie << "path=" + Request.Path + "; ";
+		SetCookie << "domain=" + Request.Domain;
+
+		SendData.AppendStringLine(SetCookie.str().c_str());
+	}
+	
+	SendData.AppendString("\r\n");
+
 	// ボディをブチ込む。
 	SendData.AppendBinary(Response.ContentStream.Get(), Response.ContentStream.GetLength());
 

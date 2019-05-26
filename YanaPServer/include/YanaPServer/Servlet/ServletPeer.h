@@ -79,7 +79,7 @@ private:
 	IHttpServerEvent *pHttpServerEvent;
 
 	// レスポンス送信.
-	void SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const SHttpResponse &Response);
+	void SendResponse(const SHttpRequest &Request, EStatusCode StatusCode, const SHttpResponse &Response);
 
 };
 
