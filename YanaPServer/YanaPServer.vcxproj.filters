@@ -215,9 +215,6 @@
     <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="include\YanaPServer\Servlet\HttpCookieInfo.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />
