@@ -36,8 +36,9 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 
 	if (!Parser.Parse(pData, Request))
 	{
+		Response.StatusCode = EHttpStatusCode::BadRequest;
 		pHttpServerEvent->OnError(Request, Response);
-		SendResponse(Request, EStatusCode::BadRequest, Response);
+		SendResponse(Request, Response);
 		return;
 	}
 
@@ -45,12 +46,13 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (pServlet == nullptr)
 	{
 		// 404
+		Response.StatusCode = EHttpStatusCode::NotFound;
 		pHttpServerEvent->OnNotFound(Request, Response);
-		SendResponse(Request, EStatusCode::NotFound, Response);
+		SendResponse(Request, Response);
 		return;
 	}
 
-	EStatusCode StatusCode = EStatusCode::OK;
+	Response.StatusCode = EHttpStatusCode::OK;
 	switch (Request.Method)
 	{
 		case EHttpMethod::POST:
@@ -66,12 +68,12 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 		default:
 
 			// とりあえずエラーにしておく。
-			StatusCode = EStatusCode::BadRequest;
+			Response.StatusCode = EHttpStatusCode::BadRequest;
 			pServlet->OnError(Request, Response);
 			break;
 	}
 
-	SendResponse(Request, StatusCode, Response);
+	SendResponse(Request, Response);
 }
 
 // 送信した
@@ -90,26 +92,26 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const SHttpRequest &Request, EStatusCode StatusCode, const SHttpResponse &Response)
+void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse &Response)
 {
 	CSimpleStream SendData;
 
 	// レスポンスヘッダ
 	SendData.AppendString(Request.ProtocolVersion.c_str());
 	SendData.AppendString(" ");
-	switch (StatusCode)
+	switch (Response.StatusCode)
 	{
-		case EStatusCode::OK:
+		case EHttpStatusCode::OK:
 
 			SendData.AppendStringLine("200 OK");
 			break;
 
-		case EStatusCode::NotFound:
+		case EHttpStatusCode::NotFound:
 
 			SendData.AppendStringLine("404 Not Found");
 			break;
 
-		case EStatusCode::BadRequest:
+		case EHttpStatusCode::BadRequest:
 
 			SendData.AppendStringLine("400 Bad Request");
 			break;

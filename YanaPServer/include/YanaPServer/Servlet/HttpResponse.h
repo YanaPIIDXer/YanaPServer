@@ -10,18 +10,35 @@ namespace Servlet
 {
 
 /**
+ * @enum EHttpStatusCode
+ * @brief HTTPステータスコード
+ */
+enum class EHttpStatusCode
+{
+	//! 200 OK
+	OK,
+
+	//! 404 Not Found
+	NotFound,
+
+	//! 400 Bad Request
+	BadRequest,
+};
+
+/**
  * @struct SHttpResponse
  * @brief HTTPレスポンス
  */
 struct SHttpResponse
 {
+	//! ステータスコード
+	EHttpStatusCode StatusCode;
 
 	//! コンテンツを流し込むストリーム
 	Util::Stream::CSimpleStream ContentStream;
 
 	//! Cookie情報
 	SHttpCookieInfo CookieInfo;
-
 
 	/**
 	 * @fn void SetCookie(const char *pName, const char *pValue)
@@ -35,7 +52,6 @@ struct SHttpResponse
 		CookieInfo.Name = pName;
 		CookieInfo.Value = pValue;
 	}
-
 };
 
 }

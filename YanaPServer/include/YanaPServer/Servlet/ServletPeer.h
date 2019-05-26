@@ -54,19 +54,6 @@ public:
 
 private:
 
-	// ステータスコード
-	enum class EStatusCode
-	{
-		// 200 OK
-		OK,
-
-		// 404 Not Found
-		NotFound,
-
-		// 400 Bad Request
-		BadRequest,
-	};
-
 	// ServletFinder
 	CServletFinder *pFinder;
 
@@ -79,7 +66,7 @@ private:
 	IHttpServerEvent *pHttpServerEvent;
 
 	// レスポンス送信.
-	void SendResponse(const SHttpRequest &Request, EStatusCode StatusCode, const SHttpResponse &Response);
+	void SendResponse(const SHttpRequest &Request, const SHttpResponse &Response);
 
 };
 
