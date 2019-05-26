@@ -124,9 +124,8 @@ public:
 		OutCode += "</a>";
 		if (bAppendNewLine)
 		{
-			OutCode += "<br />";
+			OutCode += "<br />\n";
 		}
-		OutCode += "\n";
 	}
 
 private:
@@ -276,34 +275,7 @@ public:
 	 * @brief 構築
 	 * @param[out] OutCode 構築されたHTMLコード
 	 */
-	virtual void Generate(std::string &OutCode) const override
-	{
-		OutCode += "<form method=\"";
-		switch (Method)
-		{
-			case EMethod::POST:
-			
-				OutCode += "POST\"";
-				break;
-
-			case EMethod::GET:
-
-				OutCode += "GET\"";
-				break;
-		}
-
-		OutCode += " action=\"";
-		OutCode += pActionTarget;
-		OutCode += "\">\n";
-
-		for (const auto &pObject : Objects)
-		{
-			OutCode += "\t";
-			pObject->Generate(OutCode);
-		}
-
-		OutCode += "</form>\n";
-	}
+	virtual void Generate(std::string &OutCode) const override;
 
 private:
 
@@ -315,6 +287,155 @@ private:
 
 	// オブジェクト群
 	std::vector<HTMLObjectSharedPtr> Objects;
+
+};
+
+/**
+ * @class CHTMLTable
+ * @brief HTMLテーブル
+ */
+class CHTMLTable : public IHTMLObject
+{
+
+public:
+
+	/**
+	 * @class CColumn
+	 * @brief カラム
+	 */
+	class CColumn
+	{
+		
+	public:
+
+		/**
+		 * @brief コンストラクタ
+		 * @param[in] pInName カラム名
+		 */
+		CColumn(const char *pInName)
+			: pName(pInName)
+		{
+		}
+
+		/**
+		 * @brief デストラクタ
+		 */
+		~CColumn()
+		{
+		}
+
+		/**
+		 * @fn const char *GetName() const
+		 * @brief カラム名を取得
+		 * @return カラム名
+		 */
+		const char *GetName() const { return pName; }
+
+		/**
+		 * @fn void AddItem(const char *pText)
+		 * @brief 要素追加
+		 * @param[in] pText 文字列
+		 */
+		void AddItem(const char *pText)
+		{
+			CHTMLText *pObject = new CHTMLText(pText, false);
+			AddItem(pObject);
+		}
+
+		/**
+		 * @fn void AddItem(IHTMLObject *pObject)
+		 * @brief 要素追加
+		 * @param[in] pObject オブジェクト
+		 */
+		void AddItem(IHTMLObject *pObject)
+		{
+			HTMLObjectSharedPtr pPtr(pObject);
+			Objects.push_back(pPtr);
+		}
+
+		/**
+		 * @fn unsigned int GetObjectCount() const
+		 * @brief オブジェクトの個数を取得
+		 * @return オブジェクトの個数
+		 */
+		unsigned int GetObjectCount() const { return Objects.size(); }
+
+		/**
+		 * @fn std::string GetCode(unsigned int Index) const
+		 * @brief HTMLコード取得
+		 * @param[in] Index インデックス
+		 * @return HTMLコード
+		 */
+		std::string GetCode(unsigned int Index) const
+		{
+			std::string Code = "";
+			if (Index < Objects.size())
+			{
+				Objects[Index]->Generate(Code);
+			}
+			return Code;
+		}
+
+	private:
+
+		// カラム名.
+		const char *pName;
+
+		// オブジェクト群
+		std::vector<HTMLObjectSharedPtr> Objects;
+
+	};
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 * @param[in] InBorder ボーダーライン
+	 */
+	CHTMLTable(int InBorder = 1)
+		: Border(InBorder)
+	{
+	}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CHTMLTable()
+	{
+		for (auto *pColumn : Columns)
+		{
+			delete pColumn;
+		}
+		Columns.clear();
+	}
+
+	/**
+	 * @fn CColumn *AddColumn(const char *pColumnName)
+	 * @brief カラム追加
+	 * @param[in] pColumnName カラム名
+	 * @return カラムオブジェクト
+	 */
+	CColumn *AddColumn(const char *pColumnName)
+	{
+		CColumn *pColumn = new CColumn(pColumnName);
+		Columns.push_back(pColumn);
+		return pColumn;
+	}
+
+	/**
+	 * @fn virtual void Generate(std::string &OutCode) const override
+	 * @brief 構築
+	 * @param[out] OutCode 構築されたHTMLコード
+	 */
+	virtual void Generate(std::string &OutCode) const override;
+
+private:
+
+	// ボーダーライン
+	int Border;
+
+	// カラムリスト
+	std::vector<CColumn *> Columns;
 
 };
 

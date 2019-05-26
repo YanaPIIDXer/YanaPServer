@@ -1,4 +1,6 @@
 #include "Util/HTML/HTMLObject.h"
+#include <sstream>
+#include <algorithm>
 
 namespace YanaPServer
 {
@@ -51,6 +53,77 @@ CHTMLText *CHTMLForm::MakeSubmitButton(const char *pName, const char *pValue, bo
 	return pText;
 }
 
+// ç\íz.
+void CHTMLForm::Generate(std::string &OutCode) const
+{
+	OutCode += "<form method=\"";
+	switch (Method)
+	{
+	case EMethod::POST:
+
+		OutCode += "POST\"";
+		break;
+
+	case EMethod::GET:
+
+		OutCode += "GET\"";
+		break;
+	}
+
+	OutCode += " action=\"";
+	OutCode += pActionTarget;
+	OutCode += "\">\n";
+
+	for (const auto &pObject : Objects)
+	{
+		OutCode += "\t";
+		pObject->Generate(OutCode);
+	}
+
+	OutCode += "</form>\n";
+}
+
+
+// ================== CHTMLTable ===================
+
+// ç\íz.
+void CHTMLTable::Generate(std::string &OutCode) const
+{
+	std::stringstream Stream;
+	Stream << "<table border=";
+	Stream << Border;
+	Stream << ">\n";
+	OutCode += Stream.str();
+
+	OutCode += "\t<tr>\n";
+	for (const auto *pColumn : Columns)
+	{
+		OutCode += "\t\t<th>";
+		OutCode += pColumn->GetName();
+		OutCode += "</th>\n";
+	}
+	OutCode += "\t</tr>\n";
+
+	unsigned int Count = 0;
+	for (const auto *pColumn : Columns)
+	{
+		Count = std::max<unsigned int>(Count, pColumn->GetObjectCount());
+	}
+
+	for (unsigned int i = 0; i < Count; i++)
+	{
+		OutCode += "\t<tr>\n";
+		for (const auto *pColumn : Columns)
+		{
+			OutCode += "\t\t<td>";
+			OutCode += pColumn->GetCode(i);
+			OutCode += "</td>\n";
+		}
+		OutCode += "\t</tr>\n";
+	}
+
+	OutCode += "</table>\n";
+}
 
 }
 }

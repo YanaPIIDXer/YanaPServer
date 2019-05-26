@@ -55,6 +55,15 @@ void CHTMLBuilder::AddLink(const char *pURL, const char *pText, bool bAppendNewL
 	AddObject(pLink);
 }
 
+// テーブル追加.
+CHTMLTable *CHTMLBuilder::AddTable(int Border)
+{
+	CHTMLTable *pTable = new CHTMLTable(Border);
+	AddObject(pTable);
+
+	return pTable;
+}
+
 
 // フォーム追加.
 CHTMLForm *CHTMLBuilder::AddForm(CHTMLForm::EMethod Method, const char *pActionTarget)

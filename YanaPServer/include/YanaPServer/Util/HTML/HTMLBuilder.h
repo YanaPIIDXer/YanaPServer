@@ -78,6 +78,14 @@ public:
 		return AddForm(CHTMLForm::EMethod::GET, pActionTarget);
 	}
 
+	/**
+	 * @fn CHTMLTable *AddTable(int Border = 1)
+	 * @brief テーブル追加
+	 * @param[in] Border ボーダーライン
+	 * @return テーブルオブジェクト
+	 */
+	CHTMLTable *AddTable(int Border = 1);
+
 private:
 
 	// ページのタイトル
