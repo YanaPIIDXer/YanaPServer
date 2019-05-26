@@ -1,0 +1,20 @@
+digraph "YanaPServer::Peer::CPeerBase::Poll"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node18 [label="YanaPServer::Peer::\lCPeerBase::Poll",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="YanaPServer::Peer::\lCPeerBase::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6",tooltip="有効か？ "];
+  Node19 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="YanaPServer::Socket\l::CSocket::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a8fadeb20cdfec76d61b5547183fd2a8c",tooltip="有効か？ "];
+  Node20 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="YanaPServer::Socket\l::ISocket::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c",tooltip="有効か？ "];
+  Node18 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="YanaPServer::Socket\l::CSocket::Poll",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#aaa6dd5c2d46d5fd518293e95481ed18e",tooltip="毎フレーム実行する処理 "];
+  Node22 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="YanaPServer::Socket\l::ISocket::PollConnect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket.html#a58e05676c80c5d1fad2c98a73bff56f4",tooltip="接続されるまで毎フレーム実行される処理 "];
+  Node22 -> Node24 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="YanaPServer::Socket\l::ISocketEventListener\l::OnConnect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a5403eb40fd5d2a3df6ce859b47e9b403",tooltip="接続された "];
+}

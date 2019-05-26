@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: ServletFinder.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2a67cf3891460988a2f6e9d0adb34c1b.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_bac11a0200f3b99801364ef40513dc7d.html">include</a></li><li class="navelem"><a class="el" href="dir_05ce26451ba72466281a68fa333db4c9.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_ce5a86610c14ebe5511a21d691d9a710.html">Servlet</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ServletFinder.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_servlet_finder_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __SERVLETFINDER_H__</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __SERVLETFINDER_H__</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_yana_p_server.html">YanaPServer</a></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>Servlet</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span>IServlet;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html">CServletFinder</a></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2316a596634a84bb2fab1158fbb6fb49">CServletFinder</a>();</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2448061c11e2b44f1b8f84bba0cb7df6">   31</a></span>&#160;    <a class="code" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2448061c11e2b44f1b8f84bba0cb7df6">‾CServletFinder</a>() {}</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a7eb337e1fb50d9174d75f7f4783292db">Add</a>(<a class="code" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html">IServlet</a> *pServlet);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html">IServlet</a> *<a class="code" href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a3889b91e8a8896243fafc4bbb5b7c280">Find</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pPath) <span class="keyword">const</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Servletマップ</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::map&lt;std::string, IServlet *&gt; ServletMap;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif      // #ifndef __SERVLETFINDER_H__</span></div><div class="ttc" id="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder_html_a2316a596634a84bb2fab1158fbb6fb49"><div class="ttname"><a href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2316a596634a84bb2fab1158fbb6fb49">YanaPServer::Servlet::CServletFinder::CServletFinder</a></div><div class="ttdeci">CServletFinder()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> ServletFinder.cpp:10</div></div>
+<div class="ttc" id="namespace_yana_p_server_html"><div class="ttname"><a href="namespace_yana_p_server.html">YanaPServer</a></div><div class="ttdef"><b>Definition:</b> ApplicationBase.h:12</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder_html_a7eb337e1fb50d9174d75f7f4783292db"><div class="ttname"><a href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a7eb337e1fb50d9174d75f7f4783292db">YanaPServer::Servlet::CServletFinder::Add</a></div><div class="ttdeci">void Add(IServlet *pServlet)</div><div class="ttdoc">Servlet追加 </div><div class="ttdef"><b>Definition:</b> ServletFinder.cpp:15</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder_html_a2448061c11e2b44f1b8f84bba0cb7df6"><div class="ttname"><a href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a2448061c11e2b44f1b8f84bba0cb7df6">YanaPServer::Servlet::CServletFinder::‾CServletFinder</a></div><div class="ttdeci">‾CServletFinder()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> ServletFinder.h:31</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder_html_a3889b91e8a8896243fafc4bbb5b7c280"><div class="ttname"><a href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html#a3889b91e8a8896243fafc4bbb5b7c280">YanaPServer::Servlet::CServletFinder::Find</a></div><div class="ttdeci">IServlet * Find(const char *pPath) const</div><div class="ttdoc">検索 </div><div class="ttdef"><b>Definition:</b> ServletFinder.cpp:21</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_servlet_1_1_i_servlet_html"><div class="ttname"><a href="class_yana_p_server_1_1_servlet_1_1_i_servlet.html">YanaPServer::Servlet::IServlet</a></div><div class="ttdoc">Servletインタフェース </div><div class="ttdef"><b>Definition:</b> Servlet.h:17</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder_html"><div class="ttname"><a href="class_yana_p_server_1_1_servlet_1_1_c_servlet_finder.html">YanaPServer::Servlet::CServletFinder</a></div><div class="ttdoc">Servlet検索 </div><div class="ttdef"><b>Definition:</b> ServletFinder.h:18</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
