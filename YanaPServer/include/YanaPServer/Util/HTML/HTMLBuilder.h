@@ -56,13 +56,46 @@ public:
 	 */
 	void AddLink(const char *pURL, const char *pText, bool bAppendNewLine = true);
 
+	/**
+	 * @fn CHTMLForm *AddFormAsPOST(const char *pActionTarget)
+	 * @brief POSTメソッドでフォーム追加
+	 * @param[in] pActionTarget アクションターゲット
+	 * @return フォームオブジェクトへのポインタ
+	 */
+	CHTMLForm *AddFormAsPOST(const char *pActionTarget)
+	{
+		return AddForm(CHTMLForm::EMethod::POST, pActionTarget);
+	}
+
+	/**
+	 * @fn CHTMLForm *AddFormAsGET(const char *pActionTarget)
+	 * @brief GETメソッドでフォーム追加
+	 * @param[in] pActionTarget アクションターゲット
+	 * @return フォームオブジェクトへのポインタ
+	 */
+	CHTMLForm *AddFormAsGET(const char *pActionTarget)
+	{
+		return AddForm(CHTMLForm::EMethod::GET, pActionTarget);
+	}
+
 private:
 
 	// ページのタイトル
 	std::string Title;
 
 	// オブジェクト群.
-	std::vector<IHTMLObject *> Objects;
+	std::vector<HTMLObjectSharedPtr> Objects;
+
+
+	// フォーム追加.
+	CHTMLForm *AddForm(CHTMLForm::EMethod Method, const char *pActionTarget);
+
+	// オブジェクト追加.
+	void AddObject(IHTMLObject *pObject)
+	{
+		HTMLObjectSharedPtr pPtr(pObject);
+		Objects.push_back(pPtr);
+	}
 
 };
 

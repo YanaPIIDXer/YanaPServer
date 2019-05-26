@@ -138,6 +138,7 @@
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLBuilder.cpp" />
+    <ClCompile Include="src\Util\HTML\HTMLObject.cpp" />
     <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
