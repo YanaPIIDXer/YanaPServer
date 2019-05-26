@@ -38,6 +38,7 @@ struct SHttpRequest
 		: Method(EHttpMethod::Invalid)
 		, Path("")
 		, ProtocolVersion("")
+		, Domain("")
 	{
 	}
 
@@ -49,6 +50,9 @@ struct SHttpRequest
 
 	//! プロトコルバージョン
 	std::string ProtocolVersion;
+
+	//! ドメイン
+	std::string Domain;
 
 	//! パラメータ
 	CHttpParameter Parameter;

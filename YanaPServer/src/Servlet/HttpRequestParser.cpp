@@ -48,9 +48,19 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 	// その次にプロトコルバージョン
 	OutResult.ProtocolVersion = Datas[2];
 
-	// 空行（POSTパラメータの開始）まで読み飛ばす
 	for (ParamParser = 0; ParamParser < Lines.size(); ParamParser++)
 	{
+		auto Pos = Lines[ParamParser].find("Host:");
+		if (Pos != std::string::npos)
+		{
+			// ドメイン
+			OutResult.Domain = Lines[ParamParser];
+			std::string ReplaceStr = "Host: ";
+			OutResult.Domain.replace(Pos, ReplaceStr.length(), "");
+			OutResult.Domain = OutResult.Domain.substr(0, OutResult.Domain.find(":"));
+		}
+
+		// 空行になったら終了。（それ以降はPOSTパラメータ）
 		if (Lines[ParamParser] == "\r")
 		{
 			ParamParser++;
