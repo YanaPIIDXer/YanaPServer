@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{A8CDCACF-A5BE-4B57-8773-9EF34DA94103}</ProjectGuid>
+    <RootNamespace>YanaPServer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include\YanaPServer\;$(MYSQL_C_INCLUDE)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;USE_MYSQL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>libmysql.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MYSQL_C_LIB)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include\YanaPServer\;$(MYSQL_C_INCLUDE)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Application\ApplicationBase.cpp" />
+    <ClCompile Include="src\Peer\PeerBase.cpp" />
+    <ClCompile Include="src\Servlet\HttpParameter.cpp" />
+    <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
+    <ClCompile Include="src\Servlet\HttpServer.cpp" />
+    <ClCompile Include="src\Servlet\ServletFinder.cpp" />
+    <ClCompile Include="src\Servlet\ServletPeer.cpp" />
+    <ClCompile Include="src\Socket\LinuxSocket.cpp" />
+    <ClCompile Include="src\Socket\Listen\LinuxListenSocket.cpp" />
+    <ClCompile Include="src\Socket\Socket.cpp" />
+    <ClCompile Include="src\Socket\WindowsSocket.cpp" />
+    <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
+    <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
+    <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
+    <ClCompile Include="src\Util\HTML\HTMLBuilder.cpp" />
+    <ClCompile Include="src\Util\HTML\HTMLObject.cpp" />
+    <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
+    <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
+    <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
+    <ClCompile Include="src\Util\Stream\SimpleStream.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Application\ApplicationBase.h" />
+    <ClInclude Include="include\MySQL\MySqlBinds.h" />
+    <ClInclude Include="include\MySQL\MySqlConnection.h" />
+    <ClInclude Include="include\MySQL\MySqlQuery.h" />
+    <ClInclude Include="include\Peer\PeerBase.h" />
+    <ClInclude Include="include\Socket\NullSocket.h" />
+    <ClInclude Include="include\Socket\Socket.h" />
+    <ClInclude Include="include\Socket\SocketEventListener.h" />
+    <ClInclude Include="include\Socket\WidnowsSocket.h" />
+    <ClInclude Include="include\Socket\Listen\ListenSocket.h" />
+    <ClInclude Include="include\Socket\Listen\NullListenSocket.h" />
+    <ClInclude Include="include\Socket\Listen\WindowsListenSocket.h" />
+    <ClInclude Include="include\Socket\Windows\WinSockManager.h" />
+    <ClInclude Include="include\YanaPServer\Application\ApplicationBase.h" />
+    <ClInclude Include="include\YanaPServer\MySQL\MySqlBinds.h" />
+    <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
+    <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
+    <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpParameter.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpRequestParser.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
+    <ClInclude Include="include\YanaPServer\Socket\LinuxSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\LinuxListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\ListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\NullListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Listen\WindowsListenSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\NullSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Socket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\SocketEventListener.h" />
+    <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
+    <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
+    <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
+    <ClInclude Include="include\YanaPServer\Util\HTML\HTMLBuilder.h" />
+    <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h" />
+    <ClInclude Include="include\YanaPServer\Util\Serializable.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
+    <ClInclude Include="include\YanaPServer\Util\Stream\SimpleStream.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
