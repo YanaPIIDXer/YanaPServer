@@ -191,6 +191,18 @@ public:
 	}
 
 	/**
+	 * @fn void AddText(const char *pText, bool bAppendNewLine = false)
+	 * @brief 単純なテキストを追加
+	 * @param[in] pText テキスト
+	 * @param[in] bAppendNewLine 改行するか？
+	 */
+	void AddText(const char *pText, bool bAppendNewLine = false)
+	{
+		CHTMLText *pObject = new CHTMLText(pText, bAppendNewLine);
+		AddObject(pObject);
+	}
+
+	/**
 	 * @fn void AddTextBox(const char *pName, const char *pDefaultValue = "", bool bAppendNewLine = true)
 	 * @brief テキストボックスを追加
 	 * @param[in] pName テキストボックスに付ける名前
