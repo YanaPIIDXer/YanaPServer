@@ -56,7 +56,7 @@ public:
 	{
 		if (bAppendNewLine)
 		{
-			Text += "<br />";
+			Text += "<br />\n";
 		}
 	}
 
@@ -73,7 +73,6 @@ public:
 	virtual void Generate(std::string &OutCode) const override
 	{
 		OutCode += Text;
-		OutCode += "\n";
 	}
 
 private:

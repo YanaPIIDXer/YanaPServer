@@ -59,26 +59,40 @@ void CHTMLForm::Generate(std::string &OutCode) const
 	OutCode += "<form method=\"";
 	switch (Method)
 	{
-	case EMethod::POST:
+		case EMethod::POST:
 
-		OutCode += "POST\"";
-		break;
+			OutCode += "POST\"";
+			break;
 
-	case EMethod::GET:
+		case EMethod::GET:
 
-		OutCode += "GET\"";
-		break;
+			OutCode += "GET\"";
+			break;
 	}
 
 	OutCode += " action=\"";
 	OutCode += pActionTarget;
 	OutCode += "\">\n";
 
+	std::string FormCode = "\t";
 	for (const auto &pObject : Objects)
 	{
-		OutCode += "\t";
-		pObject->Generate(OutCode);
+		pObject->Generate(FormCode);
 	}
+	// êÆå`.
+	auto Pos = FormCode.find("\n");
+	while (Pos != std::string::npos)
+	{
+		FormCode.replace(Pos, 1, "\n\t");
+		Pos = FormCode.find("\n", Pos + 2);
+	}
+	Pos = FormCode.find_last_of("\n\t");
+	if (Pos != std::string::npos)
+	{
+		FormCode.replace(Pos, 2, "");
+	}
+
+	OutCode += FormCode;
 
 	OutCode += "</form>\n";
 }
