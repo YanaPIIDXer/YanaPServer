@@ -212,6 +212,9 @@
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />

@@ -31,13 +31,12 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
-
-	CSimpleStream ResponseStream;
+	SHttpResponse Response;
 
 	if (!Parser.Parse(pData, Request))
 	{
-		pHttpServerEvent->OnError(Request, ResponseStream);
-		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, ResponseStream);
+		pHttpServerEvent->OnError(Request, Response);
+		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, Response);
 		return;
 	}
 
@@ -45,8 +44,8 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (pServlet == nullptr)
 	{
 		// 404
-		pHttpServerEvent->OnNotFound(Request, ResponseStream);
-		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, ResponseStream);
+		pHttpServerEvent->OnNotFound(Request, Response);
+		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, Response);
 		return;
 	}
 
@@ -55,23 +54,23 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	{
 		case EHttpMethod::POST:
 
-			pServlet->OnPost(Request, ResponseStream);
+			pServlet->OnPost(Request, Response);
 			break;
 
 		case EHttpMethod::GET:
 
-			pServlet->OnGet(Request, ResponseStream);
+			pServlet->OnGet(Request, Response);
 			break;
 
 		default:
 
 			// とりあえずエラーにしておく。
 			StatusCode = EStatusCode::BadRequest;
-			pServlet->OnError(Request, ResponseStream);
+			pServlet->OnError(Request, Response);
 			break;
 	}
 
-	SendResponse(Request.ProtocolVersion, StatusCode, ResponseStream);
+	SendResponse(Request.ProtocolVersion, StatusCode, Response);
 }
 
 // 送信した
@@ -90,7 +89,7 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const CSimpleStream &Stream)
+void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const SHttpResponse &Response)
 {
 	CSimpleStream SendData;
 
@@ -116,12 +115,12 @@ void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode 
 	}
 	SendData.AppendStringLine("Content-Type: text/html");
 	std::ostringstream ContentLength;
-	ContentLength << "Content-Length: " << Stream.GetLength();
+	ContentLength << "Content-Length: " << Response.ContentStream.GetLength();
 	SendData.AppendStringLine(ContentLength.str().c_str());
 	SendData.AppendString("\r\n");
 	
 	// ボディをブチ込む。
-	SendData.AppendBinary(Stream.Get(), Stream.GetLength());
+	SendData.AppendBinary(Response.ContentStream.Get(), Response.ContentStream.GetLength());
 
 	// ブン投げる。
 	const char *pData = SendData.Get();

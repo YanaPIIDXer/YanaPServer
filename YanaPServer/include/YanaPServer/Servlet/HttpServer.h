@@ -30,26 +30,26 @@ public:
 	virtual ~CHttpDefaultServerEvent() {}
 
 	/**
-	 * @fn virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	 * @fn virtual void OnError(const SHttpRequest &Request, SHttpResponse &Response) override
 	 * @brief エラー発生
 	 * @param[in] Request HTTPリクエスト
-	 * @param[in] ResponseStream  文字列ストリーム
+	 * @param[in] Response HTTPレスポンス
 	 */
-	virtual void OnError(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) override
+	virtual void OnError(const SHttpRequest &Request, SHttpResponse &Response) override
 	{
-		ResponseStream.AppendStringLine("Error.");
+		Response.ContentStream.AppendStringLine("Error.");
 	}
 
 	/**
-	 * @fn virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CStringStream &ResponseStream) override
+	 * @fn virtual void OnNotFound(const SHttpRequest &Request, SHttpResponse &Response) override
 	 * @brief 対応Servletが見つからなかった
 	 * @param[in] Request HTTPリクエスト
-	 * @param[in] ResponseStream  文字列ストリーム
+	 * @param[in] Response HTTPレスポンス
 	 */
-	virtual void OnNotFound(const SHttpRequest &Request, YanaPServer::Util::Stream::CSimpleStream &ResponseStream) override
+	virtual void OnNotFound(const SHttpRequest &Request, SHttpResponse &Response) override
 	{
-		ResponseStream.AppendString(Request.Path.c_str());
-		ResponseStream.AppendStringLine(" 404 NotFound.");
+		Response.ContentStream.AppendString(Request.Path.c_str());
+		Response.ContentStream.AppendStringLine(" 404 NotFound.");
 	}
 
 	// ========= Singleton =============
