@@ -27,10 +27,14 @@ std::string CHTMLBuilder::Generate() const
 
 	HTML += "<head>\n";
 	HTML += "<title>" + Title + "</title>\n";
+	for (const auto &pObject : HeaderObjects)
+	{
+		pObject->Generate(HTML);
+	}
 	HTML += "</head>\n";
 
 	HTML += "<body>\n";
-	for (const auto &pObject : Objects)
+	for (const auto &pObject : BodyObjects)
 	{
 		pObject->Generate(HTML);
 	}
@@ -45,23 +49,32 @@ std::string CHTMLBuilder::Generate() const
 void CHTMLBuilder::AddText(const std::string &Text, bool bAppendNewLine)
 {
 	CHTMLText *pText = new CHTMLText(Text, bAppendNewLine);
-	AddObject(pText);
+	AddBodyObject(pText);
 }
 
 // リンク追加.
 void CHTMLBuilder::AddLink(const char *pURL, const char *pText, bool bAppendNewLine)
 {
 	CHTMLLink *pLink = new CHTMLLink(pURL, pText, bAppendNewLine);
-	AddObject(pLink);
+	AddBodyObject(pLink);
 }
 
 // テーブル追加.
 CHTMLTable *CHTMLBuilder::AddTable(int Border)
 {
 	CHTMLTable *pTable = new CHTMLTable(Border);
-	AddObject(pTable);
+	AddBodyObject(pTable);
 
 	return pTable;
+}
+
+// スタイル追加.
+CHTMLStyle *CHTMLBuilder::AddStyle()
+{
+	CHTMLStyle *pStyle = new CHTMLStyle();
+	AddHeaderObject(pStyle);
+
+	return pStyle;
 }
 
 
@@ -69,7 +82,7 @@ CHTMLTable *CHTMLBuilder::AddTable(int Border)
 CHTMLForm *CHTMLBuilder::AddForm(CHTMLForm::EMethod Method, const char *pActionTarget)
 {
 	CHTMLForm *pForm = new CHTMLForm(Method, pActionTarget);
-	AddObject(pForm);
+	AddBodyObject(pForm);
 	return pForm;
 }
 

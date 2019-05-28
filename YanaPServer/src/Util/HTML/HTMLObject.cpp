@@ -156,6 +156,32 @@ void CHTMLTable::Generate(std::string &OutCode) const
 	OutCode += "</table>\n";
 }
 
+// ============== CHTMLStyle ==============
+
+// 構築.
+void CHTMLStyle::Generate(std::string &OutCode) const
+{
+	OutCode += "<style>\n";
+
+	for (const auto &It : Objects)
+	{
+		OutCode += "\t" + It.first + " {\n";
+		It.second->Generate(OutCode);
+		OutCode += "\t}\n";
+	}
+
+	OutCode += "</style>\n";
+}
+
+// コード生成.
+void CHTMLStyle::CObject::Generate(std::string &OutCode) const
+{
+	for (const auto &It : Params)
+	{
+		OutCode += "\t\t" + It.first + ": " + It.second + "\n";
+	}
+}
+
 }
 }
 }

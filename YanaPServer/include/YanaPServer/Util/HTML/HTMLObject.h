@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 
 namespace YanaPServer
 {
@@ -438,6 +439,103 @@ private:
 
 	// カラムリスト
 	std::vector<CColumn *> Columns;
+
+};
+
+/**
+ * @class CHTMLStyle
+ * @brief スタイルシート
+ */
+class CHTMLStyle : public IHTMLObject
+{
+
+public:
+
+	/**
+	 * @class CObject
+	 * @brief オブジェクト
+	 */
+	class CObject
+	{
+
+	public:
+
+		/**
+		 * @brief コンストラクタ
+		 */
+		CObject() {}
+
+		/**
+		 * @brief デストラクタ
+		 */
+		~CObject() {}
+
+		/**
+		 * @fn void SetParameter(const char *pName, const char *pValue)
+		 * @brief パラメータを設定
+		 * @param[in] pProperty プロパティ
+		 * @param[in] pValue 値
+		 */
+		void SetParameter(const char *pProperty, const char *pValue)
+		{
+			Params[pProperty] = pValue;
+		}
+
+		/**
+		 * @fn void Generate(std::string &OutCode) const
+		 * @brief コード生成
+		 * @param[out] OutCode 生成されたコード
+		 */
+		void Generate(std::string &OutCode) const;
+
+	private:
+
+		// パラメータ
+		std::map<std::string, std::string> Params;
+
+	};
+
+private:	// 別名定義.
+
+	typedef std::shared_ptr<CObject> ObjectPtr;
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CHTMLStyle() {}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CHTMLStyle() {}
+
+	/**
+	 * @fn CObject *AddObject(const char *pName)
+	 * @brief オブジェクト追加
+	 * @param[in] pSelector セレクタ
+	 * @return オブジェクト
+	 */
+	CObject *AddObject(const char *pSelector)
+	{
+		CObject *pObj = new CObject();
+		ObjectPtr pPtr = ObjectPtr(pObj);
+		Objects[pSelector] = pPtr;
+		return pObj;
+	}
+
+	/**
+	 * @fn virtual void Generate(std::string &OutCode) const override
+	 * @brief 構築
+	 * @param[out] OutCode 構築されたHTMLコード
+	 */
+	virtual void Generate(std::string &OutCode) const override;
+
+private:
+
+	// オブジェクトマップ
+	std::map<std::string, ObjectPtr> Objects;
 
 };
 
