@@ -1,0 +1,11 @@
+digraph "YanaPServer::Socket::CSocket::Release"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node29 [label="YanaPServer::Socket\l::CSocket::Release",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node29 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="YanaPServer::Socket\l::CSocket::‾CSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a02bad0dbc1940585ab3fcc7c654b73ea",tooltip="デストラクタ "];
+  Node29 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="YanaPServer::Socket\l::CSocket::Connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a7c111923d6b86b4c818c7487ecc9b60b",tooltip="接続 "];
+}
