@@ -225,27 +225,29 @@ public:
 	static CHTMLText *MakeTextBox(const char *pName, const char *pDefaultValue = "", bool bAppendNewLine = true);
 
 	/**
-	 * @fn void AddCheckBox(const char *pName, bool bDefaultValue = false, bool bAppendNewLine = true)
+	 * @fn void AddCheckBox(const char *pName, bool bDefaultChecked = false, bool bAppendNewLine = true)
 	 * @brief チェックボックスを追加
 	 * @param[in] pName チェックボックスに付ける名前
-	 * @param[in] bDefaultValue デフォルト値
+	 * @param[in] pValue 値
+	 * @param[in] bDefaultChecked デフォルトでチェックされている状態にするか？
 	 * @param[in] bAppendNewLine 改行するか？
 	 */
-	void AddCheckBox(const char *pName, bool bDefaultValue = false, bool bAppendNewLine = true)
+	void AddCheckBox(const char *pName, const char *pValue = nullptr, bool bDefaultChecked = false, bool bAppendNewLine = true)
 	{
-		CHTMLText *pText = MakeCheckBox(pName, bDefaultValue, bAppendNewLine);
+		CHTMLText *pText = MakeCheckBox(pName, pValue, bDefaultChecked, bAppendNewLine);
 		AddObject(pText);
 	}
 
 	/**
-	 * @fn static CHTMLText *MakeCheckBox(const char *pName, bool bDefaultValue = false, bool bAppendNewLine = true)
+	 * @fn static CHTMLText *MakeCheckBox(const char *pName, const char *pValue = nullptr, bool bDefaultValue = false, bool bAppendNewLine = true)
 	 * @brief チェックボックスを生成
 	 * @param[in] pName チェックボックスに付ける名前
-	 * @param[in] bDefaultValue デフォルト値
+	 * @param[in] pValue 値
+	 * @param[in] bDefaultChecked デフォルトでチェックされている状態にするか？
 	 * @param[in] bAppendNewLine 改行するか？
 	 * @return CHTMLTextオブジェクト
 	 */
-	static CHTMLText *MakeCheckBox(const char *pName, bool bDefaltValue = false, bool bAppendNewLine = true);
+	static CHTMLText *MakeCheckBox(const char *pName, const char *pValue = nullptr, bool bDefaltChecked = false, bool bAppendNewLine = true);
 	
 	/**
 	 * @fn void AddSubmitButton(const char *pName, const char *pValue, bool bAppendNewLine = true)

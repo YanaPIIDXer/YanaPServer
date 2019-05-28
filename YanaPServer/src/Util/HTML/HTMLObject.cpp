@@ -25,12 +25,18 @@ CHTMLText *CHTMLForm::MakeTextBox(const char *pName, const char *pDefaultValue, 
 }
 
 // チェックボックスを生成.
-CHTMLText *CHTMLForm::MakeCheckBox(const char *pName, bool bDefaltValue, bool bAppendNewLine)
+CHTMLText *CHTMLForm::MakeCheckBox(const char *pName, const char *pValue, bool bDefaltChecked, bool bAppendNewLine)
 {
 	std::string Code = "<input type=\"checkbox\" name=\"";
 	Code += pName;
 	Code += "\"";
-	if (bDefaltValue)
+	if (pValue != nullptr)
+	{
+		Code + " value=\"";
+		Code += pValue;
+		Code += "\"";
+	}
+	if (bDefaltChecked)
 	{
 		Code += " checked=\"checked\"";
 	}
