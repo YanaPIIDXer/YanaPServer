@@ -15,7 +15,7 @@ var searchData=
   ['setoverrideeventlistener',['SetOverrideEventListener',['../class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a1c3ad177699991a3d86fcd813f9639bb',1,'YanaPServer::Peer::CPeerBase']]],
   ['setparameter',['SetParameter',['../class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_c_h_t_m_l_style_1_1_c_object.html#a9b8629c9db0a23db9c919c5b43b0dd1f',1,'YanaPServer::Util::HTML::CHTMLStyle::CObject']]],
   ['shttprequest',['SHttpRequest',['../struct_yana_p_server_1_1_servlet_1_1_s_http_request.html',1,'YanaPServer::Servlet::SHttpRequest'],['../struct_yana_p_server_1_1_servlet_1_1_s_http_request.html#ade83f4048fa6d200f03d827651d6740a',1,'YanaPServer::Servlet::SHttpRequest::SHttpRequest()']]],
-  ['shttpresponse',['SHttpResponse',['../struct_yana_p_server_1_1_servlet_1_1_s_http_response.html',1,'YanaPServer::Servlet']]],
+  ['shttpresponse',['SHttpResponse',['../struct_yana_p_server_1_1_servlet_1_1_s_http_response.html',1,'YanaPServer::Servlet::SHttpResponse'],['../struct_yana_p_server_1_1_servlet_1_1_s_http_response.html#a3779e75c50be36ea7d681975c1a8756e',1,'YanaPServer::Servlet::SHttpResponse::SHttpResponse()']]],
   ['simplequery',['SimpleQuery',['../class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_connection.html#ac7db2fdc61bfcbb6821a7c6b200e4afb',1,'YanaPServer::MySQL::CMySqlConnection']]],
   ['simplestream_2ecpp',['SimpleStream.cpp',['../_simple_stream_8cpp.html',1,'']]],
   ['simplestream_2eh',['SimpleStream.h',['../_simple_stream_8h.html',1,'']]],
