@@ -111,6 +111,13 @@ public:
 	virtual bool IsError() const override { return bIsError; }
 
 	/**
+	 * @fn virtual bool IsReadMode() const override
+	 * @brief 読み込みモードか？
+	 * @return 読み込みモードならtrueを返す。
+	 */
+	virtual bool IsReadMode() const override { return false; }
+
+	/**
 	 * @fn const char *GetBuffer() const
 	 * @brief バッファを取得。
 	 * @detail バッファの先頭位置を返す。

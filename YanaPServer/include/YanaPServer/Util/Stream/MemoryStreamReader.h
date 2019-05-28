@@ -112,6 +112,13 @@ public:
 	virtual bool IsError() const override { return bIsError; }
 
 	/**
+	 * @fn virtual bool IsReadMode() const override
+	 * @brief 読み込みモードか？
+	 * @return 読み込みモードならtrueを返す。
+	 */
+	virtual bool IsReadMode() const override { return true; }
+
+	/**
 	 * @fn bool Read(void *pData, unsigned int Size)
 	 * @brief 読み込み
 	 * @param[in] pData データを放り込むポインタ

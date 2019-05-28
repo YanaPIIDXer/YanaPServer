@@ -106,6 +106,13 @@ public:
 	 */
 	virtual bool IsError() const = 0;
 
+	/**
+	 * @fn virtual bool IsReadMode() const = 0
+	 * @brief 読み込みモードか？
+	 * @return 読み込みモードならtrueを返す。
+	 */
+	virtual bool IsReadMode() const = 0;
+
 };
 
 }

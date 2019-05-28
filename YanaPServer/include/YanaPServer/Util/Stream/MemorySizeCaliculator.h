@@ -110,6 +110,13 @@ public:
 	virtual bool IsError() const override { return false; }
 
 	/**
+	 * @fn virtual bool IsReadMode() const override
+	 * @brief 読み込みモードか？
+	 * @return 読み込みモードならtrueを返す。
+	 */
+	virtual bool IsReadMode() const override { return true; }
+
+	/**
 	 * @fn unsigned int GetSize() const
 	 * @brief サイズ取得
 	 * @return サイズ
