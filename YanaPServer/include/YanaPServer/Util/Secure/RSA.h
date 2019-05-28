@@ -77,6 +77,13 @@ public:
 	 */
 	ULongLong Decryption(ULongLong Value) const;
 
+	/**
+	 * @fn const SRSAKey &GetOpenKey() const
+	 * @brief ŒöŠJŒ®‚ðŽæ“¾
+	 * @return ŒöŠJŒ®
+	 */
+	const SRSAKey &GetOpenKey() const { return OpenKey; }
+
 private:
 
 	// ŒöŠJŒ®.
