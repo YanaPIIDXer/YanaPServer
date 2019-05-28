@@ -1,9 +1,0 @@
-digraph "YanaPServer::MySQL::CMySqlQuery::Close"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node63 [label="YanaPServer::MySQL\l::CMySqlQuery::Close",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node63 -> Node64 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node64 [label="YanaPServer::MySQL\l::CMySqlQuery::‾CMySqlQuery",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_my_s_q_l_1_1_c_my_sql_query.html#af0d6bebe878646cb8cab11caca212bff",tooltip="デストラクタ "];
-}

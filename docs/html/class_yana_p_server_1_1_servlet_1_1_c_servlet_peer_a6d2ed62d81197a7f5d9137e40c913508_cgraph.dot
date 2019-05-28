@@ -1,9 +1,0 @@
-digraph "YanaPServer::Servlet::CServletPeer::OnSend"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node11 [label="YanaPServer::Servlet\l::CServletPeer::OnSend",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node11 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node12 [label="YanaPServer::Peer::\lCPeerBase::Disconnect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8b0da7fdb85b1fea4d39885564862d78",tooltip="切断 "];
-}
