@@ -32,7 +32,7 @@ CHTMLText *CHTMLForm::MakeCheckBox(const char *pName, const char *pValue, bool b
 	Code += "\"";
 	if (pValue != nullptr)
 	{
-		Code + " value=\"";
+		Code += " value=\"";
 		Code += pValue;
 		Code += "\"";
 	}
