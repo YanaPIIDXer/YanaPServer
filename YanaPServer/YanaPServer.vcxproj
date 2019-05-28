@@ -139,6 +139,7 @@
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLBuilder.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLObject.cpp" />
+    <ClCompile Include="src\Util\Secure\RSA.cpp" />
     <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLBuilder.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h" />
+    <ClInclude Include="include\YanaPServer\Util\Secure\RSA.h" />
     <ClInclude Include="include\YanaPServer\Util\Serializable.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
