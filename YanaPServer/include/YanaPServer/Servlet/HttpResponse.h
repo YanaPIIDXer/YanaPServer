@@ -50,7 +50,7 @@ struct SHttpResponse
 	 */
 	SHttpResponse()
 		: StatusCode(EHttpStatusCode::OK)
-		, ContentType("text/html; charset=UTF-8")
+		, ContentType("text/html")
 	{
 	}
 };
