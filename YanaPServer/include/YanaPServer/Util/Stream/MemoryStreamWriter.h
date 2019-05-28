@@ -125,6 +125,14 @@ public:
 	 */
 	unsigned int GetSize() const { return CurrentPosition; }
 
+	/**
+	 * @fn bool Write(const void *pData, unsigned int Size)
+	 * @brief 書き込み
+	 * @param[in] pData データ
+	 * @param[in] Size サイズ
+	 */
+	bool Write(const void *pData, unsigned int Size);
+
 private:
 
 	// バッファ
@@ -138,10 +146,6 @@ private:
 
 	// エラーが起きているか？
 	bool bIsError;
-
-
-	// 書き込み
-	bool Write(const void *pData, unsigned int Size);
 
 };
 

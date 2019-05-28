@@ -111,6 +111,14 @@ public:
 	 */
 	virtual bool IsError() const override { return bIsError; }
 
+	/**
+	 * @fn bool Read(void *pData, unsigned int Size)
+	 * @brief 読み込み
+	 * @param[in] pData データを放り込むポインタ
+	 * @param[in] Size データ長
+	 */
+	bool Read(void *pData, unsigned int Size);
+
 private:
 
 	// バッファ
@@ -124,10 +132,6 @@ private:
 
 	// エラーが起きているか？
 	bool bIsError;
-
-
-	// 書き込み
-	bool Read(void *pData, unsigned int Size);
 
 };
 
