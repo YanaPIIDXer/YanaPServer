@@ -44,8 +44,9 @@ public:
 	 * @brief テキスト追加
 	 * @param[in] Textテキスト
 	 * @param[in] bAppendNewLine 改行するか？
+	 * @return テキストオブジェクト
 	 */
-	void AddText(const std::string &Text, bool bAppendNewLine = true);
+	CHTMLText *AddText(const std::string &Text, bool bAppendNewLine = true);
 
 	/**
 	 * @fn void AddLink(const char *pURL, const char *pText, bool bAppendNewLine)
@@ -53,8 +54,9 @@ public:
 	 * @param[in] pURL URL
 	 * @param[in] pText テキスト
 	 * @param[in] bAppendNewLine 改行するか？
+	 * @return リンクオブジェクト
 	 */
-	void AddLink(const char *pURL, const char *pText, bool bAppendNewLine = true);
+	CHTMLLink *AddLink(const char *pURL, const char *pText, bool bAppendNewLine = true);
 
 	/**
 	 * @fn CHTMLForm *AddFormAsPOST(const char *pActionTarget)

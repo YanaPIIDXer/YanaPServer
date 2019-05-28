@@ -102,6 +102,7 @@ public:
 	CHTMLLink(const char *pInURL, const char *pInText, bool bInAppendNewLine = true)
 		: pURL(pInURL)
 		, pText(pInText)
+		, pClickEvent(nullptr)
 		, bAppendNewLine(bInAppendNewLine)
 	{
 	}
@@ -112,6 +113,13 @@ public:
 	virtual ~CHTMLLink() {}
 
 	/**
+	 * @fn void SetClickEvent(const char *pInClickEvent)
+	 * @brief クリックイベントを設定
+	 * @param[in] pInClickEvent クリックイベント
+	 */
+	void SetClickEvent(const char *pInClickEvent) { pClickEvent = pInClickEvent; }
+
+	/**
 	 * @fn virtual void Generate(std::string &OutCode) const override
 	 * @brief 構築
 	 * @param[out] OutCode 構築されたHTMLコード
@@ -120,7 +128,14 @@ public:
 	{
 		OutCode += "<a href=\"";
 		OutCode += pURL;
-		OutCode += "\">";
+		OutCode += "\"";
+		if (pClickEvent != nullptr)
+		{
+			OutCode += " onclick=\"";
+			OutCode += pClickEvent;
+			OutCode += "\"";
+		}
+		OutCode += ">";
 		OutCode += pText;
 		OutCode += "</a>";
 		if (bAppendNewLine)
@@ -136,6 +151,9 @@ private:
 
 	// テキスト
 	const char *pText;
+
+	// クリックイベント
+	const char *pClickEvent;
 
 	// 改行するか？
 	bool bAppendNewLine;
