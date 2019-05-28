@@ -3,11 +3,5 @@ digraph "クラス階層図"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="YanaPServer::Util::\lStream::IMemoryStream",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html",tooltip="メモリストリーム "];
-  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="YanaPServer::Util::\lStream::CMemorySizeCaliculator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html",tooltip="サイズ計算ストリーム "];
-  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="YanaPServer::Util::\lStream::CMemoryStreamReader",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_reader.html",tooltip="読み込み用ストリーム "];
-  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="YanaPServer::Util::\lStream::CMemoryStreamWriter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_writer.html",tooltip="書き込み用ストリーム "];
+  Node0 [label="YanaPServer::Util::\lStream::CSimpleStream",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_simple_stream.html",tooltip="単純なストリーム  Appendするたびに内部でnewとdeleteが走るので注意。 "];
 }

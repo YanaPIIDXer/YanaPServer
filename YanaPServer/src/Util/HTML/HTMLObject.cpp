@@ -25,12 +25,18 @@ CHTMLText *CHTMLForm::MakeTextBox(const char *pName, const char *pDefaultValue, 
 }
 
 // チェックボックスを生成.
-CHTMLText *CHTMLForm::MakeCheckBox(const char *pName, bool bDefaltValue, bool bAppendNewLine)
+CHTMLText *CHTMLForm::MakeCheckBox(const char *pName, const char *pValue, bool bDefaltChecked, bool bAppendNewLine)
 {
 	std::string Code = "<input type=\"checkbox\" name=\"";
 	Code += pName;
 	Code += "\"";
-	if (bDefaltValue)
+	if (pValue != nullptr)
+	{
+		Code += " value=\"";
+		Code += pValue;
+		Code += "\"";
+	}
+	if (bDefaltChecked)
 	{
 		Code += " checked=\"checked\"";
 	}
@@ -148,6 +154,32 @@ void CHTMLTable::Generate(std::string &OutCode) const
 	}
 
 	OutCode += "</table>\n";
+}
+
+// ============== CHTMLStyle ==============
+
+// 構築.
+void CHTMLStyle::Generate(std::string &OutCode) const
+{
+	OutCode += "<style>\n";
+
+	for (const auto &It : Objects)
+	{
+		OutCode += "\t" + It.first + " {\n";
+		It.second->Generate(OutCode);
+		OutCode += "\t}\n";
+	}
+
+	OutCode += "</style>\n";
+}
+
+// コード生成.
+void CHTMLStyle::CObject::Generate(std::string &OutCode) const
+{
+	for (const auto &It : Params)
+	{
+		OutCode += "\t\t" + It.first + ": " + It.second + ";\n";
+	}
 }
 
 }

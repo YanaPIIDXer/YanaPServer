@@ -86,25 +86,41 @@ public:
 	 */
 	CHTMLTable *AddTable(int Border = 1);
 
+	/**
+	 * @fn CHTMLStyle *AddStyle()
+	 * @brief スタイル追加
+	 * @return スタイルオブジェクト
+	 */
+	CHTMLStyle *AddStyle();
+
 private:
 
 	// ページのタイトル
 	std::string Title;
 
-	// オブジェクト群.
-	std::vector<HTMLObjectSharedPtr> Objects;
+	// ヘッダオブジェクト群.
+	std::vector<HTMLObjectSharedPtr> HeaderObjects;
+
+	// ボディオブジェクト群.
+	std::vector<HTMLObjectSharedPtr> BodyObjects;
 
 
 	// フォーム追加.
 	CHTMLForm *AddForm(CHTMLForm::EMethod Method, const char *pActionTarget);
 
-	// オブジェクト追加.
-	void AddObject(IHTMLObject *pObject)
+	// ヘッダオブジェクト追加.
+	void AddHeaderObject(IHTMLObject *pObject)
 	{
 		HTMLObjectSharedPtr pPtr(pObject);
-		Objects.push_back(pPtr);
+		HeaderObjects.push_back(pPtr);
 	}
 
+	// ボディオブジェクト追加.
+	void AddBodyObject(IHTMLObject *pObject)
+	{
+		HTMLObjectSharedPtr pPtr(pObject);
+		BodyObjects.push_back(pPtr);
+	}
 };
 
 }
