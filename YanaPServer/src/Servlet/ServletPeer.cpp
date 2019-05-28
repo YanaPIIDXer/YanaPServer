@@ -2,9 +2,12 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
+#include "Util/Stream/MemoryStreamReader.h"
 #include "Util/Stream/SimpleStream.h"
 #include <sstream>
 #include <time.h>
+
+#include <iostream>
 
 using namespace YanaPServer::Util::Stream;
 
@@ -30,6 +33,21 @@ CServletPeer::~CServletPeer()
 // 受信した。
 void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
+	CMemoryStreamReader StreamReader(pData, Size);
+	unsigned char CheckType = 0;
+	StreamReader.Serialize(&CheckType);
+	switch (CheckType)
+	{
+		case 0x16:
+		case 0x14:
+		case 0x15:
+		case 0x17:
+
+			// @TODO:先頭１バイトが上記のものならSSL通信なので対応する。
+			std::cout << "SSL Connection." << std::endl;
+			return;
+	}
+
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
 	SHttpResponse Response;
