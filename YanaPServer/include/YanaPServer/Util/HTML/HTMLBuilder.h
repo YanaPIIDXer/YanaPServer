@@ -93,6 +93,36 @@ public:
 	 */
 	CHTMLStyle *AddStyle();
 
+	/**
+	 * @fn CHTMLScript *AddScript(const char *pScriptType = "text/javascript")
+	 * @brief スクリプト追加
+	 * @param[in] pScriptType スクリプトのタイプ
+	 * @return スクリプトオブジェクト
+	 */
+	CHTMLScript *AddScript(const char *pScriptType = "text/javascript");
+
+	/**
+	 * @fn void AddHeaderObject(IHTMLObject)
+	 * @brief ヘッダオブジェクト追加
+	 * @param[in] pObject オブジェクト
+	 */
+	void AddHeaderObject(IHTMLObject *pObject)
+	{
+		HTMLObjectSharedPtr pPtr(pObject);
+		HeaderObjects.push_back(pPtr);
+	}
+
+	/**
+	 * @fn void AddBodyObject(IHTMLObject)
+	 * @brief ボディオブジェクト追加
+	 * @param[in] pObject オブジェクト
+	 */
+	void AddBodyObject(IHTMLObject *pObject)
+	{
+		HTMLObjectSharedPtr pPtr(pObject);
+		BodyObjects.push_back(pPtr);
+	}
+
 private:
 
 	// ページのタイトル
@@ -108,19 +138,6 @@ private:
 	// フォーム追加.
 	CHTMLForm *AddForm(CHTMLForm::EMethod Method, const char *pActionTarget);
 
-	// ヘッダオブジェクト追加.
-	void AddHeaderObject(IHTMLObject *pObject)
-	{
-		HTMLObjectSharedPtr pPtr(pObject);
-		HeaderObjects.push_back(pPtr);
-	}
-
-	// ボディオブジェクト追加.
-	void AddBodyObject(IHTMLObject *pObject)
-	{
-		HTMLObjectSharedPtr pPtr(pObject);
-		BodyObjects.push_back(pPtr);
-	}
 };
 
 }

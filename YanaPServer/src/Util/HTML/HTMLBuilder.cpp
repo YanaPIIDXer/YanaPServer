@@ -77,6 +77,14 @@ CHTMLStyle *CHTMLBuilder::AddStyle()
 	return pStyle;
 }
 
+// スクリプト追加.
+CHTMLScript *CHTMLBuilder::AddScript(const char *pScriptType)
+{
+	CHTMLScript *pScript = new CHTMLScript(pScriptType);
+	AddHeaderObject(pScript);
+	return pScript;
+}
+
 
 // フォーム追加.
 CHTMLForm *CHTMLBuilder::AddForm(CHTMLForm::EMethod Method, const char *pActionTarget)
