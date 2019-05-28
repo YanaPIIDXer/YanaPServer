@@ -178,7 +178,7 @@ void CHTMLStyle::CObject::Generate(std::string &OutCode) const
 {
 	for (const auto &It : Params)
 	{
-		OutCode += "\t\t" + It.first + ": " + It.second + "\n";
+		OutCode += "\t\t" + It.first + ": " + It.second + ";\n";
 	}
 }
 
