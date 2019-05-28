@@ -46,17 +46,21 @@ std::string CHTMLBuilder::Generate() const
 }
 
 // テキスト追加.
-void CHTMLBuilder::AddText(const std::string &Text, bool bAppendNewLine)
+CHTMLText *CHTMLBuilder::AddText(const std::string &Text, bool bAppendNewLine)
 {
 	CHTMLText *pText = new CHTMLText(Text, bAppendNewLine);
 	AddBodyObject(pText);
+
+	return pText;
 }
 
 // リンク追加.
-void CHTMLBuilder::AddLink(const char *pURL, const char *pText, bool bAppendNewLine)
+CHTMLLink *CHTMLBuilder::AddLink(const char *pURL, const char *pText, bool bAppendNewLine)
 {
 	CHTMLLink *pLink = new CHTMLLink(pURL, pText, bAppendNewLine);
 	AddBodyObject(pLink);
+
+	return pLink;
 }
 
 // テーブル追加.
@@ -75,6 +79,14 @@ CHTMLStyle *CHTMLBuilder::AddStyle()
 	AddHeaderObject(pStyle);
 
 	return pStyle;
+}
+
+// スクリプト追加.
+CHTMLScript *CHTMLBuilder::AddScript(const char *pScriptType)
+{
+	CHTMLScript *pScript = new CHTMLScript(pScriptType);
+	AddHeaderObject(pScript);
+	return pScript;
 }
 
 

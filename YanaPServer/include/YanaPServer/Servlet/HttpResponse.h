@@ -35,11 +35,24 @@ struct SHttpResponse
 	//! ステータスコード
 	EHttpStatusCode StatusCode;
 
+	//! Content-Type
+	std::string ContentType;
+
 	//! コンテンツを流し込むストリーム
 	Util::Stream::CSimpleStream ContentStream;
 
 	//! Cookieマップ
 	std::map<std::string, std::string> CookieMap;
+
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	SHttpResponse()
+		: StatusCode(EHttpStatusCode::OK)
+		, ContentType("text/html")
+	{
+	}
 };
 
 }

@@ -102,6 +102,7 @@ public:
 	CHTMLLink(const char *pInURL, const char *pInText, bool bInAppendNewLine = true)
 		: pURL(pInURL)
 		, pText(pInText)
+		, pClickEvent(nullptr)
 		, bAppendNewLine(bInAppendNewLine)
 	{
 	}
@@ -112,6 +113,13 @@ public:
 	virtual ~CHTMLLink() {}
 
 	/**
+	 * @fn void SetClickEvent(const char *pInClickEvent)
+	 * @brief クリックイベントを設定
+	 * @param[in] pInClickEvent クリックイベント
+	 */
+	void SetClickEvent(const char *pInClickEvent) { pClickEvent = pInClickEvent; }
+
+	/**
 	 * @fn virtual void Generate(std::string &OutCode) const override
 	 * @brief 構築
 	 * @param[out] OutCode 構築されたHTMLコード
@@ -120,7 +128,14 @@ public:
 	{
 		OutCode += "<a href=\"";
 		OutCode += pURL;
-		OutCode += "\">";
+		OutCode += "\"";
+		if (pClickEvent != nullptr)
+		{
+			OutCode += " onclick=\"";
+			OutCode += pClickEvent;
+			OutCode += "\"";
+		}
+		OutCode += ">";
 		OutCode += pText;
 		OutCode += "</a>";
 		if (bAppendNewLine)
@@ -136,6 +151,9 @@ private:
 
 	// テキスト
 	const char *pText;
+
+	// クリックイベント
+	const char *pClickEvent;
 
 	// 改行するか？
 	bool bAppendNewLine;
@@ -536,6 +554,66 @@ private:
 
 	// オブジェクトマップ
 	std::map<std::string, ObjectPtr> Objects;
+
+};
+
+/**
+ * @class CHTMLScript
+ * @brief スクリプト
+ */
+class CHTMLScript : public IHTMLObject
+{
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 * @param[in] pInType タイプ
+	 */
+	CHTMLScript(const char *pInType)
+		: pType(pInType)
+		, Code("")
+	{
+	}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CHTMLScript() {}
+
+	/**
+	 * @fn void AddCode(const std::string &CodeStr)
+	 * @brief コード追加
+	 * @param[in] CodeStrコード文字列
+	 */
+	void AddCode(const std::string &CodeStr)
+	{
+		Code += CodeStr + "\n";
+	}
+
+	/**
+	 * @fn void AddFunction(const char *pFunctionName, const std::string &CodeStr)
+	 * @brief 関数追加
+	 * @param[in] pFunctionName 関数名
+	 * @param[in] pArgs 引数群
+	 * @param[in] CodeStr コード文字列
+	 */
+	void AddFunction(const char *pFunctionName, const char *pArgs, const std::string &CodeStr);
+	
+	/**
+	 * @fn virtual void Generate(std::string &OutCode) const override
+	 * @brief 構築
+	 * @param[out] OutCode 構築されたHTMLコード
+	 */
+	virtual void Generate(std::string &OutCode) const override;
+
+private:
+
+	// タイプ
+	const char *pType;
+
+	// コード
+	std::string Code;
 
 };
 

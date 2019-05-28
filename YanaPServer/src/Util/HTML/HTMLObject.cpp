@@ -182,6 +182,55 @@ void CHTMLStyle::CObject::Generate(std::string &OutCode) const
 	}
 }
 
+// ================== CHTMLScript =======================
+
+// ä÷êîí«â¡.
+void CHTMLScript::AddFunction(const char *pFunctionName, const char *pArgs, const std::string &CodeStr)
+{
+	std::string Str = "function ";
+	Str += pFunctionName;
+	Str += "(";
+	Str += pArgs;
+	Str += ")\n{\n\t";
+
+	std::string Tmp = CodeStr;
+	// êÆå`.
+	auto Pos = Tmp.find("\n");
+	while (Pos != std::string::npos)
+	{
+		Tmp.replace(Pos, 1, "\n\t");
+		Pos = Tmp.find("\n", Pos + 2);
+	}
+	Str += Tmp;
+	Str += "\n}";
+
+	AddCode(Str);
+}
+
+// ç\íz.
+void CHTMLScript::Generate(std::string &OutCode) const
+{
+	OutCode += "<script type=\"";
+	OutCode += pType;
+	OutCode += "\">\n\t";
+
+	std::string CodeStr = Code;
+	auto Pos = CodeStr.find("\n");
+	while (Pos != std::string::npos)
+	{
+		CodeStr.replace(Pos, 1, "\n\t");
+		Pos = CodeStr.find("\n", Pos + 2);
+	}
+	Pos = CodeStr.find_last_of("\n\t");
+	if (Pos != std::string::npos)
+	{
+		CodeStr.replace(Pos, 2, "");
+	}
+
+	OutCode += CodeStr;
+	OutCode += "</script>\n";
+}
+
 }
 }
 }
