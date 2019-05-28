@@ -117,7 +117,8 @@ void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse
 			break;
 	}
 
-	SendData.AppendStringLine("Content-Type: text/html");
+	std::string ContentType = "Content-Type: " + Response.ContentType;
+	SendData.AppendStringLine(ContentType.c_str());
 
 	// Content-Length
 	std::ostringstream ContentLength;
