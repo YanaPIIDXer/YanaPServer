@@ -75,12 +75,6 @@
     <ClCompile Include="src\Socket\WindowsSocket.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\Util\Secure\RSA.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Servlet\Secure\SSLHandshake.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\Util\RandomString.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -222,15 +216,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="include\YanaPServer\Util\Secure\RSA.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="include\YanaPServer\Servlet\Secure\Packet\SSLPacket.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="include\YanaPServer\Servlet\Secure\SSLHandshake.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="include\YanaPServer\Util\RandomString.h">
