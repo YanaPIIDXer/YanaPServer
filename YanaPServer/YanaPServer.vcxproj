@@ -128,6 +128,7 @@
     <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
     <ClCompile Include="src\Servlet\HttpServer.cpp" />
+    <ClCompile Include="src\Servlet\Secure\SSLHandshake.cpp" />
     <ClCompile Include="src\Servlet\ServletFinder.cpp" />
     <ClCompile Include="src\Servlet\ServletPeer.cpp" />
     <ClCompile Include="src\Socket\LinuxSocket.cpp" />
@@ -170,6 +171,8 @@
     <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\Secure\Packet\SSLPacket.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\Secure\SSLHandshake.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />

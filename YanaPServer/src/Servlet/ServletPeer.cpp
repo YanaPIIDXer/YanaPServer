@@ -7,8 +7,6 @@
 #include <sstream>
 #include <time.h>
 
-#include <iostream>
-
 using namespace YanaPServer::Util::Stream;
 
 namespace YanaPServer
@@ -22,6 +20,7 @@ CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder
 	, pFinder(pInFinder)
 	, SendSize(0)
 	, pHttpServerEvent(pInHttpServerEvent)
+	, SSLHandshake(this)
 {
 }
 
@@ -43,8 +42,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 		case 0x15:
 		case 0x17:
 
-			// @TODO:先頭１バイトが上記のものならSSL通信なので対応する。
-			std::cout << "SSL Connection." << std::endl;
+			SSLHandshake.OnRecv(pData, Size);
 			return;
 	}
 

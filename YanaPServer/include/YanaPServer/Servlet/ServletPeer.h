@@ -4,6 +4,7 @@
 #include "../Peer/PeerBase.h"
 #include "../Socket/Socket.h"
 #include "Servlet.h"
+#include "Secure/SSLHandshake.h"
 
 namespace YanaPServer
 {
@@ -57,13 +58,15 @@ private:
 	// ServletFinder
 	CServletFinder *pFinder;
 
-
-
 	// 送信サイズ
 	unsigned int SendSize;
 
 	// HTTPサーバイベント
 	IHttpServerEvent *pHttpServerEvent;
+
+	// SSLハンドシェイク
+	Secure::CSSLHandshake SSLHandshake;
+
 
 	// レスポンス送信.
 	void SendResponse(const SHttpRequest &Request, const SHttpResponse &Response);
