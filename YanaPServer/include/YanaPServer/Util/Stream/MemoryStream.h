@@ -100,6 +100,15 @@ public:
 	virtual bool Serialize(ISerializable *pData) = 0;
 
 	/**
+	 * @fn virtual bool Serialize(void *pData, unsigned int DataSize) = 0
+	 * @brief 任意のデータをシリアライズ
+	 * @param[in] pData データ
+	 * @param[in] DataSize データ長
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(void *pData, unsigned int DataSize) = 0;
+
+	/**
 	 * @fn virtual bool IsError() const = 0
 	 * @brief エラーが発生しているか？
 	 * @return エラーが発生していたらtrueを返す。

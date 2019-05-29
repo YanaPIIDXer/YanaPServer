@@ -103,6 +103,19 @@ public:
 	virtual bool Serialize(ISerializable *pData) override { return pData->Serialize(this); }
 
 	/**
+	 * @fn virtual bool Serialize(void *pData, unsigned int DataSize) override
+	 * @brief 任意のデータをシリアライズ
+	 * @param[in] pData データ
+	 * @param[in] DataSize データ長
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(void *pData, unsigned int DataSize) override
+	{
+		Size += DataSize;
+		return true;
+	}
+
+	/**
 	 * @fn virtual bool IsError() const override
 	 * @brief エラーが発生しているか？
 	 * @return エラーなんて無いので常にfalseを返す。

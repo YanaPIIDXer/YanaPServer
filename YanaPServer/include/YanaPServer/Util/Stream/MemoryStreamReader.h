@@ -105,6 +105,15 @@ public:
 	virtual bool Serialize(ISerializable *pData) override { return pData->Serialize(this); }
 
 	/**
+	 * @fn virtual bool Serialize(void *pData, unsigned int DataSize) override
+	 * @brief 任意のデータをシリアライズ
+	 * @param[in] pData データ
+	 * @param[in] DataSize データ長
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(void *pData, unsigned int DataSize) override { return Read(pData, DataSize); }
+
+	/**
 	 * @fn virtual bool IsError() const override
 	 * @brief エラーが発生しているか？
 	 * @return エラーが発生していたらtrueを返す。
@@ -117,14 +126,6 @@ public:
 	 * @return 読み込みモードならtrueを返す。
 	 */
 	virtual bool IsReadMode() const override { return true; }
-
-	/**
-	 * @fn bool Read(void *pData, unsigned int Size)
-	 * @brief 読み込み
-	 * @param[in] pData データを放り込むポインタ
-	 * @param[in] Size データ長
-	 */
-	bool Read(void *pData, unsigned int Size);
 
 private:
 
@@ -139,6 +140,10 @@ private:
 
 	// エラーが起きているか？
 	bool bIsError;
+
+
+	// 読み込み
+	bool Read(void *pData, unsigned int Size);
 
 };
 
