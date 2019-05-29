@@ -54,7 +54,7 @@ private:
 
 
 	// ClientHello‚ğóM‚µ‚½B
-	void OnRecvClientHello(YanaPServer::Util::Stream::IMemoryStream *pStream);
+	void OnRecvClientHello(unsigned short Version, YanaPServer::Util::Stream::IMemoryStream *pStream);
 
 };
 
