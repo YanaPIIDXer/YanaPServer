@@ -176,6 +176,74 @@ public:
 	}
 };
 
+/**
+ * @class CSSLServerHello
+ * @brief ServerHelloパケット
+ */
+class CSSLServerHello : public YanaPServer::Util::ISerializable
+{
+
+public:
+
+	/**
+	 * @brief コンストラクタ;
+	 */
+	CSSLServerHello()
+		: Version(0)
+		, Time(0)
+		, Random("")
+		, CipherSuite(0)
+		, CompressionMethod(0)
+	{
+	}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CSSLServerHello() {}
+
+	//! バージョン
+	unsigned short Version;
+
+	//! 時間
+	unsigned int Time;
+
+	//! 乱数
+	char Random[28];
+
+	//! セッションＩＤ
+	std::vector<unsigned int> SessionId;
+
+	//! 暗号化方式
+	unsigned short CipherSuite;
+
+	//! 圧縮方式
+	unsigned char CompressionMethod;
+
+	/**
+	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	 * @brief シリアライズ
+	 * @param[in] pStream ストリーム
+	 * @return 成功したらtrueを返す
+	 */
+	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	{
+		pStream->Serialize(&Version);
+		pStream->Serialize(&Time);
+		pStream->Serialize((void *)Random, 28);
+		unsigned char Length = (unsigned char)SessionId.size();
+		pStream->Serialize(&Length);
+		for (unsigned int i = 0; i < SessionId.size(); i++)
+		{
+			pStream->Serialize(&SessionId[i]);
+		}
+		pStream->Serialize(&CipherSuite);
+		pStream->Serialize(&CompressionMethod);
+
+		return !pStream->IsError();
+	}
+};
+
 }
 }
 }

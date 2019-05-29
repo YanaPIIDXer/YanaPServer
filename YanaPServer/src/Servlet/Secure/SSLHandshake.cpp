@@ -36,6 +36,7 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 		return;
 	}
 
+	std::cout << "MessageType:" << (int)Record.MessageType << std::endl;
 	switch (Record.MessageType)
 	{
 		case EMessageType::ClientHello:
@@ -56,7 +57,7 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		return;
 	}
 
-	std::cout << "Client Hello Serialize Success." << std::endl;
+
 }
 
 }
