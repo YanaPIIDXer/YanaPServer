@@ -20,6 +20,7 @@ CServletPeer::CServletPeer(YanaPServer::Socket::ISocket *pSocket, CServletFinder
 	, pFinder(pInFinder)
 	, SendSize(0)
 	, pHttpServerEvent(pInHttpServerEvent)
+	, SSLHandshake(this)
 {
 }
 
@@ -31,6 +32,20 @@ CServletPeer::~CServletPeer()
 // éÛêMÇµÇΩÅB
 void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
+	CMemoryStreamReader StreamReader(pData, Size);
+	unsigned char CheckType = 0;
+	StreamReader.Serialize(&CheckType);
+	switch (CheckType)
+	{
+		case 0x16:
+		case 0x14:
+		case 0x15:
+		case 0x17:
+
+			SSLHandshake.OnRecv(pData, Size);
+			return;
+	}
+
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
 	SHttpResponse Response;

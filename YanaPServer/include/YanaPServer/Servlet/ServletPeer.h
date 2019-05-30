@@ -4,6 +4,7 @@
 #include "../Peer/PeerBase.h"
 #include "../Socket/Socket.h"
 #include "Servlet.h"
+#include "Secure/SSLHandshake.h"
 
 namespace YanaPServer
 {
@@ -62,6 +63,9 @@ private:
 
 	// HTTPサーバイベント
 	IHttpServerEvent *pHttpServerEvent;
+
+	// SSLハンドシェイク
+	Secure::CSSLHandshake SSLHandshake;
 
 
 	// レスポンス送信.
