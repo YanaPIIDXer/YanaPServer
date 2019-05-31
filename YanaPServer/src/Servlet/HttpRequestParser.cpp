@@ -68,9 +68,9 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 		{
 			std::string Line = Lines[ParamParser];
 			Line.replace(Pos, Header.length(), "");
-			std::vector<std::string> CookieLine;
-			Split(Line.c_str(), "; ", CookieLine);
-			for (const auto &CookieLine : CookieLine)
+			std::vector<std::string> CookieLines;
+			Split(Line.c_str(), "; ", CookieLines);
+			for (const auto &CookieLine : CookieLines)
 			{
 				std::vector<std::string> CookieData;
 				Split(CookieLine.c_str(), "=", CookieData);

@@ -4,6 +4,7 @@
 #include "Util/Serializable.h"
 #include "Util/Stream/MemoryStream.h"
 #include <vector>
+#include <memory.h>
 
 namespace YanaPServer
 {
@@ -146,7 +147,6 @@ public:
 	CSSLClientHello()
 		: ClientVersion(0)
 		, Time(0)
-		, Random("")
 	{
 		memset(SessionId, 0, sizeof(SessionId));
 	}
@@ -166,7 +166,7 @@ public:
 	char Random[28];
 
 	//! セッションＩＤ
-	unsigned int SessionId[32];
+	unsigned char SessionId[32];
 
 	//! 暗号化方式リスト
 	std::vector<unsigned short> CipherSuite;
@@ -229,7 +229,6 @@ public:
 	CSSLServerHello()
 		: Version(0)
 		, Time(0)
-		, Random("")
 		, CipherSuite(0)
 		, CompressionMethod(0)
 	{
@@ -250,7 +249,7 @@ public:
 	char Random[28];
 
 	//! セッションＩＤ
-	std::vector<unsigned int> SessionId;
+	std::vector<unsigned char> SessionId;
 
 	//! 暗号化方式
 	unsigned short CipherSuite;

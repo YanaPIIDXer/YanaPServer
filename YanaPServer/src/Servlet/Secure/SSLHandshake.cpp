@@ -39,8 +39,8 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 	CSSLRecord Record;
 	if (!Record.Serialize(&StreamReader))
 	{
-		// @TODO:失敗時の処理どうする・・・？
 		bIsProcessing = false;
+		pPeer->Disconnect();
 		return;
 	}
 
@@ -48,6 +48,7 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 
 	std::cout << "Type:" << (int)Record.Type << std::endl;
 	std::cout << "Length:" << Record.Length << std::endl;
+	printf("Version:0x%04X\n", Version);
 	switch (Record.Type)
 	{
 		case 0x16:
@@ -57,12 +58,12 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 
 			switch (HandshakeRecord.MessageType)
 			{
-			case EMessageType::ClientHello:
+				case EMessageType::ClientHello:
 
-				OnRecvClientHello(&StreamReader);
-				SendServerCertificate();
-				break;
-			}
+					OnRecvClientHello(&StreamReader);
+					SendServerCertificate();
+					break;
+				}
 		}
 		break;
 	}
@@ -77,8 +78,8 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	CSSLClientHello ClientHello;
 	if (!ClientHello.Serialize(pStream))
 	{
-		// @TODO:失敗時の処理どうする・・・？
 		bIsProcessing = false;
+		pPeer->Disconnect();
 		return;
 	}
 
@@ -91,10 +92,12 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	ServerHello.Version = ClientHello.ClientVersion;
 	ServerHello.Time = ClientHello.Time;
 	memcpy(ServerHello.Random, RandomStr.Get(), 28);
-	for (int i = 0; i < 64; i++)
+	/*
+	for (int i = 0; i < 2; i++)
 	{
-		ServerHello.SessionId.push_back(Rnd());
+		ServerHello.SessionId.push_back(Rnd() % 255);
 	}
+	*/
 	ServerHello.CipherSuite = SSL_RSA_WITH_RC4_128_MD5;
 	ServerHello.CompressionMethod = 0;
 
@@ -104,7 +107,7 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 // ServerCertificateを送信.
 void CSSLHandshake::SendServerCertificate()
 {
-	std::ifstream FileStream("Certificate\\server.crt", std::ios::in | std::ios::binary);
+	std::ifstream FileStream("Certificate\\server.crt", std::ios::in);
 	if (!FileStream)
 	{
 		std::cout << "CRT File Load Failed." << std::endl;
@@ -113,7 +116,7 @@ void CSSLHandshake::SendServerCertificate()
 	}
 
 	CSSLServerCertificate ServerCertificate;
-	
+
 	while (!FileStream.eof())
 	{
 		static const unsigned int BufferSize = 1024;

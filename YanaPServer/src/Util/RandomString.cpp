@@ -1,5 +1,6 @@
 #include "Util/RandomString.h"
 #include <random>
+#include <string.h>
 
 namespace YanaPServer
 {
