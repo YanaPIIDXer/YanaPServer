@@ -123,11 +123,11 @@ public:
 	virtual bool IsError() const override { return false; }
 
 	/**
-	 * @fn virtual bool IsReadMode() const override
-	 * @brief 読み込みモードか？
-	 * @return 読み込みモードならtrueを返す。
+	 * @fn virtual EStreamType GetType() const override
+	 * @brief ストリームタイプを取得
+	 * @return ストリームタイプ返す。
 	 */
-	virtual bool IsReadMode() const override { return true; }
+	virtual EStreamType GetType() const override { return EStreamType::CalcSize; }
 
 	/**
 	 * @fn unsigned int GetSize() const

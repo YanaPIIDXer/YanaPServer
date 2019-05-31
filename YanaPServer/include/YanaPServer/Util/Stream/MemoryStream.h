@@ -14,6 +14,22 @@ namespace Stream
 {
 
 /**
+ * @enum EStreamType
+ * @brief ストリームの種類
+ */
+enum class EStreamType
+{
+	//! 読み込み
+	Read,
+
+	//! 書き込み
+	Write,
+
+	//! サイズ計算
+	CalcSize,
+};
+
+/**
  * @class IMemoryStream
  * @brief メモリストリーム
  */
@@ -116,11 +132,11 @@ public:
 	virtual bool IsError() const = 0;
 
 	/**
-	 * @fn virtual bool IsReadMode() const = 0
-	 * @brief 読み込みモードか？
-	 * @return 読み込みモードならtrueを返す。
+	 * @fn virtual EStreamType GetType() const = 0
+	 * @brief ストリームタイプを取得
+	 * @return ストリームタイプ返す。
 	 */
-	virtual bool IsReadMode() const = 0;
+	virtual EStreamType GetType() const = 0;
 
 };
 
