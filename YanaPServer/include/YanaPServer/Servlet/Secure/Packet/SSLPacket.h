@@ -6,6 +6,8 @@
 #include <vector>
 #include <memory.h>
 
+#include <iostream>
+
 namespace YanaPServer
 {
 namespace Servlet
@@ -174,6 +176,9 @@ public:
 	//! 圧縮方式リスト
 	std::vector<unsigned char> CompressionMethods;
 
+	//! 拡張
+	std::vector<unsigned char> Extensions;
+
 	/**
 	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
 	 * @brief シリアライズ
@@ -210,6 +215,14 @@ public:
 			CompressionMethods.push_back(Data);
 		}
 
+		pStream->Serialize(&ShortBytes);
+		for (int i = 0; i < ShortBytes; i++)
+		{
+			unsigned char Data;
+			pStream->Serialize(&Data);
+			Extensions.push_back(Data);
+		}
+		
 		return !pStream->IsError();
 	}
 };
@@ -276,6 +289,10 @@ public:
 		}
 		pStream->Serialize(&CipherSuite);
 		pStream->Serialize(&CompressionMethod);
+
+		// Extensionは未使用。
+		unsigned short ExtensionLength = 0;
+		pStream->Serialize(&ExtensionLength);
 
 		return !pStream->IsError();
 	}
