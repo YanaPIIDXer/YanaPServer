@@ -56,7 +56,8 @@ private:
 	{
 		ClientHello = 0x01,
 		ServerHello = 0x02,
-		ServerCertificate = 0x0b,
+		ServerCertificate = 0x0B,
+		ServerHelloDone = 0x0E,
 	};
 
 	// 暗号化方式
@@ -81,6 +82,9 @@ private:
 
 	// ServerCertificateを送信。
 	void SendServerCertificate();
+
+	// ServerHelloDoneを送信。
+	void SendServerHelloDone();
 
 	// ハンドシェイクパケットを送信.
 	void SendHandshakePacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket);

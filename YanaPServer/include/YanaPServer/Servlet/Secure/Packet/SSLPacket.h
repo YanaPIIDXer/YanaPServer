@@ -6,8 +6,6 @@
 #include <vector>
 #include <memory.h>
 
-#include <iostream>
-
 namespace YanaPServer
 {
 namespace Servlet
@@ -293,7 +291,7 @@ public:
 		// Extensionは未使用。
 		unsigned short ExtensionLength = 0;
 		pStream->Serialize(&ExtensionLength);
-
+		
 		return !pStream->IsError();
 	}
 };
@@ -335,19 +333,67 @@ public:
 		unsigned int Length = 0;
 		for (const auto &Certificate : CertificateList)
 		{
-			Length += Certificate.size();
+			Length += Certificate.size() + 3;
 		}
-		pStream->Serialize(&Length, 3);
+		WriteThreeByte(Length, pStream);
 
 		for (const auto &Certificate : CertificateList)
 		{
 			unsigned int CertificateLength = Certificate.size();
-			pStream->Serialize(&CertificateLength, 3);
+			WriteThreeByte(CertificateLength, pStream);
 			pStream->Serialize((void *) &Certificate[0], CertificateLength);
 		}
 
 		return !pStream->IsError();
 	}
+
+private:
+
+	// 下３バイトを書き込み。
+	static void WriteThreeByte(unsigned int Data, YanaPServer::Util::Stream::IMemoryStream *pStream)
+	{
+		unsigned char Tmp[4];
+		memcpy(Tmp, &Data, 4);
+		for (int i = 2; i >= 0; i--)
+		{
+			pStream->Serialize(&Tmp[i]);
+		}
+	}
+};
+
+/**
+ * @class CSSLServerHelloDone
+ * @brief ServerHelloDoneパケット
+ */
+class CSSLServerHelloDone : public YanaPServer::Util::ISerializable
+{
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CSSLServerHelloDone() {}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CSSLServerHelloDone() {}
+
+	/**
+	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	 * @brief シリアライズ
+	 * @param[in] pStream ストリーム
+	 * @return 成功したらtrueを返す
+	 */
+	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	{
+		unsigned char Header[3] = { 0x00, 0x00, 0x00 };
+		pStream->Serialize(Header, 3);
+
+		return !pStream->IsError();
+	}
+
 };
 
 }

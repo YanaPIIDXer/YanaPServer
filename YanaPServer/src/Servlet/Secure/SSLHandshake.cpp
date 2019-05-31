@@ -62,6 +62,7 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 
 					OnRecvClientHello(&StreamReader);
 					//SendServerCertificate();
+					//SendServerHelloDone();
 					break;
 				}
 		}
@@ -134,6 +135,13 @@ void CSSLHandshake::SendServerCertificate()
 	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
 }
 
+// ServerHelloDoneを送信.
+void CSSLHandshake::SendServerHelloDone()
+{
+	CSSLServerHelloDone ServerHelloDone;
+	SendHandshakePacket(EMessageType::ServerHelloDone, &ServerHelloDone);
+}
+
 // ハンドシェイクパケットを送信.
 void CSSLHandshake::SendHandshakePacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket)
 {
@@ -159,7 +167,7 @@ void CSSLHandshake::MakeSSLRecordPacket(YanaPServer::Util::ISerializable *pPacke
 
 	OutRecord.Type = 0x16;
 	OutRecord.Version = Version;
-	OutRecord.Length = SizeCaliculator.GetSize() + 4 + 5;
+	OutRecord.Length = SizeCaliculator.GetSize();
 }
 
 // SSLハンドシェイクレコードパケットを生成
@@ -169,7 +177,7 @@ void CSSLHandshake::MakeSSLHandshakeRecordPacket(unsigned char MessageType, Yana
 	pPacket->Serialize(&SizeCaliculator);
 
 	OutRecord.MessageType = MessageType;
-	OutRecord.BodyLength = SizeCaliculator.GetSize() + 5;
+	OutRecord.BodyLength = SizeCaliculator.GetSize();
 }
 
 }
