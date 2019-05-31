@@ -305,6 +305,10 @@ public:
 class CSSLServerCertificate : public YanaPServer::Util::ISerializable
 {
 
+private:		// •Ê–¼’è‹`.
+
+	typedef std::vector<char> CertificateBytes;
+
 public:
 
 	/**
@@ -318,7 +322,7 @@ public:
 	virtual ~CSSLServerCertificate() {}
 
 	//! Ø–¾‘ƒŠƒXƒg
-	std::vector<char> CertificateList;
+	std::vector<CertificateBytes> CertificateList;
 
 	/**
 	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
@@ -328,10 +332,19 @@ public:
 	 */
 	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
 	{
-		unsigned int Length = CertificateList.size();
-		pStream->Serialize(&Length);
+		unsigned int Length = 0;
+		for (const auto &Certificate : CertificateList)
+		{
+			Length += Certificate.size();
+		}
+		pStream->Serialize(&Length, 3);
 
-		pStream->Serialize(&CertificateList[0], Length);
+		for (const auto &Certificate : CertificateList)
+		{
+			unsigned int CertificateLength = Certificate.size();
+			pStream->Serialize(&CertificateLength, 3);
+			pStream->Serialize((void *) &Certificate[0], CertificateLength);
+		}
 
 		return !pStream->IsError();
 	}

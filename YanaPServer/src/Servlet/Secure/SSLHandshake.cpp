@@ -123,10 +123,12 @@ void CSSLHandshake::SendServerCertificate()
 		char Buffer[BufferSize];
 		FileStream.read(Buffer, BufferSize);
 		auto ReadSize = FileStream.gcount();
+		std::vector<char> Certificate;
 		for (unsigned int i = 0; i < ReadSize; i++)
 		{
-			ServerCertificate.CertificateList.push_back(Buffer[i]);
+			Certificate.push_back(Buffer[i]);
 		}
+		ServerCertificate.CertificateList.push_back(Certificate);
 	}
 	
 	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
