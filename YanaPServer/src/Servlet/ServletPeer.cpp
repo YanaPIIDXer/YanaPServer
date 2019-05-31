@@ -41,7 +41,9 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 		case 0x14:
 		case 0x15:
 		case 0x17:
+		case 0x80:
 
+			// 先頭１バイトが上記のものだったらSSL通信。
 			SSLHandshake.OnRecv(pData, Size);
 			return;
 	}
@@ -95,6 +97,8 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 // 送信した
 void CServletPeer::OnSend(unsigned int Size)
 {
+	if (SSLHandshake.IsProcessing()) { return; }
+
 	if (SendSize > Size)
 	{
 		SendSize -= Size;

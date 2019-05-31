@@ -30,8 +30,6 @@ public:
 		: Type(0)
 		, Version(0)
 		, Length(0)
-		, MessageType(0)
-		, BodyLength(0)
 	{
 	}
 
@@ -49,6 +47,44 @@ public:
 	//! 長さ
 	unsigned short Length;
 
+	/**
+	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	 * @brief シリアライズ
+	 * @param[in] pStream ストリーム
+	 * @return 成功したらtrueを返す
+	 */
+	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	{
+		pStream->Serialize(&Type);
+		pStream->Serialize(&Version);
+		pStream->Serialize(&Length);
+		return !pStream->IsError();
+	}
+};
+
+/**
+ * @class CSSLHandshakeRecord
+ * @brief SSLハンドシェイクレコード
+ */
+class CSSLHandshakeRecord : public YanaPServer::Util::ISerializable
+{
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CSSLHandshakeRecord()
+		: MessageType(0)
+		, BodyLength(0)
+	{
+	}
+
+	/**
+	 * @brief デストラクタ 
+	 */
+	virtual ~CSSLHandshakeRecord() {}
+
 	//! メッセージタイプ
 	unsigned char MessageType;
 
@@ -63,27 +99,27 @@ public:
 	 */
 	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
 	{
-		pStream->Serialize(&Type);
-		pStream->Serialize(&Version);
-		pStream->Serialize(&Length);
 		pStream->Serialize(&MessageType);
 
-		if (pStream->IsReadMode())
+		if (pStream->GetType() != YanaPServer::Util::Stream::EStreamType::Write)
 		{
 			unsigned char Tmp[3];
 			for (int i = 2; i >= 0; i--)
 			{
 				pStream->Serialize(&Tmp[i]);
 			}
-			BodyLength = 0;
-			memcpy(&BodyLength, Tmp, 3);
+			if (pStream->GetType() == YanaPServer::Util::Stream::EStreamType::Read)
+			{
+				BodyLength = 0;
+				memcpy(&BodyLength, Tmp, 3);
+			}
 		}
 		else
 		{
 			unsigned char Tmp[4];
 			memcpy(Tmp, &BodyLength, 4);
 			// 使用するのは下３バイト。
-			for (int i = 3; i >= 0; i++)
+			for (int i = 2; i >= 0; i--)
 			{
 				pStream->Serialize(&Tmp[i]);
 			}
@@ -91,6 +127,8 @@ public:
 
 		return !pStream->IsError();
 	}
+
+
 };
 
 /**
@@ -167,7 +205,7 @@ public:
 		pStream->Serialize(&CharBytes);
 		for (int i = 0; i < CharBytes; i++)
 		{
-			char Data;
+			unsigned char Data;
 			pStream->Serialize(&Data);
 			CompressionMethods.push_back(Data);
 		}
@@ -239,6 +277,45 @@ public:
 		}
 		pStream->Serialize(&CipherSuite);
 		pStream->Serialize(&CompressionMethod);
+
+		return !pStream->IsError();
+	}
+};
+
+/**
+ * @class CSSLServerCerticifate
+ * @brief ServerCertificateパケット
+ */
+class CSSLServerCertificate : public YanaPServer::Util::ISerializable
+{
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CSSLServerCertificate() {}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CSSLServerCertificate() {}
+
+	//! 証明書リスト
+	std::vector<char> CertificateList;
+
+	/**
+	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	 * @brief シリアライズ
+	 * @param[in] pStream ストリーム
+	 * @return 成功したらtrueを返す
+	 */
+	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	{
+		unsigned int Length = CertificateList.size();
+		pStream->Serialize(&Length);
+
+		pStream->Serialize(&CertificateList[0], Length);
 
 		return !pStream->IsError();
 	}

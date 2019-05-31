@@ -1,12 +1,12 @@
 #include "Servlet/Secure/SSLHandshake.h"
 #include "Servlet/ServletPeer.h"
-#include "Servlet/Secure/Packet/SSLPacket.h"
 #include "Util/Stream/MemoryStreamReader.h"
 #include "Util/RandomString.h"
 #include <random>
 #include "Util/Stream/MemorySizeCaliculator.h"
 
 #include <iostream>
+#include <fstream>
 
 using namespace YanaPServer::Util::Stream;
 using namespace YanaPServer::Servlet::Secure::Packet;
@@ -22,6 +22,8 @@ namespace Secure
 // コンストラクタ
 CSSLHandshake::CSSLHandshake(CServletPeer *pInPeer)
 	: pPeer(pInPeer)
+	, bIsProcessing(false)
+	, Version(0)
 {
 }
 
@@ -38,28 +40,45 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 	if (!Record.Serialize(&StreamReader))
 	{
 		// @TODO:失敗時の処理どうする・・・？
+		bIsProcessing = false;
 		return;
 	}
 
-	std::cout << "Type:" << (int)Record.Type << std::endl;
-	std::cout << "MessageType:" << (int)Record.MessageType << std::endl;
-	switch (Record.MessageType)
-	{
-		case EMessageType::ClientHello:
+	Version = Record.Version;
 
-			OnRecvClientHello(Record.Version, &StreamReader);
-			break;
+	std::cout << "Type:" << (int)Record.Type << std::endl;
+	std::cout << "Length:" << Record.Length << std::endl;
+	switch (Record.Type)
+	{
+		case 0x16:
+		{
+			CSSLHandshakeRecord HandshakeRecord;
+			HandshakeRecord.Serialize(&StreamReader);
+
+			switch (HandshakeRecord.MessageType)
+			{
+			case EMessageType::ClientHello:
+
+				OnRecvClientHello(&StreamReader);
+				SendServerCertificate();
+				break;
+			}
+		}
+		break;
 	}
 }
 
 
 // ClientHelloを受信した。
-void CSSLHandshake::OnRecvClientHello(unsigned short Version, IMemoryStream *pStream)
+void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 {
+	bIsProcessing = true;
+
 	CSSLClientHello ClientHello;
 	if (!ClientHello.Serialize(pStream))
 	{
 		// @TODO:失敗時の処理どうする・・・？
+		bIsProcessing = false;
 		return;
 	}
 
@@ -76,25 +95,76 @@ void CSSLHandshake::OnRecvClientHello(unsigned short Version, IMemoryStream *pSt
 	{
 		ServerHello.SessionId.push_back(Rnd());
 	}
-	ServerHello.CipherSuite = 0x0005;
+	ServerHello.CipherSuite = SSL_RSA_WITH_RC4_128_MD5;
 	ServerHello.CompressionMethod = 0;
 
-	CMemorySizeCaliculator SizeCaliculator;
-	ServerHello.Serialize(&SizeCaliculator);
+	SendHandshakePacket(EMessageType::ServerHello, &ServerHello);
+}
 
+// ServerCertificateを送信.
+void CSSLHandshake::SendServerCertificate()
+{
+	std::ifstream FileStream("Certificate\\server.crt", std::ios::in | std::ios::binary);
+	if (!FileStream)
+	{
+		std::cout << "CRT File Load Failed." << std::endl;
+		bIsProcessing = false;
+		return;
+	}
+
+	CSSLServerCertificate ServerCertificate;
+	
+	while (!FileStream.eof())
+	{
+		static const unsigned int BufferSize = 1024;
+		char Buffer[BufferSize];
+		FileStream.read(Buffer, BufferSize);
+		auto ReadSize = FileStream.gcount();
+		for (unsigned int i = 0; i < ReadSize; i++)
+		{
+			ServerCertificate.CertificateList.push_back(Buffer[i]);
+		}
+	}
+	
+	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
+}
+
+// ハンドシェイクパケットを送信.
+void CSSLHandshake::SendHandshakePacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket)
+{
+	// レコード
 	CSSLRecord Record;
-
-	Record.Type = 0x16;
-	Record.Version = Version;
-	Record.MessageType = 0x02;
-	Record.BodyLength = SizeCaliculator.GetSize();
-	Record.Length = 8 + Record.BodyLength;
-
-	// レコード送信.
+	MakeSSLRecordPacket(pPacket, Record);
 	pPeer->Send(&Record);
 
-	// ServerHello送信.
-	pPeer->Send(&ServerHello);
+	// ハンドシェイクレコード
+	CSSLHandshakeRecord HandshakeRecord;
+	MakeSSLHandshakeRecordPacket(MessageType, pPacket, HandshakeRecord);
+	pPeer->Send(&HandshakeRecord);
+
+	// 本体
+	pPeer->Send(pPacket);
+}
+
+// SSLRecordパケットを生成.
+void CSSLHandshake::MakeSSLRecordPacket(YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLRecord &OutRecord)
+{
+	CMemorySizeCaliculator SizeCaliculator;
+	pPacket->Serialize(&SizeCaliculator);
+
+	OutRecord.Type = 0x16;
+	OutRecord.Version = Version;
+	OutRecord.Length = SizeCaliculator.GetSize() + 4;
+}
+
+// SSLハンドシェイクレコードパケットを生成
+void CSSLHandshake::MakeSSLHandshakeRecordPacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLHandshakeRecord &OutRecord)
+{
+	CMemorySizeCaliculator SizeCaliculator;
+	pPacket->Serialize(&SizeCaliculator);
+
+	OutRecord.MessageType = MessageType;
+	OutRecord.BodyLength = SizeCaliculator.GetSize();
 }
 
 }
