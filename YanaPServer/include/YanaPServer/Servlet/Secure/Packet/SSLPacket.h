@@ -336,7 +336,7 @@ public:
 			Length += Certificate.size() + 3;
 		}
 		WriteThreeByte(Length, pStream);
-
+		
 		for (const auto &Certificate : CertificateList)
 		{
 			unsigned int CertificateLength = Certificate.size();

@@ -49,6 +49,12 @@ public:
 	 */
 	bool IsProcessing() const { return bIsProcessing; }
 
+	/**
+	 * @fn void SendNext()
+	 * @brief 次を送信
+	 */
+	void SendNext();
+
 private:
 
 	// メッセージタイプ
@@ -75,6 +81,9 @@ private:
 
 	// バージョン
 	unsigned short Version;
+
+	// 現在処理中のメッセージ
+	EMessageType CurrentMessage;
 
 
 	// ClientHelloを受信した。

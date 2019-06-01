@@ -24,6 +24,7 @@ CSSLHandshake::CSSLHandshake(CServletPeer *pInPeer)
 	: pPeer(pInPeer)
 	, bIsProcessing(false)
 	, Version(0)
+	, CurrentMessage(ServerHello)
 {
 }
 
@@ -45,7 +46,7 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 	}
 
 	Version = Record.Version;
-
+	
 	std::cout << "Type:" << (int)Record.Type << std::endl;
 	std::cout << "Length:" << Record.Length << std::endl;
 	printf("Version:0x%04X\n", Version);
@@ -61,12 +62,26 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 				case EMessageType::ClientHello:
 
 					OnRecvClientHello(&StreamReader);
-					//SendServerCertificate();
-					//SendServerHelloDone();
 					break;
 				}
 		}
 		break;
+	}
+}
+
+// ŽŸ‚ð‘—M.
+void CSSLHandshake::SendNext()
+{
+	switch (CurrentMessage)
+	{
+		case EMessageType::ServerCertificate:
+
+			SendServerCertificate();
+			break;
+
+		default:
+
+			break;
 	}
 }
 
@@ -84,6 +99,8 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		return;
 	}
 
+	CurrentMessage = EMessageType::ServerHello;
+
 	CRandomString RandomStr;
 	RandomStr.Generate(28);
 
@@ -94,7 +111,7 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	ServerHello.Time = ClientHello.Time;
 	memcpy(ServerHello.Random, RandomStr.Get(), 28);
 	/*
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		ServerHello.SessionId.push_back(Rnd() % 255);
 	}
@@ -103,12 +120,13 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	ServerHello.CompressionMethod = 0;
 
 	SendHandshakePacket(EMessageType::ServerHello, &ServerHello);
+	CurrentMessage = EMessageType::ServerCertificate;
 }
 
 // ServerCertificate‚ð‘—M.
 void CSSLHandshake::SendServerCertificate()
 {
-	std::ifstream FileStream("Certificate\\server.crt", std::ios::in);
+	std::ifstream FileStream("Certificate/server.crt", std::ios::in | std::ios::binary);
 	if (!FileStream)
 	{
 		std::cout << "CRT File Load Failed." << std::endl;
@@ -118,20 +136,21 @@ void CSSLHandshake::SendServerCertificate()
 
 	CSSLServerCertificate ServerCertificate;
 
+	std::vector<char> Certificate;
 	while (!FileStream.eof())
 	{
 		static const unsigned int BufferSize = 1024;
 		char Buffer[BufferSize];
 		FileStream.read(Buffer, BufferSize);
 		auto ReadSize = FileStream.gcount();
-		std::vector<char> Certificate;
 		for (unsigned int i = 0; i < ReadSize; i++)
 		{
+			if (Buffer[i] == '\n') { continue; }
 			Certificate.push_back(Buffer[i]);
 		}
-		ServerCertificate.CertificateList.push_back(Certificate);
 	}
-	
+	ServerCertificate.CertificateList.push_back(Certificate);
+
 	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
 }
 
