@@ -10,12 +10,12 @@ namespace Secure
 const std::string CBase64::Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 // デコード
-bool CBase64::Decode(const std::string &Src, std::vector<char> &OutResult)
+bool CBase64::Decode(const std::string &Src, std::vector<unsigned char> &OutResult)
 {
 	OutResult.clear();
 	if (Src.size() & 0x00000003) { return false; }
 
-	std::vector<char> Dest;
+	std::vector<unsigned char> Dest;
 
 	for (std::size_t i = 0; i < Src.size(); i += 4)
 	{

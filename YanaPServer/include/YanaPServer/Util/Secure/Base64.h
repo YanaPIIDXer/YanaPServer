@@ -28,7 +28,7 @@ public:
 	 * @param[out] OutResult デコード結果
 	 * @return 成功したらtrueを返す。
 	 */
-	static bool Decode(const std::string &Src, std::vector<char> &OutResult);
+	static bool Decode(const std::string &Src, std::vector<unsigned char> &OutResult);
 
 private:
 
