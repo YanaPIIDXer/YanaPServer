@@ -279,7 +279,7 @@ public:
 		pStream->Serialize(&Version);
 		pStream->Serialize(&Time);
 		pStream->Serialize((void *)Random, 28);
-		unsigned char Length = (unsigned char)SessionId.size();
+		unsigned char Length = (unsigned char) SessionId.size();
 		pStream->Serialize(&Length);
 		for (unsigned int i = 0; i < SessionId.size(); i++)
 		{
@@ -305,7 +305,7 @@ class CSSLServerCertificate : public YanaPServer::Util::ISerializable
 
 private:		// •Ê–¼’è‹`.
 
-	typedef std::vector<char> CertificateBytes;
+	typedef std::vector<unsigned char> CertificateBytes;
 
 public:
 
@@ -388,9 +388,6 @@ public:
 	 */
 	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
 	{
-		unsigned char Header[3] = { 0x00, 0x00, 0x00 };
-		pStream->Serialize(Header, 3);
-
 		return !pStream->IsError();
 	}
 

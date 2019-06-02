@@ -66,11 +66,21 @@ private:
 		ServerHelloDone = 0x0E,
 	};
 
+	// 送信State
+	enum class ESendState
+	{
+		ServerHello,
+		ServerCertificate,
+		ServerHelloDone,
+		End,
+	};
+
 	// 暗号化方式
 	enum ECipherSuite
 	{
 		SSL_RSA_WITH_RC4_128_MD5 = 0x0004,
 		SSL_RSA_WITH_RC4_128_SHA = 0x0005,
+		TLS_RSA_WITH_3DES_EDE_CBC_SHA = 0x000A,
 	};
 
 	// Peer
@@ -83,7 +93,7 @@ private:
 	unsigned short Version;
 
 	// 現在処理中のメッセージ
-	EMessageType CurrentMessage;
+	ESendState CurrentState;
 
 
 	// ClientHelloを受信した。

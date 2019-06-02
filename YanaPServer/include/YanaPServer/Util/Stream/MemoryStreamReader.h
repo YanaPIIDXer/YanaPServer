@@ -127,6 +127,16 @@ public:
 	 */
 	virtual EStreamType GetType() const override { return EStreamType::Read; }
 
+	/**
+	 * @fn void Reset()
+	 * @brief リセット
+	 */
+	void Reset()
+	{
+		CurrentPosition = 0;
+		bIsError = false;
+	}
+
 private:
 
 	// バッファ

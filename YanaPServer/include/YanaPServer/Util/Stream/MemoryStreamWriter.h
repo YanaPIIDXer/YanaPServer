@@ -141,6 +141,16 @@ public:
 	 */
 	unsigned int GetSize() const { return CurrentPosition; }
 
+	/**
+	 * @fn void Reset()
+	 * @brief リセット
+	 */
+	void Reset()
+	{
+		CurrentPosition = 0;
+		bIsError = false;
+	}
+
 private:
 
 	// バッファ

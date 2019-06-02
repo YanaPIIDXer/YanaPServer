@@ -4,6 +4,7 @@
 #include "Util/RandomString.h"
 #include <random>
 #include "Util/Stream/MemorySizeCaliculator.h"
+#include "Util/Secure/Base64.h"
 
 #include <iostream>
 #include <fstream>
@@ -11,6 +12,7 @@
 using namespace YanaPServer::Util::Stream;
 using namespace YanaPServer::Servlet::Secure::Packet;
 using namespace YanaPServer::Util;
+using namespace YanaPServer::Util::Secure;
 
 namespace YanaPServer
 {
@@ -24,7 +26,7 @@ CSSLHandshake::CSSLHandshake(CServletPeer *pInPeer)
 	: pPeer(pInPeer)
 	, bIsProcessing(false)
 	, Version(0)
-	, CurrentMessage(ServerHello)
+	, CurrentState(ESendState::ServerHello)
 {
 }
 
@@ -55,7 +57,12 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 		case 0x16:
 		{
 			CSSLHandshakeRecord HandshakeRecord;
-			HandshakeRecord.Serialize(&StreamReader);
+			if (!HandshakeRecord.Serialize(&StreamReader))
+			{
+				bIsProcessing = false;
+				pPeer->Disconnect();
+				return;
+			}
 
 			switch (HandshakeRecord.MessageType)
 			{
@@ -72,11 +79,16 @@ void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 // 次を送信.
 void CSSLHandshake::SendNext()
 {
-	switch (CurrentMessage)
+	switch (CurrentState)
 	{
-		case EMessageType::ServerCertificate:
+		case ESendState::ServerCertificate:
 
 			SendServerCertificate();
+			break;
+
+		case ESendState::ServerHelloDone:
+
+			SendServerHelloDone();
 			break;
 
 		default:
@@ -99,7 +111,25 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		return;
 	}
 
-	CurrentMessage = EMessageType::ServerHello;
+	unsigned short UseCipherSuite = ECipherSuite::TLS_RSA_WITH_3DES_EDE_CBC_SHA;
+	bool bFound = false;
+	for (auto CipherSuite : ClientHello.CipherSuite)
+	{
+		if (CipherSuite == UseCipherSuite)
+		{
+			bFound = true;
+			break;
+		}
+	}
+	if (!bFound)
+	{
+		std::cout << "Invalid Cipher Suite." << std::endl;
+		bIsProcessing = false;
+		pPeer->Disconnect();
+		return;
+	}
+
+	CurrentState = ESendState::ServerHello;
 
 	CRandomString RandomStr;
 	RandomStr.Generate(28);
@@ -116,42 +146,65 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		ServerHello.SessionId.push_back(Rnd() % 255);
 	}
 	*/
-	ServerHello.CipherSuite = SSL_RSA_WITH_RC4_128_MD5;
+	ServerHello.CipherSuite = UseCipherSuite;
 	ServerHello.CompressionMethod = 0;
 
 	SendHandshakePacket(EMessageType::ServerHello, &ServerHello);
-	CurrentMessage = EMessageType::ServerCertificate;
+	CurrentState = ESendState::ServerCertificate;
 }
 
 // ServerCertificateを送信.
 void CSSLHandshake::SendServerCertificate()
 {
-	std::ifstream FileStream("Certificate/server.crt", std::ios::in | std::ios::binary);
+	std::ifstream FileStream("Certificate/server.crt", std::ios::in);
 	if (!FileStream)
 	{
 		std::cout << "CRT File Load Failed." << std::endl;
 		bIsProcessing = false;
+		pPeer->Disconnect();
+		return;
+	}
+
+	std::string CrtData = "";
+
+	while (!FileStream.eof())
+	{
+		static const unsigned int BufferSize = 5096;
+		char Buffer[BufferSize];
+		memset(Buffer, 0, BufferSize);
+		FileStream.getline(Buffer, BufferSize);
+		CrtData += Buffer;
+	}
+
+	// Base64でエンコードされている箇所のみを取り出す。
+	std::string FindText = "-----BEGIN CERTIFICATE-----";
+	auto Pos = CrtData.find(FindText);
+	if (Pos != std::string::npos)
+	{
+		CrtData.replace(Pos, FindText.length(), "");
+	}
+	FindText = "-----END CERTIFICATE-----";
+	Pos = CrtData.find(FindText);
+	if (Pos != std::string::npos)
+	{
+		CrtData.replace(Pos, FindText.length(), "");
+	}
+
+	// デコードしたデータを投げ付ける。
+	std::vector<unsigned char> Decoded;
+	if (!CBase64::Decode(CrtData, Decoded))
+	{
+		std::cout << "Base64 Decode Failed." << std::endl;
+		bIsProcessing = false;
+		pPeer->Disconnect();
 		return;
 	}
 
 	CSSLServerCertificate ServerCertificate;
-
-	std::vector<char> Certificate;
-	while (!FileStream.eof())
-	{
-		static const unsigned int BufferSize = 1024;
-		char Buffer[BufferSize];
-		FileStream.read(Buffer, BufferSize);
-		auto ReadSize = FileStream.gcount();
-		for (unsigned int i = 0; i < ReadSize; i++)
-		{
-			if (Buffer[i] == '\n') { continue; }
-			Certificate.push_back(Buffer[i]);
-		}
-	}
-	ServerCertificate.CertificateList.push_back(Certificate);
-
+	ServerCertificate.CertificateList.push_back(Decoded);
 	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
+
+	CurrentState = ESendState::ServerHelloDone;
 }
 
 // ServerHelloDoneを送信.
@@ -159,6 +212,8 @@ void CSSLHandshake::SendServerHelloDone()
 {
 	CSSLServerHelloDone ServerHelloDone;
 	SendHandshakePacket(EMessageType::ServerHelloDone, &ServerHelloDone);
+
+	CurrentState = ESendState::End;
 }
 
 // ハンドシェイクパケットを送信.
@@ -173,7 +228,7 @@ void CSSLHandshake::SendHandshakePacket(unsigned char MessageType, YanaPServer::
 	CSSLHandshakeRecord HandshakeRecord;
 	MakeSSLHandshakeRecordPacket(MessageType, pPacket, HandshakeRecord);
 	pPeer->Send(&HandshakeRecord);
-
+	
 	// 本体
 	pPeer->Send(pPacket);
 }
@@ -186,7 +241,7 @@ void CSSLHandshake::MakeSSLRecordPacket(YanaPServer::Util::ISerializable *pPacke
 
 	OutRecord.Type = 0x16;
 	OutRecord.Version = Version;
-	OutRecord.Length = SizeCaliculator.GetSize();
+	OutRecord.Length = SizeCaliculator.GetSize() + 4;
 }
 
 // SSLハンドシェイクレコードパケットを生成
