@@ -49,21 +49,20 @@ public:
 	 */
 	bool IsProcessing() const { return bIsProcessing; }
 
-	/**
-	 * @fn void SendNext()
-	 * @brief 次を送信
-	 */
-	void SendNext();
-
 private:
 
 	// メッセージタイプ
 	enum EMessageType
 	{
 		ClientHello = 0x01,
+
 		ServerHello = 0x02,
 		ServerCertificate = 0x0B,
 		ServerHelloDone = 0x0E,
+
+		ClientKeyExchange = 0x10,
+
+		Finished = 0x14,
 	};
 
 	// 送信State
@@ -95,6 +94,21 @@ private:
 	// 現在処理中のメッセージ
 	ESendState CurrentState;
 
+	// クライアント側から投げられた乱数
+	char ClientRandom[28];
+
+	// サーバから投げる乱数
+	char ServerRandom[28];
+
+	// 秘密鍵
+	std::vector<unsigned char> PrivateKey;
+
+
+	// データを受信した。
+	void OnRecvData(YanaPServer::Util::Stream::IMemoryStream *pStream);
+
+	// 暗号化されたデータを受信した。
+	void OnRecvEncryptedData(YanaPServer::Util::Stream::IMemoryStream *pStream);
 
 	// ClientHelloを受信した。
 	void OnRecvClientHello(YanaPServer::Util::Stream::IMemoryStream *pStream);
@@ -105,6 +119,9 @@ private:
 	// ServerHelloDoneを送信。
 	void SendServerHelloDone();
 
+	// ClientKeyExchangeを受信した。
+	void OnRecvClientKeyExchange(YanaPServer::Util::Stream::IMemoryStream *pStream);
+
 	// ハンドシェイクパケットを送信.
 	void SendHandshakePacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket);
 
@@ -113,6 +130,9 @@ private:
 
 	// SSLハンドシェイクレコードパケットを生成.
 	void MakeSSLHandshakeRecordPacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLHandshakeRecord &OutRecord);
+
+	// 秘密鍵の読み込み
+	void LoadPrivateKey();
 
 };
 

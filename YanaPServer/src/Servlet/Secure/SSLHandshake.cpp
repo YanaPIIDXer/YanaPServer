@@ -5,9 +5,9 @@
 #include <random>
 #include "Util/Stream/MemorySizeCaliculator.h"
 #include "Util/Secure/Base64.h"
+#include <fstream>
 
 #include <iostream>
-#include <fstream>
 
 using namespace YanaPServer::Util::Stream;
 using namespace YanaPServer::Servlet::Secure::Packet;
@@ -39,64 +39,95 @@ CSSLHandshake::~CSSLHandshake()
 void CSSLHandshake::OnRecv(const char *pData, unsigned int Size)
 {
 	CMemoryStreamReader StreamReader(pData, Size);
+	OnRecvData(&StreamReader);
+}
+
+
+// データを受信した。
+void CSSLHandshake::OnRecvData(IMemoryStream *pStream)
+{
 	CSSLRecord Record;
-	if (!Record.Serialize(&StreamReader))
+	if (!Record.Serialize(pStream))
 	{
 		bIsProcessing = false;
 		pPeer->Disconnect();
 		return;
 	}
 
-	Version = Record.Version;
-	
-	std::cout << "Type:" << (int)Record.Type << std::endl;
+	printf("Type:%02X\n", Record.Type);
 	std::cout << "Length:" << Record.Length << std::endl;
-	printf("Version:0x%04X\n", Version);
 	switch (Record.Type)
 	{
 		case 0x16:
-		{
-			CSSLHandshakeRecord HandshakeRecord;
-			if (!HandshakeRecord.Serialize(&StreamReader))
 			{
-				bIsProcessing = false;
-				pPeer->Disconnect();
-				return;
-			}
-
-			switch (HandshakeRecord.MessageType)
-			{
-				case EMessageType::ClientHello:
-
-					OnRecvClientHello(&StreamReader);
-					break;
+				CSSLHandshakeRecord HandshakeRecord;
+				if (!HandshakeRecord.Serialize(pStream))
+				{
+					bIsProcessing = false;
+					pPeer->Disconnect();
+					return;
 				}
-		}
-		break;
+
+				printf("MessageType:0x%02X\n", HandshakeRecord.MessageType);
+
+				switch (HandshakeRecord.MessageType)
+				{
+					case EMessageType::ClientHello:
+
+						OnRecvClientHello(pStream);
+						SendServerCertificate();
+						SendServerHelloDone();
+						break;
+
+					case EMessageType::ClientKeyExchange:
+
+						OnRecvClientKeyExchange(pStream);
+						OnRecvData(pStream);
+						break;
+				}
+			}
+			break;
+
+		case 0x14:
+
+			{
+				unsigned char Type = 0;
+				if (!pStream->Serialize(&Type))
+				{
+					bIsProcessing = false;
+					pPeer->Disconnect();
+					return;
+				}
+
+				switch (Type)
+				{
+					case 0x01:
+
+						// ChangeCipherSpec受信.
+						OnRecvEncryptedData(pStream);
+						break;
+				}
+			}
+			break;
 	}
 }
 
-// 次を送信.
-void CSSLHandshake::SendNext()
+// 暗号化されたデータを受信した。
+void CSSLHandshake::OnRecvEncryptedData(IMemoryStream *pStream)
 {
-	switch (CurrentState)
+	CSSLRecord Record;
+	if (!Record.Serialize(pStream))
 	{
-		case ESendState::ServerCertificate:
-
-			SendServerCertificate();
-			break;
-
-		case ESendState::ServerHelloDone:
-
-			SendServerHelloDone();
-			break;
-
-		default:
-
-			break;
+		bIsProcessing = false;
+		pPeer->Disconnect();
+		return;
 	}
-}
 
+	std::cout << "==== Recv Encrypted Data ====" << std::endl;
+	printf("Type:%02X\n", Record.Type);
+	std::cout << "Length:" << Record.Length << std::endl;
+
+}
 
 // ClientHelloを受信した。
 void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
@@ -110,6 +141,9 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		pPeer->Disconnect();
 		return;
 	}
+	
+	Version = ClientHello.ClientVersion;
+	printf("Version:0x%04X\n", Version);
 
 	unsigned short UseCipherSuite = ECipherSuite::TLS_RSA_WITH_3DES_EDE_CBC_SHA;
 	bool bFound = false;
@@ -129,18 +163,20 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		return;
 	}
 
+	memcpy(ClientRandom, ClientHello.Random, 28);
+
 	CurrentState = ESendState::ServerHello;
 
 	CRandomString RandomStr;
 	RandomStr.Generate(28);
 
-	std::random_device Rnd;
-
 	CSSLServerHello ServerHello;
 	ServerHello.Version = ClientHello.ClientVersion;
 	ServerHello.Time = ClientHello.Time;
-	memcpy(ServerHello.Random, RandomStr.Get(), 28);
+	memcpy(ServerRandom, RandomStr.Get(), 28);
+	memcpy(ServerHello.Random, ServerRandom, 28);
 	/*
+	std::random_device Rnd;
 	for (int i = 0; i < 10; i++)
 	{
 		ServerHello.SessionId.push_back(Rnd() % 255);
@@ -194,7 +230,7 @@ void CSSLHandshake::SendServerCertificate()
 	std::vector<unsigned char> Decoded;
 	if (!CBase64::Decode(CrtData, Decoded))
 	{
-		std::cout << "Base64 Decode Failed." << std::endl;
+		std::cout << "Certificate Base64 Decode Failed." << std::endl;
 		bIsProcessing = false;
 		pPeer->Disconnect();
 		return;
@@ -204,6 +240,9 @@ void CSSLHandshake::SendServerCertificate()
 	ServerCertificate.CertificateList.push_back(Decoded);
 	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
 
+	// 秘密鍵もここで読み込んでおく。
+	LoadPrivateKey();
+	
 	CurrentState = ESendState::ServerHelloDone;
 }
 
@@ -214,6 +253,18 @@ void CSSLHandshake::SendServerHelloDone()
 	SendHandshakePacket(EMessageType::ServerHelloDone, &ServerHelloDone);
 
 	CurrentState = ESendState::End;
+}
+
+// ClientKeyExchangeを受信した。
+void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
+{
+	CSSLClientKeyExchange ClientKeyExchange;
+	if (!ClientKeyExchange.Serialize(pStream))
+	{
+		bIsProcessing = false;
+		pPeer->Disconnect();
+		return;
+	}
 }
 
 // ハンドシェイクパケットを送信.
@@ -252,6 +303,52 @@ void CSSLHandshake::MakeSSLHandshakeRecordPacket(unsigned char MessageType, Yana
 
 	OutRecord.MessageType = MessageType;
 	OutRecord.BodyLength = SizeCaliculator.GetSize();
+}
+
+// 秘密鍵の読み込み
+void CSSLHandshake::LoadPrivateKey()
+{
+	std::ifstream FileStream("Certificate/server.key", std::ios::in);
+	if (!FileStream)
+	{
+		std::cout << "KEY File Load Failed." << std::endl;
+		bIsProcessing = false;
+		pPeer->Disconnect();
+		return;
+	}
+
+	std::string KeyData = "";
+
+	while (!FileStream.eof())
+	{
+		static const unsigned int BufferSize = 5096;
+		char Buffer[BufferSize];
+		memset(Buffer, 0, BufferSize);
+		FileStream.getline(Buffer, BufferSize);
+		KeyData += Buffer;
+	}
+
+	// Base64でエンコードされている箇所のみを取り出す。
+	std::string FindText = "-----BEGIN RSA PRIVATE KEY-----";
+	auto Pos = KeyData.find(FindText);
+	if (Pos != std::string::npos)
+	{
+		KeyData.replace(Pos, FindText.length(), "");
+	}
+	FindText = "-----END RSA PRIVATE KEY-----";
+	Pos = KeyData.find(FindText);
+	if (Pos != std::string::npos)
+	{
+		KeyData.replace(Pos, FindText.length(), "");
+	}
+
+	if (!CBase64::Decode(KeyData, PrivateKey))
+	{
+		std::cout << "PrivateKey Base64 Decode Failed." << std::endl;
+		bIsProcessing = false;
+		pPeer->Disconnect();
+		return;
+	}
 }
 
 }

@@ -97,11 +97,7 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 // ‘—M‚µ‚½
 void CServletPeer::OnSend(unsigned int Size)
 {
-	if (SSLHandshake.IsProcessing())
-	{
-		SSLHandshake.SendNext();
-		return;
-	}
+	if (SSLHandshake.IsProcessing()) { return; }
 
 	if (SendSize > Size)
 	{

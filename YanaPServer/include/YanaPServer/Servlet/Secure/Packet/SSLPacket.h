@@ -243,6 +243,7 @@ public:
 		, CipherSuite(0)
 		, CompressionMethod(0)
 	{
+		memset(Random, 0, 28);
 	}
 
 	/**
@@ -390,7 +391,52 @@ public:
 	{
 		return !pStream->IsError();
 	}
+};
 
+/**
+ * @class CSSLClientKeyExchange
+ * @brief ClientKeyExchangeパケット
+ */
+class CSSLClientKeyExchange : public YanaPServer::Util::ISerializable
+{
+
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CSSLClientKeyExchange()
+	{
+	}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CSSLClientKeyExchange() {}
+
+	//! 公開鍵で暗号化されたランダムな文字列
+	std::vector<unsigned char> PreMasterSecret;
+
+	/**
+	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	 * @brief シリアライズ
+	 * @param[in] pStream ストリーム
+	 * @return 成功したらtrueを返す
+	 */
+	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	{
+		unsigned short Length = 0;
+		pStream->Serialize(&Length);
+
+		for (unsigned short i = 0; i < Length; i++)
+		{
+			unsigned char Data = 0;
+			pStream->Serialize(&Data);
+			PreMasterSecret.push_back(Data);
+		}
+
+		return !pStream->IsError();
+	}
 };
 
 }
