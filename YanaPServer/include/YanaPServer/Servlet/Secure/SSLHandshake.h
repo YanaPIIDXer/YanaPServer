@@ -51,6 +51,15 @@ public:
 
 private:
 
+	// レコードタイプ
+	enum ERecordType
+	{
+		Handshake = 0x16,
+		ChangeCipherSpec = 0x14,
+		Alert = 0x15,
+		ApplicationData = 0x17,
+	};
+
 	// メッセージタイプ
 	enum EMessageType
 	{
@@ -65,21 +74,30 @@ private:
 		Finished = 0x14,
 	};
 
-	// 送信State
-	enum class ESendState
-	{
-		ServerHello,
-		ServerCertificate,
-		ServerHelloDone,
-		End,
-	};
-
 	// 暗号化方式
 	enum ECipherSuite
 	{
 		SSL_RSA_WITH_RC4_128_MD5 = 0x0004,
 		SSL_RSA_WITH_RC4_128_SHA = 0x0005,
 		TLS_RSA_WITH_3DES_EDE_CBC_SHA = 0x000A,
+	};
+
+	// アラートレベル
+	enum EAlertLevel
+	{
+		Warning = 0x01,
+		Fatal = 0x02,
+	};
+
+	// アラートの種類
+	enum EAlertDescription
+	{
+		CloseNotify = 0,
+		UnexpectedMessage = 10,
+		HandshakeFailuer = 40,
+		UnsupportedCertificate = 43,
+		CertificateUnknown = 46,
+		DecodeError = 50,
 	};
 
 	// Peer
@@ -91,14 +109,11 @@ private:
 	// バージョン
 	unsigned short Version;
 
-	// 現在処理中のメッセージ
-	ESendState CurrentState;
-
 	// クライアント側から投げられた乱数
-	char ClientRandom[28];
+	char ClientRandom[32];
 
 	// サーバから投げる乱数
-	char ServerRandom[28];
+	char ServerRandom[32];
 
 	// 秘密鍵
 	std::vector<unsigned char> PrivateKey;
@@ -126,13 +141,16 @@ private:
 	void SendHandshakePacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket);
 
 	// SSLRecordパケットを生成.
-	void MakeSSLRecordPacket(YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLRecord &OutRecord);
+	void MakeSSLRecordPacket(ERecordType Type, YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLRecord &OutRecord);
 
 	// SSLハンドシェイクレコードパケットを生成.
 	void MakeSSLHandshakeRecordPacket(unsigned char MessageType, YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLHandshakeRecord &OutRecord);
 
 	// 秘密鍵の読み込み
 	void LoadPrivateKey();
+
+	// Alertを送信。
+	void SendAlert(EAlertLevel Level, EAlertDescription Description);
 
 };
 

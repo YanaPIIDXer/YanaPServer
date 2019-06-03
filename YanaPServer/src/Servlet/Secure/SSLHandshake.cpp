@@ -26,7 +26,6 @@ CSSLHandshake::CSSLHandshake(CServletPeer *pInPeer)
 	: pPeer(pInPeer)
 	, bIsProcessing(false)
 	, Version(0)
-	, CurrentState(ESendState::ServerHello)
 {
 }
 
@@ -49,8 +48,13 @@ void CSSLHandshake::OnRecvData(IMemoryStream *pStream)
 	CSSLRecord Record;
 	if (!Record.Serialize(pStream))
 	{
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::HandshakeFailuer);
+		return;
+	}
+
+	if (Record.Type == 0x80)
+	{
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::CloseNotify);
 		return;
 	}
 
@@ -58,7 +62,7 @@ void CSSLHandshake::OnRecvData(IMemoryStream *pStream)
 	std::cout << "Length:" << Record.Length << std::endl;
 	switch (Record.Type)
 	{
-		case 0x16:
+		case ERecordType::Handshake:
 			{
 				CSSLHandshakeRecord HandshakeRecord;
 				if (!HandshakeRecord.Serialize(pStream))
@@ -88,7 +92,7 @@ void CSSLHandshake::OnRecvData(IMemoryStream *pStream)
 			}
 			break;
 
-		case 0x14:
+		case ERecordType::ChangeCipherSpec:
 
 			{
 				unsigned char Type = 0;
@@ -118,8 +122,7 @@ void CSSLHandshake::OnRecvEncryptedData(IMemoryStream *pStream)
 	CSSLRecord Record;
 	if (!Record.Serialize(pStream))
 	{
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::HandshakeFailuer);
 		return;
 	}
 
@@ -137,8 +140,7 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	CSSLClientHello ClientHello;
 	if (!ClientHello.Serialize(pStream))
 	{
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::HandshakeFailuer);
 		return;
 	}
 	
@@ -158,14 +160,12 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	if (!bFound)
 	{
 		std::cout << "Invalid Cipher Suite." << std::endl;
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::UnsupportedCertificate);
 		return;
 	}
 
-	memcpy(ClientRandom, ClientHello.Random, 28);
-
-	CurrentState = ESendState::ServerHello;
+	memcpy(ClientRandom, &ClientHello.Time, 4);
+	memcpy(ClientRandom + 4, ClientHello.Random, 28);
 
 	CRandomString RandomStr;
 	RandomStr.Generate(28);
@@ -173,20 +173,18 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	CSSLServerHello ServerHello;
 	ServerHello.Version = ClientHello.ClientVersion;
 	ServerHello.Time = ClientHello.Time;
-	memcpy(ServerRandom, RandomStr.Get(), 28);
-	memcpy(ServerHello.Random, ServerRandom, 28);
-	/*
+	memcpy(ServerHello.Random, RandomStr.Get(), 28);
+	memcpy(ServerRandom, &ServerHello.Time, 4);
+	memcpy(ServerRandom + 4, ServerRandom, 28);
 	std::random_device Rnd;
 	for (int i = 0; i < 10; i++)
 	{
 		ServerHello.SessionId.push_back(Rnd() % 255);
 	}
-	*/
 	ServerHello.CipherSuite = UseCipherSuite;
 	ServerHello.CompressionMethod = 0;
 
 	SendHandshakePacket(EMessageType::ServerHello, &ServerHello);
-	CurrentState = ESendState::ServerCertificate;
 }
 
 // ServerCertificateを送信.
@@ -196,8 +194,7 @@ void CSSLHandshake::SendServerCertificate()
 	if (!FileStream)
 	{
 		std::cout << "CRT File Load Failed." << std::endl;
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::CertificateUnknown);
 		return;
 	}
 
@@ -231,19 +228,13 @@ void CSSLHandshake::SendServerCertificate()
 	if (!CBase64::Decode(CrtData, Decoded))
 	{
 		std::cout << "Certificate Base64 Decode Failed." << std::endl;
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::CertificateUnknown);
 		return;
 	}
 
 	CSSLServerCertificate ServerCertificate;
 	ServerCertificate.CertificateList.push_back(Decoded);
 	SendHandshakePacket(EMessageType::ServerCertificate, &ServerCertificate);
-
-	// 秘密鍵もここで読み込んでおく。
-	LoadPrivateKey();
-	
-	CurrentState = ESendState::ServerHelloDone;
 }
 
 // ServerHelloDoneを送信.
@@ -251,8 +242,6 @@ void CSSLHandshake::SendServerHelloDone()
 {
 	CSSLServerHelloDone ServerHelloDone;
 	SendHandshakePacket(EMessageType::ServerHelloDone, &ServerHelloDone);
-
-	CurrentState = ESendState::End;
 }
 
 // ClientKeyExchangeを受信した。
@@ -261,10 +250,14 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	CSSLClientKeyExchange ClientKeyExchange;
 	if (!ClientKeyExchange.Serialize(pStream))
 	{
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::HandshakeFailuer);
 		return;
 	}
+
+	// 秘密鍵を読み込む。
+	LoadPrivateKey();
+
+
 }
 
 // ハンドシェイクパケットを送信.
@@ -272,7 +265,7 @@ void CSSLHandshake::SendHandshakePacket(unsigned char MessageType, YanaPServer::
 {
 	// レコード
 	CSSLRecord Record;
-	MakeSSLRecordPacket(pPacket, Record);
+	MakeSSLRecordPacket(ERecordType::Handshake, pPacket, Record);
 	pPeer->Send(&Record);
 
 	// ハンドシェイクレコード
@@ -285,12 +278,12 @@ void CSSLHandshake::SendHandshakePacket(unsigned char MessageType, YanaPServer::
 }
 
 // SSLRecordパケットを生成.
-void CSSLHandshake::MakeSSLRecordPacket(YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLRecord &OutRecord)
+void CSSLHandshake::MakeSSLRecordPacket(ERecordType Type, YanaPServer::Util::ISerializable *pPacket, YanaPServer::Servlet::Secure::Packet::CSSLRecord &OutRecord)
 {
 	CMemorySizeCaliculator SizeCaliculator;
 	pPacket->Serialize(&SizeCaliculator);
 
-	OutRecord.Type = 0x16;
+	OutRecord.Type = Type;
 	OutRecord.Version = Version;
 	OutRecord.Length = SizeCaliculator.GetSize() + 4;
 }
@@ -312,8 +305,7 @@ void CSSLHandshake::LoadPrivateKey()
 	if (!FileStream)
 	{
 		std::cout << "KEY File Load Failed." << std::endl;
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::CertificateUnknown);
 		return;
 	}
 
@@ -345,10 +337,25 @@ void CSSLHandshake::LoadPrivateKey()
 	if (!CBase64::Decode(KeyData, PrivateKey))
 	{
 		std::cout << "PrivateKey Base64 Decode Failed." << std::endl;
-		bIsProcessing = false;
-		pPeer->Disconnect();
+		SendAlert(EAlertLevel::Fatal, EAlertDescription::CertificateUnknown);
 		return;
 	}
+}
+
+// Alertを送信.
+void CSSLHandshake::SendAlert(EAlertLevel Level, EAlertDescription Description)
+{
+	CSSLAlert Alert;
+	Alert.Level = Level;
+	Alert.Description = Description;
+
+	CSSLRecord Record;
+	MakeSSLRecordPacket(ERecordType::Alert, &Alert, Record);
+
+	pPeer->Send(&Record);
+	pPeer->Send(&Alert);
+
+	bIsProcessing = false;
 }
 
 }

@@ -128,8 +128,48 @@ public:
 
 		return !pStream->IsError();
 	}
+};
 
+/**
+ * @class CSSLAlert
+ * @brief アラートパケット
+ */
+class CSSLAlert : public YanaPServer::Util::ISerializable
+{
 
+public:
+
+	/**
+	 * @brief コンストラクタ
+	 */
+	CSSLAlert()
+	{
+	}
+
+	/**
+	 * @brief デストラクタ
+	 */
+	virtual ~CSSLAlert() {}
+
+	//! アラートレベル
+	unsigned char Level;
+
+	//! タイプ
+	unsigned char Description;
+
+	/**
+	 * @fn virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	 * @brief シリアライズ
+	 * @param[in] pStream ストリーム
+	 * @return 成功したらtrueを返す
+	 */
+	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
+	{
+		pStream->Serialize(&Level);
+		pStream->Serialize(&Description);
+
+		return !pStream->IsError();
+	}
 };
 
 /**
