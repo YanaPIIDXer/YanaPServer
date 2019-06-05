@@ -261,10 +261,11 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	// 秘密鍵を読み込む。
 	LoadPrivateKey();
 
+	cpp_int PreMasterSecret(ClientKeyExchange.PreMasterSecret);
 	cpp_int Prime1(PrivateKey.BERs[0]->Children[4]->Content);
 	cpp_int Prime2(PrivateKey.BERs[0]->Children[5]->Content);
 
-	// @TODO:復号化で暗号文のべき乗を求めるのにクソみたいに時間かかるぞ。
+	MasterSecret = CalcMasterSecret(PreMasterSecret, Prime1, Prime2);
 }
 
 // ハンドシェイクパケットを送信.
@@ -412,6 +413,20 @@ void CSSLHandshake::CalcPRF(const std::string &Secret, const std::string &Label,
 			OutBytes.push_back(Byte);
 		}
 	}
+}
+
+// マスタシークレットを計算.
+cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret, const cpp_int &Prime1, const cpp_int &Prime2)
+{
+	if (Prime1 == 0) { return 1; }
+
+	if ((Prime1 % 2) == 0)
+	{
+		cpp_int t = CalcMasterSecret(PreMasterSecret, Prime1 / 2, Prime2);
+		return t * t % Prime2;
+	}
+
+	return PreMasterSecret * CalcMasterSecret(PreMasterSecret, Prime1 - 1, Prime2);
 }
 
 }
