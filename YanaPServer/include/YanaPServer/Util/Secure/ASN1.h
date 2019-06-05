@@ -3,6 +3,9 @@
 
 #include "Util/Serializable.h"
 #include <vector>
+#include "Util/Stream/MemoryStreamReader.h"
+
+#include <iostream>
 
 namespace YanaPServer
 {
@@ -32,8 +35,8 @@ public:
 	//! Content
 	std::vector<unsigned char> Content;
 
-	//! 子要素（PCが1だった場合に使用される）
-	CBER *pChild;
+	//! 子要素群
+	std::vector<CBER *> Children;
 
 	/**
 	 * @brief コンストラクタ
@@ -42,7 +45,6 @@ public:
 	 : Class(0)
 	 , PC(0)
 	 , TagNumber(0)
-	 , pChild(nullptr)
 	{
 	}
 
@@ -51,7 +53,11 @@ public:
 	 */
 	virtual ~CBER()
 	{
-		delete pChild;
+		for (auto *pChild : Children)
+		{
+			delete pChild;
+		}
+		Children.clear();
 	}
 
 	/**
@@ -63,30 +69,52 @@ public:
 	virtual bool Serialize(YanaPServer::Util::Stream::IMemoryStream *pStream) override
 	{
 		unsigned char Identifier = 0;
-		unsigned char Length = 0;
+		unsigned int Length = 0;
 		pStream->Serialize(&Identifier);
-		pStream->Serialize(&Length);
+		pStream->Serialize(&Length, 1);
+
+		if (pStream->IsError()) { return false; }
 
 		Class = ((Identifier & 0xC0) >> 6);
 		PC = ((Identifier & 0x20) >> 5);
 		TagNumber = (Identifier & 0x1F);
+		bool bHasEOF = (Length == 0x80);
+
+		int Bytes = 0;
+		if (Length >= 0x81)
+		{
+			Bytes = (Length & 0x7F);
+			Length = 0;
+			for (int i = Bytes - 1; i >= 0; i--)
+			{
+				unsigned int Data = 0;
+				pStream->Serialize(&Data, 1);
+				Length |= (Data << (i * 8));
+			}
+		}
 
 		if (PC == 1)
 		{
-			pChild = new CBER();
-			return pChild->Serialize(pStream);
+			// 別ストリームに流し込み、子要素を列挙する。
+			char *pData = new char[Length];
+			pStream->Serialize(pData, Length);
+			YanaPServer::Util::Stream::CMemoryStreamReader StreamReader(pData, Length);
+
+			while (StreamReader.IsLeftData())
+			{
+				CBER * pChild = new CBER();
+				if (!pChild->Serialize(&StreamReader))
+				{
+					delete pChild;
+					return false;
+				}
+
+				Children.push_back(pChild);
+			}
+			return true;
 		}
 		
-		if (Length < 0x7F)
-		{
-			for (unsigned char i = 0; i < Length; i++)
-			{
-				unsigned char Data = 0;
-				pStream->Serialize(&Data);
-				Content.push_back(Data);
-			}
-		}
-		else if (Length == 0x80)
+		if (bHasEOF)
 		{
 			while (true)
 			{
@@ -109,16 +137,7 @@ public:
 		}
 		else
 		{
-			unsigned char Bytes = (Length & 0x7F);
-			Length = 0;
-			for (unsigned char i = 0; i < Bytes; i++)
-			{
-				unsigned char Data = 0;
-				pStream->Serialize(&Data);
-				Length |= (Data << i);
-			}
-
-			for (unsigned char i = 0; i < Length; i++)
+			for (unsigned int i = 0; i < Length; i++)
 			{
 				unsigned char Data = 0;
 				pStream->Serialize(&Data);
@@ -175,6 +194,7 @@ public:
 				delete pBER;
 				break;
 			}
+			std::cout << "Create BER Data. Child Count:" << pBER->Children.size() << std::endl;
 			BERs.push_back(pBER);
 		}
 

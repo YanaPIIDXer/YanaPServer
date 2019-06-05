@@ -256,41 +256,6 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 
 	// 秘密鍵を読み込む。
 	LoadPrivateKey();
-
-	for (const auto *pBER : PrivateKey.BERs)
-	{
-		printf("Class:%d P/C:%d TagNumber:%d\n", pBER->Class, pBER->PC, pBER->TagNumber);
-		if (pBER->PC == 0)
-		{
-			std::cout << "===== DATA =====" << std::endl;
-			for (auto Ch : pBER->Content)
-			{
-				printf("0x%02X ", Ch);
-			}
-			std::cout << "====================" << std::endl;
-		}
-		else
-		{
-			CBER *pChild = pBER->pChild;
-			while (true)
-			{
-				std::cout << std::endl;
-				printf("Class:%d P/C:%d TagNumber:%d\n", pChild->Class, pChild->PC, pChild->TagNumber);
-				if (pChild->PC == 1)
-				{
-					pChild = pChild->pChild;
-					continue;
-				}
-				std::cout << "===== DATA =====" << std::endl;
-				for (auto Ch : pChild->Content)
-				{
-					printf("0x%02X ", Ch);
-				}
-				std::cout << std::endl << "====================" << std::endl;
-				break;
-			}
-		}
-	}
 }
 
 // ハンドシェイクパケットを送信.
