@@ -132,6 +132,13 @@ public:
 	virtual bool IsError() const = 0;
 
 	/**
+	 * @fn virtual bool IsLeftData() const = 0
+	 * @brief 読み込んでいないデータが残っているか？
+	 * @return 残っていたらtrueを返す。
+	 */
+	virtual bool IsLeftData() const = 0;
+
+	/**
 	 * @fn virtual EStreamType GetType() const = 0
 	 * @brief ストリームタイプを取得
 	 * @return ストリームタイプ返す。

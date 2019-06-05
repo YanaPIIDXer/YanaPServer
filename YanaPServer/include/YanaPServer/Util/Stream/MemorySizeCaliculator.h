@@ -123,6 +123,13 @@ public:
 	virtual bool IsError() const override { return false; }
 
 	/**
+	 * @fn virtual bool IsLeftData() const override
+	 * @brief 読み込んでいないデータが残っているか？
+	 * @return 読み込むデータなんて無いので常にfalseを返す。
+	 */
+	virtual bool IsLeftData() const override { return false; }
+
+	/**
 	 * @fn virtual EStreamType GetType() const override
 	 * @brief ストリームタイプを取得
 	 * @return ストリームタイプ返す。
