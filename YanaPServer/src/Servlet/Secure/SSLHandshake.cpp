@@ -6,6 +6,8 @@
 #include "Util/Stream/MemorySizeCaliculator.h"
 #include "Util/Secure/Base64.h"
 #include <fstream>
+#include "boost/uuid/name_generator_md5.hpp"
+#include "boost/uuid/name_generator_sha1.hpp"
 
 #include <iostream>
 
@@ -14,6 +16,7 @@ using namespace YanaPServer::Servlet::Secure::Packet;
 using namespace YanaPServer::Util;
 using namespace YanaPServer::Util::Secure;
 using namespace boost::multiprecision;
+using namespace boost::uuids::detail;
 
 namespace YanaPServer
 {
@@ -165,10 +168,8 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		return;
 	}
 
-	char Buffer[32];
-	memcpy(Buffer, &ClientHello.Time, 4);
-	memcpy(Buffer + 4, ClientHello.Random, 28);
-	ClientRandom.assign(Buffer);
+	memcpy(ClientRandom, &ClientHello.Time, 4);
+	memcpy(ClientRandom + 4, ClientHello.Random, 28);
 
 	CRandomString RandomStr;
 	RandomStr.Generate(28, true);
@@ -177,9 +178,8 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	ServerHello.Version = ClientHello.ClientVersion;
 	ServerHello.Time = ClientHello.Time;
 	memcpy(ServerHello.Random, RandomStr.Get(), 28);
-	memcpy(Buffer, &ServerHello.Time, 4);
-	memcpy(Buffer + 4, RandomStr.Get(), 28);
-	ServerRandom.assign(Buffer);
+	memcpy(ServerRandom, &ServerHello.Time, 4);
+	memcpy(ServerRandom + 4, RandomStr.Get(), 28);
 	std::random_device Rnd;
 	for (int i = 0; i < 10; i++)
 	{
@@ -264,8 +264,7 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	cpp_int Prime1(PrivateKey.BERs[0]->Children[4]->Content);
 	cpp_int Prime2(PrivateKey.BERs[0]->Children[5]->Content);
 
-	cpp_int PreMasterSecret(ClientKeyExchange.PreMasterSecret);
-	MasterSecret = (PreMasterSecret ^ Prime1) % Prime2;
+	// @TODO:復号化で暗号文のべき乗を求めるのにクソみたいに時間かかるぞ。
 }
 
 // ハンドシェイクパケットを送信.
@@ -373,6 +372,46 @@ void CSSLHandshake::SendAlert(EAlertLevel Level, EAlertDescription Description)
 	pPeer->Send(&Alert);
 
 	bIsProcessing = false;
+}
+
+// PRF計算.
+void CSSLHandshake::CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, std::vector<unsigned char> &OutBytes)
+{
+	OutBytes.clear();
+
+	std::string LabelAndSeed = Label + Seed;
+	
+	// MD5
+	std::string MD5Str = Secret.substr(0, Secret.length() / 2) + LabelAndSeed;
+	md5 MD5;
+	MD5.process_bytes(MD5Str.c_str(), MD5Str.length());
+	md5::digest_type MD5ResultTmp;
+	MD5.get_digest(MD5ResultTmp);
+	unsigned int MD5Result[5];
+	for (int i = 0; i < 4; i++)
+	{
+		MD5Result[i] = MD5ResultTmp[i];
+	}
+	MD5Result[4] = 0;
+
+	// SHA1
+	std::string SHA1Str = Secret.substr(Secret.length() / 2) + LabelAndSeed;
+	sha1 SHA1;
+	SHA1.process_bytes(SHA1Str.c_str(), SHA1Str.length());
+	sha1::digest_type SHA1Result;
+	SHA1.get_digest(SHA1Result);
+
+	// 排他的論理和を取り、配列にブチ込む。
+	for (int i = 0; i < 5; i++)
+	{
+		int XOR = MD5Result[i] ^ SHA1Result[i];
+		unsigned char Bytes[4];
+		memcpy(Bytes, &XOR, 4);
+		for(unsigned char Byte : Bytes)
+		{
+			OutBytes.push_back(Byte);
+		}
+	}
 }
 
 }

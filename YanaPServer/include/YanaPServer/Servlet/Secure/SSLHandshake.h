@@ -112,10 +112,10 @@ private:
 	unsigned short Version;
 
 	// クライアント側から投げられた乱数
-	boost::multiprecision::cpp_int ClientRandom;
+	char ClientRandom[32];
 
 	// サーバから投げる乱数
-	boost::multiprecision::cpp_int ServerRandom;
+	char ServerRandom[32];
 
 	// 秘密鍵
 	YanaPServer::Util::Secure::CASN1 PrivateKey;
@@ -156,6 +156,9 @@ private:
 
 	// Alertを送信。
 	void SendAlert(EAlertLevel Level, EAlertDescription Description);
+
+	// PRF計算
+	void CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, std::vector<unsigned char> &OutBytes);
 
 };
 
