@@ -261,11 +261,15 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	// 秘密鍵を読み込む。
 	LoadPrivateKey();
 
+	// プリマスタシークレットの復号化.
 	cpp_int PreMasterSecret(ClientKeyExchange.PreMasterSecret);
 	cpp_int Prime1(PrivateKey.BERs[0]->Children[4]->Content);
 	cpp_int Prime2(PrivateKey.BERs[0]->Children[5]->Content);
+	PreMasterSecret = DecriptPreMasterSecret(PreMasterSecret, Prime1, Prime2);
 
-	MasterSecret = CalcMasterSecret(PreMasterSecret, Prime1, Prime2);
+	// マスタシークレット計算.
+	MasterSecret = CalcMasterSecret(PreMasterSecret);
+	std::cout << "Master Secret:" << MasterSecret << std::endl;
 }
 
 // ハンドシェイクパケットを送信.
@@ -415,18 +419,57 @@ void CSSLHandshake::CalcPRF(const std::string &Secret, const std::string &Label,
 	}
 }
 
-// マスタシークレットを計算.
-cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret, const cpp_int &Prime1, const cpp_int &Prime2)
+// プリマスタシークレットを復号化.
+cpp_int CSSLHandshake::DecriptPreMasterSecret(const cpp_int &PreMasterSecret, const cpp_int &Prime1, const cpp_int &Prime2)
 {
 	if (Prime1 == 0) { return 1; }
 
 	if ((Prime1 % 2) == 0)
 	{
-		cpp_int t = CalcMasterSecret(PreMasterSecret, Prime1 / 2, Prime2);
+		cpp_int t = DecriptPreMasterSecret(PreMasterSecret, Prime1 / 2, Prime2);
 		return t * t % Prime2;
 	}
 
-	return PreMasterSecret * CalcMasterSecret(PreMasterSecret, Prime1 - 1, Prime2);
+	return PreMasterSecret * DecriptPreMasterSecret(PreMasterSecret, Prime1 - 1, Prime2);
+}
+
+// マスタシークレットを計算.
+cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret)
+{
+	std::vector<unsigned char> Bytes;
+
+	std::string Seed = "master secret";
+	Seed += ClientRandom;
+	Seed += ServerRandom;
+
+	P_Hash(Seed, PreMasterSecret.str(), 48, Bytes);
+
+	cpp_int Result(Bytes);
+	return Result;
+}
+
+// P_Hash
+void CSSLHandshake::P_Hash(const std::string &Seed, const std::string &Secret, int NeedBytes, std::vector<unsigned char> &OutBytes)
+{
+	int Count = NeedBytes / 16;
+	std::string MD5Seed = Seed + Secret;
+	for (int i = 0; i < Count; i++)
+	{
+		md5 MD5;
+		MD5.process_bytes(Seed.c_str(), Seed.length());
+		md5::digest_type Result;
+		MD5.get_digest(Result);
+
+		char Bytes[16];
+		memcpy(Bytes, Result, 16);
+		for (auto Byte : Bytes)
+		{
+			OutBytes.push_back((unsigned char) Byte);
+		}
+
+		MD5Seed = Bytes;
+		MD5Seed += Secret;
+	}
 }
 
 }

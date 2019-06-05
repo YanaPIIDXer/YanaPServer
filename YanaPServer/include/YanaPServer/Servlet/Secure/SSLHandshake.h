@@ -160,9 +160,14 @@ private:
 	// PRF計算
 	void CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, std::vector<unsigned char> &OutBytes);
 
-	// マスタシークレットを計算
-	boost::multiprecision::cpp_int CalcMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret, const boost::multiprecision::cpp_int &Prime1, const boost::multiprecision::cpp_int &Prime2);
+	// プリマスタシークレットを復号化
+	boost::multiprecision::cpp_int DecriptPreMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret, const boost::multiprecision::cpp_int &Prime1, const boost::multiprecision::cpp_int &Prime2);
 
+	// マスタシークレットを計算.
+	boost::multiprecision::cpp_int CalcMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret);
+
+	// P_Hash
+	void P_Hash(const std::string &Seed, const std::string &Secret, int NeedBytes, std::vector<unsigned char> &OutBytes);
 };
 
 }
