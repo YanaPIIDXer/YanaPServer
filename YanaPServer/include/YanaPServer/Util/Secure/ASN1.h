@@ -194,7 +194,6 @@ public:
 				delete pBER;
 				break;
 			}
-			std::cout << "Create BER Data. Child Count:" << pBER->Children.size() << std::endl;
 			BERs.push_back(pBER);
 		}
 
