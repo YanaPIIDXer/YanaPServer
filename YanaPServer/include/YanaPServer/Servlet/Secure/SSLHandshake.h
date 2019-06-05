@@ -112,10 +112,10 @@ private:
 	unsigned short Version;
 
 	// クライアント側から投げられた乱数
-	char ClientRandom[32];
+	boost::multiprecision::cpp_int ClientRandom;
 
 	// サーバから投げる乱数
-	char ServerRandom[32];
+	boost::multiprecision::cpp_int ServerRandom;
 
 	// 秘密鍵
 	YanaPServer::Util::Secure::CASN1 PrivateKey;

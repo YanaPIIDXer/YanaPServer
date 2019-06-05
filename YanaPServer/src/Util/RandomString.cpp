@@ -23,7 +23,7 @@ CRandomString::~CRandomString()
 }
 
 // ê∂ê¨.
-void CRandomString::Generate(unsigned int Length)
+void CRandomString::Generate(unsigned int Length, bool bIsHex)
 {
 	delete[] pStr;
 
@@ -33,7 +33,7 @@ void CRandomString::Generate(unsigned int Length)
 	unsigned int CharSetLength = strlen(pCharSet);
 	for (unsigned int i = 0; i < Length; i++)
 	{
-		int Index = Rnd() % CharSetLength;
+		int Index = Rnd() % (bIsHex ? 16 : CharSetLength);
 		pStr[i] = pCharSet[Index];
 	}
 	pStr[Length] = '\0';

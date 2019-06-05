@@ -29,8 +29,9 @@ public:
 	 * @fn void Generate(unsigned int Length)
 	 * @brief ¶¬
 	 * @param[in] Length •¶š—ñ’·
+	 * @param[in] bIsHex ‚P‚Ui”‚Ì•¶š—ñ‚©H
 	 */
-	void Generate(unsigned int Length);
+	void Generate(unsigned int Length, bool bIsHex = false);
 
 	/**
 	 * @fn const char *Get() const

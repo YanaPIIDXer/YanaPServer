@@ -165,18 +165,21 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 		return;
 	}
 
-	memcpy(ClientRandom, &ClientHello.Time, 4);
-	memcpy(ClientRandom + 4, ClientHello.Random, 28);
+	char Buffer[32];
+	memcpy(Buffer, &ClientHello.Time, 4);
+	memcpy(Buffer + 4, ClientHello.Random, 28);
+	ClientRandom.assign(Buffer);
 
 	CRandomString RandomStr;
-	RandomStr.Generate(28);
+	RandomStr.Generate(28, true);
 
 	CSSLServerHello ServerHello;
 	ServerHello.Version = ClientHello.ClientVersion;
 	ServerHello.Time = ClientHello.Time;
 	memcpy(ServerHello.Random, RandomStr.Get(), 28);
-	memcpy(ServerRandom, &ServerHello.Time, 4);
-	memcpy(ServerRandom + 4, ServerRandom, 28);
+	memcpy(Buffer, &ServerHello.Time, 4);
+	memcpy(Buffer + 4, RandomStr.Get(), 28);
+	ServerRandom.assign(Buffer);
 	std::random_device Rnd;
 	for (int i = 0; i < 10; i++)
 	{
