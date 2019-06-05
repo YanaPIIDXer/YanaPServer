@@ -3,6 +3,7 @@
 
 #include "Util/Stream/MemoryStream.h"
 #include "Servlet/Secure/Packet/SSLPacket.h"
+#include "Util/Secure/ASN1.h"
 
 namespace YanaPServer
 {
@@ -116,7 +117,7 @@ private:
 	char ServerRandom[32];
 
 	// 秘密鍵
-	std::vector<unsigned char> PrivateKey;
+	YanaPServer::Util::Secure::CASN1 PrivateKey;
 
 
 	// データを受信した。

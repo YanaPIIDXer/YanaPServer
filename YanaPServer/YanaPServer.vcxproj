@@ -192,6 +192,7 @@
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLBuilder.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h" />
     <ClInclude Include="include\YanaPServer\Util\RandomString.h" />
+    <ClInclude Include="include\YanaPServer\Util\Secure\ASN1.h" />
     <ClInclude Include="include\YanaPServer\Util\Secure\Base64.h" />
     <ClInclude Include="include\YanaPServer\Util\Secure\RSA.h" />
     <ClInclude Include="include\YanaPServer\Util\Serializable.h" />
