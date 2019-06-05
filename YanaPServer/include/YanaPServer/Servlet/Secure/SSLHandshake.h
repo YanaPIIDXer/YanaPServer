@@ -123,6 +123,9 @@ private:
 	// マスタシークレット
 	boost::multiprecision::cpp_int MasterSecret;
 
+	// キーブロック
+	std::vector<std::vector<unsigned char>> KeyBlock;
+
 
 	// データを受信した。
 	void OnRecvData(YanaPServer::Util::Stream::IMemoryStream *pStream);
@@ -156,9 +159,6 @@ private:
 
 	// Alertを送信。
 	void SendAlert(EAlertLevel Level, EAlertDescription Description);
-
-	// PRF計算
-	void CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, std::vector<unsigned char> &OutBytes);
 
 	// プリマスタシークレットを復号化
 	boost::multiprecision::cpp_int DecriptPreMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret, const boost::multiprecision::cpp_int &Prime1, const boost::multiprecision::cpp_int &Prime2);
