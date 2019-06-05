@@ -4,6 +4,7 @@
 #include "Util/Stream/MemoryStream.h"
 #include "Servlet/Secure/Packet/SSLPacket.h"
 #include "Util/Secure/ASN1.h"
+#include "boost/multiprecision/cpp_int.hpp"
 
 namespace YanaPServer
 {
@@ -118,6 +119,9 @@ private:
 
 	// 秘密鍵
 	YanaPServer::Util::Secure::CASN1 PrivateKey;
+
+	// マスタシークレット
+	boost::multiprecision::cpp_int MasterSecret;
 
 
 	// データを受信した。

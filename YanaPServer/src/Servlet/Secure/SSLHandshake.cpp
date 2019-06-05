@@ -13,6 +13,7 @@ using namespace YanaPServer::Util::Stream;
 using namespace YanaPServer::Servlet::Secure::Packet;
 using namespace YanaPServer::Util;
 using namespace YanaPServer::Util::Secure;
+using namespace boost::multiprecision;
 
 namespace YanaPServer
 {
@@ -256,6 +257,12 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 
 	// 秘密鍵を読み込む。
 	LoadPrivateKey();
+
+	cpp_int Prime1(PrivateKey.BERs[0]->Children[4]->Content);
+	cpp_int Prime2(PrivateKey.BERs[0]->Children[5]->Content);
+
+	cpp_int PreMasterSecret(ClientKeyExchange.PreMasterSecret);
+	MasterSecret = (PreMasterSecret ^ Prime1) % Prime2;
 }
 
 // ハンドシェイクパケットを送信.
