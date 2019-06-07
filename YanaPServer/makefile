@@ -9,7 +9,7 @@ else
   LDFLAGS = -L/usr/local/lib -L/usr/lib
 endif
 # インクルードパスの指定。これをちゃんとしておかないとDEPENDS(依存)ファイルがうまく作れない
-INCLUDE   = -I../include -I/usr/local/include -I./include/YanaPServer
+INCLUDE   = -I../include -I/usr/local/include -I./include/YanaPServer -I/root/boost_1_62_0
 # 生成される静的ライブラリ
 TARGETS   = bin/libyanapserver.a
 # 生成されるバイナリファイルの出力ディレクトリ
