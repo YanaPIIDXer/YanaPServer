@@ -272,7 +272,7 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	cpp_int PreMasterSecret(ClientKeyExchange.PreMasterSecret);
 	cpp_int Prime1(PrivateKey.BERs[0]->Children[4]->Content);
 	cpp_int Prime2(PrivateKey.BERs[0]->Children[5]->Content);
-	PreMasterSecret = DecriptPreMasterSecret(PreMasterSecret, Prime1, Prime2);
+	PreMasterSecret = Decript(PreMasterSecret, Prime1, Prime2);
 
 	// マスタシークレット計算.
 	MasterSecret = CalcMasterSecret(PreMasterSecret);
@@ -403,18 +403,18 @@ void CSSLHandshake::SendAlert(EAlertLevel Level, EAlertDescription Description)
 	bIsProcessing = false;
 }
 
-// プリマスタシークレットを復号化.
-cpp_int CSSLHandshake::DecriptPreMasterSecret(const cpp_int &PreMasterSecret, const cpp_int &Prime1, const cpp_int &Prime2)
+// 復号化.
+cpp_int CSSLHandshake::Decript(const cpp_int &Encrypted, const cpp_int &Prime1, const cpp_int &Prime2)
 {
 	if (Prime1 == 0) { return 1; }
 
 	if ((Prime1 % 2) == 0)
 	{
-		cpp_int t = DecriptPreMasterSecret(PreMasterSecret, Prime1 / 2, Prime2);
+		cpp_int t = Decript(Encrypted, Prime1 / 2, Prime2);
 		return t * t % Prime2;
 	}
 
-	return PreMasterSecret * DecriptPreMasterSecret(PreMasterSecret, Prime1 - 1, Prime2);
+	return Encrypted * Decript(Encrypted, Prime1 - 1, Prime2);
 }
 
 // マスタシークレットを計算.

@@ -160,8 +160,8 @@ private:
 	// Alertを送信。
 	void SendAlert(EAlertLevel Level, EAlertDescription Description);
 
-	// プリマスタシークレットを復号化
-	boost::multiprecision::cpp_int DecriptPreMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret, const boost::multiprecision::cpp_int &Prime1, const boost::multiprecision::cpp_int &Prime2);
+	// 復号化
+	boost::multiprecision::cpp_int Decript(const boost::multiprecision::cpp_int &Encrypted, const boost::multiprecision::cpp_int &Prime1, const boost::multiprecision::cpp_int &Prime2);
 
 	// マスタシークレットを計算.
 	boost::multiprecision::cpp_int CalcMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret);
