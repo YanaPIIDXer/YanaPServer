@@ -138,9 +138,6 @@ void CSSLHandshake::OnRecvEncryptedData(IMemoryStream *pStream)
 	std::vector<char> Data;
 	Data.resize(Record.Length);
 	pStream->Serialize(&Data[0], Record.Length);
-
-	// シークレットマスタを使って復号化.
-
 }
 
 // ClientHelloを受信した。
@@ -435,24 +432,34 @@ cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret)
 // P_Hash
 void CSSLHandshake::P_Hash(const std::string &Seed, const std::string &Secret, int NeedBytes, std::vector<unsigned char> &OutBytes)
 {
-	int Count = NeedBytes / 16;
-	std::string MD5Seed = Seed + Secret;
+	int Count = NeedBytes / 20;
+	if ((NeedBytes % 20) > 0)
+	{
+		Count++;
+	}
+	std::string SHASeed = Seed + Secret;
+	std::vector<unsigned char> ResultBytes;
 	for (int i = 0; i < Count; i++)
 	{
-		md5 MD5;
-		MD5.process_bytes(MD5Seed.c_str(), MD5Seed.length());
-		md5::digest_type Result;
-		MD5.get_digest(Result);
+		sha1 SHA;
+		SHA.process_bytes(SHASeed.c_str(), SHASeed.length());
+		sha1::digest_type Result;
+		SHA.get_digest(Result);
 
-		char Bytes[16];
-		memcpy(Bytes, Result, 16);
+		char Bytes[20];
+		memcpy(Bytes, Result, 20);
 		for (auto Byte : Bytes)
 		{
-			OutBytes.push_back((unsigned char) Byte);
+			ResultBytes.push_back((unsigned char) Byte);
 		}
 
-		MD5Seed = Bytes;
-		MD5Seed += Secret;
+		SHASeed = Bytes;
+		SHASeed += Secret;
+	}
+
+	for (int i = 0; i < NeedBytes; i++)
+	{
+		OutBytes.push_back(ResultBytes[i]);
 	}
 }
 
