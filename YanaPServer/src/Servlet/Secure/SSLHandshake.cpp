@@ -431,12 +431,14 @@ cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret)
 void CSSLHandshake::CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes)
 {
 	// MD5
+	std::string HashSecret = Secret.substr(0, Secret.length() / 2);
 	std::vector<unsigned char> MD5Result;
-	P_Hash(EHashType::MD5, Label + Seed, Secret, NeedBytes, MD5Result);
+	P_Hash(EHashType::MD5, Label + Seed, HashSecret, NeedBytes, MD5Result);
 
 	// SHA1
+	HashSecret = Secret.substr(HashSecret.length());
 	std::vector<unsigned char> SHA1Result;
-	P_Hash(EHashType::SHA1, Label + Seed, Secret, NeedBytes, SHA1Result);
+	P_Hash(EHashType::SHA1, Label + Seed, HashSecret, NeedBytes, SHA1Result);
 
 	// XORÇéÊÇ¡ÇƒÇ¢Ç≠ÅB
 	OutBytes.clear();
