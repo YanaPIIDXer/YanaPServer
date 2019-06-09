@@ -278,12 +278,16 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	// キーブロック計算.
 	std::string  Seed = ServerRandom;
 	Seed += ClientRandom;
-	std::vector<unsigned char> Bytes;
-	CalcPRF(MasterSecret.str(), "key expension", Seed, 104, Bytes);
-	for (auto Byte : Bytes)
-	{
-		KeyBlock.push_back(Byte);
-	}
+	std::vector<unsigned char> KeyBlock;
+	CalcPRF(MasterSecret.str(), "key expension", Seed, 104, KeyBlock);
+	
+	// キーブロックを切り出す。
+	memcpy(ClientWriteMAC, &KeyBlock[0], 20);
+	memcpy(ServerWriteMAC, &KeyBlock[20], 20);
+	memcpy(ClientSecretKey, &KeyBlock[40], 24);
+	memcpy(ServerSecretKey, &KeyBlock[64], 24);
+	memcpy(PrevClientCipherBlock, &KeyBlock[88], 8);
+	memcpy(PrevServerCipherBlock, &KeyBlock[96], 8);
 }
 
 // ハンドシェイクパケットを送信.

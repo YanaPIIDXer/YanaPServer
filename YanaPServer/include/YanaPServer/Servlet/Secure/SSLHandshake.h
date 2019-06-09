@@ -130,8 +130,23 @@ private:
 	// マスタシークレット
 	boost::multiprecision::cpp_int MasterSecret;
 
-	// キーブロック
-	std::vector<unsigned char> KeyBlock;
+	// クライアントMAC書き込みシークレット
+	unsigned char ClientWriteMAC[20];
+
+	// サーバMAC書き込みシークレット
+	unsigned char ServerWriteMAC[20];
+
+	// クライアント暗号化キー
+	unsigned char ClientSecretKey[24];
+
+	// サーバ暗号化キー
+	unsigned char ServerSecretKey[24];
+
+	// 前のクライアント暗号文ブロック
+	unsigned char PrevClientCipherBlock[8];
+
+	// 前のサーバ暗号文ブロック
+	unsigned char PrevServerCipherBlock[8];
 
 
 	// データを受信した。
