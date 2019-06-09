@@ -503,6 +503,7 @@ void CSSLHandshake::P_Hash(EHashType Type, const std::string &Seed, const std::s
 		HashSeed += Secret;
 	}
 
+	OutBytes.clear();
 	for (unsigned int i = 0; i < NeedBytes; i++)
 	{
 		OutBytes.push_back(ResultBytes[i]);
