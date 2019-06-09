@@ -131,7 +131,7 @@ private:
 	boost::multiprecision::cpp_int MasterSecret;
 
 	// キーブロック
-	std::vector<std::vector<unsigned char>> KeyBlock;
+	std::vector<unsigned char> KeyBlock;
 
 
 	// データを受信した。

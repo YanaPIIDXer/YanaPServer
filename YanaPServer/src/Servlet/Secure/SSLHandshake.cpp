@@ -280,15 +280,9 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	Seed += ClientRandom;
 	std::vector<unsigned char> Bytes;
 	CalcPRF(MasterSecret.str(), "key expension", Seed, 104, Bytes);
-	std::vector<unsigned char> Block;
-	for (unsigned int i = 0; i < Bytes.size(); i++)
+	for (auto Byte : Bytes)
 	{
-		Block.push_back(Bytes[i]);
-		if (Block.size() >= 16)
-		{
-			KeyBlock.push_back(Block);
-			Block.clear();
-		}
+		KeyBlock.push_back(Byte);
 	}
 }
 
