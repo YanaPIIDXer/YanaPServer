@@ -102,6 +102,13 @@ private:
 		DecodeError = 50,
 	};
 
+	// ハッシュタイプ
+	enum class EHashType
+	{
+		MD5,
+		SHA1,
+	};
+
 	// Peer
 	CServletPeer *pPeer;
 
@@ -166,8 +173,11 @@ private:
 	// マスタシークレットを計算.
 	boost::multiprecision::cpp_int CalcMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret);
 
+	// PRF計算.
+	void CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes);
+
 	// P_Hash
-	void P_Hash(const std::string &Seed, const std::string &Secret, int NeedBytes, std::vector<unsigned char> &OutBytes);
+	void P_Hash(EHashType Type, const std::string &Seed, const std::string &Secret, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes);
 };
 
 }

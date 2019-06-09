@@ -276,11 +276,10 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	std::cout << "Master Secret:" << MasterSecret << std::endl;
 
 	// キーブロック計算.
-	std::string Seed = "key	expension";
-	Seed += ServerRandom;
+	std::string  Seed = ServerRandom;
 	Seed += ClientRandom;
 	std::vector<unsigned char> Bytes;
-	P_Hash(Seed, MasterSecret.str(), 104, Bytes);
+	CalcPRF(MasterSecret.str(), "key expension", Seed, 104, Bytes);
 	std::vector<unsigned char> Block;
 	for (unsigned int i = 0; i < Bytes.size(); i++)
 	{
@@ -419,45 +418,92 @@ cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret)
 {
 	std::vector<unsigned char> Bytes;
 
-	std::string Seed = "master secret";
-	Seed += ClientRandom;
+	std::string Seed = ClientRandom;
 	Seed += ServerRandom;
 
-	P_Hash(Seed, PreMasterSecret.str(), 48, Bytes);
+	CalcPRF(PreMasterSecret.str(), "master secret", Seed, 48, Bytes);
 
 	cpp_int Result(Bytes);
 	return Result;
 }
 
-// P_Hash
-void CSSLHandshake::P_Hash(const std::string &Seed, const std::string &Secret, int NeedBytes, std::vector<unsigned char> &OutBytes)
+// PRF計算.
+void CSSLHandshake::CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes)
 {
-	int Count = NeedBytes / 20;
-	if ((NeedBytes % 20) > 0)
+	// MD5
+	std::vector<unsigned char> MD5Result;
+	P_Hash(EHashType::MD5, Label + Seed, Secret, NeedBytes, MD5Result);
+
+	// SHA1
+	std::vector<unsigned char> SHA1Result;
+	P_Hash(EHashType::SHA1, Label + Seed, Secret, NeedBytes, SHA1Result);
+
+	// XORを取っていく。
+	OutBytes.clear();
+	for (unsigned int i = 0; i < NeedBytes; i++)
+	{
+		OutBytes.push_back(MD5Result[i] ^ SHA1Result[i]);
+	}
+}
+
+// P_Hash
+void CSSLHandshake::P_Hash(EHashType Type, const std::string &Seed, const std::string &Secret, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes)
+{
+	unsigned int HashBytes = (Type == EHashType::MD5 ? 16 : 20);
+	unsigned int Count = NeedBytes / HashBytes;
+	if ((NeedBytes % HashBytes) > 0)
 	{
 		Count++;
 	}
-	std::string SHASeed = Seed + Secret;
+	std::string HashSeed = Seed + Secret;
 	std::vector<unsigned char> ResultBytes;
-	for (int i = 0; i < Count; i++)
+	for (unsigned int i = 0; i < Count * HashBytes; i++)
 	{
-		sha1 SHA;
-		SHA.process_bytes(SHASeed.c_str(), SHASeed.length());
-		sha1::digest_type Result;
-		SHA.get_digest(Result);
-
-		char Bytes[20];
-		memcpy(Bytes, Result, 20);
-		for (auto Byte : Bytes)
-		{
-			ResultBytes.push_back((unsigned char) Byte);
-		}
-
-		SHASeed = Bytes;
-		SHASeed += Secret;
+		ResultBytes.push_back(0);
 	}
 
-	for (int i = 0; i < NeedBytes; i++)
+	for (unsigned int i = 0; i < Count; i++)
+	{
+		switch (Type)
+		{
+			case EHashType::MD5:
+
+				{
+					md5 MD5;
+					MD5.process_bytes(HashSeed.c_str(), HashSeed.length());
+					md5::digest_type Result;
+					MD5.get_digest(Result);
+					char Bytes[16];
+					memcpy(Bytes, Result, 16);
+					for (int j =0; j < 16; j++)
+					{
+						ResultBytes[i * 16 + j] = (unsigned char) Bytes[i];
+					}
+					HashSeed = Bytes;
+				}
+				break;
+
+			case EHashType::SHA1:
+
+				{
+					sha1 SHA;
+					SHA.process_bytes(HashSeed.c_str(), HashSeed.length());
+					sha1::digest_type Result;
+					SHA.get_digest(Result);
+					char Bytes[20];
+					memcpy(Bytes, Result, 20);
+					for (int j = 0; j < 20; j++)
+					{
+						ResultBytes[i * 20 + j] = (unsigned char) Bytes[i];
+					}
+					HashSeed = Bytes;
+				}
+				break;
+		}
+		HashSeed += Secret;
+	}
+
+	for (unsigned int i = 0; i < NeedBytes; i++)
 	{
 		OutBytes.push_back(ResultBytes[i]);
 	}
