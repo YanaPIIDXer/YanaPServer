@@ -3,11 +3,9 @@ digraph "クラス階層図"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="YanaPServer::Socket\l::Listen::IListenSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html",tooltip="Listen用Socketインタフェース "];
+  Node0 [label="YanaPServer::Socket\l::ISocketEventListener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html",tooltip="ソケットイベントリスナ "];
   Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="YanaPServer::Socket\l::Listen::CLinuxListenSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_linux_listen_socket.html",tooltip="Linux用Listenソケット "];
-  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="YanaPServer::Socket\l::Listen::CNullListenSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_null_listen_socket.html",tooltip="何もしないListenSocketクラス 未定義のプラットフォームで使用する。 "];
-  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="YanaPServer::Socket\l::Listen::CWindowsListenSocket",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_listen_1_1_c_windows_listen_socket.html",tooltip="WindowsのListen用ソケットクラス "];
+  Node1 [label="YanaPServer::Peer::\lCPeerBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html",tooltip="ピア基底クラス  基本的にはコイツを派生したクラスのweak_ptrを利用者側で管理する。 切断時には勝手に消失..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YanaPServer::Servlet\l::CServletPeer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_servlet_1_1_c_servlet_peer.html",tooltip="HTTP接続を処理するクラス。 Java Servletみたいなモノ。 それを扱うPeer "];
 }

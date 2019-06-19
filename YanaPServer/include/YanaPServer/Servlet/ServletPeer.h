@@ -54,23 +54,8 @@ public:
 
 private:
 
-	// ステータスコード
-	enum class EStatusCode
-	{
-		// 200 OK
-		OK,
-
-		// 404 Not Found
-		NotFound,
-
-		// 400 Bad Request
-		BadRequest,
-	};
-
 	// ServletFinder
 	CServletFinder *pFinder;
-
-
 
 	// 送信サイズ
 	unsigned int SendSize;
@@ -78,8 +63,9 @@ private:
 	// HTTPサーバイベント
 	IHttpServerEvent *pHttpServerEvent;
 
+
 	// レスポンス送信.
-	void SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const YanaPServer::Util::Stream::CStringStream &Stream);
+	void SendResponse(const SHttpRequest &Request, const SHttpResponse &Response);
 
 };
 

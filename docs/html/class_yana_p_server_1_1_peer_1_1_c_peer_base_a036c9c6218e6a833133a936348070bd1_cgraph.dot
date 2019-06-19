@@ -3,14 +3,14 @@ digraph "YanaPServer::Peer::CPeerBase::Send"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node28 [label="YanaPServer::Peer::\lCPeerBase::Send",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node28 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node29 [label="YanaPServer::Peer::\lCPeerBase::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6",tooltip="有効か？ "];
-  Node29 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node30 [label="YanaPServer::Socket\l::CSocket::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a8fadeb20cdfec76d61b5547183fd2a8c",tooltip="有効か？ "];
-  Node30 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node31 [label="YanaPServer::Socket\l::ISocket::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c",tooltip="有効か？ "];
-  Node28 -> Node32 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node32 [label="YanaPServer::Socket\l::CSocket::Send",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#ac29d664fd1a50bbfab2273a267e4b7c8",tooltip="送信 "];
-  Node32 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="YanaPServer::Peer::\lCPeerBase::Send",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node31 -> Node32 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="YanaPServer::Peer::\lCPeerBase::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab75e8d60afaaaedc9882c56a7a6558b6",tooltip="有効か？ "];
+  Node32 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="YanaPServer::Socket\l::CSocket::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a8fadeb20cdfec76d61b5547183fd2a8c",tooltip="有効か？ "];
+  Node33 -> Node34 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 [label="YanaPServer::Socket\l::ISocket::IsValid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket.html#a052f5ae17dc9ae6ab0ef4d1e3358948c",tooltip="有効か？ "];
+  Node31 -> Node35 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 [label="YanaPServer::Socket\l::CSocket::Send",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#ac29d664fd1a50bbfab2273a267e4b7c8",tooltip="送信 "];
+  Node35 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

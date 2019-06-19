@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['recverror',['RecvError',['../namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836a1fcca6b9926bcdf0d290b0c7d8f3af94',1,'YanaPServer::Socket']]]
+  ['invalid',['Invalid',['../namespace_yana_p_server_1_1_servlet.html#a8589c18dae766202a1498cf97f084466a4bbb8f967da6d1a610596d7257179c2b',1,'YanaPServer::Servlet']]]
 ];

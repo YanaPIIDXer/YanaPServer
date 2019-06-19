@@ -2,8 +2,10 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
-#include "Util/Stream/StringStream.h"
+#include "Util/Stream/MemoryStreamReader.h"
+#include "Util/Stream/SimpleStream.h"
 #include <sstream>
+#include <time.h>
 
 using namespace YanaPServer::Util::Stream;
 
@@ -31,13 +33,13 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 {
 	CHttpRequestParser Parser;
 	SHttpRequest Request;
-
-	CStringStream ResponseStream;
+	SHttpResponse Response;
 
 	if (!Parser.Parse(pData, Request))
 	{
-		pHttpServerEvent->OnError(Request, ResponseStream);
-		SendResponse(Request.ProtocolVersion, EStatusCode::BadRequest, ResponseStream);
+		Response.StatusCode = EHttpStatusCode::BadRequest;
+		pHttpServerEvent->OnError(Request, Response);
+		SendResponse(Request, Response);
 		return;
 	}
 
@@ -45,33 +47,34 @@ void CServletPeer::OnRecv(const char *pData, unsigned int Size)
 	if (pServlet == nullptr)
 	{
 		// 404
-		pHttpServerEvent->OnNotFound(Request, ResponseStream);
-		SendResponse(Request.ProtocolVersion, EStatusCode::NotFound, ResponseStream);
+		Response.StatusCode = EHttpStatusCode::NotFound;
+		pHttpServerEvent->OnNotFound(Request, Response);
+		SendResponse(Request, Response);
 		return;
 	}
 
-	EStatusCode StatusCode = EStatusCode::OK;
+	Response.StatusCode = EHttpStatusCode::OK;
 	switch (Request.Method)
 	{
 		case EHttpMethod::POST:
 
-			pServlet->OnPost(Request, ResponseStream);
+			pServlet->OnPost(Request, Response);
 			break;
 
 		case EHttpMethod::GET:
 
-			pServlet->OnGet(Request, ResponseStream);
+			pServlet->OnGet(Request, Response);
 			break;
 
 		default:
 
 			// とりあえずエラーにしておく。
-			StatusCode = EStatusCode::BadRequest;
-			pServlet->OnError(Request, ResponseStream);
+			Response.StatusCode = EHttpStatusCode::BadRequest;
+			pServlet->OnError(Request, Response);
 			break;
 	}
 
-	SendResponse(Request.ProtocolVersion, StatusCode, ResponseStream);
+	SendResponse(Request, Response);
 }
 
 // 送信した
@@ -90,38 +93,82 @@ void CServletPeer::OnSend(unsigned int Size)
 
 
 // レスポンス送信.
-void CServletPeer::SendResponse(const std::string &ProtocolVersion, EStatusCode StatusCode, const CStringStream &Stream)
+void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse &Response)
 {
-	CStringStream SendData;
+	CSimpleStream SendData;
 
 	// レスポンスヘッダ
-	SendData.Append(ProtocolVersion.c_str());
-	SendData.Append(" ");
-	switch (StatusCode)
+	SendData.AppendString(Request.ProtocolVersion.c_str());
+	SendData.AppendString(" ");
+	switch (Response.StatusCode)
 	{
-		case EStatusCode::OK:
+		case EHttpStatusCode::OK:
 
-			SendData.AppendLine("200 OK");
+			SendData.AppendStringLine("200 OK");
 			break;
 
-		case EStatusCode::NotFound:
+		case EHttpStatusCode::NotFound:
 
-			SendData.AppendLine("404 Not Found");
+			SendData.AppendStringLine("404 Not Found");
 			break;
 
-		case EStatusCode::BadRequest:
+		case EHttpStatusCode::BadRequest:
 
-			SendData.AppendLine("400 Bad Request");
+			SendData.AppendStringLine("400 Bad Request");
 			break;
 	}
-	SendData.AppendLine("Content-Type: text/html");
-	std::ostringstream ContentLength;
-	ContentLength << "Content-Length: " << Stream.GetLength();
-	SendData.AppendLine(ContentLength.str().c_str());
-	SendData.Append("\r\n");
+
+	// Content-Type
+	std::string ContentType = "Content-Type: " + Response.ContentType;
+	SendData.AppendStringLine(ContentType.c_str());
 	
+	// Content-Length
+	std::ostringstream ContentLength;
+	ContentLength << "Content-Length: " << Response.ContentStream.GetLength();
+	SendData.AppendStringLine(ContentLength.str().c_str());
+	
+	// Set-Cookie
+	if (!Response.CookieMap.empty())
+	{
+		time_t Time = time(nullptr);
+		tm CurrentTime;
+#if _WIN32
+		localtime_s(&CurrentTime, &Time);
+#else
+		localtime_r(&Time, &CurrentTime);
+#endif
+
+		tm Expires = { CurrentTime.tm_sec, CurrentTime.tm_min, CurrentTime.tm_hour, CurrentTime.tm_mday + 1, CurrentTime.tm_mon, CurrentTime.tm_year };
+		time_t ExpiresTime = mktime(&Expires);
+#if _WIN32
+		localtime_s(&Expires, &ExpiresTime);
+#else
+		localtime_r(&ExpiresTime, &Expires);
+#endif
+
+		static const int TimeBufferSize = 512;
+		char TimeBuffer[TimeBufferSize];
+		strftime(TimeBuffer, TimeBufferSize, "expires=%a, %d-%b-%Y %T GMT; ", &Expires);
+
+		for (const auto &It : Response.CookieMap)
+		{
+			std::ostringstream SetCookie;
+			SetCookie << "Set-Cookie: ";
+			SetCookie << It.first + "=" + It.second + "; ";
+
+			SetCookie << TimeBuffer;
+
+			SetCookie << "path=" + Request.Path + "; ";
+			SetCookie << "domain=" + Request.Domain;
+
+			SendData.AppendStringLine(SetCookie.str().c_str());
+		}
+	}
+	
+	SendData.AppendString("\r\n");
+
 	// ボディをブチ込む。
-	SendData.Append(Stream.Get());
+	SendData.AppendBinary(Response.ContentStream.Get(), Response.ContentStream.GetLength());
 
 	// ブン投げる。
 	const char *pData = SendData.Get();

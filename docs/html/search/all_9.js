@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['ihtmlobject',['IHTMLObject',['../class_yana_p_server_1_1_util_1_1_h_t_m_l_1_1_i_h_t_m_l_object.html',1,'YanaPServer::Util::HTML']]],
   ['ihttpserverevent',['IHttpServerEvent',['../class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html',1,'YanaPServer::Servlet']]],
   ['ilistensocket',['IListenSocket',['../class_yana_p_server_1_1_socket_1_1_listen_1_1_i_listen_socket.html',1,'YanaPServer::Socket::Listen']]],
   ['imemorystream',['IMemoryStream',['../class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html',1,'YanaPServer::Util::Stream']]],
@@ -10,6 +11,7 @@ var searchData=
   ['iserializable',['ISerializable',['../class_yana_p_server_1_1_util_1_1_i_serializable.html',1,'YanaPServer::Util']]],
   ['iserror',['IsError',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#a37b11bedb9fa3721180eb22a5090a131',1,'YanaPServer::Util::Stream::CMemorySizeCaliculator::IsError()'],['../class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html#a99b64a30b0b976abe243b7e3019469d1',1,'YanaPServer::Util::Stream::IMemoryStream::IsError()'],['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_reader.html#a7858bd53622f5ca5262a92aa50506ccd',1,'YanaPServer::Util::Stream::CMemoryStreamReader::IsError()'],['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_writer.html#a56ecf107d2d96d5607670df4a5616cdf',1,'YanaPServer::Util::Stream::CMemoryStreamWriter::IsError()']]],
   ['iservlet',['IServlet',['../class_yana_p_server_1_1_servlet_1_1_i_servlet.html',1,'YanaPServer::Servlet']]],
+  ['isleftdata',['IsLeftData',['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#ad6e6aca62e6afd5a0158fbcd7b1bcf8e',1,'YanaPServer::Util::Stream::CMemorySizeCaliculator::IsLeftData()'],['../class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html#a900d3166882edaaa7e7e44e07d60919c',1,'YanaPServer::Util::Stream::IMemoryStream::IsLeftData()'],['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_reader.html#adad8291e752ebf1cfc80dfd74ad33731',1,'YanaPServer::Util::Stream::CMemoryStreamReader::IsLeftData()'],['../class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_writer.html#aaee975714250d2839abc92694fa5ec45',1,'YanaPServer::Util::Stream::CMemoryStreamWriter::IsLeftData()']]],
   ['islittleendian',['IsLittleEndian',['../class_yana_p_server_1_1_util_1_1_c_endian_converter.html#a088d59f27730176768ed14c4cdce6c3d',1,'YanaPServer::Util::CEndianConverter']]],
   ['isocket',['ISocket',['../class_yana_p_server_1_1_socket_1_1_i_socket.html',1,'YanaPServer::Socket']]],
   ['isocketeventlistener',['ISocketEventListener',['../class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html',1,'YanaPServer::Socket']]],

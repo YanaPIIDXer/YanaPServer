@@ -89,18 +89,18 @@ YanaPServer::Servlet::IHttpServerEvent の継承関係図</div>
 <tr class="memitem:a9256df9cb556b07fcd6d10a2a3d1a946"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a9256df9cb556b07fcd6d10a2a3d1a946">‾IHttpServerEvent</a> ()</td></tr>
 <tr class="memdesc:a9256df9cb556b07fcd6d10a2a3d1a946"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a9256df9cb556b07fcd6d10a2a3d1a946">[詳解]</a><br /></td></tr>
 <tr class="separator:a9256df9cb556b07fcd6d10a2a3d1a946"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18b68c8080358d11897764b330203c13"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a18b68c8080358d11897764b330203c13">OnError</a> (const <a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_request.html">SHttpRequest</a> &amp;Request, <a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html">YanaPServer::Util::Stream::CStringStream</a> &amp;ResponseStream)=0</td></tr>
-<tr class="memdesc:a18b68c8080358d11897764b330203c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">エラー発生  <a href="#a18b68c8080358d11897764b330203c13">[詳解]</a><br /></td></tr>
-<tr class="separator:a18b68c8080358d11897764b330203c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f7dcaa4f90a3f8426eb542865d56984"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a3f7dcaa4f90a3f8426eb542865d56984">OnNotFound</a> (const <a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_request.html">SHttpRequest</a> &amp;Request, <a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html">YanaPServer::Util::Stream::CStringStream</a> &amp;ResponseStream)=0</td></tr>
-<tr class="memdesc:a3f7dcaa4f90a3f8426eb542865d56984"><td class="mdescLeft">&#160;</td><td class="mdescRight">対応Servletが見つからなかった  <a href="#a3f7dcaa4f90a3f8426eb542865d56984">[詳解]</a><br /></td></tr>
-<tr class="separator:a3f7dcaa4f90a3f8426eb542865d56984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a529a61db580532cbcbedea512e29dcd4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#a529a61db580532cbcbedea512e29dcd4">OnError</a> (const <a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_request.html">SHttpRequest</a> &amp;Request, <a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_response.html">SHttpResponse</a> &amp;Response)=0</td></tr>
+<tr class="memdesc:a529a61db580532cbcbedea512e29dcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">エラー発生  <a href="#a529a61db580532cbcbedea512e29dcd4">[詳解]</a><br /></td></tr>
+<tr class="separator:a529a61db580532cbcbedea512e29dcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6361f3c4b36a78d377617115043941e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_servlet_1_1_i_http_server_event.html#ae6361f3c4b36a78d377617115043941e">OnNotFound</a> (const <a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_request.html">SHttpRequest</a> &amp;Request, <a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_response.html">SHttpResponse</a> &amp;Response)=0</td></tr>
+<tr class="memdesc:ae6361f3c4b36a78d377617115043941e"><td class="mdescLeft">&#160;</td><td class="mdescRight">対応Servletが見つからなかった  <a href="#ae6361f3c4b36a78d377617115043941e">[詳解]</a><br /></td></tr>
+<tr class="separator:ae6361f3c4b36a78d377617115043941e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>HTTPサーバイベントインタフェース </p>
 </div><h2 class="groupheader">関数詳解</h2>
-<a id="a18b68c8080358d11897764b330203c13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18b68c8080358d11897764b330203c13">&#9670;&nbsp;</a></span>OnError()</h2>
+<a id="a529a61db580532cbcbedea512e29dcd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a529a61db580532cbcbedea512e29dcd4">&#9670;&nbsp;</a></span>OnError()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,8 +117,8 @@ YanaPServer::Servlet::IHttpServerEvent の継承関係図</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html">YanaPServer::Util::Stream::CStringStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>ResponseStream</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_response.html">SHttpResponse</a> &amp;&#160;</td>
+          <td class="paramname"><em>Response</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -137,23 +137,23 @@ YanaPServer::Servlet::IHttpServerEvent の継承関係図</div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Request</td><td>HTTPリクエスト </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ResponseStream</td><td>文字列ストリーム </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Response</td><td>HTTPレスポンス </td></tr>
   </table>
   </dd>
 </dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_http_default_server_event.html#acac8969e6543779f706cd00a2f78a72a">YanaPServer::Servlet::CHttpDefaultServerEvent</a>で実装されています。</p>
+<p><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_http_default_server_event.html#a60fb8f6825889998d654ec62326ba260">YanaPServer::Servlet::CHttpDefaultServerEvent</a>で実装されています。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_servlet_1_1_i_http_server_event_a18b68c8080358d11897764b330203c13_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_servlet_1_1_i_http_server_event_a18b68c8080358d11897764b330203c13_icgraph" alt=""/></div>
+<div class="center"><img src="class_yana_p_server_1_1_servlet_1_1_i_http_server_event_a529a61db580532cbcbedea512e29dcd4_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_servlet_1_1_i_http_server_event_a529a61db580532cbcbedea512e29dcd4_icgraph" alt=""/></div>
 <!-- MAP 1 -->
 </div>
 
 </div>
 </div>
-<a id="a3f7dcaa4f90a3f8426eb542865d56984"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f7dcaa4f90a3f8426eb542865d56984">&#9670;&nbsp;</a></span>OnNotFound()</h2>
+<a id="ae6361f3c4b36a78d377617115043941e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6361f3c4b36a78d377617115043941e">&#9670;&nbsp;</a></span>OnNotFound()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,8 +170,8 @@ YanaPServer::Servlet::IHttpServerEvent の継承関係図</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_string_stream.html">YanaPServer::Util::Stream::CStringStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>ResponseStream</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_yana_p_server_1_1_servlet_1_1_s_http_response.html">SHttpResponse</a> &amp;&#160;</td>
+          <td class="paramname"><em>Response</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -190,16 +190,16 @@ YanaPServer::Servlet::IHttpServerEvent の継承関係図</div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Request</td><td>HTTPリクエスト </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ResponseStream</td><td>文字列ストリーム </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Response</td><td>HTTPレスポンス </td></tr>
   </table>
   </dd>
 </dl>
 
-<p><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_http_default_server_event.html#a3ef560a1a4af2d7ea26a7cfe0a265530">YanaPServer::Servlet::CHttpDefaultServerEvent</a>で実装されています。</p>
+<p><a class="el" href="class_yana_p_server_1_1_servlet_1_1_c_http_default_server_event.html#a56b86fb02c82f125bc87b9c35236810f">YanaPServer::Servlet::CHttpDefaultServerEvent</a>で実装されています。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_yana_p_server_1_1_servlet_1_1_i_http_server_event_a3f7dcaa4f90a3f8426eb542865d56984_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_servlet_1_1_i_http_server_event_a3f7dcaa4f90a3f8426eb542865d56984_icgraph" alt=""/></div>
+<div class="center"><img src="class_yana_p_server_1_1_servlet_1_1_i_http_server_event_ae6361f3c4b36a78d377617115043941e_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_servlet_1_1_i_http_server_event_ae6361f3c4b36a78d377617115043941e_icgraph" alt=""/></div>
 <!-- MAP 2 -->
 </div>
 

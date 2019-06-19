@@ -13,6 +13,11 @@ digraph "HttpServerEvent.h"
   Node4 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="map",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="../Util/Stream/StringStream.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_string_stream_8h.html"];
+  Node6 [label="HttpResponse.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_http_response_8h.html"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="../Util/Stream/SimpleStream.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_simple_stream_8h.html"];
+  Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

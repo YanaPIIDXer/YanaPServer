@@ -48,9 +48,37 @@ bool CHttpRequestParser::Parse(const char *pData, SHttpRequest &OutResult)
 	// その次にプロトコルバージョン
 	OutResult.ProtocolVersion = Datas[2];
 
-	// 空行（POSTパラメータの開始）まで読み飛ばす
+	// ２行目以降の解析.
 	for (ParamParser = 0; ParamParser < Lines.size(); ParamParser++)
 	{
+		// ドメイン
+		std::string Header = "Host: ";
+		auto Pos = Lines[ParamParser].find(Header);
+		if (Pos != std::string::npos)
+		{
+			OutResult.Domain = Lines[ParamParser];
+			OutResult.Domain.replace(Pos, Header.length(), "");
+			OutResult.Domain = OutResult.Domain.substr(0, OutResult.Domain.find(":"));
+		}
+
+		// Cookie
+		Header = "Cookie: ";
+		Pos = Lines[ParamParser].find(Header);
+		if (Pos != std::string::npos)
+		{
+			std::string Line = Lines[ParamParser];
+			Line.replace(Pos, Header.length(), "");
+			std::vector<std::string> CookieLines;
+			Split(Line.c_str(), "; ", CookieLines);
+			for (const auto &CookieLine : CookieLines)
+			{
+				std::vector<std::string> CookieData;
+				Split(CookieLine.c_str(), "=", CookieData);
+				OutResult.CookieInfo[CookieData[0]] = CookieData[1];
+			}
+		}
+
+		// 空行になったら終了。（それ以降はPOSTパラメータ）
 		if (Lines[ParamParser] == "\r")
 		{
 			ParamParser++;

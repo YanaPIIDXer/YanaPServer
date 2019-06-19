@@ -3,9 +3,9 @@ digraph "YanaPServer::Util::Stream::CMemoryStreamWriter::Serialize"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node21 [label="YanaPServer::Util::\lStream::CMemoryStreamWriter\l::Serialize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node21 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node22 [label="YanaPServer::Util::\lCEndianConverter::Convert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_c_endian_converter.html#a0ff973dbedc6378467691dba1998d298",tooltip="short型変換 "];
-  Node22 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node23 [label="YanaPServer::Util::\lCEndianConverter::IsLittle\lEndian",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_c_endian_converter.html#a088d59f27730176768ed14c4cdce6c3d",tooltip="リトルエンディアン？ "];
+  Node27 [label="YanaPServer::Util::\lStream::CMemoryStreamWriter\l::Serialize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node27 -> Node28 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 [label="YanaPServer::Util::\lCEndianConverter::Convert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_c_endian_converter.html#a0ff973dbedc6378467691dba1998d298",tooltip="short型変換 "];
+  Node28 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 [label="YanaPServer::Util::\lCEndianConverter::IsLittle\lEndian",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_c_endian_converter.html#a088d59f27730176768ed14c4cdce6c3d",tooltip="リトルエンディアン？ "];
 }

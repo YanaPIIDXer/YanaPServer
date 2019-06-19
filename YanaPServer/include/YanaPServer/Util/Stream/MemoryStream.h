@@ -14,6 +14,22 @@ namespace Stream
 {
 
 /**
+ * @enum EStreamType
+ * @brief ストリームの種類
+ */
+enum class EStreamType
+{
+	//! 読み込み
+	Read,
+
+	//! 書き込み
+	Write,
+
+	//! サイズ計算
+	CalcSize,
+};
+
+/**
  * @class IMemoryStream
  * @brief メモリストリーム
  */
@@ -100,11 +116,34 @@ public:
 	virtual bool Serialize(ISerializable *pData) = 0;
 
 	/**
+	 * @fn virtual bool Serialize(void *pData, unsigned int DataSize) = 0
+	 * @brief 任意のデータをシリアライズ
+	 * @param[in] pData データ
+	 * @param[in] DataSize データ長
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(void *pData, unsigned int DataSize) = 0;
+
+	/**
 	 * @fn virtual bool IsError() const = 0
 	 * @brief エラーが発生しているか？
 	 * @return エラーが発生していたらtrueを返す。
 	 */
 	virtual bool IsError() const = 0;
+
+	/**
+	 * @fn virtual bool IsLeftData() const = 0
+	 * @brief 読み込んでいないデータが残っているか？
+	 * @return 残っていたらtrueを返す。
+	 */
+	virtual bool IsLeftData() const = 0;
+
+	/**
+	 * @fn virtual EStreamType GetType() const = 0
+	 * @brief ストリームタイプを取得
+	 * @return ストリームタイプ返す。
+	 */
+	virtual EStreamType GetType() const = 0;
 
 };
 

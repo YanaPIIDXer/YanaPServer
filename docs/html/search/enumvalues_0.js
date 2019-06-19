@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['destruct',['Destruct',['../namespace_yana_p_server_1_1_socket.html#af86fba1d26dc0826dfb3da2c51932836a7ab89bc0b946885b228cc14f4f22be17',1,'YanaPServer::Socket']]]
+  ['badrequest',['BadRequest',['../namespace_yana_p_server_1_1_servlet.html#a81635ed75ca1b9eef19f09a9fe8539c1a9edf8fbf00a57d95a0af4923c9a1ec6f',1,'YanaPServer::Servlet']]]
 ];
