@@ -7,5 +7,7 @@ digraph "Peer" {
   dir_960b8e36b494efe68e2099644f2abb6b [shape=box, label="Peer", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_960b8e36b494efe68e2099644f2abb6b.html"];
   }
   dir_c715092d858975d717cbcfac61317f8e [shape=box label="Socket" fillcolor="white" style="filled" color="red" URL="dir_c715092d858975d717cbcfac61317f8e.html"];
+  dir_651c73b7fa1d91bab3f1794f6c5782dd [shape=box label="Util" fillcolor="white" style="filled" color="red" URL="dir_651c73b7fa1d91bab3f1794f6c5782dd.html"];
   dir_960b8e36b494efe68e2099644f2abb6b->dir_c715092d858975d717cbcfac61317f8e [headlabel="2", labeldistance=1.5 headhref="dir_000020_000014.html"];
+  dir_960b8e36b494efe68e2099644f2abb6b->dir_651c73b7fa1d91bab3f1794f6c5782dd [headlabel="1", labeldistance=1.5 headhref="dir_000020_000006.html"];
 }

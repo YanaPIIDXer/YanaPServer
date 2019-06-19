@@ -3,9 +3,9 @@ digraph "YanaPServer::Socket::CSocket::‾CSocket"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node42 [label="YanaPServer::Socket\l::CSocket::‾CSocket",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node42 -> Node43 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node43 [label="YanaPServer::Socket\l::CSocket::Release",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a881d0e1ceedb2a8310c21085edbb3908",tooltip="解放 "];
-  Node43 -> Node44 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node44 [label="YanaPServer::Socket\l::ISocketEventListener\l::OnDisconnect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a8df68419b9450624045a4073f593d56d",tooltip="切断された "];
+  Node44 [label="YanaPServer::Socket\l::CSocket::‾CSocket",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node44 -> Node45 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="YanaPServer::Socket\l::CSocket::Release",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_c_socket.html#a881d0e1ceedb2a8310c21085edbb3908",tooltip="解放 "];
+  Node45 -> Node46 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="YanaPServer::Socket\l::ISocketEventListener\l::OnDisconnect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_socket_1_1_i_socket_event_listener.html#a8df68419b9450624045a4073f593d56d",tooltip="切断された "];
 }

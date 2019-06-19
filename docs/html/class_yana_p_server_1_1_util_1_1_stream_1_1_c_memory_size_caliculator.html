@@ -125,9 +125,18 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 <tr class="memitem:af08b24a0ad45191732fdee3f00e7cc8a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#af08b24a0ad45191732fdee3f00e7cc8a">Serialize</a> (<a class="el" href="class_yana_p_server_1_1_util_1_1_i_serializable.html">ISerializable</a> *pData) override</td></tr>
 <tr class="memdesc:af08b24a0ad45191732fdee3f00e7cc8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">シリアライズ可能なオブジェクトのシリアライズ  <a href="#af08b24a0ad45191732fdee3f00e7cc8a">[詳解]</a><br /></td></tr>
 <tr class="separator:af08b24a0ad45191732fdee3f00e7cc8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95986cabebb211a73114d00be658321d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#a95986cabebb211a73114d00be658321d">Serialize</a> (void *pData, unsigned int DataSize) override</td></tr>
+<tr class="memdesc:a95986cabebb211a73114d00be658321d"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意のデータをシリアライズ  <a href="#a95986cabebb211a73114d00be658321d">[詳解]</a><br /></td></tr>
+<tr class="separator:a95986cabebb211a73114d00be658321d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37b11bedb9fa3721180eb22a5090a131"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#a37b11bedb9fa3721180eb22a5090a131">IsError</a> () const override</td></tr>
 <tr class="memdesc:a37b11bedb9fa3721180eb22a5090a131"><td class="mdescLeft">&#160;</td><td class="mdescRight">エラーが発生しているか？  <a href="#a37b11bedb9fa3721180eb22a5090a131">[詳解]</a><br /></td></tr>
 <tr class="separator:a37b11bedb9fa3721180eb22a5090a131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6e6aca62e6afd5a0158fbcd7b1bcf8e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#ad6e6aca62e6afd5a0158fbcd7b1bcf8e">IsLeftData</a> () const override</td></tr>
+<tr class="memdesc:ad6e6aca62e6afd5a0158fbcd7b1bcf8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">読み込んでいないデータが残っているか？  <a href="#ad6e6aca62e6afd5a0158fbcd7b1bcf8e">[詳解]</a><br /></td></tr>
+<tr class="separator:ad6e6aca62e6afd5a0158fbcd7b1bcf8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d8ae129bbf0131eacd6dd11312422b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_yana_p_server_1_1_util_1_1_stream.html#ab0a5b4b213ac95dd78b383f35466612d">EStreamType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#a68d8ae129bbf0131eacd6dd11312422b">GetType</a> () const override</td></tr>
+<tr class="memdesc:a68d8ae129bbf0131eacd6dd11312422b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ストリームタイプを取得  <a href="#a68d8ae129bbf0131eacd6dd11312422b">[詳解]</a><br /></td></tr>
+<tr class="separator:a68d8ae129bbf0131eacd6dd11312422b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af26d8440d2df016bb75e892fa38f79b2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator.html#af26d8440d2df016bb75e892fa38f79b2">GetSize</a> () const</td></tr>
 <tr class="memdesc:af26d8440d2df016bb75e892fa38f79b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ取得  <a href="#af26d8440d2df016bb75e892fa38f79b2">[詳解]</a><br /></td></tr>
 <tr class="separator:af26d8440d2df016bb75e892fa38f79b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,6 +193,42 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 
 <p>サイズ取得 </p>
 <dl class="section return"><dt>戻り値</dt><dd>サイズ </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator_af26d8440d2df016bb75e892fa38f79b2_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator_af26d8440d2df016bb75e892fa38f79b2_icgraph" alt=""/></div>
+<!-- MAP 2 -->
+</div>
+
+</div>
+</div>
+<a id="a68d8ae129bbf0131eacd6dd11312422b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d8ae129bbf0131eacd6dd11312422b">&#9670;&nbsp;</a></span>GetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_yana_p_server_1_1_util_1_1_stream.html#ab0a5b4b213ac95dd78b383f35466612d">EStreamType</a> YanaPServer::Util::Stream::CMemorySizeCaliculator::GetType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ストリームタイプを取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>ストリームタイプ返す。 </dd></dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html#abe63612db2a021faf87211cee4ec4d99">YanaPServer::Util::Stream::IMemoryStream</a>を実装しています。</p>
 
 </div>
 </div>
@@ -217,8 +262,38 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 
 </div>
 </div>
+<a id="ad6e6aca62e6afd5a0158fbcd7b1bcf8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6e6aca62e6afd5a0158fbcd7b1bcf8e">&#9670;&nbsp;</a></span>IsLeftData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Util::Stream::CMemorySizeCaliculator::IsLeftData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>読み込んでいないデータが残っているか？ </p>
+<dl class="section return"><dt>戻り値</dt><dd>読み込むデータなんて無いので常にfalseを返す。 </dd></dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html#a900d3166882edaaa7e7e44e07d60919c">YanaPServer::Util::Stream::IMemoryStream</a>を実装しています。</p>
+
+</div>
+</div>
 <a id="a412183040f4b6839600a7f70a4d1fdea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a412183040f4b6839600a7f70a4d1fdea">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[1/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a412183040f4b6839600a7f70a4d1fdea">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[1/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +330,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="ae93821c37160f8cab8af4c7e7c5b32c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae93821c37160f8cab8af4c7e7c5b32c6">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[2/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae93821c37160f8cab8af4c7e7c5b32c6">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[2/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +367,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="ad54d32fc09887449beb30c084ac638d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad54d32fc09887449beb30c084ac638d1">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[3/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad54d32fc09887449beb30c084ac638d1">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[3/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -329,7 +404,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="afed16af2e146054e7a46d4ce2df9b120"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afed16af2e146054e7a46d4ce2df9b120">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[4/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afed16af2e146054e7a46d4ce2df9b120">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[4/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,7 +441,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="aa605de762749c0101705e9addabe1d24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa605de762749c0101705e9addabe1d24">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[5/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa605de762749c0101705e9addabe1d24">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[5/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -403,7 +478,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="a4d9d48724104de385204b5548256bb33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d9d48724104de385204b5548256bb33">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[6/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d9d48724104de385204b5548256bb33">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[6/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -440,7 +515,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="ab472216aefb3f4480f10c5015256ba2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab472216aefb3f4480f10c5015256ba2f">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[7/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab472216aefb3f4480f10c5015256ba2f">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[7/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -477,7 +552,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="a11610adb9c185f6d781f79fc6466054e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11610adb9c185f6d781f79fc6466054e">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[8/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a11610adb9c185f6d781f79fc6466054e">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[8/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -514,7 +589,7 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 </div>
 </div>
 <a id="af08b24a0ad45191732fdee3f00e7cc8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af08b24a0ad45191732fdee3f00e7cc8a">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[9/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af08b24a0ad45191732fdee3f00e7cc8a">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[9/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -551,8 +626,56 @@ YanaPServer::Util::Stream::CMemorySizeCaliculator 連携図</div>
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator_af08b24a0ad45191732fdee3f00e7cc8a_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_size_caliculator_af08b24a0ad45191732fdee3f00e7cc8a_cgraph" alt=""/></div>
-<!-- MAP 2 -->
+<!-- MAP 3 -->
 </div>
+
+</div>
+</div>
+<a id="a95986cabebb211a73114d00be658321d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95986cabebb211a73114d00be658321d">&#9670;&nbsp;</a></span>Serialize() <span class="overload">[10/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YanaPServer::Util::Stream::CMemorySizeCaliculator::Serialize </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>DataSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>任意のデータをシリアライズ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">DataSize</td><td>データ長 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功したらtrueを返す。 </dd></dl>
+
+<p><a class="el" href="class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html#aeff3138b8f64bacd7dbbe0f063b127c9">YanaPServer::Util::Stream::IMemoryStream</a>を実装しています。</p>
 
 </div>
 </div>
