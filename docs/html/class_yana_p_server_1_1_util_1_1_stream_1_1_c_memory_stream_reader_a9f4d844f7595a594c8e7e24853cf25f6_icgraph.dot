@@ -3,7 +3,7 @@ digraph "YanaPServer::Util::Stream::CMemoryStreamReader::Serialize"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node7 [label="YanaPServer::Util::\lStream::CMemoryStreamReader\l::Serialize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="YanaPServer::Util::\lStream::CMemoryStreamReader\l::Serialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_reader.html#a113cefb4b58b10024ea9aa032c1824ac",tooltip="文字列のシリアライズ "];
+  Node13 [label="YanaPServer::Util::\lStream::CMemoryStreamReader\l::Serialize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="YanaPServer::Util::\lStream::CMemoryStreamReader\l::Serialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_yana_p_server_1_1_util_1_1_stream_1_1_c_memory_stream_reader.html#a113cefb4b58b10024ea9aa032c1824ac",tooltip="文字列のシリアライズ "];
 }

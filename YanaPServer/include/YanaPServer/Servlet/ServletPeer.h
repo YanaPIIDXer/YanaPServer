@@ -57,13 +57,12 @@ private:
 	// ServletFinder
 	CServletFinder *pFinder;
 
-
-
 	// 送信サイズ
 	unsigned int SendSize;
 
 	// HTTPサーバイベント
 	IHttpServerEvent *pHttpServerEvent;
+
 
 	// レスポンス送信.
 	void SendResponse(const SHttpRequest &Request, const SHttpResponse &Response);

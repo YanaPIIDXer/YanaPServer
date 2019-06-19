@@ -2,6 +2,7 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
+#include "Util/Stream/MemoryStreamReader.h"
 #include "Util/Stream/SimpleStream.h"
 #include <sstream>
 #include <time.h>
@@ -131,11 +132,19 @@ void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse
 	{
 		time_t Time = time(nullptr);
 		tm CurrentTime;
+#if _WIN32
 		localtime_s(&CurrentTime, &Time);
+#else
+		localtime_r(&Time, &CurrentTime);
+#endif
 
 		tm Expires = { CurrentTime.tm_sec, CurrentTime.tm_min, CurrentTime.tm_hour, CurrentTime.tm_mday + 1, CurrentTime.tm_mon, CurrentTime.tm_year };
 		time_t ExpiresTime = mktime(&Expires);
+#if _WIN32
 		localtime_s(&Expires, &ExpiresTime);
+#else
+		localtime_r(&ExpiresTime, &Expires);
+#endif
 
 		static const int TimeBufferSize = 512;
 		char TimeBuffer[TimeBufferSize];

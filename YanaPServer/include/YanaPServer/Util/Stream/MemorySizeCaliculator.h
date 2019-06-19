@@ -103,11 +103,38 @@ public:
 	virtual bool Serialize(ISerializable *pData) override { return pData->Serialize(this); }
 
 	/**
+	 * @fn virtual bool Serialize(void *pData, unsigned int DataSize) override
+	 * @brief 任意のデータをシリアライズ
+	 * @param[in] pData データ
+	 * @param[in] DataSize データ長
+	 * @return 成功したらtrueを返す。
+	 */
+	virtual bool Serialize(void *pData, unsigned int DataSize) override
+	{
+		Size += DataSize;
+		return true;
+	}
+
+	/**
 	 * @fn virtual bool IsError() const override
 	 * @brief エラーが発生しているか？
 	 * @return エラーなんて無いので常にfalseを返す。
 	 */
 	virtual bool IsError() const override { return false; }
+
+	/**
+	 * @fn virtual bool IsLeftData() const override
+	 * @brief 読み込んでいないデータが残っているか？
+	 * @return 読み込むデータなんて無いので常にfalseを返す。
+	 */
+	virtual bool IsLeftData() const override { return false; }
+
+	/**
+	 * @fn virtual EStreamType GetType() const override
+	 * @brief ストリームタイプを取得
+	 * @return ストリームタイプ返す。
+	 */
+	virtual EStreamType GetType() const override { return EStreamType::CalcSize; }
 
 	/**
 	 * @fn unsigned int GetSize() const

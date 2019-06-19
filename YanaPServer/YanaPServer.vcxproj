@@ -83,6 +83,7 @@
       <AdditionalDependencies>libmysql.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(MYSQL_C_LIB)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -128,6 +129,7 @@
     <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
     <ClCompile Include="src\Servlet\HttpServer.cpp" />
+    <ClCompile Include="src\Servlet\HttpSession.cpp" />
     <ClCompile Include="src\Servlet\ServletFinder.cpp" />
     <ClCompile Include="src\Servlet\ServletPeer.cpp" />
     <ClCompile Include="src\Socket\LinuxSocket.cpp" />
@@ -137,8 +139,10 @@
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
+    <ClCompile Include="src\Util\CSVController.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLBuilder.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLObject.cpp" />
+    <ClCompile Include="src\Util\RandomString.cpp" />
     <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
     <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
@@ -169,6 +173,7 @@
     <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpSession.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
@@ -182,9 +187,11 @@
     <ClInclude Include="include\YanaPServer\Socket\SocketEventListener.h" />
     <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
+    <ClInclude Include="include\YanaPServer\Util\CSVController.h" />
     <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLBuilder.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h" />
+    <ClInclude Include="include\YanaPServer\Util\RandomString.h" />
     <ClInclude Include="include\YanaPServer\Util\Serializable.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />

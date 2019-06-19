@@ -113,6 +113,9 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <tr class="memitem:a036c9c6218e6a833133a936348070bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a036c9c6218e6a833133a936348070bd1">Send</a> (const char *pData, unsigned int Size)</td></tr>
 <tr class="memdesc:a036c9c6218e6a833133a936348070bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信  <a href="#a036c9c6218e6a833133a936348070bd1">[詳解]</a><br /></td></tr>
 <tr class="separator:a036c9c6218e6a833133a936348070bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab90c6914e20f87716bb990d4f9954720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#ab90c6914e20f87716bb990d4f9954720">Send</a> (<a class="el" href="class_yana_p_server_1_1_util_1_1_i_serializable.html">YanaPServer::Util::ISerializable</a> *pObject)</td></tr>
+<tr class="memdesc:ab90c6914e20f87716bb990d4f9954720"><td class="mdescLeft">&#160;</td><td class="mdescRight">シリアライズ可能なオブジェクトを送信  <a href="#ab90c6914e20f87716bb990d4f9954720">[詳解]</a><br /></td></tr>
+<tr class="separator:ab90c6914e20f87716bb990d4f9954720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b0da7fdb85b1fea4d39885564862d78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yana_p_server_1_1_peer_1_1_c_peer_base.html#a8b0da7fdb85b1fea4d39885564862d78">Disconnect</a> ()</td></tr>
 <tr class="memdesc:a8b0da7fdb85b1fea4d39885564862d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">切断  <a href="#a8b0da7fdb85b1fea4d39885564862d78">[詳解]</a><br /></td></tr>
 <tr class="separator:a8b0da7fdb85b1fea4d39885564862d78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -390,7 +393,7 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 </div>
 </div>
 <a id="a036c9c6218e6a833133a936348070bd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a036c9c6218e6a833133a936348070bd1">&#9670;&nbsp;</a></span>Send()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a036c9c6218e6a833133a936348070bd1">&#9670;&nbsp;</a></span>Send() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,6 +432,44 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_cgraph" alt=""/></div>
 <!-- MAP 8 -->
 </div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a036c9c6218e6a833133a936348070bd1_icgraph" alt=""/></div>
+<!-- MAP 9 -->
+</div>
+
+</div>
+</div>
+<a id="ab90c6914e20f87716bb990d4f9954720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab90c6914e20f87716bb990d4f9954720">&#9670;&nbsp;</a></span>Send() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void YanaPServer::Peer::CPeerBase::Send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_yana_p_server_1_1_util_1_1_i_serializable.html">YanaPServer::Util::ISerializable</a> *&#160;</td>
+          <td class="paramname"><em>pObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>シリアライズ可能なオブジェクトを送信 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pObject</td><td>オブジェクト </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_ab90c6914e20f87716bb990d4f9954720_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_ab90c6914e20f87716bb990d4f9954720_cgraph" alt=""/></div>
+<!-- MAP 10 -->
+</div>
 
 </div>
 </div>
@@ -459,13 +500,13 @@ YanaPServer::Peer::CPeerBase 連携図</div>
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_cgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_cgraph" alt=""/></div>
-<!-- MAP 9 -->
+<!-- MAP 11 -->
 </div>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_icgraph.png" border="0" usemap="#class_yana_p_server_1_1_peer_1_1_c_peer_base_a1c3ad177699991a3d86fcd813f9639bb_icgraph" alt=""/></div>
-<!-- MAP 10 -->
+<!-- MAP 12 -->
 </div>
 
 </div>
