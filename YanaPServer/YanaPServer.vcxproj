@@ -129,6 +129,7 @@
     <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
     <ClCompile Include="src\Servlet\HttpServer.cpp" />
+    <ClCompile Include="src\Servlet\HttpSession.cpp" />
     <ClCompile Include="src\Servlet\ServletFinder.cpp" />
     <ClCompile Include="src\Servlet\ServletPeer.cpp" />
     <ClCompile Include="src\Socket\LinuxSocket.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="src\Socket\Listen\ListenSocket.cpp" />
     <ClCompile Include="src\Socket\Listen\WindowsListenSocket.cpp" />
     <ClCompile Include="src\Socket\Windows\WinSockManager.cpp" />
+    <ClCompile Include="src\Util\CSVController.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLBuilder.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLObject.cpp" />
     <ClCompile Include="src\Util\RandomString.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="include\YanaPServer\Servlet\HttpResponse.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpServerEvent.h" />
+    <ClInclude Include="include\YanaPServer\Servlet\HttpSession.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletFinder.h" />
     <ClInclude Include="include\YanaPServer\Servlet\ServletPeer.h" />
     <ClInclude Include="include\YanaPServer\Servlet\Servlet.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="include\YanaPServer\Socket\SocketEventListener.h" />
     <ClInclude Include="include\YanaPServer\Socket\WidnowsSocket.h" />
     <ClInclude Include="include\YanaPServer\Socket\Windows\WinSockManager.h" />
+    <ClInclude Include="include\YanaPServer\Util\CSVController.h" />
     <ClInclude Include="include\YanaPServer\Util\EndianConverter.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLBuilder.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h" />
