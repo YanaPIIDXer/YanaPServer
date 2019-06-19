@@ -128,7 +128,7 @@ void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse
 	SendData.AppendStringLine(ContentLength.str().c_str());
 	
 	// Set-Cookie
-	if (!Response.CookieMap.empty())
+	if (!Response.CookieInfo.empty())
 	{
 		time_t Time = time(nullptr);
 		tm CurrentTime;
@@ -150,7 +150,7 @@ void CServletPeer::SendResponse(const SHttpRequest &Request, const SHttpResponse
 		char TimeBuffer[TimeBufferSize];
 		strftime(TimeBuffer, TimeBufferSize, "expires=%a, %d-%b-%Y %T GMT; ", &Expires);
 
-		for (const auto &It : Response.CookieMap)
+		for (const auto &It : Response.CookieInfo)
 		{
 			std::ostringstream SetCookie;
 			SetCookie << "Set-Cookie: ";

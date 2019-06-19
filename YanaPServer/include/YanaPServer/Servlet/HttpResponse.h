@@ -41,8 +41,8 @@ struct SHttpResponse
 	//! コンテンツを流し込むストリーム
 	Util::Stream::CSimpleStream ContentStream;
 
-	//! Cookieマップ
-	std::map<std::string, std::string> CookieMap;
+	//! Cookie情報
+	std::map<std::string, std::string> CookieInfo;
 
 
 	/**
