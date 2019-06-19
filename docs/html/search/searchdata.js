@@ -3,10 +3,10 @@ var indexSectionsWithContent =
   0: "_abcdefghilmnoprsuwy‾",
   1: "cis",
   2: "y",
-  3: "aehlmnprsw",
+  3: "acehlmnprsw",
   4: "abcdefgilmoprsu‾",
   5: "cdmps",
-  6: "hlp",
+  6: "chlp",
   7: "e",
   8: "bcdginoprsw",
   9: "_is"
