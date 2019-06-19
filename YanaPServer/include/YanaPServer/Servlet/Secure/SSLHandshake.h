@@ -82,6 +82,8 @@ private:
 		SSL_RSA_WITH_RC4_128_MD5 = 0x0004,
 		SSL_RSA_WITH_RC4_128_SHA = 0x0005,
 		TLS_RSA_WITH_3DES_EDE_CBC_SHA = 0x000A,
+		TLS_RSA_WITH_AES_128_CBC_SHA = 0x002F,
+		TLS_RSA_WITH_AES_256_CBC_SHA = 0x0035,
 	};
 
 	// アラートレベル
@@ -127,9 +129,6 @@ private:
 	// 秘密鍵
 	YanaPServer::Util::Secure::CASN1 PrivateKey;
 
-	// マスタシークレット
-	boost::multiprecision::cpp_int MasterSecret;
-
 	// クライアントMAC書き込みシークレット
 	unsigned char ClientWriteMAC[20];
 
@@ -137,16 +136,16 @@ private:
 	unsigned char ServerWriteMAC[20];
 
 	// クライアント暗号化キー
-	unsigned char ClientSecretKey[24];
+	unsigned char ClientSecretKey[32];
 
 	// サーバ暗号化キー
-	unsigned char ServerSecretKey[24];
+	unsigned char ServerSecretKey[32];
 
 	// 前のクライアント暗号文ブロック
-	unsigned char PrevClientCipherBlock[8];
+	unsigned char PrevClientCipherBlock[16];
 
 	// 前のサーバ暗号文ブロック
-	unsigned char PrevServerCipherBlock[8];
+	unsigned char PrevServerCipherBlock[16];
 
 
 	// データを受信した。
@@ -189,10 +188,17 @@ private:
 	boost::multiprecision::cpp_int CalcMasterSecret(const boost::multiprecision::cpp_int &PreMasterSecret);
 
 	// PRF計算.
-	void CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes);
+	void CalcPRF(unsigned char *pSecret, int SecretLength, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes);
 
 	// P_Hash
 	void P_Hash(EHashType Type, const std::string &Seed, const std::string &Secret, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes);
+
+	// MD5ハッシュ計算.
+	void CalcMD5Hash(const std::string &Seed, const std::string &Secret, char *pOutData);
+
+	// SHA1ハッシュ計算.
+	void CalcSHA1Hash(const std::string &Seed, const std::string &Secret, char *pOutData);
+
 };
 
 }

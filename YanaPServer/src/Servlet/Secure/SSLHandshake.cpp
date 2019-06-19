@@ -8,6 +8,9 @@
 #include <fstream>
 #include "boost/uuid/name_generator_md5.hpp"
 #include "boost/uuid/name_generator_sha1.hpp"
+#include "Crypto/modes.h"
+#include "Crypto/aes.h"
+#include "Crypto/filters.h"
 
 #include <iostream>
 
@@ -17,6 +20,7 @@ using namespace YanaPServer::Util;
 using namespace YanaPServer::Util::Secure;
 using namespace boost::multiprecision;
 using namespace boost::uuids::detail;
+using namespace CryptoPP;
 
 namespace YanaPServer
 {
@@ -77,7 +81,7 @@ void CSSLHandshake::OnRecvData(IMemoryStream *pStream)
 				}
 
 				printf("MessageType:0x%02X\n", HandshakeRecord.MessageType);
-
+				
 				switch (HandshakeRecord.MessageType)
 				{
 					case EMessageType::ClientHello:
@@ -138,6 +142,36 @@ void CSSLHandshake::OnRecvEncryptedData(IMemoryStream *pStream)
 	std::vector<char> Data;
 	Data.resize(Record.Length);
 	pStream->Serialize(&Data[0], Record.Length);
+
+	// 復号化.
+	byte Key[32];
+	memcpy(Key, ClientSecretKey, 32);
+	
+	byte CipherBlock[16];
+	memcpy(&CipherBlock, &PrevClientCipherBlock, 16);
+	CBC_Mode<AES>::Decryption Decrypt;
+	Decrypt.SetKeyWithIV(Key, 32, CipherBlock, 16);
+
+	std::string Decoded = "";
+	try
+	{
+		StreamTransformationFilter Filter(Decrypt, new StringSink(Decoded));
+		Filter.Put((const byte *)&Data[0], Data.size());
+		Filter.MessageEnd();
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << "Fuck!!" << std::endl;
+		std::cout << e.what() << std::endl;
+	}
+	
+	std::cout << "======================" << std::endl;
+	for (unsigned char Ch : Decoded)
+	{
+		printf("%X ", Ch);
+	}
+	std::cout << std::endl;
+	std::cout << "========================" << std::endl;
 }
 
 // ClientHelloを受信した。
@@ -155,7 +189,7 @@ void CSSLHandshake::OnRecvClientHello(IMemoryStream *pStream)
 	Version = ClientHello.ClientVersion;
 	printf("Version:0x%04X\n", Version);
 
-	unsigned short UseCipherSuite = ECipherSuite::TLS_RSA_WITH_3DES_EDE_CBC_SHA;
+	unsigned short UseCipherSuite = ECipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA;
 	bool bFound = false;
 	for (auto CipherSuite : ClientHello.CipherSuite)
 	{
@@ -272,22 +306,27 @@ void CSSLHandshake::OnRecvClientKeyExchange(IMemoryStream *pStream)
 	PreMasterSecret = Decript(PreMasterSecret, Prime1, Prime2);
 
 	// マスタシークレット計算.
-	MasterSecret = CalcMasterSecret(PreMasterSecret);
+	cpp_int MasterSecret = CalcMasterSecret(PreMasterSecret);
 	std::cout << "Master Secret:" << MasterSecret << std::endl;
 
 	// キーブロック計算.
 	std::string  Seed = ServerRandom;
 	Seed += ClientRandom;
 	std::vector<unsigned char> KeyBlock;
-	CalcPRF(MasterSecret.str(), "key expension", Seed, 104, KeyBlock);
-	
+
+	unsigned int SecretLength = (MasterSecret.backend().size() * sizeof(limb_type));
+	std::vector<unsigned char> Secret;
+	Secret.resize(SecretLength);
+	memcpy(&Secret[0], MasterSecret.backend().limbs(), SecretLength);
+	CalcPRF(&Secret[0], SecretLength, "key expension", Seed, 136, KeyBlock);
+
 	// キーブロックを切り出す。
 	memcpy(ClientWriteMAC, &KeyBlock[0], 20);
 	memcpy(ServerWriteMAC, &KeyBlock[20], 20);
-	memcpy(ClientSecretKey, &KeyBlock[40], 24);
-	memcpy(ServerSecretKey, &KeyBlock[64], 24);
-	memcpy(PrevClientCipherBlock, &KeyBlock[88], 8);
-	memcpy(PrevServerCipherBlock, &KeyBlock[96], 8);
+	memcpy(ClientSecretKey, &KeyBlock[40], 32);
+	memcpy(ServerSecretKey, &KeyBlock[72], 32);
+	memcpy(&PrevClientCipherBlock, &KeyBlock[104], 16);
+	memcpy(&PrevServerCipherBlock, &KeyBlock[120], 16);
 }
 
 // ハンドシェイクパケットを送信.
@@ -419,30 +458,47 @@ cpp_int CSSLHandshake::CalcMasterSecret(const cpp_int &PreMasterSecret)
 	std::string Seed = ClientRandom;
 	Seed += ServerRandom;
 
-	CalcPRF(PreMasterSecret.str(), "master secret", Seed, 48, Bytes);
+	unsigned int SecretLength = (PreMasterSecret.backend().size() * sizeof(limb_type));
+	std::vector<unsigned char> Secret;
+	Secret.resize(SecretLength);
+	memcpy(&Secret[0], PreMasterSecret.backend().limbs(), SecretLength);
+	CalcPRF(&Secret[0], SecretLength, "master secret", Seed, 48, Bytes);
 
 	cpp_int Result(Bytes);
 	return Result;
 }
 
 // PRF計算.
-void CSSLHandshake::CalcPRF(const std::string &Secret, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes)
+void CSSLHandshake::CalcPRF(unsigned char *pSecret, int SecretLength, const std::string &Label, const std::string &Seed, unsigned int NeedBytes, std::vector<unsigned char> &OutBytes)
 {
+	int SecretLengthHalf = SecretLength / 2;
+	
+	std::string HashSeed = Label + Seed;
+
 	// MD5
-	std::string HashSecret = Secret.substr(0, Secret.length() / 2);
+	std::string HashSecret = "";
+	for (int i = 0; i < SecretLengthHalf; i++)
+	{
+		HashSecret += pSecret[i];
+	}
 	std::vector<unsigned char> MD5Result;
-	P_Hash(EHashType::MD5, Label + Seed, HashSecret, NeedBytes, MD5Result);
+	P_Hash(EHashType::MD5, HashSeed, HashSecret, NeedBytes, MD5Result);
 
 	// SHA1
-	HashSecret = Secret.substr(HashSecret.length());
+	HashSecret = "";
+	for (int i = SecretLengthHalf; i < SecretLength; i++)
+	{
+		HashSecret += pSecret[i];
+	}
 	std::vector<unsigned char> SHA1Result;
-	P_Hash(EHashType::SHA1, Label + Seed, HashSecret, NeedBytes, SHA1Result);
+	P_Hash(EHashType::SHA1, HashSeed, HashSecret, NeedBytes, SHA1Result);
 
 	// XORを取っていく。
 	OutBytes.clear();
+	OutBytes.resize(NeedBytes);
 	for (unsigned int i = 0; i < NeedBytes; i++)
 	{
-		OutBytes.push_back(MD5Result[i] ^ SHA1Result[i]);
+		OutBytes[i] = MD5Result[i] ^ SHA1Result[i];
 	}
 }
 
@@ -455,12 +511,14 @@ void CSSLHandshake::P_Hash(EHashType Type, const std::string &Seed, const std::s
 	{
 		Count++;
 	}
-	std::string HashSeed = Seed + Secret;
+
+	// 最初の１回分。
+	Count++;
+
+	std::string NextSeed = Seed;
 	std::vector<unsigned char> ResultBytes;
-	for (unsigned int i = 0; i < Count * HashBytes; i++)
-	{
-		ResultBytes.push_back(0);
-	}
+	ResultBytes.resize(Count * HashBytes);
+	memset(&ResultBytes[0], 0, Count * HashBytes);
 
 	for (unsigned int i = 0; i < Count; i++)
 	{
@@ -469,45 +527,67 @@ void CSSLHandshake::P_Hash(EHashType Type, const std::string &Seed, const std::s
 			case EHashType::MD5:
 
 				{
-					md5 MD5;
-					MD5.process_bytes(HashSeed.c_str(), HashSeed.length());
-					md5::digest_type Result;
-					MD5.get_digest(Result);
 					char Bytes[16];
-					memcpy(Bytes, Result, 16);
-					for (int j =0; j < 16; j++)
+					std::string HashSeed = NextSeed + Seed;
+					CalcMD5Hash(HashSeed, Secret, Bytes);
+					if (i > 0)
 					{
-						ResultBytes[i * 16 + j] = (unsigned char) Bytes[i];
+						memcpy(&ResultBytes[(i - 1) * 16], Bytes, 16);
 					}
-					HashSeed = Bytes;
+
+					CalcMD5Hash(NextSeed, Secret, Bytes);
+					NextSeed = Bytes;
 				}
 				break;
 
 			case EHashType::SHA1:
 
 				{
-					sha1 SHA;
-					SHA.process_bytes(HashSeed.c_str(), HashSeed.length());
-					sha1::digest_type Result;
-					SHA.get_digest(Result);
 					char Bytes[20];
-					memcpy(Bytes, Result, 20);
-					for (int j = 0; j < 20; j++)
+					std::string HashSeed = NextSeed + Seed;
+					CalcSHA1Hash(HashSeed, Secret, Bytes);
+					if (i > 0)
 					{
-						ResultBytes[i * 20 + j] = (unsigned char) Bytes[i];
+						memcpy(&ResultBytes[(i - 1) * 20], Bytes, 20);
 					}
-					HashSeed = Bytes;
+
+					CalcSHA1Hash(NextSeed, Secret, Bytes);
+					NextSeed = Bytes;
 				}
 				break;
 		}
-		HashSeed += Secret;
+		NextSeed += Secret;
 	}
 
 	OutBytes.clear();
-	for (unsigned int i = 0; i < NeedBytes; i++)
-	{
-		OutBytes.push_back(ResultBytes[i]);
-	}
+	OutBytes.resize(NeedBytes);
+	memcpy(&OutBytes[0], &ResultBytes[0], NeedBytes);
+}
+
+// MD5ハッシュ計算.
+void CSSLHandshake::CalcMD5Hash(const std::string &Seed, const std::string &Secret, char *pOutData)
+{
+	std::string HashSeed = Seed + Secret;
+
+	md5 MD5;
+	MD5.process_bytes(HashSeed.c_str(), HashSeed.length());
+	md5::digest_type Result;
+	MD5.get_digest(Result);
+
+	memcpy(pOutData, Result, 16);
+}
+
+// SHA1ハッシュ計算.
+void CSSLHandshake::CalcSHA1Hash(const std::string &Seed, const std::string &Secret, char *pOutData)
+{
+	std::string HashSeed = Seed + Secret;
+
+	sha1 SHA;
+	SHA.process_bytes(HashSeed.c_str(), HashSeed.length());
+	sha1::digest_type Result;
+	SHA.get_digest(Result);
+
+	memcpy(pOutData, Result, 20);
 }
 
 }

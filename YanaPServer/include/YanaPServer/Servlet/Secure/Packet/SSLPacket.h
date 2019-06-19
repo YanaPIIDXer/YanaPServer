@@ -468,11 +468,13 @@ public:
 		unsigned short Length = 0;
 		pStream->Serialize(&Length);
 
+		PreMasterSecret.clear();
+		PreMasterSecret.resize(Length);
 		for (unsigned short i = 0; i < Length; i++)
 		{
 			unsigned char Data = 0;
 			pStream->Serialize(&Data);
-			PreMasterSecret.push_back(Data);
+			PreMasterSecret[i] = Data;
 		}
 
 		return !pStream->IsError();
