@@ -63,7 +63,6 @@ private:
 
 	 // バッファ
 	 std::vector<char> Buffer;
-
 };
 
 }
