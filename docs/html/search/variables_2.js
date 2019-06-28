@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['method',['Method',['../struct_yana_p_server_1_1_servlet_1_1_s_http_request.html#a9c5c0be79dd976356ba55f4a540ff1a9',1,'YanaPServer::Servlet::SHttpRequest']]]
+  ['headersize',['HeaderSize',['../class_yana_p_server_1_1_packet_1_1_c_packet_header.html#ad24daf7f7a7558efc6977e37e837abe1',1,'YanaPServer::Packet::CPacketHeader']]]
 ];
