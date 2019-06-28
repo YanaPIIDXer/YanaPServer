@@ -233,6 +233,9 @@
     <ClInclude Include="include\YanaPServer\Util\CSVController.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="include\YanaPServer\Packet\Packet.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />
