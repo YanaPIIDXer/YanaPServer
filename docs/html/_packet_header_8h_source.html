@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YanaPServer: PacketHeader.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">YanaPServer
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2a67cf3891460988a2f6e9d0adb34c1b.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_bac11a0200f3b99801364ef40513dc7d.html">include</a></li><li class="navelem"><a class="el" href="dir_05ce26451ba72466281a68fa333db4c9.html">YanaPServer</a></li><li class="navelem"><a class="el" href="dir_cdd879fa19c9e9b1d64c0ea2c9801e58.html">Packet</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PacketHeader.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_packet_header_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __PACKETHEADER_H__</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __PACKETHEADER_H__</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_serializable_8h.html">Util/Serializable.h</a>&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_packet_8h.html">Packet.h</a>&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_yana_p_server.html">YanaPServer</a></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>Packet</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html">CPacketHeader</a> : <span class="keyword">public</span> <a class="code" href="class_yana_p_server_1_1_util_1_1_i_serializable.html">Util::ISerializable</a></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#aa0b7fdc84b0c65ad5acc9035529d8836">CPacketHeader</a>();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#aa0b7fdc84b0c65ad5acc9035529d8836">CPacketHeader</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> InPacketId, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> InSize);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a24bcd704eebf236daaa6a5355d83acda">   36</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a24bcd704eebf236daaa6a5355d83acda">‾CPacketHeader</a>() {}</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a5ddd215dafa12bb03e473c430a872076">   43</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a5ddd215dafa12bb03e473c430a872076">GetPacketId</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> PacketId; }</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a04714765019acec56d0903cf8962ef71">   50</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a04714765019acec56d0903cf8962ef71">GetSize</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Size; }</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a3d62ad17c15349944a1b666a9697b40e">Serialize</a>(<a class="code" href="class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html">Util::Stream::IMemoryStream</a> *pStream) <span class="keyword">override</span>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#ad24daf7f7a7558efc6977e37e837abe1">   61</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#ad24daf7f7a7558efc6977e37e837abe1">HeaderSize</a>;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// パケットＩＤ</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> PacketId;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// サイズ</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> Size;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif      // #ifndef __PACKETHEADER_H__</span></div><div class="ttc" id="class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream_html"><div class="ttname"><a href="class_yana_p_server_1_1_util_1_1_stream_1_1_i_memory_stream.html">YanaPServer::Util::Stream::IMemoryStream</a></div><div class="ttdoc">メモリストリーム </div><div class="ttdef"><b>Definition:</b> MemoryStream.h:36</div></div>
+<div class="ttc" id="_packet_8h_html"><div class="ttname"><a href="_packet_8h.html">Packet.h</a></div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html">YanaPServer::Packet::CPacketHeader</a></div><div class="ttdoc">パケットヘッダ </div><div class="ttdef"><b>Definition:</b> PacketHeader.h:16</div></div>
+<div class="ttc" id="namespace_yana_p_server_html"><div class="ttname"><a href="namespace_yana_p_server.html">YanaPServer</a></div><div class="ttdef"><b>Definition:</b> ApplicationBase.h:12</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html_a24bcd704eebf236daaa6a5355d83acda"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a24bcd704eebf236daaa6a5355d83acda">YanaPServer::Packet::CPacketHeader::‾CPacketHeader</a></div><div class="ttdeci">virtual ‾CPacketHeader()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> PacketHeader.h:36</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html_aa0b7fdc84b0c65ad5acc9035529d8836"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#aa0b7fdc84b0c65ad5acc9035529d8836">YanaPServer::Packet::CPacketHeader::CPacketHeader</a></div><div class="ttdeci">CPacketHeader()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> PacketHeader.cpp:11</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html_a04714765019acec56d0903cf8962ef71"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a04714765019acec56d0903cf8962ef71">YanaPServer::Packet::CPacketHeader::GetSize</a></div><div class="ttdeci">unsigned char GetSize() const</div><div class="ttdoc">サイズ取得 </div><div class="ttdef"><b>Definition:</b> PacketHeader.h:50</div></div>
+<div class="ttc" id="_serializable_8h_html"><div class="ttname"><a href="_serializable_8h.html">Serializable.h</a></div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html_ad24daf7f7a7558efc6977e37e837abe1"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#ad24daf7f7a7558efc6977e37e837abe1">YanaPServer::Packet::CPacketHeader::HeaderSize</a></div><div class="ttdeci">static const unsigned int HeaderSize</div><div class="ttdoc">ヘッダサイズ </div><div class="ttdef"><b>Definition:</b> PacketHeader.h:61</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html_a3d62ad17c15349944a1b666a9697b40e"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a3d62ad17c15349944a1b666a9697b40e">YanaPServer::Packet::CPacketHeader::Serialize</a></div><div class="ttdeci">virtual bool Serialize(Util::Stream::IMemoryStream *pStream) override</div><div class="ttdoc">シリアライズ </div><div class="ttdef"><b>Definition:</b> PacketHeader.cpp:25</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_util_1_1_i_serializable_html"><div class="ttname"><a href="class_yana_p_server_1_1_util_1_1_i_serializable.html">YanaPServer::Util::ISerializable</a></div><div class="ttdoc">シリアライズ用インタフェース </div><div class="ttdef"><b>Definition:</b> Serializable.h:15</div></div>
+<div class="ttc" id="class_yana_p_server_1_1_packet_1_1_c_packet_header_html_a5ddd215dafa12bb03e473c430a872076"><div class="ttname"><a href="class_yana_p_server_1_1_packet_1_1_c_packet_header.html#a5ddd215dafa12bb03e473c430a872076">YanaPServer::Packet::CPacketHeader::GetPacketId</a></div><div class="ttdeci">unsigned char GetPacketId() const</div><div class="ttdoc">パケットＩＤ取得 </div><div class="ttdef"><b>Definition:</b> PacketHeader.h:43</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
