@@ -127,6 +127,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application\ApplicationBase.cpp" />
+    <ClCompile Include="src\Packet\PacketHeader.cpp" />
+    <ClCompile Include="src\Packet\PacketSerializer.cpp" />
     <ClCompile Include="src\Peer\PeerBase.cpp" />
     <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
     <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
     <ClInclude Include="include\YanaPServer\Packet\Packet.h" />
+    <ClInclude Include="include\YanaPServer\Packet\PacketHeader.h" />
+    <ClInclude Include="include\YanaPServer\Packet\PacketSerializer.h" />
     <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpParameter.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
