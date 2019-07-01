@@ -39,13 +39,13 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -127,8 +127,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application\ApplicationBase.cpp" />
-    <ClCompile Include="src\Packet\PacketHeader.cpp" />
-    <ClCompile Include="src\Packet\PacketSerializer.cpp" />
     <ClCompile Include="src\Peer\PeerBase.cpp" />
     <ClCompile Include="src\Servlet\HttpParameter.cpp" />
     <ClCompile Include="src\Servlet\HttpRequestParser.cpp" />
@@ -147,9 +145,6 @@
     <ClCompile Include="src\Util\HTML\HTMLBuilder.cpp" />
     <ClCompile Include="src\Util\HTML\HTMLObject.cpp" />
     <ClCompile Include="src\Util\RandomString.cpp" />
-    <ClCompile Include="src\Util\Stream\MemorySizeCaliculator.cpp" />
-    <ClCompile Include="src\Util\Stream\MemoryStreamReader.cpp" />
-    <ClCompile Include="src\Util\Stream\MemoryStreamWriter.cpp" />
     <ClCompile Include="src\Util\Stream\SimpleStream.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +165,6 @@
     <ClInclude Include="include\YanaPServer\MySQL\MySqlBinds.h" />
     <ClInclude Include="include\YanaPServer\MySQL\MySqlConnection.h" />
     <ClInclude Include="include\YanaPServer\MySQL\MySqlQuery.h" />
-    <ClInclude Include="include\YanaPServer\Packet\Packet.h" />
-    <ClInclude Include="include\YanaPServer\Packet\PacketHeader.h" />
-    <ClInclude Include="include\YanaPServer\Packet\PacketSerializer.h" />
     <ClInclude Include="include\YanaPServer\Peer\PeerBase.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpParameter.h" />
     <ClInclude Include="include\YanaPServer\Servlet\HttpRequest.h" />
@@ -199,11 +191,6 @@
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLBuilder.h" />
     <ClInclude Include="include\YanaPServer\Util\HTML\HTMLObject.h" />
     <ClInclude Include="include\YanaPServer\Util\RandomString.h" />
-    <ClInclude Include="include\YanaPServer\Util\Serializable.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemorySizeCaliculator.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStream.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamReader.h" />
-    <ClInclude Include="include\YanaPServer\Util\Stream\MemoryStreamWriter.h" />
     <ClInclude Include="include\YanaPServer\Util\Stream\SimpleStream.h" />
   </ItemGroup>
   <ItemGroup>

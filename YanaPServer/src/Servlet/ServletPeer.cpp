@@ -2,7 +2,6 @@
 #include "Servlet/ServletFinder.h"
 #include "Servlet/HttpServerEvent.h"
 #include "Servlet/HttpRequestParser.h"
-#include "Util/Stream/MemoryStreamReader.h"
 #include "Util/Stream/SimpleStream.h"
 #include <sstream>
 #include <time.h>
