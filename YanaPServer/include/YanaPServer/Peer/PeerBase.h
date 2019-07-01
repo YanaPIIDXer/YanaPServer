@@ -3,7 +3,6 @@
 
 #include "../Socket/Socket.h"
 #include "../Socket/SocketEventListener.h"
-#include "../Util/Serializable.h"
 
 namespace YanaPServer
 {
@@ -67,13 +66,6 @@ public:
 	 * @param[in] Size データ長
 	 */
 	void Send(const char *pData, unsigned int Size);
-
-	/**
-	 * @fn void Send(YanaPServer::Util::ISerializable *pObject)
-	 * @brief シリアライズ可能なオブジェクトを送信
-	 * @param[in] pObject オブジェクト
-	 */
-	void Send(YanaPServer::Util::ISerializable *pObject);
 
 	/**
 	 * @fn void Disconnect()

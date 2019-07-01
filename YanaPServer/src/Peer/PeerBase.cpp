@@ -1,10 +1,6 @@
 #include "Peer/PeerBase.h"
-#include "Util/Stream/MemorySizeCaliculator.h"
-#include "Util/Stream/MemoryStreamWriter.h"
 
 using namespace YanaPServer::Socket;
-using namespace YanaPServer::Util;
-using namespace YanaPServer::Util::Stream;
 
 namespace YanaPServer
 {
@@ -50,21 +46,6 @@ void CPeerBase::Send(const char *pData, unsigned int Size)
 	if (!IsValid()) { return; }
 
 	Socket.Send(pData, Size);
-}
-
-// シリアライズ可能なオブジェクトを送信.
-void CPeerBase::Send(ISerializable *pObject)
-{
-	// まずはサイズを計算
-	CMemorySizeCaliculator SizeCaliculator;
-	pObject->Serialize(&SizeCaliculator);
-
-	// シリアライズ本番
-	CMemoryStreamWriter StreamWriter(SizeCaliculator.GetSize());
-	pObject->Serialize(&StreamWriter);
-
-	// 送信
-	Send(StreamWriter.GetBuffer(), StreamWriter.GetSize());
 }
 
 // 切断.
